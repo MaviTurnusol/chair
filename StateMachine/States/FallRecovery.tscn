@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://c8qglu8y3jox0"]
+
+[ext_resource type="Script" uid="uid://c8vllvvqtiacx" path="res://StateMachine/States/fall_recovery.gd" id="1_84ran"]
+
+[node name="FallRecovery" type="Node" unique_id=108244701]
+script = ExtResource("1_84ran")
+animName = "fallRecovery"
+endWithAnim = true
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

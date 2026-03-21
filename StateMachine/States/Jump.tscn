@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dovqwt5o05qk1"]
+
+[ext_resource type="Script" uid="uid://dqmh77u1gpqxg" path="res://StateMachine/States/jump.gd" id="1_g3d0y"]
+
+[node name="Jump" type="Node" unique_id=1092082450]
+script = ExtResource("1_g3d0y")
+animName = "jump"
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

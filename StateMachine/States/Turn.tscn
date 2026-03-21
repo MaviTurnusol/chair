@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://o4c52t0244wj"]
+
+[ext_resource type="Script" uid="uid://byk6n5ivu8ea0" path="res://StateMachine/States/turn.gd" id="1_rk3l0"]
+
+[node name="Turn" type="Node" unique_id=2141766051]
+script = ExtResource("1_rk3l0")
+animName = "turn"
+endWithAnim = true
+cantTransitionFrom = PackedStringArray("groundAttack")
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

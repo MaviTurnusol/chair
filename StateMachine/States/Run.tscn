@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://j31ghs8e1fqo"]
+
+[ext_resource type="Script" uid="uid://1sxl83obbs2p" path="res://StateMachine/States/run.gd" id="1_mjkls"]
+
+[node name="Run" type="Node" unique_id=184304677]
+script = ExtResource("1_mjkls")
+animName = "run"
+animOnStart = false
+cantTransitionFrom = PackedStringArray("groundAttack")
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

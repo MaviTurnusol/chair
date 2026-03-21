@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://i4icnxv6vniq"]
+
+[ext_resource type="Script" uid="uid://cetvln3iy6ebl" path="res://StateMachine/States/roll.gd" id="1_n47h0"]
+
+[node name="Roll" type="Node" unique_id=1304739926]
+script = ExtResource("1_n47h0")
+animName = "roll"
+endWithAnim = true
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

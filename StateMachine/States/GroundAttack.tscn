@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cnqb10l3d1ayh"]
+
+[ext_resource type="Script" uid="uid://c7f512355ruln" path="res://StateMachine/States/ground_attack.gd" id="1_lm4ny"]
+
+[node name="GroundAttack" type="Node" unique_id=1184040215]
+script = ExtResource("1_lm4ny")
+animOnStart = false
+cantTransitionFrom = PackedStringArray("roll", "jump", "fall", "fallRecovery", "groundAttack")
+metadata/_custom_type_script = "uid://cswibj42kh6rk"
