@@ -19,23 +19,24 @@ func _physics_process(delta):
 			machine.change_state_to("groundAttack")
 	
 	#Jumping
-	if machine.get_state() not in ["roll", "jump", "fall", "fallRecovery", "groundAttack"]:
-		if Input.is_action_just_pressed("jump"):
-			machine.change_state_to("jump")
+	if Input.is_action_just_pressed("jump"):
+		machine.change_state_to("jump")
+	
 	#Falling
 	if !is_on_floor():
+		#idk if we really need this
 		if machine.get_state() not in ["jump"]:
 			machine.change_state_to("fall")
 		velocity.y += get_gravity().y * delta
 	
 	#Rolling
-	if machine.get_state() not in ["roll", "jump", "fall", "groundAttack"]:
-		if Input.is_action_just_pressed("space"):
-			machine.change_state_to("roll")
+	if Input.is_action_just_pressed("space"):
+		machine.change_state_to("roll")
 	
 	#Movement
 	var dir_ = Input.get_axis("left", "right")
-	if machine.get_state() not in ["roll", "turn", "jump", "fall", "fallRecovery", "groundAttack"]:
+	if machine.get_state() not in ["roll", "turn", "jump", 
+	"fall", "fallRecovery", "groundAttack"]:
 		#Turning
 		if sign(dir_) == sign(-velocity.x) && dir_:
 			machine.change_state_to("turn")
@@ -69,6 +70,7 @@ func flip(foo) -> void:
 			$Marker2D.scale.x = 1
 
 func set_collisions(foo) -> void:
+	#not actually collision but the hurtbox, i got lazy to rename this
 	if foo:
 		$Marker2D/HurtBox/CollisionShape2D.set_deferred("disabled", false)
 	else:

@@ -6,4 +6,5 @@
 script = ExtResource("1_n47h0")
 animName = "roll"
 endWithAnim = true
+cantTransitionFrom = PackedStringArray("roll", "jump", "fall", "groundAttack")
 metadata/_custom_type_script = "uid://cswibj42kh6rk"
