@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dkhw0k8ijjhy8"]
 
 [ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="1_gtdyc"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="2_jcveu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pjtn"]
 size = Vector2(1006.5, 115)
@@ -15,3 +16,7 @@ shape = SubResource("RectangleShape2D_0pjtn")
 
 [node name="Player" parent="StaticBody2D" unique_id=779898413 instance=ExtResource("1_gtdyc")]
 position = Vector2(179, 285)
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=126412074]
+position = Vector2(311, 73)
+texture = ExtResource("2_jcveu")
