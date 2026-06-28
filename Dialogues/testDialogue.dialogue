@@ -1,11 +1,26 @@
 ~ start
+set UnlimitedRulebook.the_woke_left = "Flower Guyy"
 Flower Guyy: hiii im the mc
 Flower Guyy: i wanna suffer
 Flower Guyy: masochism and shit
 Flower Guyy: jk masochism isnt probably about that
 Flower Guyy: ok byeee
+set UnlimitedRulebook.the_asleep_right = "Hatsune Miku"
+Hatsune Miku: Wait we need to have a conversation.
+Hatsune Miku: To like, showcase the dialogue manager.
+Flower Guyy: You're right.
+Hatsune Miku: Ok i think this much is enough?
+Flower Guyy: Probably.
+Flower Guyy: I'm gonna go get ice cream.
+set UnlimitedRulebook.the_woke_left = "Blank"
 ...
-Hatsune Miku: Mirakuru Beriiii
-Hatsune Miku: Kiseki No Shoootimeeee
-Hatsune Miku: A fish is an aquatic, anamniotic, gill-bearing vertebrate animal with a tough cranium to protect the brain, but lacking limbs with digits.
+set UnlimitedRulebook.the_woke_left = "Flower Guyy"
+Flower Guyy: Alright I'm back.
+Hatsune Miku: Waow our dialogue manager is amazing.
+set UnlimitedRulebook.the_woke_left = "Blank"
+set UnlimitedRulebook.the_asleep_right = "Blank"
+...
+Hi am the narrator
+I can narrate stuff
+Hell yeah
 => END

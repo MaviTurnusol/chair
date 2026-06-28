@@ -37,6 +37,10 @@ var locals: Dictionary = {}
 
 var _locale: String = TranslationServer.get_locale()
 
+var characters: PackedStringArray;
+var the_woke_left: String
+var the_asleep_right: String
+
 ## The current line
 var dialogue_line: DialogueLine:
 	set(value):
@@ -133,6 +137,33 @@ func apply_dialogue_line() -> void:
 
 	character_label.visible = not dialogue_line.character.is_empty()
 	character_label.text = tr(dialogue_line.character, "dialogue")
+	
+	var char_name = dialogue_line.character.to_lower().replace(" ", "")
+	
+	the_woke_left = UnlimitedRulebook.the_woke_left
+	the_asleep_right = UnlimitedRulebook.the_asleep_right
+	var left_portrait_path: String = "res://Dialogues/Characters/%s.png" % the_woke_left.to_lower().replace(" ", "")
+	var right_portrait_path: String = "res://Dialogues/Characters/%s.png" % the_asleep_right.to_lower().replace(" ", "")
+	#var portrait_path: String = "res://Dialogues/Characters/%s.png" % dialogue_line.character.to_lower().replace(" ", "")
+	if FileAccess.file_exists(left_portrait_path):
+		%DialChar1.image = load(left_portrait_path)
+		%DialChar1.on_screen = true
+	else:
+		%DialChar1.on_screen = false
+	
+	if FileAccess.file_exists(right_portrait_path):
+		%DialChar2.image = load(right_portrait_path)
+		%DialChar2.on_screen = true
+	else:
+		%DialChar2.on_screen = false
+	
+	var color_twink = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+	if UnlimitedRulebook.char_archive.has(char_name):
+		color_twink.tween_property($Balloon/MarginContainer/TextureRect, "self_modulate", 
+		Color.html(UnlimitedRulebook.char_archive[char_name][1]), 0.3)
+	else:
+		color_twink.tween_property($Balloon/MarginContainer/TextureRect, "self_modulate", 
+		Color.WHITE, 0.3)
 
 	dialogue_label.hide()
 	dialogue_label.dialogue_line = dialogue_line

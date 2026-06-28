@@ -7,6 +7,8 @@
 [ext_resource type="FontFile" uid="uid://bk10ax337voq8" path="res://Dialogues/zh-cn.ttf" id="3_7hjy8"]
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="3_ppob3"]
 [ext_resource type="PackedScene" uid="uid://ccpmoqjdxcsxs" path="res://Dialogues/dialogue_character.tscn" id="3_wq8lq"]
+[ext_resource type="Texture2D" uid="uid://dqnp8asms870f" path="res://Dialogues/Characters/flowerguyy.png" id="4_mtjp2"]
+[ext_resource type="Texture2D" uid="uid://d2wi5tl1myxoo" path="res://Dialogues/Characters/hatsunemiku.png" id="4_n51f1"]
 
 [sub_resource type="Animation" id="Animation_7hjy8"]
 length = 0.001
@@ -79,10 +81,15 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="DialChar1" parent="Balloon" unique_id=253735850 instance=ExtResource("3_wq8lq")]
+unique_name_in_owner = true
 layout_mode = 1
+current_character = "Flower Guyy"
+image = ExtResource("4_mtjp2")
 
 [node name="DialChar2" parent="Balloon" unique_id=2139076074 instance=ExtResource("3_wq8lq")]
+unique_name_in_owner = true
 layout_mode = 1
+image = ExtResource("4_n51f1")
 facing = "left"
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon" unique_id=505262258]
@@ -105,7 +112,7 @@ layout_mode = 2
 texture = ExtResource("1_qdnhd")
 
 [node name="TextureRect" type="TextureRect" parent="Balloon/MarginContainer" unique_id=803064839]
-self_modulate = Color(0.71025133, 0.55165595, 0.83833337, 1)
+self_modulate = Color(0.5803922, 0.8156863, 0.8, 1)
 layout_mode = 2
 texture = ExtResource("2_qdnhd")
 expand_mode = 1

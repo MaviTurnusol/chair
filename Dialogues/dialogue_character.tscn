@@ -15,7 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(-2024, -540)]
 }
 
 [sub_resource type="Animation" id="Animation_c752g"]
@@ -31,7 +31,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.33),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-960, 1080), Vector2(-960, -540)]
+"values": [Vector2(-2024, -540), Vector2(-960, -540)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_65f21"]
@@ -49,7 +49,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0ihgg")
 image = ExtResource("2_c752g")
-on_screen = true
 
 [node name="Middler" type="Control" parent="." unique_id=1970671479]
 layout_mode = 1
@@ -65,8 +64,10 @@ grow_vertical = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1920, 0)
 layout_mode = 1
-offset_right = 1920.0
-offset_bottom = 1919.9973
+offset_left = -2024.0
+offset_top = -540.0
+offset_right = -104.0
+offset_bottom = 1380.0
 texture = ExtResource("2_c752g")
 stretch_mode = 2
 
