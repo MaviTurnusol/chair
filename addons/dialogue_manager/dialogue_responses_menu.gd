@@ -139,6 +139,8 @@ func _apply_responses() -> void:
 			item.set_meta("response", response)
 
 			add_child(item)
+			if item.has_method('spawn'):
+				item.spawn()
 
 		if auto_configure_focus:
 			configure_focus()

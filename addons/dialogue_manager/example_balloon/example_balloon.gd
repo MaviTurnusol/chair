@@ -190,6 +190,12 @@ func apply_dialogue_line() -> void:
 	elif dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
 		responses_menu.show()
+		if get_node("%BoxMover"):
+			if UnlimitedRulebook.char_archive.has(char_name):
+				%ResponsesMenu.modulate = Color.html(UnlimitedRulebook.char_archive[char_name][1])
+			else:
+				%ResponsesMenu.modulate = Color.WHITE
+			%BoxMover.play("move_little_down")
 	elif dialogue_line.time != "":
 		var time: float = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
 		await get_tree().create_timer(time).timeout
@@ -245,6 +251,13 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
+	if get_node("%BoxMover"):
+		%BoxMover.play("move_little_up")
+		var fadeTwink = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
+		fadeTwink.tween_property(%ResponsesMenu, "modulate", Color.TRANSPARENT, 0.3)
 
-
+func _on_box_mover_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "move_little_up":
+		responses_menu.hide()
+	
 #endregion

@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://ccpmoqjdxcsxs" path="res://Dialogues/dialogue_character.tscn" id="3_wq8lq"]
 [ext_resource type="Texture2D" uid="uid://dqnp8asms870f" path="res://Dialogues/Characters/flowerguyy.png" id="4_mtjp2"]
 [ext_resource type="Texture2D" uid="uid://d2wi5tl1myxoo" path="res://Dialogues/Characters/hatsunemiku.png" id="4_n51f1"]
+[ext_resource type="Theme" uid="uid://44ekro1icl8t" path="res://Dialogues/SpeechBubbies/colorlesstheme.tres" id="10_oq5t2"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="10_wbp80"]
+[ext_resource type="PackedScene" uid="uid://de1kjc2atwchw" path="res://Dialogues/SpeechBubbies/response_template.tscn" id="12_wb0qk"]
 
 [sub_resource type="Animation" id="Animation_7hjy8"]
 length = 0.001
@@ -66,6 +69,77 @@ _data = {
 &"progress_new": SubResource("Animation_tlfrf")
 }
 
+[sub_resource type="Animation" id="Animation_nmpjj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Balloon/MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 567)]
+}
+
+[sub_resource type="Animation" id="Animation_wb0qk"]
+resource_name = "appear"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Balloon/MarginContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, 567)]
+}
+
+[sub_resource type="Animation" id="Animation_yba3h"]
+resource_name = "move_little_down"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Balloon/MarginContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 567), Vector2(0, 750)]
+}
+
+[sub_resource type="Animation" id="Animation_otp5j"]
+resource_name = "move_little_up"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Balloon/MarginContainer:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 750), Vector2(0, 567)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nmpjj"]
+_data = {
+&"RESET": SubResource("Animation_nmpjj"),
+&"appear": SubResource("Animation_wb0qk"),
+&"move_little_down": SubResource("Animation_yba3h"),
+&"move_little_up": SubResource("Animation_otp5j")
+}
+
 [node name="DialogueBalloon" type="CanvasLayer" unique_id=1305944457]
 script = ExtResource("1_tlfrf")
 dialogue_resource = ExtResource("2_2eq46")
@@ -102,7 +176,7 @@ anchor_bottom = 1.0
 offset_left = -960.0
 offset_top = -513.0
 offset_right = 960.0
-offset_bottom = -49.0
+offset_bottom = -49.00049
 grow_horizontal = 2
 grow_vertical = 0
 
@@ -186,7 +260,36 @@ polygon = PackedVector2Array(0, 0, 2.5, 3, 5, 0)
 libraries/ = SubResource("AnimationLibrary_7hjy8")
 autoplay = &"progress"
 
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon" unique_id=1248338526 node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -429.0
+offset_top = -77.0
+offset_right = 533.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme = ExtResource("10_oq5t2")
+theme_override_constants/separation = 2
+script = ExtResource("10_wbp80")
+response_template = NodePath("ResponseTemplate")
+
+[node name="ResponseTemplate" parent="Balloon/ResponsesMenu" unique_id=1040197302 instance=ExtResource("12_wb0qk")]
+layout_mode = 2
+
+[node name="BoxMover" type="AnimationPlayer" parent="." unique_id=184488473]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_nmpjj")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=19023753]
 unique_name_in_owner = true
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[connection signal="animation_finished" from="BoxMover" to="." method="_on_box_mover_animation_finished"]

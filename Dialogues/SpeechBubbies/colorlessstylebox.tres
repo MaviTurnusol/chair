@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://cst8grqanee7m"]
+
+[ext_resource type="Texture2D" uid="uid://ljn3bxpexmdk" path="res://Dialogues/SpeechBubbies/response9patchrectangle.png" id="1_n0jmn"]
+
+[resource]
+texture = ExtResource("1_n0jmn")
+texture_margin_left = 70.0
+texture_margin_top = 40.0
+texture_margin_right = 70.0
+texture_margin_bottom = 40.0
