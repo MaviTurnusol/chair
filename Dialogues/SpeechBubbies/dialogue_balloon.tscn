@@ -1,0 +1,185 @@
+[gd_scene format=3 uid="uid://bf34jhj0685ln"]
+
+[ext_resource type="Texture2D" uid="uid://cymh7ycse8w3t" path="res://Dialogues/SpeechBubbies/Tecciz_SpeechB.png" id="1_qdnhd"]
+[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_tlfrf"]
+[ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/testDialogue.dialogue" id="2_2eq46"]
+[ext_resource type="Texture2D" uid="uid://djwoa3iwypdxj" path="res://Dialogues/SpeechBubbies/RW_Normal_Small.png" id="2_qdnhd"]
+[ext_resource type="FontFile" uid="uid://bk10ax337voq8" path="res://Dialogues/zh-cn.ttf" id="3_7hjy8"]
+[ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="3_ppob3"]
+[ext_resource type="PackedScene" uid="uid://ccpmoqjdxcsxs" path="res://Dialogues/dialogue_character.tscn" id="3_wq8lq"]
+
+[sub_resource type="Animation" id="Animation_7hjy8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Progress:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-35, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i6nbm"]
+resource_name = "progress"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Progress:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-35, 0), Vector2(-35, -5), Vector2(-35, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tlfrf"]
+resource_name = "progress_new"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Progress:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-35, 0), Vector2(-35, -5), Vector2(-35, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7hjy8"]
+_data = {
+&"RESET": SubResource("Animation_7hjy8"),
+&"progress": SubResource("Animation_i6nbm"),
+&"progress_new": SubResource("Animation_tlfrf")
+}
+
+[node name="DialogueBalloon" type="CanvasLayer" unique_id=1305944457]
+script = ExtResource("1_tlfrf")
+dialogue_resource = ExtResource("2_2eq46")
+start_from_title = "start"
+auto_start = true
+next_action = &"interact"
+
+[node name="Balloon" type="Control" parent="." unique_id=432697551]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="DialChar1" parent="Balloon" unique_id=253735850 instance=ExtResource("3_wq8lq")]
+layout_mode = 1
+
+[node name="DialChar2" parent="Balloon" unique_id=2139076074 instance=ExtResource("3_wq8lq")]
+layout_mode = 1
+facing = "left"
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon" unique_id=505262258]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -513.0
+offset_right = 960.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="additions" type="TextureRect" parent="Balloon/MarginContainer" unique_id=565485723]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_qdnhd")
+
+[node name="TextureRect" type="TextureRect" parent="Balloon/MarginContainer" unique_id=803064839]
+self_modulate = Color(0.71025133, 0.55165595, 0.83833337, 1)
+layout_mode = 2
+texture = ExtResource("2_qdnhd")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Balloon/MarginContainer/TextureRect" unique_id=1457883945]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 93.0
+offset_right = 1772.0
+offset_bottom = 356.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/MarginContainer/TextureRect/MarginContainer" unique_id=2057092572]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/MarginContainer/TextureRect/MarginContainer/HBoxContainer" unique_id=780915997]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1196977809]
+unique_name_in_owner = true
+modulate = Color(0.7, 0.7, 0.7, 1)
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.94, 0.94, 0.94, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.22745098)
+theme_override_constants/shadow_outline_size = 7
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 2
+theme_override_fonts/normal_font = ExtResource("3_7hjy8")
+theme_override_font_sizes/normal_font_size = 40
+text = "Flower Guyyy"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="DialogueLabel" type="RichTextLabel" parent="Balloon/MarginContainer/TextureRect/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1400831417]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.23529412)
+theme_override_constants/shadow_outline_size = 10
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 4
+theme_override_fonts/normal_font = ExtResource("3_7hjy8")
+theme_override_font_sizes/normal_font_size = 48
+text = "Lorem Ipsum Dolor Sit Amet, Consectetur Adipiscit Elit"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_ppob3")
+seconds_per_step = 0.04
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+metadata/_custom_type_script = "uid://g32um0mltv5d"
+
+[node name="Control" type="Control" parent="Balloon/MarginContainer/TextureRect/MarginContainer/HBoxContainer" unique_id=1781401016]
+custom_minimum_size = Vector2(5, 3)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Progress" type="Polygon2D" parent="Balloon/MarginContainer/TextureRect/MarginContainer/HBoxContainer/Control" unique_id=2039027514]
+unique_name_in_owner = true
+position = Vector2(-35, 0)
+scale = Vector2(10, 10)
+polygon = PackedVector2Array(0, 0, 2.5, 3, 5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Balloon/MarginContainer/TextureRect/MarginContainer/HBoxContainer/Control" unique_id=1201477629]
+libraries/ = SubResource("AnimationLibrary_7hjy8")
+autoplay = &"progress"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=19023753]
+unique_name_in_owner = true
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

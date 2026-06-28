@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dt2voiy38cchi"]
+
+[ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="1_xjayh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgyqr"]
+size = Vector2(1006.5, 115)
+
+[node name="ViewportLab" type="Node2D" unique_id=1582361756]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=287254245]
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(3, 3)
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=430924171]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="level" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1321197597]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SubViewportContainer/SubViewport/level" unique_id=1549261779]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/level/StaticBody2D" unique_id=379979884]
+position = Vector2(336.75, 342.5)
+shape = SubResource("RectangleShape2D_lgyqr")
+
+[node name="Player" parent="SubViewportContainer/SubViewport/level" unique_id=779898413 instance=ExtResource("1_xjayh")]
+position = Vector2(170, 270)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=269823526]

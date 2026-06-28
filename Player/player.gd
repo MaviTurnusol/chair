@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var speed = 130.0
-var jumpVelocity = -400.0
+var jumpVelocity = -440.0
 @onready var anima = $Marker2D/anima
 @onready var machine = $StateMachine
 @onready var weaponHolder = $Marker2D/weaponHolder
@@ -15,8 +15,9 @@ func _physics_process(delta):
 	
 	#Attacking
 	if Input.is_action_just_pressed("attack"):
-		if is_on_floor():
-			machine.change_state_to("groundAttack")
+		if weaponHolder.get_children().size() > 0:
+			if is_on_floor():
+				machine.change_state_to("groundAttack")
 	
 	#Jumping
 	if Input.is_action_just_pressed("jump"):
@@ -27,7 +28,9 @@ func _physics_process(delta):
 		#idk if we really need this
 		if machine.get_state() not in ["jump"]:
 			machine.change_state_to("fall")
-		velocity.y += get_gravity().y * delta
+			velocity.y += get_gravity().y * delta * 1.66
+		else:
+			velocity.y += get_gravity().y * delta * 1.33
 	
 	#Rolling
 	if Input.is_action_just_pressed("space"):

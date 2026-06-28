@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://4v1foex4d4rf" path="res://StateMachine/States/Fall.tscn" id="16_pisgm"]
 [ext_resource type="PackedScene" uid="uid://dovqwt5o05qk1" path="res://StateMachine/States/Jump.tscn" id="17_pisgm"]
 [ext_resource type="PackedScene" uid="uid://c8qglu8y3jox0" path="res://StateMachine/States/FallRecovery.tscn" id="19_o28un"]
-[ext_resource type="PackedScene" uid="uid://duxss7hrq3mm5" path="res://Weapons/knife.tscn" id="20_n471f"]
 [ext_resource type="PackedScene" uid="uid://cnqb10l3d1ayh" path="res://StateMachine/States/GroundAttack.tscn" id="21_7emwf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvbbp"]
@@ -490,7 +489,7 @@ father = NodePath("..")
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"walk"
+animation = &"fallRecovery"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
@@ -502,8 +501,6 @@ shape = SubResource("CapsuleShape2D_od3ui")
 
 [node name="weaponHolder" type="Node2D" parent="Marker2D" unique_id=498292919]
 position = Vector2(0, -45)
-
-[node name="Knife" parent="Marker2D/weaponHolder" unique_id=1622852181 instance=ExtResource("20_n471f")]
 
 [node name="StateMachine" parent="." unique_id=29357077 node_paths=PackedStringArray("initialState") instance=ExtResource("2_k53q1")]
 initialState = NodePath("Idle")

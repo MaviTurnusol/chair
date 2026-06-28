@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://ccpmoqjdxcsxs"]
+
+[ext_resource type="Script" uid="uid://cydc84kbnvx5i" path="res://Dialogues/dialogue_character.gd" id="1_0ihgg"]
+[ext_resource type="Texture2D" uid="uid://bfjkd1rs16kqo" path="res://Dialogues/MIKU_SP.png" id="2_c752g"]
+
+[sub_resource type="Animation" id="Animation_65f21"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Middler/CharacterTexture:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c752g"]
+resource_name = "appear"
+length = 0.33
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Middler/CharacterTexture:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-960, 1080), Vector2(-960, -540)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_65f21"]
+_data = {
+&"RESET": SubResource("Animation_65f21"),
+&"appear": SubResource("Animation_c752g")
+}
+
+[node name="DialogueCharacter" type="Control" unique_id=253735850]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0ihgg")
+image = ExtResource("2_c752g")
+on_screen = true
+
+[node name="Middler" type="Control" parent="." unique_id=1970671479]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterTexture" type="TextureRect" parent="Middler" unique_id=1169839244]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1920, 0)
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1919.9973
+texture = ExtResource("2_c752g")
+stretch_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Middler/CharacterTexture" unique_id=431937084]
+visible = false
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=615170087]
+libraries/ = SubResource("AnimationLibrary_65f21")
