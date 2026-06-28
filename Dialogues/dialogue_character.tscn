@@ -83,3 +83,4 @@ grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=615170087]
 libraries/ = SubResource("AnimationLibrary_65f21")
+speed_scale = 0.75
