@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://djx5vcp8nk1es"]
+
+[ext_resource type="Script" uid="uid://ccbm4nyp00olk" path="res://StateMachine/States/talk.gd" id="1_k5k3u"]
+
+[node name="Talk" type="Node" unique_id=1021014801]
+script = ExtResource("1_k5k3u")
+animName = "idle"
+canOnlyTransitionTo = PackedStringArray("idle")
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

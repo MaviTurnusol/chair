@@ -11,8 +11,15 @@ func set_state(value):
 		return
 	if currentState:
 		var foo = str(currentState.name)
+		if currentState.cantTransitionTo.has(value.name):
+			return
 		if value.cantTransitionFrom.has(foo[0].to_lower() + foo.substr(1)):
 			return
+		if currentState.canOnlyTransitionTo.size() > 0:
+			if !currentState.canOnlyTransitionTo.has(value.name.to_lower()):
+				print(value.name.to_lower())
+				print(currentState.canOnlyTransitionTo)
+				return
 	value.SuperStart()
 	value.Start()
 	if currentState:

@@ -10,6 +10,8 @@ var machine
 @export var endWithAnim = false
 
 @export var cantTransitionFrom : PackedStringArray
+@export var cantTransitionTo : PackedStringArray
+@export var canOnlyTransitionTo : PackedStringArray
 
 func SuperStart():
 	if animOnStart:

@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bmhref06rwauj"]
+
+[ext_resource type="Script" uid="uid://dkvl6powmgasw" path="res://StateMachine/States/cutscene.gd" id="1_44ep1"]
+
+[node name="Cutscene" type="Node" unique_id=584498621]
+script = ExtResource("1_44ep1")
+animOnStart = false
+canOnlyTransitionTo = PackedStringArray("talk")
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

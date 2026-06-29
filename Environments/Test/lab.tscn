@@ -1,17 +1,119 @@
 [gd_scene format=3 uid="uid://dkhw0k8ijjhy8"]
 
+[ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://Environments/Test/koridor5w1.png" id="1_7xo5u"]
 [ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="1_gtdyc"]
+[ext_resource type="Texture2D" uid="uid://d2wi5tl1myxoo" path="res://Dialogues/Characters/hatsunemiku.png" id="1_qieeq"]
+[ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/vignette.gdshader" id="1_w1gcx"]
+[ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/Test/koridor5w1_n.png" id="2_w1gcx"]
+[ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Actionable.tscn" id="2_y3jmy"]
+[ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/testDialogue.dialogue" id="3_7xo5u"]
+[ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="4_w1gcx"]
+[ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="5_gbuu4"]
+[ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_gbuu4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pjtn"]
-size = Vector2(1006.5, 115)
+[sub_resource type="Environment" id="Environment_w1gcx"]
+background_mode = 3
+tonemap_mode = 1
+tonemap_exposure = 0.6
+glow_enabled = true
+glow_intensity = 1.25
+glow_strength = 1.1
+glow_bloom = 0.15
+glow_blend_mode = 0
+glow_hdr_threshold = 0.95
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbuu4"]
+shader = ExtResource("1_w1gcx")
+shader_parameter/radius = 0.70000003325
+shader_parameter/softness = 0.750000035625
+shader_parameter/intensity = 3.0
+shader_parameter/contrast = 1.20000003325
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gbuu4"]
+diffuse_texture = ExtResource("1_7xo5u")
+normal_texture = ExtResource("2_w1gcx")
+specular_texture = ExtResource("1_7xo5u")
+specular_shininess = 0.1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
+size = Vector2(1308.5815, 1102.5062)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
+size = Vector2(1240.5, 115)
 
 [node name="Lab" type="Node2D" unique_id=775964121]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=152731093]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1280648369]
+environment = SubResource("Environment_w1gcx")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=941458080]
-position = Vector2(336.75, 342.5)
-shape = SubResource("RectangleShape2D_0pjtn")
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2000743457]
+color = Color(0.5, 0.5, 0.5, 1)
+
+[node name="vignette" type="CanvasLayer" parent="." unique_id=1173212707]
+
+[node name="ColorRect" type="ColorRect" parent="vignette" unique_id=326334068]
+material = SubResource("ShaderMaterial_gbuu4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="Node2D" parent="." unique_id=900721234]
+
+[node name="ColorRect" type="ColorRect" parent="bg" unique_id=893654717]
+offset_left = -1288.0
+offset_top = -646.0
+offset_right = 2691.0
+offset_bottom = 1300.0
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="bg" unique_id=1828161032]
+light_mask = 2
+texture = SubResource("CanvasTexture_gbuu4")
+centered = false
+
+[node name="Hatsunemiku" type="Sprite2D" parent="." unique_id=742045063]
+modulate = Color(0.6, 0.6, 0.6, 1)
+position = Vector2(437.83337, 230.16257)
+scale = Vector2(0.09705162, 0.097051635)
+texture = ExtResource("1_qieeq")
+
+[node name="Actionable" parent="Hatsunemiku" unique_id=559728107 instance=ExtResource("2_y3jmy")]
+position = Vector2(-207.79361, -25.717133)
+dialogue_resource = ExtResource("3_7xo5u")
+talking_point = Vector2(354, 282)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hatsunemiku/Actionable" unique_id=1718363251]
+position = Vector2(0.00035095215, 41.214966)
+scale = Vector2(1, 0.9999998)
+shape = SubResource("RectangleShape2D_ynjs4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1174702601]
+position = Vector2(166, -3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1707381969]
+position = Vector2(453.75, 342.5)
+shape = SubResource("RectangleShape2D_6refc")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=639033392 node_paths=PackedStringArray("target")]
+position = Vector2(170, 270)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("4_w1gcx")
+target = NodePath("../camTarget")
+
+[node name="camTarget" type="Node2D" parent="." unique_id=255049655]
+position = Vector2(170, 200.66666)
+script = ExtResource("5_gbuu4")
 
 [node name="Player" parent="." unique_id=779898413 instance=ExtResource("1_gtdyc")]
-position = Vector2(179, 285)
+modulate = Color(0.5, 0.5, 0.5, 1)
+position = Vector2(170, 270)
+
+[node name="LedLight" parent="." unique_id=2003837725 instance=ExtResource("10_gbuu4")]
+position = Vector2(261, 113)
+
+[node name="LedLight2" parent="." unique_id=1385647229 instance=ExtResource("10_gbuu4")]
+position = Vector2(816, 112)

@@ -53,6 +53,10 @@ var dialogue_line: DialogueLine:
 				queue_free()
 			else:
 				hide()
+			if UnlimitedRulebook.player:
+				if is_instance_valid(UnlimitedRulebook.player):
+					UnlimitedRulebook.player.machine.change_state_to("idle")
+					UnlimitedRulebook.cam.current_target = Vector2(0, 0)
 	get:
 		return dialogue_line
 

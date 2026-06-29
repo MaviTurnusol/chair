@@ -20,6 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://dovqwt5o05qk1" path="res://StateMachine/States/Jump.tscn" id="17_pisgm"]
 [ext_resource type="PackedScene" uid="uid://c8qglu8y3jox0" path="res://StateMachine/States/FallRecovery.tscn" id="19_o28un"]
 [ext_resource type="PackedScene" uid="uid://cnqb10l3d1ayh" path="res://StateMachine/States/GroundAttack.tscn" id="21_7emwf"]
+[ext_resource type="PackedScene" uid="uid://djx5vcp8nk1es" path="res://StateMachine/States/Talk.tscn" id="21_gpjlu"]
+[ext_resource type="PackedScene" uid="uid://c846825224hit" path="res://Common/ActionableFinder.tscn" id="21_hshwv"]
+[ext_resource type="PackedScene" uid="uid://bmhref06rwauj" path="res://StateMachine/States/Cutscene.tscn" id="22_gpjlu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvbbp"]
 atlas = ExtResource("3_lfmf2")
@@ -476,6 +479,9 @@ height = 86.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fhl08"]
 height = 66.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpjlu"]
+size = Vector2(42, 69)
+
 [node name="Player" type="CharacterBody2D" unique_id=779898413]
 script = ExtResource("1_l8h54")
 
@@ -523,6 +529,10 @@ initialState = NodePath("Idle")
 
 [node name="GroundAttack" parent="StateMachine" unique_id=1184040215 instance=ExtResource("21_7emwf")]
 
+[node name="Talk" parent="StateMachine" unique_id=1021014801 instance=ExtResource("21_gpjlu")]
+
+[node name="Cutscene" parent="StateMachine" unique_id=584498621 instance=ExtResource("22_gpjlu")]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2077871060]
 position = Vector2(0, -33)
 shape = SubResource("CapsuleShape2D_fhl08")
@@ -533,3 +543,10 @@ offset_top = -84.0
 offset_right = 29.0
 offset_bottom = -61.0
 text = "debug"
+
+[node name="ActionableFinder" parent="." unique_id=1761829163 node_paths=PackedStringArray("cutscene_state") instance=ExtResource("21_hshwv")]
+cutscene_state = NodePath("../StateMachine/Cutscene")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder" unique_id=553359887]
+position = Vector2(0, -34.5)
+shape = SubResource("RectangleShape2D_gpjlu")

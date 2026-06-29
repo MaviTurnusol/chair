@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bl2deb8kc0o7k"]
+
+[ext_resource type="Texture2D" uid="uid://4rnlvtfq0ut3" path="res://Environments/Test/ledOn.png" id="1_6lpvl"]
+[ext_resource type="Texture2D" uid="uid://bvbe30duk14nh" path="res://Common/light.png" id="2_0a8jf"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6lpvl"]
+polygon = PackedVector2Array(-43, 2, -43, -3, -43, -3, 43, -3, 43, 2, 45, 1, 45, -4, -45, -4, -45, 0)
+
+[node name="LedLight" type="Node2D" unique_id=2003837725]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=432987047]
+texture = ExtResource("1_6lpvl")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1162527589]
+color = Color(2.454227, 2.454227, 2.454227, 1)
+range_item_cull_mask = 2
+texture = ExtResource("2_0a8jf")
+texture_scale = 3.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1125407185]
+texture = ExtResource("2_0a8jf")
+texture_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=1555525962]
+occluder = SubResource("OccluderPolygon2D_6lpvl")

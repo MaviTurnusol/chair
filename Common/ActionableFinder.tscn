@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c846825224hit"]
+
+[ext_resource type="Script" uid="uid://dmfe55bpwut43" path="res://Common/actionable_finder.gd" id="1_0yp3k"]
+
+[node name="ActionableFinder" type="Area2D" unique_id=1761829163]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_0yp3k")
