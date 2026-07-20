@@ -482,7 +482,7 @@ height = 66.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpjlu"]
 size = Vector2(42, 69)
 
-[node name="Player" type="CharacterBody2D" unique_id=779898413]
+[node name="Player" type="CharacterBody2D" unique_id=779898413 groups=["player"]]
 script = ExtResource("1_l8h54")
 
 [node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("2_od3ui")]

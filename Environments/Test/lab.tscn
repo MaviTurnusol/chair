@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="4_w1gcx"]
 [ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="5_gbuu4"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_gbuu4"]
+[ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/CeilingWorm.tscn" id="13_esouf"]
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -117,3 +118,14 @@ position = Vector2(261, 113)
 
 [node name="LedLight2" parent="." unique_id=1385647229 instance=ExtResource("10_gbuu4")]
 position = Vector2(816, 112)
+
+[node name="The real maddie" type="Node" parent="." unique_id=1283741702]
+
+[node name="CeilingWorm2" parent="The real maddie" unique_id=908797744 instance=ExtResource("13_esouf")]
+position = Vector2(745, 110)
+
+[node name="CeilingWorm3" parent="The real maddie" unique_id=1121628834 instance=ExtResource("13_esouf")]
+position = Vector2(560, 116)
+
+[node name="CeilingWorm4" parent="The real maddie" unique_id=2141160138 instance=ExtResource("13_esouf")]
+position = Vector2(645, 116)
