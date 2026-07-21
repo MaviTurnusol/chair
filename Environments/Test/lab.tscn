@@ -10,7 +10,9 @@
 [ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="4_w1gcx"]
 [ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="5_gbuu4"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_gbuu4"]
-[ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/CeilingWorm.tscn" id="13_esouf"]
+[ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Wormy/CeilingWorm.tscn" id="13_esouf"]
+[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="13_hs8mn"]
+[ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -43,6 +45,10 @@ size = Vector2(1308.5815, 1102.5062)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs8mn"]
+radius = 25.0
+height = 109.65
 
 [node name="Lab" type="Node2D" unique_id=775964121]
 
@@ -114,6 +120,21 @@ script = ExtResource("5_gbuu4")
 modulate = Color(0.5, 0.5, 0.5, 1)
 position = Vector2(170, 270)
 
+[node name="TEMP_DEBUG_HitBox" parent="Player" unique_id=187917931 instance=ExtResource("13_hs8mn")]
+position = Vector2(40, -54)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/TEMP_DEBUG_HitBox" unique_id=1704919889]
+shape = SubResource("CapsuleShape2D_hs8mn")
+
+[node name="Label" type="Label" parent="Player/TEMP_DEBUG_HitBox" unique_id=1977121166]
+offset_left = -33.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 39.0
+text = "DEBUG 
+DAMAGE
+BOX"
+
 [node name="LedLight" parent="." unique_id=2003837725 instance=ExtResource("10_gbuu4")]
 position = Vector2(261, 113)
 
@@ -130,3 +151,6 @@ position = Vector2(560, 116)
 
 [node name="CeilingWorm4" parent="The real maddie" unique_id=2141160138 instance=ExtResource("13_esouf")]
 position = Vector2(645, 116)
+
+[node name="JustANormalGuy" parent="The real maddie" unique_id=1552983653 instance=ExtResource("13_lh5rw")]
+position = Vector2(816, 225)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://e057parhmavy"]
 
-[ext_resource type="Script" uid="uid://b5p2f3buyfcjf" path="res://MADDIE/DumbCeilingWOrm.gd" id="1_1nka3"]
-[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Worm1.png" id="2_qgt0i"]
+[ext_resource type="Script" uid="uid://b5p2f3buyfcjf" path="res://MADDIE/Wormy/DumbCeilingWOrm.gd" id="1_1nka3"]
+[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Wormy/Worm1.png" id="2_qgt0i"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbuu4"]
 height = 200.0

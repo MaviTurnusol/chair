@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jubyc1ti04pw"
-path="res://.godot/imported/Worm1.png-d3b53c0c1becbc26dbc298635a572b2f.ctex"
+uid="uid://b0mdta8wu7fed"
+path="res://.godot/imported/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg-a0b19f6b666c42604a5fa6f282ca2da8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MADDIE/Worm1.png"
-dest_files=["res://.godot/imported/Worm1.png-d3b53c0c1becbc26dbc298635a572b2f.ctex"]
+source_file="res://MADDIE/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg"
+dest_files=["res://.godot/imported/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg-a0b19f6b666c42604a5fa6f282ca2da8.ctex"]
 
 [params]
 

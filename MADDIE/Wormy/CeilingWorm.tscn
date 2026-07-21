@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1c5xoms8xmjr"]
 
-[ext_resource type="Script" uid="uid://b64mtxsrtxvan" path="res://MADDIE/CeilingWorm.gd" id="1_1wccn"]
+[ext_resource type="Script" uid="uid://b64mtxsrtxvan" path="res://MADDIE/Wormy/CeilingWorm.gd" id="1_1wccn"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbuu4"]
 height = 200.0

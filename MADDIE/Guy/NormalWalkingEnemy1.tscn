@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bjoxfrt8d45e1"]
+
+[ext_resource type="Script" uid="uid://tbna3m7qb3t6" path="res://MADDIE/Guy/NormalWalkingEnemy.gd" id="1_7dkby"]
+[ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/Boxes/HealthComp.tscn" id="2_h8uud"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://MADDIE/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="3_owu6q"]
+[ext_resource type="PackedScene" uid="uid://dfk65q1y23ewq" path="res://Common/Boxes/HurtBox.tscn" id="4_cq0ys"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjvv"]
+radius = 19.35
+height = 113.45
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dkby"]
+radius = 110.7
+height = 221.4
+
+[node name="JustANormalGuy" type="Node2D" unique_id=1552983653]
+script = ExtResource("1_7dkby")
+ChaseSpeed = 30.0
+KnockedbackAmount = 0.0
+
+[node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("2_h8uud")]
+MAX_HEALTH = 2.0
+father = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=292500123]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("3_owu6q")
+
+[node name="HurtBox" parent="." unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_cq0ys")]
+father = NodePath("..")
+healthComp = NodePath("../HealthComp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1389275089]
+shape = SubResource("CapsuleShape2D_ktjvv")
+
+[node name="AggroZone" type="Area2D" parent="." unique_id=1021337193]
+position = Vector2(0, 93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroZone" unique_id=1911541175]
+position = Vector2(-130, -93)
+shape = SubResource("CapsuleShape2D_7dkby")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="AggroZone" unique_id=624513867]
+position = Vector2(130, -93)
+shape = SubResource("CapsuleShape2D_7dkby")
