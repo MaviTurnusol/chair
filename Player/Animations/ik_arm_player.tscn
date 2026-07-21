@@ -1,0 +1,71 @@
+[gd_scene format=3 uid="uid://cibbhmwg7jg8f"]
+
+[ext_resource type="Texture2D" uid="uid://b4too5ldx1fsr" path="res://Player/Animations/IKBullshit.png" id="1_2lnk7"]
+[ext_resource type="Script" uid="uid://c46tkguln5umi" path="res://Player/Animations/ik_arm_player.gd" id="1_6cvg4"]
+[ext_resource type="Texture2D" uid="uid://cpl77es7wowp3" path="res://Player/Animations/IKForeArm.png" id="1_ho3oa"]
+[ext_resource type="Texture2D" uid="uid://cavtats2clcx6" path="res://Player/Animations/IKUpperArm.png" id="2_2lnk7"]
+
+[sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_1eyru"]
+target_nodepath = NodePath("../Targets/target")
+flip_bend_direction = true
+joint_one_bone_idx = 0
+joint_one_bone2d_node = NodePath("UpperArm")
+joint_two_bone_idx = 1
+joint_two_bone2d_node = NodePath("UpperArm/ForeArm")
+
+[sub_resource type="SkeletonModificationStack2D" id="SkeletonModificationStack2D_0rajn"]
+enabled = true
+modification_count = 1
+modifications/0 = SubResource("SkeletonModification2DTwoBoneIK_1eyru")
+
+[node name="IKArmPlayer" type="Node2D" unique_id=559927148]
+script = ExtResource("1_6cvg4")
+
+[node name="Skeleton2D" type="Skeleton2D" parent="." unique_id=1074605462]
+modification_stack = SubResource("SkeletonModificationStack2D_0rajn")
+
+[node name="UpperArm" type="Bone2D" parent="Skeleton2D" unique_id=1184992431]
+scale = Vector2(0.99998003, 0.99998003)
+rest = Transform2D(0.99998003, 0, 0, 0.99998003, 0, 0)
+auto_calculate_length_and_angle = false
+length = 16.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="ForeArm" type="Bone2D" parent="Skeleton2D/UpperArm" unique_id=215936278]
+position = Vector2(16, 0)
+scale = Vector2(0.9999862, 0.9999862)
+rest = Transform2D(0.9999862, 0, 0, 0.9999862, 16, 0)
+auto_calculate_length_and_angle = false
+length = 24.0
+bone_angle = 0.0
+metadata/_local_pose_override_enabled_ = true
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/UpperArm/ForeArm" unique_id=2146571060]
+remote_path = NodePath("../../../../Sprites/IkForeArm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/UpperArm/ForeArm" unique_id=1571699038]
+texture = ExtResource("1_2lnk7")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/UpperArm" unique_id=767280924]
+remote_path = NodePath("../../../Sprites/IkUpperArm")
+
+[node name="Sprites" type="Node2D" parent="." unique_id=946141560]
+
+[node name="IkForeArm" type="Sprite2D" parent="Sprites" unique_id=980587244]
+position = Vector2(11.651953, 10.964567)
+rotation = -0.47447604
+scale = Vector2(0.99996597, 0.99996597)
+texture = ExtResource("1_ho3oa")
+offset = Vector2(12, 0)
+
+[node name="IkUpperArm" type="Sprite2D" parent="Sprites" unique_id=1505477633]
+rotation = 0.7550144
+scale = Vector2(0.99998, 0.99998)
+texture = ExtResource("2_2lnk7")
+offset = Vector2(8, 0)
+
+[node name="Targets" type="Node2D" parent="." unique_id=1228222911]
+
+[node name="target" type="Node2D" parent="Targets" unique_id=95380209]
+position = Vector2(33, 0)

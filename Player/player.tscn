@@ -5,12 +5,14 @@
 [ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/Boxes/HealthComp.tscn" id="2_od3ui"]
 [ext_resource type="PackedScene" uid="uid://dxe2xunoeds0f" path="res://StateMachine/States/Idle.tscn" id="3_fhl08"]
 [ext_resource type="Texture2D" uid="uid://dh0s24457wye3" path="res://Player/Animations/xocherJump-Sheet.png" id="3_lfmf2"]
+[ext_resource type="PackedScene" uid="uid://cibbhmwg7jg8f" path="res://Player/Animations/ik_arm_player.tscn" id="3_sm0op"]
 [ext_resource type="PackedScene" uid="uid://dfk65q1y23ewq" path="res://Common/Boxes/HurtBox.tscn" id="4_00tjw"]
 [ext_resource type="Texture2D" uid="uid://c2sd5801w4stn" path="res://Player/Animations/roll-Sheet.png" id="4_apopc"]
 [ext_resource type="Texture2D" uid="uid://0rybfwdex73u" path="res://Player/Animations/fallRecovery.png" id="4_b1ygp"]
 [ext_resource type="PackedScene" uid="uid://drjyjbj4ap1pl" path="res://StateMachine/States/Walk.tscn" id="4_vtle1"]
 [ext_resource type="Texture2D" uid="uid://c10q83rsumqvq" path="res://Player/Animations/walk-Sheet.png" id="4_x3vf3"]
 [ext_resource type="Texture2D" uid="uid://rsho58ftjj6r" path="res://Player/Animations/run-Sheet.png" id="5_5htga"]
+[ext_resource type="Texture2D" uid="uid://nd1qkpgl782" path="res://Player/Animations/gunwalk-Sheet.png" id="5_8mwp6"]
 [ext_resource type="PackedScene" uid="uid://i4icnxv6vniq" path="res://StateMachine/States/Roll.tscn" id="5_od3ui"]
 [ext_resource type="Texture2D" uid="uid://c7lkrco3qj785" path="res://Player/Animations/idle-Sheet.png" id="6_fhl08"]
 [ext_resource type="Texture2D" uid="uid://bxiqfdls3cl21" path="res://Player/Animations/xochiTurn-Sheet.png" id="6_gu6f8"]
@@ -23,6 +25,8 @@
 [ext_resource type="PackedScene" uid="uid://djx5vcp8nk1es" path="res://StateMachine/States/Talk.tscn" id="21_gpjlu"]
 [ext_resource type="PackedScene" uid="uid://c846825224hit" path="res://Common/ActionableFinder.tscn" id="21_hshwv"]
 [ext_resource type="PackedScene" uid="uid://bmhref06rwauj" path="res://StateMachine/States/Cutscene.tscn" id="22_gpjlu"]
+[ext_resource type="PackedScene" uid="uid://cdhl38422h57f" path="res://StateMachine/States/GunWalk.tscn" id="24_qemgg"]
+[ext_resource type="PackedScene" uid="uid://dumxxtk7wv87d" path="res://StateMachine/States/GunIdle.tscn" id="25_8viyr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvbbp"]
 atlas = ExtResource("3_lfmf2")
@@ -43,6 +47,58 @@ region = Rect2(0, 0, 84, 103)
 [sub_resource type="AtlasTexture" id="AtlasTexture_yxu6j"]
 atlas = ExtResource("4_b1ygp")
 region = Rect2(84, 0, 84, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ac8n6"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(528, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdkl3"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(0, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68syb"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(66, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0uyb"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(132, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8nak"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(198, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqfba"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(264, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgaa7"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(330, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lfyh2"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(396, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soeee"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(462, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5r0w"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(528, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qns6m"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(594, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fatyj"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(660, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32uw3"]
+atlas = ExtResource("5_8mwp6")
+region = Rect2(726, 0, 66, 103)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vtle1"]
 atlas = ExtResource("6_fhl08")
@@ -285,6 +341,55 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ac8n6")
+}],
+"loop": true,
+"name": &"gunIdle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdkl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68syb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0uyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8nak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqfba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgaa7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lfyh2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soeee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5r0w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qns6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fatyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32uw3")
+}],
+"loop": true,
+"name": &"gunWalk",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_vtle1")
 }, {
 "duration": 1.0,
@@ -490,12 +595,17 @@ MAX_HEALTH = 100.0
 health = 100.0
 father = NodePath("..")
 
+[node name="IKArmPlayer" parent="." unique_id=559927148 instance=ExtResource("3_sm0op")]
+z_index = 1
+position = Vector2(-6, -66)
+
 [node name="Marker2D" type="Marker2D" parent="." unique_id=416441746]
 
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"fallRecovery"
+animation = &"gunIdle"
+frame_progress = 0.61616033
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
@@ -533,11 +643,16 @@ initialState = NodePath("Idle")
 
 [node name="Cutscene" parent="StateMachine" unique_id=584498621 instance=ExtResource("22_gpjlu")]
 
+[node name="GunWalk" parent="StateMachine" unique_id=1017199643 instance=ExtResource("24_qemgg")]
+
+[node name="GunIdle" parent="StateMachine" unique_id=460317679 instance=ExtResource("25_8viyr")]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2077871060]
 position = Vector2(0, -33)
 shape = SubResource("CapsuleShape2D_fhl08")
 
 [node name="debugState" type="Label" parent="." unique_id=509319456]
+visible = false
 offset_left = -20.0
 offset_top = -84.0
 offset_right = 29.0

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c1c5xoms8xmjr"]
 
 [ext_resource type="Script" uid="uid://b64mtxsrtxvan" path="res://MADDIE/CeilingWorm.gd" id="1_1wccn"]
-[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Worm1.png" id="2_4wcxu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbuu4"]
 height = 200.0
@@ -12,6 +11,9 @@ radius = 32.1
 [sub_resource type="Curve" id="Curve_esouf"]
 _data = [Vector2(0, 0.17977536), 0.0, 0.0, 0, 0, Vector2(0.22500001, 1), 0.0, 0.0, 0, 0, Vector2(0.78999996, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.28089893), 0.0, 0.0, 0, 0]
 point_count = 4
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dmp5"]
+load_path = "res://.godot/imported/Worm1.png-d3b53c0c1becbc26dbc298635a572b2f.ctex"
 
 [node name="CeilingWorm" type="Node2D" unique_id=908797744]
 script = ExtResource("1_1wccn")
@@ -41,7 +43,7 @@ hit_from_inside = true
 texture_filter = 1
 texture_repeat = 2
 width_curve = SubResource("Curve_esouf")
-texture = ExtResource("2_4wcxu")
+texture = SubResource("CompressedTexture2D_7dmp5")
 texture_mode = 1
 joint_mode = 1
 begin_cap_mode = 2

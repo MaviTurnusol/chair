@@ -35,6 +35,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 diffuse_texture = ExtResource("1_7xo5u")
 normal_texture = ExtResource("2_w1gcx")
 specular_texture = ExtResource("1_7xo5u")
+specular_color = Color(0.88235295, 1, 1, 1)
 specular_shininess = 0.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
@@ -49,7 +50,7 @@ size = Vector2(1240.5, 115)
 environment = SubResource("Environment_w1gcx")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2000743457]
-color = Color(0.5, 0.5, 0.5, 1)
+color = Color(0.45, 0.45, 0.45, 1)
 
 [node name="vignette" type="CanvasLayer" parent="." unique_id=1173212707]
 

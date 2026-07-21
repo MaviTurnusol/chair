@@ -12,12 +12,13 @@ polygon = PackedVector2Array(-43, 2, -43, -3, -43, -3, 43, -3, 43, 2, 45, 1, 45,
 texture = ExtResource("1_6lpvl")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1162527589]
-color = Color(2.454227, 2.454227, 2.454227, 1)
+color = Color(2.7626126, 2.9289904, 2.8180718, 1)
 range_item_cull_mask = 2
 texture = ExtResource("2_0a8jf")
 texture_scale = 3.0
 
 [node name="PointLight2D2" type="PointLight2D" parent="." unique_id=1125407185]
+color = Color(0.9411765, 1, 1, 1)
 texture = ExtResource("2_0a8jf")
 texture_scale = 2.0
 

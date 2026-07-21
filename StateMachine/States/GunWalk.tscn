@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cdhl38422h57f"]
+
+[ext_resource type="Script" uid="uid://5jbxh6h0hyxc" path="res://StateMachine/States/gun_walk.gd" id="1_f2w10"]
+
+[node name="GunWalk" type="Node" unique_id=1017199643]
+script = ExtResource("1_f2w10")
+animName = "gunWalk"
+animOnStart = false
+canOnlyTransitionTo = PackedStringArray("gunIdle", "idle")
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

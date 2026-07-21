@@ -16,8 +16,8 @@ func set_state(value):
 		if value.cantTransitionFrom.has(foo[0].to_lower() + foo.substr(1)):
 			return
 		if currentState.canOnlyTransitionTo.size() > 0:
-			if !currentState.canOnlyTransitionTo.has(value.name.to_lower()):
-				print(value.name.to_lower())
+			if !currentState.canOnlyTransitionTo.has(str(value.name)[0].to_lower() + str(value.name).substr(1)):
+				print(value.name)
 				print(currentState.canOnlyTransitionTo)
 				return
 	value.SuperStart()
@@ -48,6 +48,7 @@ func change_state_to(state):
 	if !currentState || !state:
 		return
 	currentState = get_node(state[0].to_upper() + state.substr(1))
+	print("changed via chage_state_to(): " + currentState.name)
 
 func get_state():
 	if currentState:

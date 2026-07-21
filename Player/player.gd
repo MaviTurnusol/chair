@@ -34,12 +34,17 @@ func _physics_process(delta):
 	
 	#Rolling
 	if Input.is_action_just_pressed("space"):
-		machine.change_state_to("roll")
+		machine.change_state_to("gunIdle")
+	
+	if machine.get_state() in ["gunIdle", "gunWalk"]:
+		$IKArmPlayer.visible = true
+	else:
+		$IKArmPlayer.visible = false
 	
 	#Movement
 	var dir_ = Input.get_axis("left", "right")
 	if machine.get_state() not in ["roll", "turn", "jump", 
-	"fall", "fallRecovery", "groundAttack", "talk", "cutscene"]:
+	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle"]:
 		#Turning
 		if sign(dir_) == sign(-velocity.x) && dir_:
 			machine.change_state_to("turn")
