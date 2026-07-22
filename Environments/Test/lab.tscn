@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_gbuu4"]
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Wormy/CeilingWorm.tscn" id="13_esouf"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="13_hs8mn"]
-[ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
+[ext_resource type="PackedScene" uid="uid://bjfl87ieqrdmd" path="res://MADDIE/Mummy/BandageMummy.tscn" id="13_lh5rw"]
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -121,7 +121,7 @@ modulate = Color(0.5, 0.5, 0.5, 1)
 position = Vector2(170, 270)
 
 [node name="TEMP_DEBUG_HitBox" parent="Player" unique_id=187917931 instance=ExtResource("13_hs8mn")]
-position = Vector2(40, -54)
+position = Vector2(-278, -96)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/TEMP_DEBUG_HitBox" unique_id=1704919889]
 shape = SubResource("CapsuleShape2D_hs8mn")
@@ -152,5 +152,9 @@ position = Vector2(560, 116)
 [node name="CeilingWorm4" parent="The real maddie" unique_id=2141160138 instance=ExtResource("13_esouf")]
 position = Vector2(645, 116)
 
-[node name="JustANormalGuy" parent="The real maddie" unique_id=1552983653 instance=ExtResource("13_lh5rw")]
-position = Vector2(816, 225)
+[node name="BandageMummy" parent="The real maddie" unique_id=1552983653 instance=ExtResource("13_lh5rw")]
+position = Vector2(864, 216)
+MoveWhileWinding = true
+
+[node name="BandageMummy2" parent="The real maddie" unique_id=935333782 instance=ExtResource("13_lh5rw")]
+position = Vector2(55, 216)
