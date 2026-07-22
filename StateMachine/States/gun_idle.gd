@@ -7,7 +7,7 @@ func PhysicsProcess(_delta):
 	else:
 		stateOwner.velocity.x = lerp(stateOwner.velocity.x, 0.0, 0.1)
 		
-	if abs(stateOwner.velocity.x) < 10:
+	if abs(stateOwner.velocity.x) < 100:
 		stateOwner.anima.play(animName)
 	stateOwner.move_and_slide()
 	

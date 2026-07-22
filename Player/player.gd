@@ -7,6 +7,7 @@ var jumpVelocity = -440.0
 @onready var weaponHolder = $Marker2D/weaponHolder
 var dir = 0.0
 
+var weapon_equipped = false
 func _ready():
 	UnlimitedRulebook.player = self
 	
@@ -34,7 +35,18 @@ func _physics_process(delta):
 	
 	#Rolling
 	if Input.is_action_just_pressed("space"):
-		machine.change_state_to("gunIdle")
+		machine.change_state_to("roll")
+	
+	#Gun
+	if Input.is_action_just_pressed("equip"):
+		if !weapon_equipped:
+			weapon_equipped = true
+			$IKArmPlayer.state = $IKArmPlayer.STATES.LARP_CURSOR
+			machine.change_state_to("gunWalk")
+		else:
+			weapon_equipped = false
+			if machine.get_state() in ["gunIdle", "gunWalk"]:
+				machine.change_state_to("idle")
 	
 	if machine.get_state() in ["gunIdle", "gunWalk"]:
 		$IKArmPlayer.visible = true
@@ -54,6 +66,8 @@ func _physics_process(delta):
 		if machine.get_state() not in ["turn"]:
 			if dir_:
 				dir = dir_
+				if weapon_equipped:
+					machine.change_state_to("gunWalk")
 				if Input.is_action_pressed("shift"):
 					velocity.x = lerp(velocity.x, dir*speed*1.6, 0.1)
 					machine.change_state_to("run")
@@ -62,7 +76,10 @@ func _physics_process(delta):
 					machine.change_state_to("walk")
 			else:
 				velocity.x = lerp(velocity.x, 0.0, 0.1)
-				machine.change_state_to("idle")
+				if !weapon_equipped:
+					machine.change_state_to("idle")
+				else:
+					machine.change_state_to("gunIdle")
 			
 		#Flipping Sprite/Hurtbox
 		if Input.is_action_pressed("left"):

@@ -6,5 +6,5 @@
 script = ExtResource("1_oceyx")
 animName = "gunIdle"
 animOnStart = false
-canOnlyTransitionTo = PackedStringArray("idle", "gunWalk")
+canOnlyTransitionTo = PackedStringArray("idle", "gunWalk", "roll", "jump")
 metadata/_custom_type_script = "uid://cswibj42kh6rk"

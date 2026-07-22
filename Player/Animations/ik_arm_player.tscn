@@ -53,19 +53,26 @@ remote_path = NodePath("../../../Sprites/IkUpperArm")
 [node name="Sprites" type="Node2D" parent="." unique_id=946141560]
 
 [node name="IkForeArm" type="Sprite2D" parent="Sprites" unique_id=980587244]
-position = Vector2(11.651953, 10.964567)
-rotation = -0.47447604
-scale = Vector2(0.99996597, 0.99996597)
+position = Vector2(-11.636645, 10.980813)
+rotation = 0.914886
+scale = Vector2(0.9999661, 0.9999661)
 texture = ExtResource("1_ho3oa")
 offset = Vector2(12, 0)
 
 [node name="IkUpperArm" type="Sprite2D" parent="Sprites" unique_id=1505477633]
-rotation = 0.7550144
-scale = Vector2(0.99998, 0.99998)
+rotation = 2.385183
+scale = Vector2(0.99998003, 0.99998003)
 texture = ExtResource("2_2lnk7")
 offset = Vector2(8, 0)
 
 [node name="Targets" type="Node2D" parent="." unique_id=1228222911]
 
 [node name="target" type="Node2D" parent="Targets" unique_id=95380209]
-position = Vector2(33, 0)
+position = Vector2(3, 30)
+
+[node name="larpTimer" type="Timer" parent="." unique_id=573352959]
+process_callback = 0
+wait_time = 0.66
+one_shot = true
+
+[connection signal="timeout" from="larpTimer" to="." method="_on_larp_timer_timeout"]

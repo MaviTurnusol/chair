@@ -48,7 +48,7 @@ func change_state_to(state):
 	if !currentState || !state:
 		return
 	currentState = get_node(state[0].to_upper() + state.substr(1))
-	print("changed via chage_state_to(): " + currentState.name)
+	#print("changed via chage_state_to(): " + currentState.name)
 
 func get_state():
 	if currentState:
