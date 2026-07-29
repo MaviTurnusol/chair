@@ -16,7 +16,7 @@ height = 221.4
 [node name="JustANormalGuy" type="Node2D" unique_id=1552983653]
 script = ExtResource("1_7dkby")
 ChaseSpeed = 30.0
-KnockedbackAmount = 0.0
+KnockedbackAmount = 50.0
 
 [node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("2_h8uud")]
 MAX_HEALTH = 2.0
