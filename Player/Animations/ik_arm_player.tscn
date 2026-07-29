@@ -62,7 +62,7 @@ TimeBetweenShots = 0.1
 Crosshair = ExtResource("5_pi3h7")
 DoShootHitscan = true
 HitscanBullet = ExtResource("5_pi3h7")
-HitscanBulletSpread = Vector2(5, 5)
+HitscanBulletSpread = Vector2(8, 8)
 HitscanBulletAmount = 2
 HitscanBulletDamage = 0.25
 HitscanBulletTime = 0.25
@@ -80,7 +80,7 @@ BulletCasingShootDirection = Vector2(0.1, -1)
 FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@32618")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@75391")
 metadata/_custom_type_script = "uid://y10s2jb0y8n1"
 
 [node name="Fire Point" type="Marker2D" parent="Skeleton2D/UpperArm/ForeArm/PlayerGun" unique_id=2116186040]

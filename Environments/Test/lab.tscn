@@ -162,7 +162,8 @@ position = Vector2(560, 116)
 position = Vector2(645, 116)
 
 [node name="JustANormalGuy" parent="The real maddie" unique_id=1552983653 instance=ExtResource("13_lh5rw")]
-position = Vector2(816, 225)
+modulate = Color(0.77038866, 3.85046e-07, 0.39466476, 1)
+position = Vector2(927, 225)
 
 [node name="BulletBlocker_IMPENETRABLE" type="StaticBody2D" parent="The real maddie/JustANormalGuy" unique_id=871633439]
 collision_layer = 4
@@ -170,6 +171,12 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="The real maddie/JustANormalGuy/BulletBlocker_IMPENETRABLE" unique_id=1932140953]
 shape = SubResource("RectangleShape2D_hs8mn")
+
+[node name="JustANormalGuy2" parent="The real maddie" unique_id=521501233 instance=ExtResource("13_lh5rw")]
+position = Vector2(816, 227)
+
+[node name="JustANormalGuy3" parent="The real maddie" unique_id=753228336 instance=ExtResource("13_lh5rw")]
+position = Vector2(1030, 223)
 
 [node name="sceneInitializer" type="Node" parent="." unique_id=152984821]
 script = ExtResource("14_hs8mn")
