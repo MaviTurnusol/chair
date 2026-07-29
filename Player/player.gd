@@ -9,7 +9,10 @@ var dir = 0.0
 
 var weapon_equipped = false
 var weapon : Node2D
-	
+
+func _ready() -> void:
+	UnlimitedRulebook.player = self
+
 func _physics_process(delta):
 	$debugState.text = str(machine.get_state())
 	
@@ -46,9 +49,6 @@ func _physics_process(delta):
 			weapon_equipped = false
 			if machine.get_state() in ["gunIdle", "gunWalk"]:
 				machine.change_state_to("idle")
-	if weapon_equipped:
-		if Input.is_action_just_pressed("attack"):
-			UnlimitedRulebook.playerWeapon.Use()
 	
 	if machine.get_state() in ["gunIdle", "gunWalk"]:
 		$IKArmPlayer.visible = true

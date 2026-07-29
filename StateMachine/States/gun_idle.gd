@@ -11,4 +11,8 @@ func PhysicsProcess(_delta):
 		stateOwner.anima.play(animName)
 	stateOwner.move_and_slide()
 	
+	if UnlimitedRulebook.player.weapon_equipped:
+		if Input.is_action_just_pressed("attack"):
+			UnlimitedRulebook.playerWeapon.Use()
+	
 	stateOwner.get_node("Marker2D").scale.x = sign(stateOwner.get_global_mouse_position().x - stateOwner.global_position.x)
