@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://djqbkcmgwsraw"]
+
+[ext_resource type="Texture2D" uid="uid://bnigf0kimh55k" path="res://BigGuns/crossairCircle.png" id="1_8y3dn"]
+[ext_resource type="Script" uid="uid://dc5m1c0pstjfr" path="res://BigGuns/cross_air.gd" id="1_p8cpe"]
+
+[node name="CrossAir" type="Node2D" unique_id=545803635]
+script = ExtResource("1_p8cpe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1565477174]
+texture = ExtResource("1_8y3dn")

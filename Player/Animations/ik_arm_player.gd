@@ -30,9 +30,8 @@ func _physics_process(_delta: float) -> void:
 	elif state == STATES.LARP_CURSOR:
 		$Targets/target.global_position = lerp($Targets/target.global_position, 
 		get_global_mouse_position(), 0.1)
-		print("larp larp larp sahuuuur")
 	
-	if get_local_mouse_position().x < 0:
+	if get_global_mouse_position().x < get_parent().global_position.x:
 		ik_mod.flip_bend_direction = false
 		position = initial_pos + Vector2(12, 0)
 		$Sprites/IkForeArm.flip_v = true

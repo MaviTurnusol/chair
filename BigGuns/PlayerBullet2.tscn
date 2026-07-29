@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://kelca8sgtdap"]
+
+[ext_resource type="Script" uid="uid://bl7ahucvhbqfy" path="res://BigGuns/PlayerBullet2.gd" id="1_0b7pa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gvgwg"]
+radius = 15.0
+
+[sub_resource type="Gradient" id="Gradient_u56je"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.76578677, 0.117823236, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qwfmr"]
+gradient = SubResource("Gradient_u56je")
+width = 16
+height = 8
+
+[node name="CharacterBody2D" type="Area2D" unique_id=1084071136 groups=["Bullet"]]
+collision_layer = 20
+collision_mask = 20
+script = ExtResource("1_0b7pa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474941624]
+shape = SubResource("CircleShape2D_gvgwg")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1794019888]
+scale = Vector2(3, 3)
+texture = SubResource("GradientTexture2D_qwfmr")

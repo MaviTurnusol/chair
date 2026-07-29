@@ -4,6 +4,9 @@ var player
 var cam
 var the_woke_left = "Blank"
 var the_asleep_right = "Blank"
+var crossHair #Im so dumb i thought it was spelled crossair
+var playerWeapon
+var currentScene
 
 signal got_on_the_talking_point
 

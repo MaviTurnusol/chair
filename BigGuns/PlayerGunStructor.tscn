@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://hc8qol4y4m0q"]
+
+[ext_resource type="Script" uid="uid://y10s2jb0y8n1" path="res://BigGuns/PlayerGun.gd" id="1_h6xdl"]
+[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://BigGuns/HelperGizmo.gd" id="2_h2vud"]
+
+[node name="PlayerGun" type="Node2D" unique_id=932840899 node_paths=PackedStringArray("FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo")]
+script = ExtResource("1_h6xdl")
+FirePointHelperGizmo = NodePath("Fire Point")
+PivotPointHelperGizmo = NodePath("Pivot Point")
+GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
+
+[node name="Null" type="Marker2D" parent="." unique_id=827142760]
+position = Vector2(13, -14)
+script = ExtResource("2_h2vud")
+
+[node name="Null2" type="Marker2D" parent="." unique_id=1589845731]
+position = Vector2(-8, -8)
+script = ExtResource("2_h2vud")
+
+[node name="Fire Point" type="Marker2D" parent="." unique_id=309656511]
+position = Vector2(13, -14)
+script = ExtResource("2_h2vud")
+Pos = Vector2(13, -14)
+
+[node name="Pivot Point" type="Marker2D" parent="." unique_id=1335374083]
+position = Vector2(-8, -8)
+script = ExtResource("2_h2vud")
+Pos = Vector2(-8, -8)
+
+[node name="Gun Preview" type="Marker2D" parent="Pivot Point" unique_id=138788181]
+script = ExtResource("2_h2vud")
+Pos = Vector2(-8, -8)

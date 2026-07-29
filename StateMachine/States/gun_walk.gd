@@ -2,11 +2,6 @@ extends State
 
 var weapon
 
-#GunWalk
-#GunIdle
-
-
-
 func Start():
 	weapon = stateOwner.weaponHolder.get_child(0)
 
@@ -22,6 +17,7 @@ func Process(delta):
 		stateOwner.velocity.x = lerp(stateOwner.velocity.x, 0.0, 0.1)
 		machine.change_state_to("gunIdle")
 		#stateOwner.anima.pause()
+
 	
 	stateOwner.get_node("Marker2D").scale.x = sign(stateOwner.get_global_mouse_position().x - stateOwner.global_position.x)
 	

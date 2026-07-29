@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Wormy/CeilingWorm.tscn" id="13_esouf"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="13_hs8mn"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
+[ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="14_hs8mn"]
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -110,11 +111,7 @@ position = Vector2(170, 270)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("4_w1gcx")
-target = NodePath("../camTarget")
-
-[node name="camTarget" type="Node2D" parent="." unique_id=255049655]
-position = Vector2(170, 200.66666)
-script = ExtResource("5_gbuu4")
+target = NodePath("../Player/camTarget")
 
 [node name="Player" parent="." unique_id=779898413 instance=ExtResource("1_gtdyc")]
 modulate = Color(0.5, 0.5, 0.5, 1)
@@ -135,6 +132,10 @@ text = "DEBUG
 DAMAGE
 BOX"
 
+[node name="camTarget" type="Node2D" parent="Player" unique_id=255049655]
+position = Vector2(0, -69.33334)
+script = ExtResource("5_gbuu4")
+
 [node name="LedLight" parent="." unique_id=2003837725 instance=ExtResource("10_gbuu4")]
 position = Vector2(261, 113)
 
@@ -154,3 +155,6 @@ position = Vector2(645, 116)
 
 [node name="JustANormalGuy" parent="The real maddie" unique_id=1552983653 instance=ExtResource("13_lh5rw")]
 position = Vector2(816, 225)
+
+[node name="sceneInitializer" type="Node" parent="." unique_id=152984821]
+script = ExtResource("14_hs8mn")
