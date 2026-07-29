@@ -13,7 +13,7 @@ const WhichLayerBlocksBullets : int = 3
 		GunTexture = NewText
 		ChangeGunPreview()
 @export var TimeBetweenShots : float = 1
-
+@export var Crosshair : PackedScene
 ## PROJECTILE
 @export_category("Projectile")
 @export var DoShootProjectile : bool:
@@ -171,7 +171,14 @@ func _ready() -> void:
 			GunPreviewSprite.queue_free()
 		ConstructGun()
 	UnlimitedRulebook.playerWeapon = self
-	
+	SetCrosshairScaleAppropiateToSpread()
+
+func SetCrosshairScaleAppropiateToSpread():
+	if(Crosshair):
+		var CrosshairNode = Crosshair.instantiate()
+		add_child(CrosshairNode)
+		CrosshairNode.get_node("Sprite2D").scale = Vector2.ONE * (HitscanBulletSpread/16)
+
 func _process(delta: float) -> void:
 			
 	if(Engine.is_editor_hint()):
@@ -331,6 +338,7 @@ func HitscanAestheticFunction(WhichLine2D : Line2D):
 	var TweenLineWidth : Tween = get_tree().create_tween()
 	TweenLineWidth.set_ease(HitscanLineEasing)
 	TweenLineWidth.set_trans(HitscanLineTrans)
+	print(HitscanLineTrans)
 	TweenLineWidth.tween_property(WhichLine2D,"width",0,HitscanBulletTime)
 	
 	TweenTail(WhichLine2D,WhichLine2D.points[0],0)
@@ -502,15 +510,15 @@ func _validate_property(property: Dictionary) -> void:
 					property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
 	
 	if(DoShootHitscan && property.name == "HitscanAesthetic"):
-		property.usage = PROPERTY_USAGE_SUBGROUP
-	if(property.name == "HitscanLineEasing"):
-		property.usage += PROPERTY_USAGE_CLASS_IS_ENUM
+		property.usage = PROPERTY_USAGE_SUBGROUP + PROPERTY_USAGE_STORAGE
+	if(property.name == "HitscanLineEasing")  && DoShootHitscan:
+		property.usage += PROPERTY_USAGE_CLASS_IS_ENUM + PROPERTY_USAGE_STORAGE +  PROPERTY_USAGE_EDITOR 
 		property.hint = PropertyHint.PROPERTY_HINT_ENUM
 		var EaseString : String
 		EaseString = "EASE_IN:0," + "EASE_OUT:1," + "EASE_IN_OUT:2," + "EASE_OUT_IN:3"
 		property.hint_string = EaseString
-	if(property.name == "HitscanLineTrans"):
-		property.usage += PROPERTY_USAGE_CLASS_IS_ENUM
+	if(property.name == "HitscanLineTrans") && DoShootHitscan:
+		property.usage += PROPERTY_USAGE_CLASS_IS_ENUM + PROPERTY_USAGE_STORAGE +  PROPERTY_USAGE_EDITOR 
 		property.hint = PropertyHint.PROPERTY_HINT_ENUM
 		var TransString : String
 		TransString = "TRANS_LINEAR:0,"+"TRANS_SINE:1,"+"TRANS_QUINT:2,"+"TRANS_QUART:3,"+"TRANS_QUAD:4,"+"TRANS_EXPO:5,"+"TRANS_ELASTIC:6,"+"TRANS_CUBIC:7,"+"TRANS_CIRC:8,"+"TRANS_BOUNCE: = 9,"+"TRANS_BACK:10,"+"TRANS_SPRING:11"

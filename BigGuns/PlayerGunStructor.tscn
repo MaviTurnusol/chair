@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://y10s2jb0y8n1" path="res://BigGuns/PlayerGun.gd" id="1_h6xdl"]
 [ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://BigGuns/HelperGizmo.gd" id="2_h2vud"]
+[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://BigGuns/crossAir.tscn" id="3_h2vud"]
 
 [node name="PlayerGun" type="Node2D" unique_id=932840899 node_paths=PackedStringArray("FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo")]
 script = ExtResource("1_h6xdl")
@@ -22,3 +23,5 @@ Pos = Vector2(-8, -8)
 [node name="Gun Preview" type="Marker2D" parent="Pivot Point" unique_id=138788181]
 script = ExtResource("2_h2vud")
 Pos = Vector2(-8, -8)
+
+[node name="CrossAir" parent="." unique_id=545803635 instance=ExtResource("3_h2vud")]

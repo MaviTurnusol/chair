@@ -36,11 +36,15 @@ func _physics_process(_delta: float) -> void:
 		position = initial_pos + Vector2(12, 0)
 		$Sprites/IkForeArm.flip_v = true
 		$Sprites/IkUpperArm.flip_v = true
+		if(UnlimitedRulebook.playerWeapon):
+			UnlimitedRulebook.playerWeapon.Sprite.flip_v = true
 	else:
 		ik_mod.flip_bend_direction = true
 		position = initial_pos
 		$Sprites/IkForeArm.flip_v = false
 		$Sprites/IkUpperArm.flip_v = false
+		if(UnlimitedRulebook.playerWeapon):
+			UnlimitedRulebook.playerWeapon.Sprite.flip_v = false
 
 
 func _on_larp_timer_timeout() -> void:

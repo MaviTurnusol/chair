@@ -125,21 +125,6 @@ target = NodePath("../Player/camTarget")
 modulate = Color(0.5, 0.5, 0.5, 1)
 position = Vector2(170, 270)
 
-[node name="TEMP_DEBUG_HitBox" parent="Player" unique_id=187917931 instance=ExtResource("13_hs8mn")]
-position = Vector2(40, -54)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/TEMP_DEBUG_HitBox" unique_id=1704919889]
-shape = SubResource("CapsuleShape2D_hs8mn")
-
-[node name="Label" type="Label" parent="Player/TEMP_DEBUG_HitBox" unique_id=1977121166]
-offset_left = -33.0
-offset_top = -36.0
-offset_right = 36.0
-offset_bottom = 39.0
-text = "DEBUG 
-DAMAGE
-BOX"
-
 [node name="camTarget" type="Node2D" parent="Player" unique_id=255049655]
 position = Vector2(0, -69.33334)
 script = ExtResource("5_gbuu4")
@@ -151,6 +136,21 @@ position = Vector2(261, 113)
 position = Vector2(816, 112)
 
 [node name="The real maddie" type="Node" parent="." unique_id=1283741702]
+
+[node name="TEMP_DEBUG_HitBox" parent="The real maddie" unique_id=187917931 instance=ExtResource("13_hs8mn")]
+position = Vector2(58, 209)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="The real maddie/TEMP_DEBUG_HitBox" unique_id=1704919889]
+shape = SubResource("CapsuleShape2D_hs8mn")
+
+[node name="Label" type="Label" parent="The real maddie/TEMP_DEBUG_HitBox" unique_id=1977121166]
+offset_left = -33.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 39.0
+text = "DEBUG 
+DAMAGE
+BOX"
 
 [node name="CeilingWorm2" parent="The real maddie" unique_id=908797744 instance=ExtResource("13_esouf")]
 position = Vector2(745, 110)
