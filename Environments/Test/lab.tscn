@@ -51,6 +51,9 @@ size = Vector2(1240.5, 115)
 radius = 25.0
 height = 109.65
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
+size = Vector2(40, 96)
+
 [node name="Lab" type="Node2D" unique_id=775964121]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1280648369]
@@ -101,9 +104,14 @@ shape = SubResource("RectangleShape2D_ynjs4")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1174702601]
 position = Vector2(166, -3)
+collision_layer = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1707381969]
 position = Vector2(453.75, 342.5)
+shape = SubResource("RectangleShape2D_6refc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1890948738]
+position = Vector2(453, 67)
 shape = SubResource("RectangleShape2D_6refc")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=639033392 node_paths=PackedStringArray("target")]
@@ -155,6 +163,13 @@ position = Vector2(645, 116)
 
 [node name="JustANormalGuy" parent="The real maddie" unique_id=1552983653 instance=ExtResource("13_lh5rw")]
 position = Vector2(816, 225)
+
+[node name="BulletBlocker_IMPENETRABLE" type="StaticBody2D" parent="The real maddie/JustANormalGuy" unique_id=871633439]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="The real maddie/JustANormalGuy/BulletBlocker_IMPENETRABLE" unique_id=1932140953]
+shape = SubResource("RectangleShape2D_hs8mn")
 
 [node name="sceneInitializer" type="Node" parent="." unique_id=152984821]
 script = ExtResource("14_hs8mn")

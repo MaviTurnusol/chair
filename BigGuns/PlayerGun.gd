@@ -5,6 +5,8 @@ class_name PlayerGun extends Node2D
 var Sprite : Sprite2D
 var TimeSinceShot : float = 0
 
+const WhichLayerBlocksBullets : int = 3
+
 @export_category("Data")
 @export var GunTexture : Texture2D:
 	set(NewText):
@@ -69,8 +71,18 @@ var HitscanBulletProperties : Array[String]=[
 	"HitscanBulletTime",
 	#"HitscanBulletSpeed",
 	"HitscanTimeBetweenBullets",
-	"HitscanBulletWaveAmount",]
-
+	"HitscanBulletWaveAmount",
+	
+	"HitscanLineWidth",
+	"HitscanLineEasing",
+	"HitscanLineTrans",
+	"HitscanLineColour",
+	"HitscanLineWidthCurve"]
+var HitscanAesthetic
+var HitscanLineWidth : float = 5
+var HitscanLineEasing : Tween.EaseType
+var HitscanLineTrans : Tween.TransitionType
+var HitscanLineColour : Color = Color.WHITE
 
 @export_category("Aesthetic")
 @export_group("BulletCasing")
@@ -79,6 +91,8 @@ var HitscanBulletProperties : Array[String]=[
 		DoThrowBulletCasing = value
 		notify_property_list_changed()
 var BulletCasing : PackedScene
+var BulletCasingShootStrength : Vector2 = Vector2(100,150) ##This is a range
+var BulletCasingShootDirection : Vector2 = Vector2.UP
 
 @export_group("Recoil")
 @export var DoRecoil : bool = false:
@@ -279,37 +293,63 @@ func FireHitscan():
 	NewHitLine.add_point(to_global(FirePoint))
 	NewHitLine.add_point(SpreadTarget)
 	
-	var NewBullet : Area2D = null
+	HitscanAestheticFunction(NewHitLine)
+	
+	var NewBullet : Node2D = null
 	var NewRayCast : RayCast2D = RayCast2D.new()
 	UnlimitedRulebook.currentScene.add_child(NewRayCast)
 	NewRayCast.global_position = to_global(FirePoint)
 	#NewRayCast.target_position = to_local(SpreadTarget)
 	NewRayCast.target_position = get_global_mouse_position() - global_position
 	NewRayCast.hit_from_inside = true
-	var terrainlayer : int = (1 << 5 - 1) 
+	var terrainlayer : int = (1 << WhichLayerBlocksBullets - 1) 
 	NewRayCast.collision_mask = terrainlayer ## TERRAIN LAYER
+	
+	NewBullet = Bullet.instantiate()
+	UnlimitedRulebook.currentScene.add_child(NewBullet)
+	NewBullet.Damage = BulletDamage
 	
 	NewRayCast.force_raycast_update()
 	if(NewRayCast.is_colliding()):
-		print("CantShoot through walls")
+		#print("CantShoot through walls")
 		NewHitLine.points[1] = NewHitLine.to_local(NewRayCast.get_collision_point())
+		NewBullet.global_position = NewRayCast.get_collision_point()
 	else:
-		NewBullet = Bullet.instantiate()
+		#NewBullet = Bullet.instantiate()
 		NewBullet.global_position = SpreadTarget
-		UnlimitedRulebook.currentScene.add_child(NewBullet)
-		NewBullet.Damage = BulletDamage
+		#NewBullet.Damage = BulletDamage
+		
 	
 	await get_tree().create_timer(HitscanBulletTime).timeout
 	NewHitLine.queue_free()
 	if(NewBullet!=null):
 		NewBullet.queue_free()
 
+func HitscanAestheticFunction(WhichLine2D : Line2D):
+	WhichLine2D.width = HitscanLineWidth
+	WhichLine2D.default_color = HitscanLineColour
+	var TweenLineWidth : Tween = get_tree().create_tween()
+	TweenLineWidth.set_ease(HitscanLineEasing)
+	TweenLineWidth.set_trans(HitscanLineTrans)
+	TweenLineWidth.tween_property(WhichLine2D,"width",0,HitscanBulletTime)
+	
+	TweenTail(WhichLine2D,WhichLine2D.points[0],0)
+
+func TweenTail(WhichLine2D : Line2D,startedpoint,dur:float):
+	if(dur<HitscanBulletTime):
+		#print(dur)
+		var leng = abs(startedpoint-WhichLine2D.points[1]).length()
+		WhichLine2D.points[0] = WhichLine2D.points[0].move_toward(WhichLine2D.points[1],leng*get_process_delta_time()/HitscanBulletTime)
+		dur += get_process_delta_time()
+		await get_tree().process_frame
+		if(WhichLine2D):
+			TweenTail(WhichLine2D,startedpoint,dur)
 
 func Casing():
 	var NewBulletCasing : RigidBody2D = BulletCasing.instantiate()
 	NewBulletCasing.global_position = global_position
-	get_tree().root.add_child(NewBulletCasing)
-	NewBulletCasing.linear_velocity = Vector2.UP * randf_range(250,500)
+	UnlimitedRulebook.currentScene.add_child(NewBulletCasing)
+	NewBulletCasing.linear_velocity = BulletCasingShootDirection * randf_range(BulletCasingShootStrength.x,BulletCasingShootStrength.y)
 
 func Recoil():
 	get_parent().get_parent().get_parent().RecoilArmControlLost = true
@@ -407,7 +447,6 @@ func _validate_property(property: Dictionary) -> void:
 		else:
 			property.usage |= PROPERTY_USAGE_NONE
 	
-	
 	for i in HitscanBulletProperties:
 		if(property.name == i && !DoShootHitscan):
 			property.usage |= PROPERTY_USAGE_NONE
@@ -425,6 +464,17 @@ func _validate_property(property: Dictionary) -> void:
 			property.usage |= PROPERTY_USAGE_NONE
 		if(property.name == i && DoScreenShake):
 			property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
+	
+	if(property.name == "BulletCasingShootStrength"):
+		if(DoThrowBulletCasing):
+			property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
+		else:
+			property.usage |= PROPERTY_USAGE_NONE
+	if(property.name == "BulletCasingShootDirection"):
+		if(DoThrowBulletCasing):
+			property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
+		else:
+			property.usage |= PROPERTY_USAGE_NONE
 	
 	if(property.name == "BulletCasing"):
 		if(DoThrowBulletCasing):
@@ -450,4 +500,21 @@ func _validate_property(property: Dictionary) -> void:
 			if(IsSlowMoDurationDifferentToRecoil):
 				if(property.name == "SlowMoDuration"):
 					property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
+	
+	if(DoShootHitscan && property.name == "HitscanAesthetic"):
+		property.usage = PROPERTY_USAGE_SUBGROUP
+	if(property.name == "HitscanLineEasing"):
+		property.usage += PROPERTY_USAGE_CLASS_IS_ENUM
+		property.hint = PropertyHint.PROPERTY_HINT_ENUM
+		var EaseString : String
+		EaseString = "EASE_IN:0," + "EASE_OUT:1," + "EASE_IN_OUT:2," + "EASE_OUT_IN:3"
+		property.hint_string = EaseString
+	if(property.name == "HitscanLineTrans"):
+		property.usage += PROPERTY_USAGE_CLASS_IS_ENUM
+		property.hint = PropertyHint.PROPERTY_HINT_ENUM
+		var TransString : String
+		TransString = "TRANS_LINEAR:0,"+"TRANS_SINE:1,"+"TRANS_QUINT:2,"+"TRANS_QUART:3,"+"TRANS_QUAD:4,"+"TRANS_EXPO:5,"+"TRANS_ELASTIC:6,"+"TRANS_CUBIC:7,"+"TRANS_CIRC:8,"+"TRANS_BOUNCE: = 9,"+"TRANS_BACK:10,"+"TRANS_SPRING:11"
+		property.hint_string = TransString
+	
+
 #endregion

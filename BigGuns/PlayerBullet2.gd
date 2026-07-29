@@ -1,24 +1,18 @@
-extends Area2D
+extends Node2D
+
+@onready var hit_box: Area2D = $HitBox
 
 var linear_velocity : Vector2
-var Damage : float
+var Damage : float:
+	set(value):
+		Damage = value
+		hit_box.atk = Damage
 
 func _ready() -> void:
-	body_entered.connect(BodyEntered)
-	area_entered.connect(AreaEntered)
+	hit_box.harmed.connect(DealtDamage)
+
+func DealtDamage():
+	hit_box.queue_free()
 
 func _physics_process(delta: float) -> void:
 	global_position += linear_velocity * delta
-
-func BodyEntered(body : Node2D):
-	if(body.is_in_group("Bullet")):
-		return
-	print("BODYENTERED")
-	queue_free()
-
-func AreaEntered(area : Node2D):
-	if(area.is_in_group("Bullet")):
-		return
-	if(area.has_method("TakeDamage")):
-		area.TakeDamage(Damage)
-	queue_free()

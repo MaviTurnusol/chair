@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dt2voiy38cchi"]
+
+[ext_resource type="PackedScene" uid="uid://dkhw0k8ijjhy8" path="res://Environments/Test/lab.tscn" id="1_xjayh"]
+
+[node name="ViewportLab" type="Node2D" unique_id=1582361756]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=287254245]
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(3, 3)
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=430924171]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Lab" parent="SubViewportContainer/SubViewport" unique_id=775964121 instance=ExtResource("1_xjayh")]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=269823526]

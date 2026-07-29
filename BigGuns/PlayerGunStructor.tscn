@@ -9,14 +9,6 @@ FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
 
-[node name="Null" type="Marker2D" parent="." unique_id=827142760]
-position = Vector2(13, -14)
-script = ExtResource("2_h2vud")
-
-[node name="Null2" type="Marker2D" parent="." unique_id=1589845731]
-position = Vector2(-8, -8)
-script = ExtResource("2_h2vud")
-
 [node name="Fire Point" type="Marker2D" parent="." unique_id=309656511]
 position = Vector2(13, -14)
 script = ExtResource("2_h2vud")

@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://cpl77es7wowp3" path="res://Player/Animations/IKForeArm.png" id="1_ho3oa"]
 [ext_resource type="Texture2D" uid="uid://cavtats2clcx6" path="res://Player/Animations/IKUpperArm.png" id="2_2lnk7"]
 [ext_resource type="PackedScene" uid="uid://hc8qol4y4m0q" path="res://BigGuns/PlayerGunStructor.tscn" id="3_4gp8c"]
-[ext_resource type="PackedScene" uid="uid://kelca8sgtdap" path="res://BigGuns/PlayerBullet2.tscn" id="5_pi3h7"]
+[ext_resource type="PackedScene" uid="uid://kelca8sgtdap" path="res://BigGuns/PlayerBullet2.tscn" id="5_hagc0"]
+[ext_resource type="PackedScene" uid="uid://bu2p6l1xrf5ud" path="res://BigGuns/BulletCasing1.tscn" id="6_4gp8c"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_1eyru"]
 target_nodepath = NodePath("../Targets/target")
@@ -27,6 +28,7 @@ script = ExtResource("1_6cvg4")
 modification_stack = SubResource("SkeletonModificationStack2D_0rajn")
 
 [node name="UpperArm" type="Bone2D" parent="Skeleton2D" unique_id=1184992431]
+rotation = 2.385183
 scale = Vector2(0.99998003, 0.99998003)
 rest = Transform2D(0.99998003, 0, 0, 0.99998003, 0, 0)
 auto_calculate_length_and_angle = false
@@ -36,7 +38,8 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="ForeArm" type="Bone2D" parent="Skeleton2D/UpperArm" unique_id=215936278]
 position = Vector2(16, 0)
-scale = Vector2(0.9999862, 0.9999862)
+rotation = -1.4702971
+scale = Vector2(0.99998605, 0.99998605)
 rest = Transform2D(0.9999862, 0, 0, 0.9999862, 16, 0)
 auto_calculate_length_and_angle = false
 length = 24.0
@@ -49,22 +52,29 @@ remote_path = NodePath("../../../../Sprites/IkForeArm")
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/UpperArm/ForeArm" unique_id=1571699038]
 texture = ExtResource("1_2lnk7")
 
-[node name="PlayerGun" parent="Skeleton2D/UpperArm/ForeArm" unique_id=932840899 node_paths=PackedStringArray("FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo", "GunPreviewSprite") instance=ExtResource("3_4gp8c")]
+[node name="PlayerGun" parent="Skeleton2D/UpperArm/ForeArm" unique_id=932840899 node_paths=PackedStringArray("GunPreviewSprite") instance=ExtResource("3_4gp8c")]
 position = Vector2(30.522776, 6.281633)
 GunTexture = ExtResource("1_ho3oa")
-TimeBetweenShots = 0.1
+TimeBetweenShots = 0.3
 DoShootHitscan = true
-HitscanBullet = ExtResource("5_pi3h7")
-HitscanBulletSpread = Vector2(0, 0)
-HitscanBulletAmount = 1
-HitscanBulletDamage = 1.0
+HitscanBullet = ExtResource("5_hagc0")
+HitscanBulletSpread = Vector2(5, 5)
+HitscanBulletAmount = 2
+HitscanBulletDamage = 0.25
 HitscanBulletTime = 0.5
-HitscanTimeBetweenBullets = 0.0
-HitscanBulletWaveAmount = 1
-FirePointHelperGizmo = NodePath("Fire Point")
-PivotPointHelperGizmo = NodePath("Pivot Point")
-GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19610")
+HitscanTimeBetweenBullets = 0.025
+HitscanBulletWaveAmount = 2
+HitscanTimeBetweenBulletWaves = 0.05
+HitscanLineWidth = 5.0
+HitscanLineEasing = 1
+HitscanLineTrans = 5
+HitscanLineColour = Color(1, 1, 1, 1)
+BulletCasing = ExtResource("6_4gp8c")
+DoThrowBulletCasing = true
+BulletCasing = ExtResource("6_4gp8c")
+BulletCasingShootStrength = Vector2(100, 150)
+BulletCasingShootDirection = Vector2(0.1, -1)
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19693")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/UpperArm" unique_id=767280924]
 remote_path = NodePath("../../../Sprites/IkUpperArm")

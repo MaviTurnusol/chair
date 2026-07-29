@@ -19,7 +19,7 @@ ChaseSpeed = 30.0
 KnockedbackAmount = 50.0
 
 [node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("2_h8uud")]
-MAX_HEALTH = 2.0
+MAX_HEALTH = 3.0
 father = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=292500123]
@@ -27,6 +27,8 @@ scale = Vector2(0.08, 0.08)
 texture = ExtResource("3_owu6q")
 
 [node name="HurtBox" parent="." unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_cq0ys")]
+collision_layer = 5
+collision_mask = 5
 father = NodePath("..")
 healthComp = NodePath("../HealthComp")
 
