@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://df4j7gu4thxps"]
+
+[ext_resource type="Script" uid="uid://by2pyc8q6m3ry" path="res://MADDIE/PlayerMelee.gd" id="1_y8hdp"]
+[ext_resource type="Texture2D" uid="uid://djdv811lmrf0m" path="res://Player/Animations/knifeIdle.png" id="2_lj0cf"]
+[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://BigGuns/HelperGizmo.gd" id="3_awxei"]
+[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://BigGuns/crossAir.tscn" id="3_lj0cf"]
+[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="5_awxei"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="6_hopsy"]
+
+[sub_resource type="Curve" id="Curve_awxei"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_hopsy"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.50689656), 0.0, 0.0, 0, 0, Vector2(0.47113597, 2.6017241), 0.0, 0.0, 0, 0, Vector2(0.71135944, 2.7810347), 0.0, 0.0, 0, 0, Vector2(0.9143389, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_pm4dr"]
+_data = [Vector2(0, 0), 0.0, 1.1435215, 0, 0, Vector2(0.2886406, 0.56517243), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.2036208, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hopsy"]
+atlas = ExtResource("2_lj0cf")
+region = Rect2(20.48, 54.69, 6.95, 7.4)
+
+[sub_resource type="Curve2D" id="Curve2D_lj0cf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -0.5, -0.5, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 37.5, -14.5, 0, 0, 0, 0, -0.5, 0)
+}
+point_count = 4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hopsy"]
+radius = 16.0
+
+[sub_resource type="Curve2D" id="Curve2D_hopsy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100.57, 0)
+}
+point_count = 2
+
+[node name="PlayerMelee" type="Node2D" unique_id=1445900167 node_paths=PackedStringArray("Hit_Box", "MeleeAttackPath", "MeleeAttackPathFollow", "BodyAttackPath", "BodyAttackPathFollow", "FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo", "GunPreviewSprite")]
+texture_filter = 1
+scale = Vector2(2, 2)
+script = ExtResource("1_y8hdp")
+Hit_Box = NodePath("HitBox")
+MeleeAttackPath = NodePath("AttackPath")
+MeleeAttackPathFollow = NodePath("AttackPath/PathFollow2D")
+PositionInPathOverAttackTime = SubResource("Curve_awxei")
+ScaleOverAttackTime = SubResource("Curve_hopsy")
+BodyAttackPath = NodePath("BodyPath")
+BodyAttackPathFollow = NodePath("BodyPath/PathFollow2D")
+BodyPositionInPathOverAttackTime = SubResource("Curve_pm4dr")
+GunTexture = SubResource("AtlasTexture_hopsy")
+Crosshair = ExtResource("3_lj0cf")
+FirePointHelperGizmo = NodePath("Fire Point")
+PivotPointHelperGizmo = NodePath("Pivot Point")
+GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19695")
+metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
+
+[node name="Fire Point" type="Marker2D" parent="." unique_id=1205555290]
+script = ExtResource("3_awxei")
+
+[node name="Pivot Point" type="Marker2D" parent="." unique_id=2051285467]
+script = ExtResource("3_awxei")
+
+[node name="Gun Preview" type="Marker2D" parent="Pivot Point" unique_id=1502403977]
+script = ExtResource("3_awxei")
+
+[node name="AttackPath" type="Path2D" parent="." unique_id=1633278077]
+curve = SubResource("Curve2D_lj0cf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AttackPath" unique_id=1916775528]
+position = Vector2(-0.5, -0.5)
+rotation = 0.021273386
+
+[node name="HitBox" parent="." unique_id=187917931 instance=ExtResource("5_awxei")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1135251398]
+shape = SubResource("CircleShape2D_hopsy")
+
+[node name="Sprite2D" type="Sprite2D" parent="HitBox" unique_id=2130164398]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("6_hopsy")
+
+[node name="BodyPath" type="Path2D" parent="." unique_id=1992049157]
+curve = SubResource("Curve2D_hopsy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="BodyPath" unique_id=1779471220]

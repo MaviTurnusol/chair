@@ -1,6 +1,6 @@
 extends Node
 
-var player
+var player : Player
 var cam
 var the_woke_left = "Blank"
 var the_asleep_right = "Blank"

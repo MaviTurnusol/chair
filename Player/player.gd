@@ -1,10 +1,11 @@
 extends CharacterBody2D
-
+class_name Player
 var speed = 130.0
 var jumpVelocity = -440.0
 @onready var anima = $Marker2D/anima
 @onready var machine = $StateMachine
 @onready var weaponHolder = $Marker2D/weaponHolder
+@onready var melee_helper: MeleeHelper = $Marker2D/MeleeHelper
 var dir = 0.0
 
 var weapon_equipped = false
@@ -58,7 +59,7 @@ func _physics_process(delta):
 	#Movement
 	var dir_ = Input.get_axis("left", "right")
 	if machine.get_state() not in ["roll", "turn", "jump", 
-	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle"]:
+	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack1"]:
 		#Turning
 		if sign(dir_) == sign(-velocity.x) && dir_:
 			machine.change_state_to("turn")

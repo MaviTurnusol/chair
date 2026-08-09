@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 hitbox=""
 player=""
+Obj_Door=""
 
 [input]
 

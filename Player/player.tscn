@@ -27,6 +27,10 @@
 [ext_resource type="PackedScene" uid="uid://bmhref06rwauj" path="res://StateMachine/States/Cutscene.tscn" id="22_gpjlu"]
 [ext_resource type="PackedScene" uid="uid://cdhl38422h57f" path="res://StateMachine/States/GunWalk.tscn" id="24_qemgg"]
 [ext_resource type="PackedScene" uid="uid://dumxxtk7wv87d" path="res://StateMachine/States/GunIdle.tscn" id="25_8viyr"]
+[ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://StateMachine/States/MeleeAttack1.gd" id="27_efx54"]
+[ext_resource type="Script" uid="uid://ck5dayrfbittx" path="res://MADDIE/Melee_Helper.gd" id="28_76lrf"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://MADDIE/player_melee_test.tscn" id="30_bbimk"]
+[ext_resource type="Texture2D" uid="uid://djdv811lmrf0m" path="res://Player/Animations/knifeIdle.png" id="31_m0h3t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvbbp"]
 atlas = ExtResource("3_lfmf2")
@@ -581,6 +585,10 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_od3ui"]
 height = 86.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bga3"]
+atlas = ExtResource("31_m0h3t")
+region = Rect2(20.48, 54.69, 6.95, 7.4)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fhl08"]
 height = 66.0
 
@@ -604,8 +612,7 @@ position = Vector2(-6, -66)
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"gunIdle"
-frame_progress = 0.61616033
+animation = &"fall"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
@@ -617,6 +624,19 @@ shape = SubResource("CapsuleShape2D_od3ui")
 
 [node name="weaponHolder" type="Node2D" parent="Marker2D" unique_id=498292919]
 position = Vector2(0, -45)
+
+[node name="MeleeHelper" type="Node2D" parent="Marker2D" unique_id=1547662897]
+position = Vector2(0, -45)
+script = ExtResource("28_76lrf")
+
+[node name="PlayerMelee" parent="Marker2D/MeleeHelper" unique_id=1445900167 node_paths=PackedStringArray("GunPreviewSprite") instance=ExtResource("30_bbimk")]
+process_mode = 3
+position = Vector2(21.195156, 0.36523533)
+WindUpTime = 0.25
+AttackTime = 0.5
+RecoveryTime = 0.15
+GunTexture = SubResource("AtlasTexture_3bga3")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@59078")
 
 [node name="StateMachine" parent="." unique_id=29357077 node_paths=PackedStringArray("initialState") instance=ExtResource("2_k53q1")]
 initialState = NodePath("Idle")
@@ -644,8 +664,18 @@ initialState = NodePath("Idle")
 [node name="Cutscene" parent="StateMachine" unique_id=584498621 instance=ExtResource("22_gpjlu")]
 
 [node name="GunWalk" parent="StateMachine" unique_id=1017199643 instance=ExtResource("24_qemgg")]
+cantTransitionFrom = PackedStringArray("MeleeAttack1")
+canOnlyTransitionTo = PackedStringArray("gunIdle", "idle", "roll", "jump", "MeleeAttack1")
 
 [node name="GunIdle" parent="StateMachine" unique_id=460317679 instance=ExtResource("25_8viyr")]
+cantTransitionFrom = PackedStringArray("MeleeAttack1")
+canOnlyTransitionTo = PackedStringArray("idle", "gunWalk", "roll", "jump", "MeleeAttack1")
+
+[node name="MeleeAttack1" parent="StateMachine" unique_id=1923569428 instance=ExtResource("25_8viyr")]
+script = ExtResource("27_efx54")
+animName = "fall"
+animOnStart = true
+canOnlyTransitionTo = PackedStringArray("idle")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2077871060]
 position = Vector2(0, -33)

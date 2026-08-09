@@ -4,11 +4,6 @@
 [ext_resource type="Script" uid="uid://c46tkguln5umi" path="res://Player/Animations/ik_arm_player.gd" id="1_6cvg4"]
 [ext_resource type="Texture2D" uid="uid://cpl77es7wowp3" path="res://Player/Animations/IKForeArm.png" id="1_ho3oa"]
 [ext_resource type="Texture2D" uid="uid://cavtats2clcx6" path="res://Player/Animations/IKUpperArm.png" id="2_2lnk7"]
-[ext_resource type="Script" uid="uid://y10s2jb0y8n1" path="res://BigGuns/PlayerGun.gd" id="3_4gp8c"]
-[ext_resource type="Texture2D" uid="uid://025g8065lqpj" path="res://Player/Held_SmallGun1-export.png" id="4_hagc0"]
-[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://BigGuns/HelperGizmo.gd" id="5_lre78"]
-[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://BigGuns/crossAir.tscn" id="5_pi3h7"]
-[ext_resource type="PackedScene" uid="uid://bu2p6l1xrf5ud" path="res://BigGuns/BulletCasing1.tscn" id="6_4gp8c"]
 
 [sub_resource type="SkeletonModification2DTwoBoneIK" id="SkeletonModification2DTwoBoneIK_1eyru"]
 target_nodepath = NodePath("../Targets/target")
@@ -53,50 +48,6 @@ remote_path = NodePath("../../../../Sprites/IkForeArm")
 
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/UpperArm/ForeArm" unique_id=1571699038]
 texture = ExtResource("1_2lnk7")
-
-[node name="PlayerGun" type="Node2D" parent="Skeleton2D/UpperArm/ForeArm" unique_id=271277481 node_paths=PackedStringArray("FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo", "GunPreviewSprite")]
-position = Vector2(26.804842, -0.3652374)
-script = ExtResource("3_4gp8c")
-GunTexture = ExtResource("4_hagc0")
-TimeBetweenShots = 0.1
-Crosshair = ExtResource("5_pi3h7")
-DoShootHitscan = true
-HitscanBullet = ExtResource("5_pi3h7")
-HitscanBulletSpread = Vector2(8, 8)
-HitscanBulletAmount = 2
-HitscanBulletDamage = 0.25
-HitscanBulletTime = 0.25
-HitscanTimeBetweenBullets = 0.025
-HitscanBulletWaveAmount = 2
-HitscanTimeBetweenBulletWaves = 0.05
-HitscanAesthetic = null
-HitscanLineWidth = 2.5
-HitscanLineColour = Color(1, 1, 1, 1)
-BulletCasing = ExtResource("6_4gp8c")
-DoThrowBulletCasing = true
-BulletCasing = ExtResource("6_4gp8c")
-BulletCasingShootStrength = Vector2(100, 150)
-BulletCasingShootDirection = Vector2(0.1, -1)
-FirePointHelperGizmo = NodePath("Fire Point")
-PivotPointHelperGizmo = NodePath("Pivot Point")
-GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@75391")
-metadata/_custom_type_script = "uid://y10s2jb0y8n1"
-
-[node name="Fire Point" type="Marker2D" parent="Skeleton2D/UpperArm/ForeArm/PlayerGun" unique_id=2116186040]
-position = Vector2(21.89089, -7.129158)
-script = ExtResource("5_lre78")
-Pos = Vector2(24, 45)
-
-[node name="Pivot Point" type="Marker2D" parent="Skeleton2D/UpperArm/ForeArm/PlayerGun" unique_id=2051615714]
-position = Vector2(-3.5762787e-06, -1.4305115e-06)
-script = ExtResource("5_lre78")
-Pos = Vector2(5, 31.999996)
-
-[node name="Gun Preview" type="Marker2D" parent="Skeleton2D/UpperArm/ForeArm/PlayerGun/Pivot Point" unique_id=1893512129]
-position = Vector2(9.634333, -2.68075)
-script = ExtResource("5_lre78")
-Pos = Vector2(13, 37.999996)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/UpperArm" unique_id=767280924]
 remote_path = NodePath("../../../Sprites/IkUpperArm")

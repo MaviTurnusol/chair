@@ -8,6 +8,8 @@ var current_target: Vector2
 
 func _ready() -> void:
 	UnlimitedRulebook.cam = self
+	if(target==null):
+		target = UnlimitedRulebook.player.get_node("camTarget")
 	global_position = target.global_position
 	reset_smoothing.call_deferred()
 
