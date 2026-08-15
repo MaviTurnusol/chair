@@ -24,7 +24,6 @@ Effects="*uid://by25ovsbulcpt"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [dotnet]
@@ -97,7 +96,7 @@ equip={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Dialogues/testDialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Dialogues/testDialogue.dialogue", "res://MADDIE/testnanaboss1.dialogue")
 
 [layer_names]
 

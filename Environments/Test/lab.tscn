@@ -9,12 +9,14 @@
 [ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/testDialogue.dialogue" id="3_7xo5u"]
 [ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="4_w1gcx"]
 [ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="5_gbuu4"]
+[ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://MADDIE/nana_silhouette_1.png" id="9_ktjvv"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_gbuu4"]
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Wormy/CeilingWorm.tscn" id="13_esouf"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="13_hs8mn"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
 [ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="14_hs8mn"]
 [ext_resource type="Script" uid="uid://ci3kpfsla23mb" path="res://MADDIE/MaddieDoor.gd" id="15_lh5rw"]
+[ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/nana1.png" id="16_2wxxo"]
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -124,6 +126,14 @@ process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("4_w1gcx")
 target = NodePath("../Player/camTarget")
+
+[node name="Nana1" type="Sprite2D" parent="." unique_id=1307031169]
+position = Vector2(275, 238)
+texture = ExtResource("16_2wxxo")
+
+[node name="PointLight2D" type="PointLight2D" parent="Nana1" unique_id=2106200763]
+blend_mode = 2
+texture = ExtResource("9_ktjvv")
 
 [node name="Player" parent="." unique_id=779898413 instance=ExtResource("1_gtdyc")]
 modulate = Color(0.5, 0.5, 0.5, 1)

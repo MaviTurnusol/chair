@@ -18,8 +18,13 @@
 [ext_resource type="Texture2D" uid="uid://bxiqfdls3cl21" path="res://Player/Animations/xochiTurn-Sheet.png" id="6_gu6f8"]
 [ext_resource type="PackedScene" uid="uid://j31ghs8e1fqo" path="res://StateMachine/States/Run.tscn" id="12_p5o4e"]
 [ext_resource type="PackedScene" uid="uid://o4c52t0244wj" path="res://StateMachine/States/Turn.tscn" id="13_p5o4e"]
+[ext_resource type="Script" uid="uid://by2pyc8q6m3ry" path="res://MADDIE/PlayerMelee.gd" id="14_c6x0f"]
+[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://BigGuns/crossAir.tscn" id="16_jp1hh"]
 [ext_resource type="PackedScene" uid="uid://4v1foex4d4rf" path="res://StateMachine/States/Fall.tscn" id="16_pisgm"]
 [ext_resource type="PackedScene" uid="uid://dovqwt5o05qk1" path="res://StateMachine/States/Jump.tscn" id="17_pisgm"]
+[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://BigGuns/HelperGizmo.gd" id="17_qs4pp"]
+[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="18_iyprq"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="19_f4lon"]
 [ext_resource type="PackedScene" uid="uid://c8qglu8y3jox0" path="res://StateMachine/States/FallRecovery.tscn" id="19_o28un"]
 [ext_resource type="PackedScene" uid="uid://cnqb10l3d1ayh" path="res://StateMachine/States/GroundAttack.tscn" id="21_7emwf"]
 [ext_resource type="PackedScene" uid="uid://djx5vcp8nk1es" path="res://StateMachine/States/Talk.tscn" id="21_gpjlu"]
@@ -29,7 +34,6 @@
 [ext_resource type="PackedScene" uid="uid://dumxxtk7wv87d" path="res://StateMachine/States/GunIdle.tscn" id="25_8viyr"]
 [ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://StateMachine/States/MeleeAttack1.gd" id="27_efx54"]
 [ext_resource type="Script" uid="uid://ck5dayrfbittx" path="res://MADDIE/Melee_Helper.gd" id="28_76lrf"]
-[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://MADDIE/player_melee_test.tscn" id="30_bbimk"]
 [ext_resource type="Texture2D" uid="uid://djdv811lmrf0m" path="res://Player/Animations/knifeIdle.png" id="31_m0h3t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvbbp"]
@@ -585,9 +589,37 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_od3ui"]
 height = 86.0
 
+[sub_resource type="Curve" id="Curve_awxei"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_hopsy"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 0.50689656), 0.0, 0.0, 0, 0, Vector2(0.47113597, 2.6017241), 0.0, 0.0, 0, 0, Vector2(0.71135944, 2.7810347), 0.0, 0.0, 0, 0, Vector2(0.9143389, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_pm4dr"]
+_data = [Vector2(0, 0), 0.0, 1.1435215, 0, 0, Vector2(0.80074483, 0.8162069), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.2036208, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3bga3"]
 atlas = ExtResource("31_m0h3t")
 region = Rect2(20.48, 54.69, 6.95, 7.4)
+
+[sub_resource type="Curve2D" id="Curve2D_lj0cf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -0.5, -0.5, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 37.5, -14.5, 0, 0, 0, 0, -0.5, 0)
+}
+point_count = 4
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hopsy"]
+radius = 16.0
+
+[sub_resource type="Curve2D" id="Curve2D_hopsy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100.57, -22.095)
+}
+point_count = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fhl08"]
 height = 66.0
@@ -629,14 +661,63 @@ position = Vector2(0, -45)
 position = Vector2(0, -45)
 script = ExtResource("28_76lrf")
 
-[node name="PlayerMelee" parent="Marker2D/MeleeHelper" unique_id=1445900167 node_paths=PackedStringArray("GunPreviewSprite") instance=ExtResource("30_bbimk")]
+[node name="PlayerMelee" type="Node2D" parent="Marker2D/MeleeHelper" unique_id=1445900167 node_paths=PackedStringArray("Hit_Box", "MeleeAttackPath", "MeleeAttackPathFollow", "BodyAttackPath", "BodyAttackPathFollow", "FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo", "GunPreviewSprite")]
 process_mode = 3
+texture_filter = 1
 position = Vector2(21.195156, 0.36523533)
+script = ExtResource("14_c6x0f")
 WindUpTime = 0.25
 AttackTime = 0.5
 RecoveryTime = 0.15
+Hit_Box = NodePath("HitBox")
+MeleeAttackPath = NodePath("AttackPath")
+MeleeAttackPathFollow = NodePath("AttackPath/PathFollow2D")
+PositionInPathOverAttackTime = SubResource("Curve_awxei")
+ScaleOverAttackTime = SubResource("Curve_hopsy")
+BodyAttackPath = NodePath("BodyPath")
+BodyAttackPathFollow = NodePath("BodyPath/PathFollow2D")
+BodyPositionInPathOverAttackTime = SubResource("Curve_pm4dr")
 GunTexture = SubResource("AtlasTexture_3bga3")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@59078")
+Crosshair = ExtResource("16_jp1hh")
+FirePointHelperGizmo = NodePath("Fire Point")
+PivotPointHelperGizmo = NodePath("Pivot Point")
+GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19702")
+metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
+
+[node name="Fire Point" type="Marker2D" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=1205555290]
+script = ExtResource("17_qs4pp")
+Pos = Vector2(21.195156, -44.634766)
+
+[node name="Pivot Point" type="Marker2D" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=2051285467]
+script = ExtResource("17_qs4pp")
+Pos = Vector2(21.195156, -44.634766)
+
+[node name="Gun Preview" type="Marker2D" parent="Marker2D/MeleeHelper/PlayerMelee/Pivot Point" unique_id=1502403977]
+script = ExtResource("17_qs4pp")
+Pos = Vector2(21.195156, -44.634766)
+
+[node name="AttackPath" type="Path2D" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=1633278077]
+curve = SubResource("Curve2D_lj0cf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Marker2D/MeleeHelper/PlayerMelee/AttackPath" unique_id=1916775528]
+position = Vector2(-0.5, -0.5)
+rotation = 0.021273386
+
+[node name="HitBox" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=187917931 instance=ExtResource("18_iyprq")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/MeleeHelper/PlayerMelee/HitBox" unique_id=1135251398]
+shape = SubResource("CircleShape2D_hopsy")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/MeleeHelper/PlayerMelee/HitBox" unique_id=2130164398]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("19_f4lon")
+
+[node name="BodyPath" type="Path2D" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=1992049157]
+curve = SubResource("Curve2D_hopsy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Marker2D/MeleeHelper/PlayerMelee/BodyPath" unique_id=1779471220]
+rotation = -0.21626195
 
 [node name="StateMachine" parent="." unique_id=29357077 node_paths=PackedStringArray("initialState") instance=ExtResource("2_k53q1")]
 initialState = NodePath("Idle")

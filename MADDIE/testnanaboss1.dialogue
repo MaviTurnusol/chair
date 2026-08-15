@@ -1,0 +1,11 @@
+~ start
+set UnlimitedRulebook.the_woke_left = "flowerguyy"
+set UnlimitedRulebook.the_asleep_right = "temporarynana"
+nana: [shake rate=20 level=10] [[Herro|Hewoo|Howdy]], this is some dialogue. [/shake]
+nana: [shake rate=20 level=10] Here are some choices. [/shake]
+- First one
+	nana: You picked the first one.
+- Second One
+	nana: You picked the second one.
+do UnlimitedRulebook.NanaDialogueEndedBossFightStart.emit()
+=> END

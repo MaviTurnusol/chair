@@ -1,0 +1,166 @@
+[gd_scene format=3 uid="uid://cp3gykhd1eorl"]
+
+[ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/vignette.gdshader" id="1_itcny"]
+[ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Actionable.tscn" id="3_xe74q"]
+[ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="5_rqrfy"]
+[ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/nana1.png" id="6_ivb18"]
+[ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://MADDIE/nana_silhouette_1.png" id="7_mmuvu"]
+[ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="8_ikjqk"]
+[ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="9_2n7tg"]
+[ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_4s2yy"]
+[ext_resource type="Resource" uid="uid://cx6kuth4rk3v4" path="res://MADDIE/testnanaboss1.dialogue" id="10_mm1ir"]
+[ext_resource type="Script" uid="uid://cj5jewgd12t6" path="res://MADDIE/debug_deletethiswithnocrucialeffectbossfightstart.gd" id="11_nyqwe"]
+[ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="14_vwgln"]
+
+[sub_resource type="Environment" id="Environment_0g1q7"]
+background_mode = 3
+tonemap_mode = 1
+tonemap_exposure = 0.6
+glow_enabled = true
+glow_intensity = 1.25
+glow_strength = 1.1
+glow_bloom = 0.15
+glow_blend_mode = 0
+glow_hdr_threshold = 0.95
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_42gbv"]
+shader = ExtResource("1_itcny")
+shader_parameter/radius = 0.70000003325
+shader_parameter/softness = 0.750000035625
+shader_parameter/intensity = 3.0
+shader_parameter/contrast = 1.20000003325
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6i0n"]
+size = Vector2(1240.5, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm1ir"]
+size = Vector2(256, 256)
+
+[node name="NanaBoss" type="Node2D" unique_id=575739349]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=976794565]
+environment = SubResource("Environment_0g1q7")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=762454247]
+color = Color(0.45, 0.45, 0.45, 1)
+
+[node name="vignette" type="CanvasLayer" parent="." unique_id=1257596736]
+
+[node name="ColorRect" type="ColorRect" parent="vignette" unique_id=219143268]
+material = SubResource("ShaderMaterial_42gbv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bg" type="Node2D" parent="." unique_id=1095898562]
+
+[node name="ColorRect" type="ColorRect" parent="bg" unique_id=886464694]
+offset_left = -1288.0
+offset_top = -646.0
+offset_right = 2691.0
+offset_bottom = 1300.0
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="WALL4" type="ColorRect" parent="bg" unique_id=719205074]
+offset_left = 772.0
+offset_top = 287.0
+offset_right = 1272.0
+offset_bottom = 1037.0
+rotation = 1.5707964
+color = Color(0.33660772, 0.33660758, 0.3366076, 1)
+
+[node name="WALL5" type="ColorRect" parent="bg" unique_id=1641321805]
+offset_left = 776.0
+offset_top = -567.0
+offset_right = 1276.0
+offset_bottom = 183.0
+rotation = 1.5707964
+color = Color(0.33660772, 0.33660758, 0.3366076, 1)
+
+[node name="WALL6" type="ColorRect" parent="bg" unique_id=1895831079]
+offset_left = 1186.0
+offset_top = 511.0
+offset_right = 1686.0
+offset_bottom = 1261.0
+rotation = 3.1415927
+color = Color(0.33660772, 0.33660758, 0.3366076, 1)
+
+[node name="WALL7" type="ColorRect" parent="bg" unique_id=1003542052]
+offset_left = -389.0
+offset_top = -180.0
+offset_right = 111.0
+offset_bottom = 570.0
+color = Color(0.33660772, 0.33660758, 0.3366076, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1807403450]
+position = Vector2(166, -3)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls" unique_id=1954336359]
+position = Vector2(453.75, 342.5)
+shape = SubResource("RectangleShape2D_q6i0n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls" unique_id=187495835]
+position = Vector2(454, -122)
+shape = SubResource("RectangleShape2D_q6i0n")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls" unique_id=1055562916]
+position = Vector2(-108, -46)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_q6i0n")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls" unique_id=982860871]
+position = Vector2(579, 0)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_q6i0n")
+
+[node name="Player" parent="." unique_id=779898413 instance=ExtResource("8_ikjqk")]
+modulate = Color(0.5, 0.5, 0.5, 1)
+position = Vector2(170, 270)
+
+[node name="camTarget" type="Node2D" parent="Player" unique_id=1942104171]
+position = Vector2(0, -69.33334)
+script = ExtResource("9_2n7tg")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=749505008]
+position = Vector2(170, 270)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("5_rqrfy")
+
+[node name="LedLight" parent="." unique_id=2003837725 instance=ExtResource("10_4s2yy")]
+position = Vector2(711, 527)
+
+[node name="LedLight3" parent="." unique_id=475701072 instance=ExtResource("10_4s2yy")]
+position = Vector2(405, 68)
+
+[node name="LedLight2" parent="." unique_id=10132843 instance=ExtResource("10_4s2yy")]
+position = Vector2(111, 497)
+
+[node name="sceneInitializer" type="Node" parent="." unique_id=859827278]
+script = ExtResource("14_vwgln")
+
+[node name="Nana1" type="Sprite2D" parent="." unique_id=1155605111]
+position = Vector2(392, 236)
+texture = ExtResource("6_ivb18")
+
+[node name="PointLight2D" type="PointLight2D" parent="Nana1" unique_id=1554073444]
+blend_mode = 2
+texture = ExtResource("7_mmuvu")
+
+[node name="Actionable" parent="Nana1" unique_id=559728107 instance=ExtResource("3_xe74q")]
+dialogue_resource = ExtResource("10_mm1ir")
+talking_point = Vector2(290, 282)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Nana1/Actionable" unique_id=1983828610]
+shape = SubResource("RectangleShape2D_mm1ir")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2056097542]
+offset_left = 495.0
+offset_top = 113.0
+offset_right = 535.0
+offset_bottom = 153.0
+script = ExtResource("11_nyqwe")

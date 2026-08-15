@@ -1,6 +1,6 @@
 extends Camera2D
 
-
+ 
 @export var target: Node2D
 
 var current_target: Vector2

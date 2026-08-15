@@ -13,5 +13,9 @@ signal got_on_the_talking_point
 #0: Character Name, 1: Textbox Color
 var char_archive = {
 	"hatsunemiku": ["Hatsune Miku", "94d0cc"],
-	"flowerguyy": ["Flower Guyy", "b58dd6"]
+	"flowerguyy": ["Flower Guyy", "b58dd6"],
+	"nana": ["Nanāhuātzin","FF0000"],
 }
+
+#####Make this better sometime, these are signals for dialogue events
+signal NanaDialogueEndedBossFightStart

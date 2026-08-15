@@ -90,8 +90,14 @@ func _process(delta: float) -> void:
 		
 		BodyAttackPathFollow.progress_ratio = BodyPositionInPathOverAttackTime.sample_baked(AttackSigmaDelta)/(WindUpTime+RecoveryTime+AttackTime)
 		if(AttackSigmaDelta<WindUpTime+RecoveryTime+AttackTime):
-			Body.global_position = BaseBodyPosition + (Body.dir * BodyAttackPathFollow.position)
-		
+			#Body.global_position = BaseBodyPosition + (Body.dir * BodyAttackPathFollow.position)
+			var BodyPos = BodyAttackPathFollow.position
+			if(Body.dir < 0):
+				BodyPos.x *= -1
+			if(Body.dir > 0):
+				BodyPos.x *= 1
+			Body.global_position = BaseBodyPosition + (BodyPos)
+	
 		Hit_Box.scale = Vector2.ONE * ScaleOverAttackTime.sample_baked(AttackSigmaDelta)
 		MeleeAttackPathFollow.progress_ratio = PositionInPathOverAttackTime.sample_baked(AttackSigmaDelta)/(WindUpTime+RecoveryTime+AttackTime)
 		Hit_Box.global_position = MeleeAttackPathFollow.global_position
@@ -109,9 +115,12 @@ func Use():
 		Shoot()
 		UnlimitedRulebook.player.melee_helper.Attack()
 	else:
-		print("Wait More Time Before Shooting Again")
+		print("SHOOT DISALLOWED")
+		#print("Wait More Time Before Shooting Again")
 
 func CheckIfCanShoot():
+	if(UnlimitedRulebook.player.machine.get_state() in ["talk","cutscene"]):
+		return false
 	if(TimeSinceShot>=TimeBetweenShots):
 		return true
 	else:
