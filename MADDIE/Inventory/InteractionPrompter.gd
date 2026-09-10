@@ -82,6 +82,9 @@ func SetPromptToActionKey():
 			prompt_label.text = keyname
 
 func action():
+	if(InteractObject == self):
+		prompt.visible = false
+		return
 	if(InteractObject):
 		if(InteractObject.has_method("action")):
 			InteractObject.action()

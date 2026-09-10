@@ -60,7 +60,7 @@ height = 109.65
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
 size = Vector2(40, 96)
 
-[sub_resource type="Resource" id="Resource_y301g"]
+[sub_resource type="Resource" id="Resource_gixq4"]
 script = ExtResource("17_y301g")
 ItemName = "example"
 ground_tex = ExtResource("16_2wxxo")
@@ -214,7 +214,7 @@ position = Vector2(1030, 223)
 
 [node name="PickupableItem" parent="The real maddie" unique_id=1324268814 instance=ExtResource("16_y301g")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_y301g")
+WhatItemAmI = SubResource("Resource_gixq4")
 
 [node name="PickupableItem2" parent="The real maddie" unique_id=1100030553 instance=ExtResource("16_y301g")]
 position = Vector2(645, 225)

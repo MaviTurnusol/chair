@@ -7,6 +7,7 @@ var InventorySlotsDict : Dictionary[Vector2i,InventorySlot]
 @onready var GrabbedItemScene : PackedScene = preload("uid://bqb0nyrevwg5i")
 @export var _InventoryComponent : InventoryComponent
 var gridslotsize : Vector2
+const PixelsPerSlot : Vector2 = Vector2(86,86)
 var InventoryItemSprites : Array
 
 @onready var inventory_control : Control = $Control/Inventory
@@ -14,11 +15,13 @@ var InventoryItemSprites : Array
 
 func _ready() -> void:
 	grid_container.columns = _InventoryComponent.InventorySize.x
-	
+	gridslotsize = grid_container.size / Vector2(_InventoryComponent.InventorySize)
 	for i in range(0,_InventoryComponent.InventorySize.x * _InventoryComponent.InventorySize.y):
 		var newslot = InventorySlotScene.instantiate()
 		newslot._inventorycomponent = _InventoryComponent
 		newslot._inventoryHud = self
+		
+		newslot.custom_minimum_size = gridslotsize
 		grid_container.add_child(newslot)
 	
 	inventory_control.mouse_entered.connect(HoverThisInventory)
@@ -33,6 +36,10 @@ func _ready() -> void:
 			slotveclocation.x = 0
 	
 	gridslotsize = grid_container.get_child(0).size
+	
+	#PASS UI SUBVIEWPORT SCALING FIX
+	await get_tree().process_frame
+	reparent(get_tree().root)
 
 func HoverThisInventory():
 	UnlimitedRulebook.HoveredInventory = _InventoryComponent
@@ -90,7 +97,8 @@ func RefreshInventoryItemSprites():
 		if(item.inventory_tex):
 			var newspr = Sprite2D.new()
 			newspr.texture = item.inventory_tex
-			newspr.scale = Vector2.ONE * item.inv_scalemulti
+			print((gridslotsize/PixelsPerSlot))
+			newspr.scale = Vector2.ONE * item.inv_scalemulti * (gridslotsize/PixelsPerSlot)
 			newspr.z_index = 2
 			newspr.position = InventorySlotsDict[item.Position].position
 			var meanoffset : Vector2 = Vector2.ZERO
