@@ -1,10 +1,12 @@
 extends Area2D
+class_name ActionableFinder
 
 @export var cutscene_state : State
-
+var CanAction : bool = true
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"interact"):
 		var actionables = get_overlapping_areas()
+		print(actionables)
 		if actionables.size() > 0:
 			actionables[0].action()
 			

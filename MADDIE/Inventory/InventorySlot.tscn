@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dprud6reoi3k6"]
+
+[ext_resource type="Script" uid="uid://oft56yywr37x" path="res://MADDIE/Inventory/InventorySlot.gd" id="1_e07lh"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="2_g7v3p"]
+
+[sub_resource type="Gradient" id="Gradient_aw7i0"]
+offsets = PackedFloat32Array(0, 0.38131315)
+colors = PackedColorArray(0, 0, 0, 1, 0.5818828, 0, 0.21532774, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8bubk"]
+gradient = SubResource("Gradient_aw7i0")
+width = 256
+height = 256
+use_hdr = true
+
+[sub_resource type="Gradient" id="Gradient_ixqpn"]
+colors = PackedColorArray(0, 0, 0, 1, 0.55320334, 0.6123574, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hbm7r"]
+gradient = SubResource("Gradient_ixqpn")
+width = 256
+height = 256
+fill_to = Vector2(0.28597122, 0.012589928)
+
+[sub_resource type="Gradient" id="Gradient_8bubk"]
+offsets = PackedFloat32Array(0, 0.84090906)
+colors = PackedColorArray(0, 0, 0, 1, 0.22696453, 0.39443251, 0.3823456, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ixqpn"]
+gradient = SubResource("Gradient_8bubk")
+width = 256
+height = 256
+fill_to = Vector2(0.28597122, 0.012589928)
+
+[node name="InventorySlot" type="Control" unique_id=372329341]
+custom_minimum_size = Vector2(84, 84)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_e07lh")
+onText = SubResource("GradientTexture2D_8bubk")
+offText = SubResource("GradientTexture2D_hbm7r")
+abouttobeonText = SubResource("GradientTexture2D_ixqpn")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=839143234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_g7v3p")
+expand_mode = 2

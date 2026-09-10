@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://03m157s1pacd"]
+
+[ext_resource type="Script" uid="uid://c308dwxg2ndyo" path="res://MADDIE/Inventory/InteractionPrompter.gd" id="1_hoo6b"]
+
+[sub_resource type="Gradient" id="Gradient_hoo6b"]
+offsets = PackedFloat32Array(0.4783654, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cmo2t"]
+gradient = SubResource("Gradient_hoo6b")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cu42m"]
+
+[node name="InteractionPrompter" type="Area2D" unique_id=1185201784]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("1_hoo6b")
+InteractRange = 50.0
+InteractEvent = "interact"
+
+[node name="Prompt" type="Node2D" parent="." unique_id=21325865]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Prompt" unique_id=680541696]
+position = Vector2(0, 20)
+texture = SubResource("GradientTexture2D_cmo2t")
+offset = Vector2(0, -20)
+
+[node name="PromptLabel" type="RichTextLabel" parent="Prompt" unique_id=2145267971]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 40)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "null"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1066030266]
+shape = SubResource("CircleShape2D_cu42m")

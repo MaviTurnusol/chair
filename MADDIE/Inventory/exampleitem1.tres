@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://m6kjtrv427j8"]
+
+[ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/nana1.png" id="1_l66e8"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="1_mm7rx"]
+
+[resource]
+script = ExtResource("1_mm7rx")
+ItemName = "example"
+ground_tex = ExtResource("1_l66e8")
+inventory_tex = ExtResource("1_l66e8")
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])

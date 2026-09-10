@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://52s8lsucji0v"]
+
+[ext_resource type="Script" uid="uid://c16ee4e6hlr17" path="res://MADDIE/Inventory/PickupableItem.gd" id="1_s7see"]
+[ext_resource type="PackedScene" uid="uid://03m157s1pacd" path="res://MADDIE/Inventory/InteractionPrompter.tscn" id="3_xoo0n"]
+
+[sub_resource type="Gradient" id="Gradient_nguuj"]
+offsets = PackedFloat32Array(0.68990386, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xoo0n"]
+gradient = SubResource("Gradient_nguuj")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="PickupableItem" type="Node2D" unique_id=1324268814]
+script = ExtResource("1_s7see")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2121641694]
+scale = Vector2(0.15, 0.15)
+texture = SubResource("GradientTexture2D_xoo0n")
+
+[node name="InteractionPrompter" parent="." unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("3_xoo0n")]
+InteractObject = NodePath("..")

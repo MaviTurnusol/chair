@@ -35,6 +35,8 @@
 [ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://StateMachine/States/MeleeAttack1.gd" id="27_efx54"]
 [ext_resource type="Script" uid="uid://ck5dayrfbittx" path="res://MADDIE/Melee_Helper.gd" id="28_76lrf"]
 [ext_resource type="Texture2D" uid="uid://djdv811lmrf0m" path="res://Player/Animations/knifeIdle.png" id="31_m0h3t"]
+[ext_resource type="Script" uid="uid://b5jve74l872gw" path="res://MADDIE/Inventory/InventoryComponent.gd" id="36_jp1hh"]
+[ext_resource type="Script" uid="uid://bj3j7fsh4325h" path="res://MADDIE/Inventory/Inventory.gd" id="36_qs4pp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvbbp"]
 atlas = ExtResource("3_lfmf2")
@@ -682,7 +684,7 @@ Crosshair = ExtResource("16_jp1hh")
 FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19702")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19342")
 metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
 
 [node name="Fire Point" type="Marker2D" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=1205555290]
@@ -776,3 +778,33 @@ cutscene_state = NodePath("../StateMachine/Cutscene")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder" unique_id=553359887]
 position = Vector2(0, -34.5)
 shape = SubResource("RectangleShape2D_gpjlu")
+
+[node name="InventoryDisplayer" type="CanvasLayer" parent="." unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent")]
+script = ExtResource("36_qs4pp")
+_InventoryComponent = NodePath("../PlayerInventoryComponent")
+
+[node name="Control" type="Control" parent="InventoryDisplayer" unique_id=1330011099]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Inventory" type="Control" parent="InventoryDisplayer/Control" unique_id=2130786499]
+anchors_preset = 0
+offset_right = 400.0
+offset_bottom = 400.0
+
+[node name="GridContainer" type="GridContainer" parent="InventoryDisplayer/Control/Inventory" unique_id=92347144]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerInventoryComponent" type="Node" parent="." unique_id=652975170 node_paths=PackedStringArray("inventory_hud")]
+script = ExtResource("36_jp1hh")
+inventory_hud = NodePath("../InventoryDisplayer")

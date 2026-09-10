@@ -17,6 +17,9 @@
 [ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="14_hs8mn"]
 [ext_resource type="Script" uid="uid://ci3kpfsla23mb" path="res://MADDIE/MaddieDoor.gd" id="15_lh5rw"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/nana1.png" id="16_2wxxo"]
+[ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://MADDIE/Inventory/PickupableItem.tscn" id="16_y301g"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="17_y301g"]
+[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Wormy/Worm1.png" id="18_gixq4"]
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -56,6 +59,23 @@ height = 109.65
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
 size = Vector2(40, 96)
+
+[sub_resource type="Resource" id="Resource_y301g"]
+script = ExtResource("17_y301g")
+ItemName = "example"
+ground_tex = ExtResource("16_2wxxo")
+inventory_tex = ExtResource("16_2wxxo")
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
+inv_scalemulti = 1.5
+
+[sub_resource type="Resource" id="Resource_1oah0"]
+script = ExtResource("17_y301g")
+ground_tex = ExtResource("18_gixq4")
+inventory_tex = ExtResource("18_gixq4")
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+ground_scalemulti = 2.0
+inv_scalemulti = 1.5
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh5rw"]
 size = Vector2(96, 96)
@@ -191,6 +211,14 @@ position = Vector2(816, 227)
 
 [node name="JustANormalGuy3" parent="The real maddie" unique_id=753228336 instance=ExtResource("13_lh5rw")]
 position = Vector2(1030, 223)
+
+[node name="PickupableItem" parent="The real maddie" unique_id=1324268814 instance=ExtResource("16_y301g")]
+position = Vector2(113, 229)
+WhatItemAmI = SubResource("Resource_y301g")
+
+[node name="PickupableItem2" parent="The real maddie" unique_id=1100030553 instance=ExtResource("16_y301g")]
+position = Vector2(645, 225)
+WhatItemAmI = SubResource("Resource_1oah0")
 
 [node name="sceneInitializer" type="Node" parent="." unique_id=152984821]
 script = ExtResource("14_hs8mn")

@@ -6,6 +6,8 @@ var jumpVelocity = -440.0
 @onready var machine = $StateMachine
 @onready var weaponHolder = $Marker2D/weaponHolder
 @onready var melee_helper: MeleeHelper = $Marker2D/MeleeHelper
+@onready var inventory_component: InventoryComponent = $PlayerInventoryComponent
+
 var dir = 0.0
 
 var weapon_equipped = false

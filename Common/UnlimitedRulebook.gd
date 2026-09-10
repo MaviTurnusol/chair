@@ -8,6 +8,8 @@ var crossHair #Im so dumb i thought it was spelled crossair
 var playerWeapon
 var currentScene
 
+var HoveredInventory : InventoryComponent
+
 signal got_on_the_talking_point
 
 #0: Character Name, 1: Textbox Color
