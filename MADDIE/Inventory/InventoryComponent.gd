@@ -13,6 +13,8 @@ func _ready() -> void:
 	await get_tree().process_frame
 	for i in StartItems:
 		AddItemToInventory(i)
+	await get_tree().process_frame
+	inventory_hud.DisplayInventoryGrid(OwnInventoryGrid)
 
 func AddItemToInventory(_NewItem : InventoryItem):
 	#ItemsInInventory.append(_NewItem)
