@@ -7,11 +7,10 @@ var InventorySlotsDict : Dictionary[Vector2i,InventorySlot]
 @onready var GrabbedItemScene : PackedScene = preload("uid://bqb0nyrevwg5i")
 @export var _InventoryComponent : InventoryComponent
 var gridslotsize : Vector2
-const PixelsPerSlot : Vector2 = Vector2(86,86)
+#Sconst PixelsPerSlot : Vector2 = Vector2(86,86)
 var InventoryItemSprites : Array
 
 @onready var inventory_control : Control = $Control/Inventory
-
 
 func _ready() -> void:
 	grid_container.columns = _InventoryComponent.InventorySize.x
@@ -46,9 +45,14 @@ func HoverThisInventory():
 
 func _process(delta: float) -> void:
 	if(GrabbedItem):
+		if(UnlimitedRulebook.HoveredInventory==null):
+			HoverThisInventory()
 		if(UnlimitedRulebook.HoveredInventory != _InventoryComponent):
 			UnlimitedRulebook.HoveredInventory.inventory_hud.TransferOwnerShipOfGrabbedItem(GrabbedItem,GrabbedItemInstance)
-
+			GrabbedItem = null
+			#GrabbedItemInstance.queue_free()
+			#GrabbedItem = null
+	
 func TransferOwnerShipOfGrabbedItem(newGrabbedItem : InventoryItem,newgrabbedInstance : Control):
 	GrabbedItem = newGrabbedItem
 	GrabbedItemInstance = newgrabbedInstance
@@ -56,8 +60,6 @@ func TransferOwnerShipOfGrabbedItem(newGrabbedItem : InventoryItem,newgrabbedIns
 	
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_pressed("InventoryToggle")):
-		visible = !visible
 	
 	if(GrabbedItem):
 		if(Input.is_action_just_released("Click")):
@@ -97,8 +99,8 @@ func RefreshInventoryItemSprites():
 		if(item.inventory_tex):
 			var newspr = Sprite2D.new()
 			newspr.texture = item.inventory_tex
-			print((gridslotsize/PixelsPerSlot))
-			newspr.scale = Vector2.ONE * item.inv_scalemulti * (gridslotsize/PixelsPerSlot)
+			#print((gridslotsize/PixelsPerSlot))
+			newspr.scale = Vector2.ONE * item.inv_scalemulti #* (gridslotsize/PixelsPerSlot)
 			newspr.z_index = 2
 			newspr.position = InventorySlotsDict[item.Position].position
 			var meanoffset : Vector2 = Vector2.ZERO
@@ -162,7 +164,8 @@ func DisplayGrabbed(HoveredWhere : Vector2i,GridToDisplay : InventoryGrid):
 				meanoffset += Vector2(p)
 			meanoffset = meanoffset/GrabbedItem.ShapePoints.size()
 			var targ = (Vector2(0.5,0.5)*gridslotsize) + (meanoffset * gridslotsize)
-			GrabbedItemInstance.SetTargetPos(InventorySlotsDict[HoveredWhere].global_position + targ)
+			if(GrabbedItemInstance):
+				GrabbedItemInstance.SetTargetPos(InventorySlotsDict[HoveredWhere].global_position + targ)
 
 
 

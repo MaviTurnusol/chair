@@ -20,6 +20,12 @@
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://MADDIE/Inventory/PickupableItem.tscn" id="16_y301g"]
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="17_y301g"]
 [ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Wormy/Worm1.png" id="18_gixq4"]
+[ext_resource type="Script" uid="uid://glkw7r8jx8q2" path="res://Environments/Test/Locker.gd" id="21_och0h"]
+[ext_resource type="Script" uid="uid://bj3j7fsh4325h" path="res://MADDIE/Inventory/Inventory.gd" id="21_ycysq"]
+[ext_resource type="Script" uid="uid://b5jve74l872gw" path="res://MADDIE/Inventory/InventoryComponent.gd" id="22_dc4ob"]
+[ext_resource type="Resource" uid="uid://m6kjtrv427j8" path="res://MADDIE/Inventory/exampleitem1.tres" id="22_du6ky"]
+[ext_resource type="Resource" uid="uid://7a81k12kb5h0" path="res://MADDIE/Inventory/icecreamwow.tres" id="23_8nl8p"]
+[ext_resource type="PackedScene" uid="uid://03m157s1pacd" path="res://MADDIE/Inventory/InteractionPrompter.tscn" id="26_y1xy0"]
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -60,7 +66,7 @@ height = 109.65
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
 size = Vector2(40, 96)
 
-[sub_resource type="Resource" id="Resource_gixq4"]
+[sub_resource type="Resource" id="Resource_och0h"]
 script = ExtResource("17_y301g")
 ItemName = "example"
 ground_tex = ExtResource("16_2wxxo")
@@ -68,7 +74,7 @@ inventory_tex = ExtResource("16_2wxxo")
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 inv_scalemulti = 1.5
 
-[sub_resource type="Resource" id="Resource_1oah0"]
+[sub_resource type="Resource" id="Resource_y1xy0"]
 script = ExtResource("17_y301g")
 ground_tex = ExtResource("18_gixq4")
 inventory_tex = ExtResource("18_gixq4")
@@ -79,6 +85,12 @@ metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh5rw"]
 size = Vector2(96, 96)
+
+[sub_resource type="Gradient" id="Gradient_och0h"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1xy0"]
+gradient = SubResource("Gradient_och0h")
+height = 110
 
 [node name="Lab" type="Node2D" unique_id=775964121]
 
@@ -214,11 +226,11 @@ position = Vector2(1030, 223)
 
 [node name="PickupableItem" parent="The real maddie" unique_id=1324268814 instance=ExtResource("16_y301g")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_gixq4")
+WhatItemAmI = SubResource("Resource_och0h")
 
 [node name="PickupableItem2" parent="The real maddie" unique_id=1100030553 instance=ExtResource("16_y301g")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_1oah0")
+WhatItemAmI = SubResource("Resource_y1xy0")
 
 [node name="sceneInitializer" type="Node" parent="." unique_id=152984821]
 script = ExtResource("14_hs8mn")
@@ -235,3 +247,56 @@ position = Vector2(0, 51)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D" unique_id=473948010]
 shape = SubResource("RectangleShape2D_lh5rw")
+
+[node name="Locker" type="Node2D" parent="." unique_id=2110097852]
+position = Vector2(556, 219)
+script = ExtResource("21_och0h")
+PlayerMaxRange = 150.0
+
+[node name="InventoryComponent" type="Node" parent="Locker" unique_id=1847389235 node_paths=PackedStringArray("inventory_hud")]
+script = ExtResource("22_dc4ob")
+InventorySize = Vector2i(6, 6)
+inventory_hud = NodePath("../InventoryDisplayer")
+StartItems = Array[ExtResource("17_y301g")]([ExtResource("22_du6ky"), ExtResource("23_8nl8p")])
+
+[node name="InventoryDisplayer" type="CanvasLayer" parent="Locker" unique_id=1358075000 node_paths=PackedStringArray("_InventoryComponent")]
+visible = false
+script = ExtResource("21_ycysq")
+_InventoryComponent = NodePath("../InventoryComponent")
+
+[node name="Control" type="Control" parent="Locker/InventoryDisplayer" unique_id=808850576]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Inventory" type="Control" parent="Locker/InventoryDisplayer/Control" unique_id=1193629516]
+anchors_preset = 0
+offset_left = 1310.0
+offset_right = 1910.0
+offset_bottom = 600.0
+
+[node name="GridContainer" type="GridContainer" parent="Locker/InventoryDisplayer/Control/Inventory" unique_id=1785398817]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractionPrompter" parent="Locker" unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("26_y1xy0")]
+z_index = 1
+InteractObject = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Locker" unique_id=400108642]
+texture = SubResource("GradientTexture2D_y1xy0")
+
+[node name="Label" type="Label" parent="Locker" unique_id=1783365779]
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 26.0
+offset_bottom = -3.0
+text = "Locker"

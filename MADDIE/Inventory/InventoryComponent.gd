@@ -31,7 +31,7 @@ func DropItem(_WhatItem : InventoryItem):
 	var NewPickupable = PickupableItemScene.instantiate()
 	NewPickupable.WhatItemAmI = _WhatItem
 	NewPickupable.global_position = get_parent().global_position
-	get_tree().root.add_child(NewPickupable)
+	get_parent().add_sibling(NewPickupable)
 	Refresh()
 
 #func ReleaseItem(_where : Vector2i):

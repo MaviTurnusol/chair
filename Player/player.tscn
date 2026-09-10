@@ -684,7 +684,7 @@ Crosshair = ExtResource("16_jp1hh")
 FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19344")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19346")
 metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
 
 [node name="Fire Point" type="Marker2D" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=1205555290]
@@ -796,16 +796,14 @@ mouse_filter = 2
 anchors_preset = 0
 offset_left = 18.0
 offset_top = 7.0
-offset_right = 118.0
-offset_bottom = 107.0
+offset_right = 418.0
+offset_bottom = 407.0
 
 [node name="GridContainer" type="GridContainer" parent="InventoryDisplayer/Control/Inventory" unique_id=92347144]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 300.0
-offset_bottom = 300.0
 grow_horizontal = 2
 grow_vertical = 2
 

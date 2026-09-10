@@ -42,6 +42,10 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("space"):
 		machine.change_state_to("roll")
 	
+	#Inventory Toggle
+	if(Input.is_action_just_pressed("InventoryToggle")):
+		inventory_component.inventory_hud.visible = ! inventory_component.inventory_hud.visible
+	
 	#Gun
 	if Input.is_action_just_pressed("equip"):
 		if !weapon_equipped:
