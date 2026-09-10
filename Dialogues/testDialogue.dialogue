@@ -17,6 +17,10 @@ set UnlimitedRulebook.the_woke_left = "Blank"
 set UnlimitedRulebook.the_woke_left = "Flower Guyy Ice Cream"
 Flower Guyy: Alright I'm back.
 Hatsune Miku: Waow our dialogue manager is amazing.
+Flower Guyy: wait lemme give you soem ice cream
+do UnlimitedRulebook.GivePlayerItem("IceCream")
+...
+set UnlimitedRulebook.the_woke_left = "Flower Guyy"
 Flower Guyy: Check this out.
 Flower Guyy: Why does life slumber?
 - because one day we will wake up.

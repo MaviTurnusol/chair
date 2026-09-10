@@ -21,3 +21,11 @@ var char_archive = {
 
 #####Make this better sometime, these are signals for dialogue events
 signal NanaDialogueEndedBossFightStart
+
+var globalitemdictionary : Dictionary[String,String]={ 
+	"IceCream": "uid://7a81k12kb5h0", 
+	"Yellow": "",} #uid / paths
+
+func GivePlayerItem(whatItemName : String):
+	var itemload : InventoryItem = load(globalitemdictionary[whatItemName])
+	player.inventory_component.AddItemToInventory(itemload)

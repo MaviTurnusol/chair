@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://7a81k12kb5h0"]
+
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="1_0ic05"]
+[ext_resource type="Texture2D" uid="uid://c2jocegy8encr" path="res://MADDIE/Inventory/ice_cream_PNG5099.png" id="1_gptto"]
+
+[resource]
+script = ExtResource("1_0ic05")
+ItemName = "icecraeam"
+ground_tex = ExtResource("1_gptto")
+inventory_tex = ExtResource("1_gptto")
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 3), Vector2i(0, 1), Vector2i(0, 2), Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(0, 3)])
+ground_scalemulti = 0.013
+inv_scalemulti = 0.08
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
