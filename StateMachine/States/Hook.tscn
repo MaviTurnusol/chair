@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://mu6favus5m8y"]
+
+[ext_resource type="Script" uid="uid://dn05tt7s7w5oa" path="res://StateMachine/States/hook.gd" id="1_wuykg"]
+
+[node name="Hook" type="Node" unique_id=1990031089]
+script = ExtResource("1_wuykg")
+animName = "blank"
+canOnlyTransitionTo = PackedStringArray("idle")
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

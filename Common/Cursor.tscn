@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://rvsw7x1a420u"]
+
+[ext_resource type="Script" uid="uid://ctrdu8j6ih8v1" path="res://Common/cursor.gd" id="1_kc6ch"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5acej"]
+radius = 1.0
+
+[node name="Cursor" type="Node2D" unique_id=354788821]
+script = ExtResource("1_kc6ch")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=832748693]
+collision_layer = 2147483648
+collision_mask = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1628419196]
+shape = SubResource("CircleShape2D_5acej")

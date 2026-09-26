@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dfk65q1y23ewq" path="res://Common/Boxes/HurtBox.tscn" id="4_00tjw"]
 [ext_resource type="Texture2D" uid="uid://c2sd5801w4stn" path="res://Player/Animations/roll-Sheet.png" id="4_apopc"]
 [ext_resource type="Texture2D" uid="uid://0rybfwdex73u" path="res://Player/Animations/fallRecovery.png" id="4_b1ygp"]
+[ext_resource type="Texture2D" uid="uid://d4lo5ora78w2s" path="res://Player/blankpixel.png" id="4_iyprq"]
 [ext_resource type="PackedScene" uid="uid://drjyjbj4ap1pl" path="res://StateMachine/States/Walk.tscn" id="4_vtle1"]
 [ext_resource type="Texture2D" uid="uid://c10q83rsumqvq" path="res://Player/Animations/walk-Sheet.png" id="4_x3vf3"]
 [ext_resource type="Texture2D" uid="uid://rsho58ftjj6r" path="res://Player/Animations/run-Sheet.png" id="5_5htga"]
@@ -35,8 +36,13 @@
 [ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://StateMachine/States/MeleeAttack1.gd" id="27_efx54"]
 [ext_resource type="Script" uid="uid://ck5dayrfbittx" path="res://MADDIE/Melee_Helper.gd" id="28_76lrf"]
 [ext_resource type="Texture2D" uid="uid://djdv811lmrf0m" path="res://Player/Animations/knifeIdle.png" id="31_m0h3t"]
+[ext_resource type="PackedScene" uid="uid://mu6favus5m8y" path="res://StateMachine/States/Hook.tscn" id="36_f4lon"]
 [ext_resource type="Script" uid="uid://b5jve74l872gw" path="res://MADDIE/Inventory/InventoryComponent.gd" id="36_jp1hh"]
 [ext_resource type="Script" uid="uid://bj3j7fsh4325h" path="res://MADDIE/Inventory/Inventory.gd" id="36_qs4pp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhliw"]
+atlas = ExtResource("4_iyprq")
+region = Rect2(0, 0, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uvbbp"]
 atlas = ExtResource("3_lfmf2")
@@ -324,6 +330,14 @@ region = Rect2(726, 0, 66, 103)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o28un"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhliw")
+}],
+"loop": true,
+"name": &"blank",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uvbbp")
@@ -646,7 +660,7 @@ position = Vector2(-6, -66)
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"fall"
+animation = &"blank"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
@@ -684,7 +698,7 @@ Crosshair = ExtResource("16_jp1hh")
 FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@19346")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@78678")
 metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
 
 [node name="Fire Point" type="Marker2D" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=1205555290]
@@ -704,7 +718,7 @@ curve = SubResource("Curve2D_lj0cf")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Marker2D/MeleeHelper/PlayerMelee/AttackPath" unique_id=1916775528]
 position = Vector2(-0.5, -0.5)
-rotation = 0.021273386
+rotation = 0.021273388
 
 [node name="HitBox" parent="Marker2D/MeleeHelper/PlayerMelee" unique_id=187917931 instance=ExtResource("18_iyprq")]
 
@@ -759,6 +773,8 @@ script = ExtResource("27_efx54")
 animName = "fall"
 animOnStart = true
 canOnlyTransitionTo = PackedStringArray("idle")
+
+[node name="Hook" parent="StateMachine" unique_id=1990031089 instance=ExtResource("36_f4lon")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2077871060]
 position = Vector2(0, -33)

@@ -65,7 +65,8 @@ func _physics_process(delta):
 	#Movement
 	var dir_ = Input.get_axis("left", "right")
 	if machine.get_state() not in ["roll", "turn", "jump", 
-	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack1"]:
+	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack1"
+	,"hook"]:
 		#Turning
 		if sign(dir_) == sign(-velocity.x) && dir_:
 			machine.change_state_to("turn")

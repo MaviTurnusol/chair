@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://de7vd21bnh3rn"]
+
+[ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="1_jkfd2"]
+[ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="2_2k8j5"]
+[ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="2_g253a"]
+[ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="3_g253a"]
+[ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Environments/hookable_position.tscn" id="6_ajgnu"]
+[ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/Cursor.tscn" id="7_e2aq0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrn0"]
+size = Vector2(2087, 89)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajgnu"]
+size = Vector2(64, 125)
+
+[node name="HookLab" type="Node2D" unique_id=622899540]
+
+[node name="sceneInitializer" type="Node" parent="." unique_id=967319519]
+script = ExtResource("1_jkfd2")
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1658677967]
+
+[node name="ColorRect" type="ColorRect" parent="Sprites" unique_id=402564116]
+offset_left = -132.0
+offset_top = 853.0
+offset_right = 1952.0
+offset_bottom = 943.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Sprites" unique_id=1520332844]
+offset_left = 553.0
+offset_top = 729.0
+offset_right = 618.0
+offset_bottom = 862.0
+color = Color(0, 0, 0, 1)
+
+[node name="Collisions" type="Node2D" parent="." unique_id=1583388602]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=1891834209]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=2076735749]
+position = Vector2(909, 898.5)
+shape = SubResource("RectangleShape2D_pjrn0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=2104983109]
+position = Vector2(585, 791.5)
+shape = SubResource("RectangleShape2D_ajgnu")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=277998935 node_paths=PackedStringArray("target")]
+position = Vector2(170, 270)
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("2_g253a")
+target = NodePath("../Player/camTarget")
+
+[node name="Player" parent="." unique_id=779898413 instance=ExtResource("2_2k8j5")]
+modulate = Color(0.5, 0.5, 0.5, 1)
+position = Vector2(240, 810)
+
+[node name="camTarget" type="Node2D" parent="Player" unique_id=950062917]
+position = Vector2(0, -69.33334)
+script = ExtResource("3_g253a")
+
+[node name="hookablePosition" parent="." unique_id=649971908 instance=ExtResource("6_ajgnu")]
+position = Vector2(585, 697)
+
+[node name="Cursor" parent="." unique_id=354788821 instance=ExtResource("7_e2aq0")]

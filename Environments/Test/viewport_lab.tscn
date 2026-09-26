@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dt2voiy38cchi"]
 
-[ext_resource type="PackedScene" uid="uid://dkhw0k8ijjhy8" path="res://Environments/Test/lab.tscn" id="1_xjayh"]
+[ext_resource type="PackedScene" uid="uid://de7vd21bnh3rn" path="res://Environments/Test/hook_lab.tscn" id="1_xjayh"]
 
 [node name="ViewportLab" type="Node2D" unique_id=1582361756]
 
@@ -15,6 +15,6 @@ snap_2d_transforms_to_pixel = true
 size = Vector2i(640, 360)
 render_target_update_mode = 4
 
-[node name="Lab" parent="SubViewportContainer/SubViewport" unique_id=775964121 instance=ExtResource("1_xjayh")]
+[node name="HookLab" parent="SubViewportContainer/SubViewport" unique_id=622899540 instance=ExtResource("1_xjayh")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=269823526]

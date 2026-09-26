@@ -11,6 +11,7 @@ var currentScene
 var HoveredInventory : InventoryComponent
 
 signal got_on_the_talking_point
+signal hook_ender
 
 #0: Character Name, 1: Textbox Color
 var char_archive = {

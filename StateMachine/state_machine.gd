@@ -17,8 +17,8 @@ func set_state(value):
 			return
 		if currentState.canOnlyTransitionTo.size() > 0:
 			if !currentState.canOnlyTransitionTo.has(str(value.name)[0].to_lower() + str(value.name).substr(1)):
-				print(value.name)
-				print(currentState.canOnlyTransitionTo)
+				#print(value.name)
+				#print(currentState.canOnlyTransitionTo)
 				return
 	value.SuperStart()
 	value.Start()

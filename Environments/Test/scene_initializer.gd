@@ -1,4 +1,4 @@
 extends Node
 
 func _ready() -> void:
-	UnlimitedRulebook.currentScene = self
+	UnlimitedRulebook.currentScene = get_parent()

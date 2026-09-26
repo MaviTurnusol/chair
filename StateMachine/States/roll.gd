@@ -18,3 +18,6 @@ func PhysicsProcess(_delta):
 		if stateOwner.anima.frame >= 7:
 			stateOwner.velocity.x = lerp(stateOwner.velocity.x, 0.0, 0.1)
 			stateOwner.set_collisions(true)
+
+func End():
+	stateOwner.set_collisions(true)

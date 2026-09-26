@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://k8id7thruf5r"]
+
+[ext_resource type="Script" uid="uid://bapcumsdqfdpj" path="res://Environments/hookable_position.gd" id="1_7b1rl"]
+[ext_resource type="Texture2D" uid="uid://bn4btssyys82q" path="res://Common/bigRedArrow.png" id="2_rrtql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rrtql"]
+size = Vector2(64, 64)
+
+[node name="hookablePosition" type="Area2D" unique_id=649971908 node_paths=PackedStringArray("cShape")]
+collision_layer = 2147483648
+collision_mask = 2147483648
+script = ExtResource("1_7b1rl")
+cShape = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1623646857]
+shape = SubResource("RectangleShape2D_rrtql")
+
+[node name="arrow" type="Sprite2D" parent="." unique_id=473075296]
+texture = ExtResource("2_rrtql")
+centered = false
+offset = Vector2(-4, -21)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
