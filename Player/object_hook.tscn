@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://h3ics0ei62xx" path="res://Player/object_hook.gd" id="1_wache"]
 [ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="2_iiecd"]
 
+[sub_resource type="Curve" id="Curve_wache"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.35017535, 0.82927275), 0.0, 0.0, 0, 0, Vector2(0.70424104, 0.6616369), 0.0, 0.0, 0, 0, Vector2(1, 0.48023403), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [sub_resource type="Curve2D" id="Curve2D_whjrs"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0)
@@ -11,6 +15,7 @@ point_count = 1
 
 [node name="ObjectHook" type="Line2D" unique_id=1288738353]
 points = PackedVector2Array(0, 0, 100, 0)
+width_curve = SubResource("Curve_wache")
 script = ExtResource("1_wache")
 
 [node name="Path2D" type="Path2D" parent="." unique_id=90013500]
@@ -21,3 +26,6 @@ curve = SubResource("Curve2D_whjrs")
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D" unique_id=1004723319]
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_iiecd")
+
+[node name="speeder" type="Timer" parent="." unique_id=2063597925]
+one_shot = true

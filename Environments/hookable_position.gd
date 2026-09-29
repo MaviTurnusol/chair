@@ -27,20 +27,55 @@ func _process(_delta: float) -> void:
 			object_hook.global_position = global_position
 			object_hook.points[1] = Vector2.ZERO
 			
+			var hookLen = global_position.distance_to(UnlimitedRulebook.player.global_position)
+			var direction = hookEndPos - object_hook.points[0]
+			var hookAngle = direction.angle()
+			hookEndPos = UnlimitedRulebook.player.global_position - global_position + Vector2(0, -50) + Vector2(30, 0).rotated(hookAngle)
+			
 			var newPoints : PackedVector2Array
-			newPoints.resize(2)
-			newPoints[0] = Vector2.ZERO
-			newPoints[1] = hookEndPos
+			print(hookLen)
+			if hookLen > 400:
+				newPoints.resize(6)
+				newPoints[0] = Vector2.ZERO
+				newPoints[1] = (hookEndPos+Vector2.ZERO)/5 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[2] = (2*hookEndPos+Vector2.ZERO)/5 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[3] = (3*hookEndPos+Vector2.ZERO)/5 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[4] = (4*hookEndPos+Vector2.ZERO)/5 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[5] = hookEndPos
+			elif hookLen > 300:
+				newPoints.resize(5)
+				newPoints[0] = Vector2.ZERO
+				newPoints[1] = (hookEndPos+Vector2.ZERO)/4 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[2] = (2*hookEndPos+Vector2.ZERO)/4 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[3] = (3*hookEndPos+Vector2.ZERO)/4 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[4] = hookEndPos
+			elif hookLen > 200:
+				newPoints.resize(4)
+				newPoints[0] = Vector2.ZERO
+				newPoints[1] = (hookEndPos+Vector2.ZERO)/3 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[2] = (2*hookEndPos+Vector2.ZERO)/3 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[3] = hookEndPos
+			elif hookLen > 100:
+				newPoints.resize(3)
+				newPoints[0] = Vector2.ZERO
+				newPoints[1] = (hookEndPos+Vector2.ZERO)/2 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+				newPoints[2] = hookEndPos
+			else:
+				newPoints.resize(2)
+				newPoints[0] = Vector2.ZERO
+				newPoints[1] = hookEndPos
+					
+			#newPoints.resize(3)
+			#newPoints[0] = Vector2.ZERO
+			#newPoints[1] = (hookEndPos+Vector2.ZERO)/2 + Vector2(50, 0).rotated(randf_range(hookAngle - PI/3, hookAngle + PI/3))
+			#newPoints[2] = hookEndPos
 			UnlimitedRulebook.currentScene.add_child(object_hook)
 			var twink = get_tree().create_tween().set_trans(Tween.TRANS_SINE)
 			twink.tween_property(object_hook, "points", newPoints, 0.15)
 			
-			var hookLen = global_position.distance_to(hookEndPos)
-			var direction = hookEndPos - object_hook.points[0]
-			var hookAngle = direction.angle()
 			$arrow.rotation = hookAngle
-			print(hookAngle)
-			var curveCount = 0
+			#print(hookAngle)
+			#var curveCount = 0
 			#if hookLen > 4:
 				#curveCount = 4
 				#object_hook.points[4] = hookEndPos
