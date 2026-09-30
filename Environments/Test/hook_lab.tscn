@@ -65,4 +65,7 @@ script = ExtResource("3_g253a")
 [node name="hookablePosition" parent="." unique_id=649971908 instance=ExtResource("6_ajgnu")]
 position = Vector2(585, 697)
 
+[node name="hookablePosition2" parent="." unique_id=1109479604 instance=ExtResource("6_ajgnu")]
+position = Vector2(936, 697)
+
 [node name="Cursor" parent="." unique_id=354788821 instance=ExtResource("7_e2aq0")]
