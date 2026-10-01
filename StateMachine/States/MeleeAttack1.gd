@@ -20,5 +20,7 @@ func ProcessAnimation(mAnimation : UnlimitedRulebook.MeleeAnimation):
 			pass
 		UnlimitedRulebook.MeleeAnimation.Stab1:
 			animator.play("stab1")
-		UnlimitedRulebook.MeleeAnimation.Romance1:
+		UnlimitedRulebook.MeleeAnimation.Thrust1:
+			animator.play("thrust1")
+		UnlimitedRulebook.MeleeAnimation.idk:
 			animator.play("fall")

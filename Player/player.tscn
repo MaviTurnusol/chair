@@ -299,6 +299,34 @@ region = Rect2(576, 0, 96, 103)
 atlas = ExtResource("11_j2n6q")
 region = Rect2(672, 0, 96, 103)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5pua"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(0, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ca054"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(96, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6xaqw"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(192, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_skhd2"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(288, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppx2g"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(384, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f4m7"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(480, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c7st8"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(576, 0, 96, 103)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kmt7"]
 atlas = ExtResource("6_gu6f8")
 region = Rect2(0, 0, 64, 103)
@@ -600,9 +628,41 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vx8o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhogf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bga3")
 }],
 "loop": false,
 "name": &"stab1",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5pua")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ca054")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6xaqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_skhd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppx2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f4m7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c7st8")
+}],
+"loop": false,
+"name": &"thrust1",
 "speed": 12.0
 }, {
 "frames": [{
@@ -687,7 +747,7 @@ position = Vector2(-11.636646, 10.980812)
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"stab1"
+animation = &"thrust1"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")

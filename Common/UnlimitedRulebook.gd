@@ -30,7 +30,7 @@ enum ItemAttribute{
 enum MeleeAnimation{
 	Null,
 	Stab1,
-	Romance1,
+	Thrust1,
 	idk,
 }
 
