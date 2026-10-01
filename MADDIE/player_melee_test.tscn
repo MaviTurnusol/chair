@@ -59,7 +59,7 @@ Crosshair = ExtResource("3_lj0cf")
 FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@131447")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@78558")
 metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
 
 [node name="Fire Point" type="Marker2D" parent="." unique_id=2035090911]

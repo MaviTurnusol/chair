@@ -49,6 +49,9 @@ remote_path = NodePath("../../../../Sprites/IkForeArm")
 [node name="Sprite2D" type="Sprite2D" parent="Skeleton2D/UpperArm/ForeArm" unique_id=1571699038]
 texture = ExtResource("1_2lnk7")
 
+[node name="RangedWeaponParent" type="Node2D" parent="Skeleton2D/UpperArm/ForeArm" unique_id=1936912245]
+position = Vector2(24, 0)
+
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/UpperArm" unique_id=767280924]
 remote_path = NodePath("../../../Sprites/IkUpperArm")
 

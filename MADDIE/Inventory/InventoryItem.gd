@@ -1,14 +1,22 @@
 class_name InventoryItem
 extends Resource
 
+@export_subgroup("Flavour")
 @export var ItemName : String
-var Position : Vector2i
-@export var ground_tex : Texture2D
-@export var inventory_tex : Texture2D
-@export var ShapePoints : Array[Vector2i]
+@export_multiline var ItemDescription : String
+
+@export_subgroup("Texture")
+@export var ground_tex : Texture2D ##Texture on ground
+@export var inventory_tex : Texture2D ##Texture in Inventory
 @export var ground_scalemulti : float = 1
 @export var inv_scalemulti : float = 1
 
+@export_subgroup("Functional")
+@export var ShapePoints : Array[Vector2i] ##The shape in inventory
+@export var ItemAttributes : Array[UnlimitedRulebook.ItemAttribute]
+@export var AssociatedScene : PackedScene = null ##For Example, A gun or melee scene.
+
+var Position : Vector2i
 var BaseShapePoints = null
 var RotationState : Rotations = Rotations.ZERO
 

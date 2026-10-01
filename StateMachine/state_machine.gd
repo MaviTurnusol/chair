@@ -1,8 +1,9 @@
 extends Node
-
+class_name StateMachine
 @export var initialState : State
 var currentState : State : set = set_state
 var prevState : State
+signal StateChanged
 
 func set_state(value):
 	if value == currentState:
@@ -26,6 +27,7 @@ func set_state(value):
 		prevState = currentState
 		currentState.End()
 	currentState = value
+	StateChanged.emit()
 
 func _ready():
 	for state in get_children():

@@ -7,6 +7,7 @@ var BodyRef : Node2D
 @export var inventory_hud: InventoryHud
 @onready var PickupableItemScene : PackedScene = preload("uid://52s8lsucji0v")
 @export var StartItems : Array[InventoryItem]
+signal ItemAddedToInventory
 func _ready() -> void:
 	OwnInventoryGrid = InventoryGrid.new(InventorySize)
 	OwnInventoryGrid.UpdateInventoryDict()
@@ -25,6 +26,8 @@ func AddItemToInventory(_NewItem : InventoryItem):
 	inventory_hud.RefreshInventoryItemSprites()
 	if(!IsSuccessful):
 		DropItem(_NewItem)
+	else:
+		ItemAddedToInventory.emit()
 	
 
 func DropItem(_WhatItem : InventoryItem):

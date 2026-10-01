@@ -3,7 +3,8 @@ extends State
 var weapon
 
 func Start():
-	weapon = stateOwner.weaponHolder.get_child(0)
+	#weapon = stateOwner.weaponHolder.get_child(0)
+	pass
 
 func Process(delta):
 	var dir = Input.get_axis("left", "right")
@@ -18,9 +19,9 @@ func Process(delta):
 		machine.change_state_to("gunIdle")
 		#stateOwner.anima.pause()
 		
-	if UnlimitedRulebook.player.weapon_equipped:
-		if Input.is_action_just_pressed("attack"):
-			UnlimitedRulebook.playerWeapon.Use()
+	#if UnlimitedRulebook.player.weapon_equipped:
+		#if Input.is_action_just_pressed("attack"):
+			#UnlimitedRulebook.playerWeapon.Use()
 	
 	stateOwner.get_node("Marker2D").scale.x = sign(stateOwner.get_global_mouse_position().x - stateOwner.global_position.x)
 	

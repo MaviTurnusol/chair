@@ -66,6 +66,7 @@ func _ready() -> void:
 			GunPreviewSprite.queue_free()
 		ConstructGun()
 	UnlimitedRulebook.playerWeapon = self
+	Body = UnlimitedRulebook.player
 	SetCrosshairScaleAppropiateToSpread()
 
 func SetCrosshairScaleAppropiateToSpread():
@@ -113,9 +114,11 @@ func ConstructGun():
 func Use():
 	if(CheckIfCanShoot()):
 		Shoot()
-		UnlimitedRulebook.player.melee_helper.Attack()
+		return true
+		#UnlimitedRulebook.player.melee_helper.Attack()
 	else:
 		print("SHOOT DISALLOWED")
+		return false
 		#print("Wait More Time Before Shooting Again")
 
 func CheckIfCanShoot():

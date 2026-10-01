@@ -4,8 +4,8 @@ var speed = 130.0
 var jumpVelocity = -440.0
 @onready var anima = $Marker2D/anima
 @onready var machine = $StateMachine
-@onready var weaponHolder = $Marker2D/weaponHolder
-@onready var melee_helper: MeleeHelper = $Marker2D/MeleeHelper
+#@onready var weaponHolder = $Marker2D/weaponHolder
+
 @onready var inventory_component: InventoryComponent = $PlayerInventoryComponent
 
 var dir = 0.0
@@ -19,11 +19,11 @@ func _ready() -> void:
 func _physics_process(delta):
 	$debugState.text = str(machine.get_state())
 	
-	#Attacking
-	if Input.is_action_just_pressed("attack"):
-		if weaponHolder.get_children().size() > 0:
-			if is_on_floor():
-				machine.change_state_to("groundAttack")
+	##Attacking
+	#if Input.is_action_just_pressed("attack"):
+		#if weaponHolder.get_children().size() > 0:
+			#if is_on_floor():
+				#machine.change_state_to("groundAttack")
 	
 	#Jumping
 	if Input.is_action_just_pressed("jump"):
@@ -65,7 +65,7 @@ func _physics_process(delta):
 	#Movement
 	var dir_ = Input.get_axis("left", "right")
 	if machine.get_state() not in ["roll", "turn", "jump", 
-	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack1"
+	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack"
 	,"hook"]:
 		#Turning
 		if sign(dir_) == sign(-velocity.x) && dir_:

@@ -20,6 +20,13 @@ var char_archive = {
 	"nana": ["Nanāhuātzin","FF0000"],
 }
 
+enum ItemAttribute{
+	Null,
+	MeleeWeapon,
+	RangedWeapon,
+	Quest,
+}
+
 #####Make this better sometime, these are signals for dialogue events
 signal NanaDialogueEndedBossFightStart
 
