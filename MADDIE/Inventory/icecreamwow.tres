@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="1_0ic05"]
 [ext_resource type="Texture2D" uid="uid://c2jocegy8encr" path="res://MADDIE/Inventory/ice_cream_PNG5099.png" id="1_gptto"]
-[ext_resource type="PackedScene" uid="uid://infn7fgrvkrv" path="res://Weapons/icecreamweapontest.tscn" id="1_pvpdw"]
+[ext_resource type="PackedScene" uid="uid://citslnnqehqk1" path="res://Weapons/newicecreamweapontest.tscn" id="1_pvpdw"]
 
 [resource]
 script = ExtResource("1_0ic05")

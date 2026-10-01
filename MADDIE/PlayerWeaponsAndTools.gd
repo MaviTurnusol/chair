@@ -15,6 +15,9 @@ var CurrentRangedWeapon : InventoryItem
 var RangedWeaponNode : PlayerGun
 var CanRanged : bool
 
+var CurrentMeleeWeaponIndex : int = 0
+var CurrentRangedWeaponIndex : int = 0
+
 func GetAllMeleeWeapons()->Array[InventoryItem]:
 	var invgrid : InventoryGrid = PlayerInventoryComponent.OwnInventoryGrid
 	var meleeweapons : Array[InventoryItem]
@@ -82,14 +85,35 @@ func _input(event: InputEvent) -> void:
 		if(CanRanged):
 			if(GetCurrentRangedWeapon() && RangedWeaponNode):
 				RangedWeaponNode.Use()
+	if(event.is_action_pressed("cyclenextweapon")):
+		if(CanMelee):
+			HideMelee()
+			CurrentMeleeWeapon = null
+			var maxsize = GetAllMeleeWeapons().size()
+			CurrentMeleeWeaponIndex += 1
+			if(CurrentMeleeWeaponIndex>maxsize-1):
+				CurrentMeleeWeaponIndex = 0
+			GetCurrentMeleeWeapon(CurrentMeleeWeaponIndex)
+			print(CurrentMeleeWeapon)
+			
+			ShowMelee()
+		if(CanRanged):
+			HideRanged()
+			CurrentRangedWeapon = null
+			var maxsize = GetAllRangedWeapons().size()
+			CurrentRangedWeaponIndex+=1
+			if(CurrentRangedWeaponIndex>maxsize-1):
+				CurrentRangedWeaponIndex = 0
+			GetCurrentRangedWeapon(CurrentRangedWeaponIndex)
+			ShowRanged()
 
-func GetCurrentMeleeWeapon():
+func GetCurrentMeleeWeapon(index : int = 0):
 	if(!CurrentMeleeWeapon):
 		if(GetAllMeleeWeapons().size()>0):
-			CurrentMeleeWeapon = GetAllMeleeWeapons()[0]
+			CurrentMeleeWeapon = GetAllMeleeWeapons()[index]
 	return CurrentMeleeWeapon
-func GetCurrentRangedWeapon():
+func GetCurrentRangedWeapon(index : int = 0):
 	if(!CurrentRangedWeapon):
 		if(GetAllRangedWeapons().size()>0):
-			CurrentRangedWeapon = GetAllRangedWeapons()[0]
+			CurrentRangedWeapon = GetAllRangedWeapons()[index]
 	return CurrentRangedWeapon
