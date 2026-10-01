@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://i4icnxv6vniq" path="res://StateMachine/States/Roll.tscn" id="5_od3ui"]
 [ext_resource type="Texture2D" uid="uid://c7lkrco3qj785" path="res://Player/Animations/idle-Sheet.png" id="6_fhl08"]
 [ext_resource type="Texture2D" uid="uid://bxiqfdls3cl21" path="res://Player/Animations/xochiTurn-Sheet.png" id="6_gu6f8"]
+[ext_resource type="Texture2D" uid="uid://dv03h810ova7e" path="res://Player/Animations/xocherstab-Sheet.png" id="11_j2n6q"]
 [ext_resource type="PackedScene" uid="uid://j31ghs8e1fqo" path="res://StateMachine/States/Run.tscn" id="12_p5o4e"]
 [ext_resource type="PackedScene" uid="uid://o4c52t0244wj" path="res://StateMachine/States/Turn.tscn" id="13_p5o4e"]
 [ext_resource type="PackedScene" uid="uid://4v1foex4d4rf" path="res://StateMachine/States/Fall.tscn" id="16_pisgm"]
@@ -265,6 +266,38 @@ region = Rect2(512, 0, 64, 103)
 [sub_resource type="AtlasTexture" id="AtlasTexture_gvnt1"]
 atlas = ExtResource("5_5htga")
 region = Rect2(576, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bga3"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(0, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11wp0"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(96, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11slg"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(192, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7sh4"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(288, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhogf"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(384, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_286oo"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(480, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k84o0"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(576, 0, 96, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx8o5"]
+atlas = ExtResource("11_j2n6q")
+region = Rect2(672, 0, 96, 103)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1kmt7"]
 atlas = ExtResource("6_gu6f8")
@@ -545,6 +578,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_3bga3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11wp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11slg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7sh4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhogf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_286oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k84o0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx8o5")
+}],
+"loop": false,
+"name": &"stab1",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_1kmt7")
 }, {
 "duration": 1.0,
@@ -625,7 +687,7 @@ position = Vector2(-11.636646, 10.980812)
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"blank"
+animation = &"stab1"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
@@ -673,8 +735,6 @@ canOnlyTransitionTo = PackedStringArray("idle", "gunWalk", "roll", "jump", "Mele
 
 [node name="MeleeAttack" parent="StateMachine" unique_id=1923569428 instance=ExtResource("25_8viyr")]
 script = ExtResource("27_efx54")
-animName = "fall"
-animOnStart = true
 canOnlyTransitionTo = PackedStringArray("idle")
 
 [node name="Hook" parent="StateMachine" unique_id=1990031089 instance=ExtResource("36_f4lon")]

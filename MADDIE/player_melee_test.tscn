@@ -17,8 +17,8 @@ _data = [Vector2(0, 0.50689656), 0.0, 0.0, 0, 0, Vector2(0.47113597, 2.6017241),
 point_count = 5
 
 [sub_resource type="Curve" id="Curve_pm4dr"]
-_data = [Vector2(0, 0), 0.0, 1.1435215, 0, 0, Vector2(0.2886406, 0.56517243), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.2036208, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0), 0.0, 0.1487901, 0, 0, Vector2(0.3951049, 0.11984706), 0.0, 0.0, 0, 0, Vector2(0.7587412, 0.87223583), 1.2036208, 0.0, 0, 0, Vector2(0.99999994, 1), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3bga3"]
 atlas = ExtResource("2_lj0cf")
@@ -47,6 +47,7 @@ WindUpTime = 0.25
 AttackTime = 0.5
 RecoveryTime = 0.15
 Hit_Box = NodePath("HitBox")
+AttackAnimation = 1
 MeleeAttackPath = NodePath("AttackPath")
 MeleeAttackPathFollow = NodePath("AttackPath/PathFollow2D")
 PositionInPathOverAttackTime = SubResource("Curve_awxei")
@@ -77,6 +78,7 @@ curve = SubResource("Curve2D_lj0cf")
 [node name="PathFollow2D" type="PathFollow2D" parent="AttackPath" unique_id=90330482]
 position = Vector2(-0.5, -0.5)
 rotation = 0.021273386
+loop = false
 
 [node name="HitBox" parent="." unique_id=187917931 instance=ExtResource("5_awxei")]
 
@@ -91,3 +93,4 @@ texture = ExtResource("6_hopsy")
 curve = SubResource("Curve2D_hopsy")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="BodyPath" unique_id=610742674]
+loop = false

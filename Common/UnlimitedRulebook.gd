@@ -27,6 +27,13 @@ enum ItemAttribute{
 	Quest,
 }
 
+enum MeleeAnimation{
+	Null,
+	Stab1,
+	Romance1,
+	idk,
+}
+
 #####Make this better sometime, these are signals for dialogue events
 signal NanaDialogueEndedBossFightStart
 

@@ -2,6 +2,7 @@ extends State
 
 func Start():
 	stateOwner.velocity.x = 0
+	ProcessAnimation(UnlimitedRulebook.playerWeapon.AttackAnimation)
 	var pweapon = UnlimitedRulebook.playerWeapon
 	var time = (pweapon.WindUpTime+pweapon.RecoveryTime+pweapon.AttackTime)
 	await get_tree().create_timer(time).timeout
@@ -10,4 +11,14 @@ func Start():
 func PhysicsProcess(_delta):
 	#stateOwner.velocity.x = 0
 	stateOwner.move_and_slide()
-	
+
+func ProcessAnimation(mAnimation : UnlimitedRulebook.MeleeAnimation):
+	var animator = stateOwner.anima
+	animator.stop()
+	match mAnimation:
+		UnlimitedRulebook.MeleeAnimation.Null:
+			pass
+		UnlimitedRulebook.MeleeAnimation.Stab1:
+			animator.play("stab1")
+		UnlimitedRulebook.MeleeAnimation.Romance1:
+			animator.play("fall")

@@ -13,6 +13,7 @@ const WhichLayerBlocksBullets : int = 3
 @export var RecoveryTime : float = 0.5
 
 @export var Hit_Box : Area2D
+@export var AttackAnimation : UnlimitedRulebook.MeleeAnimation
 
 @export var MeleeAttackPath : Path2D
 @export var MeleeAttackPathFollow : PathFollow2D
