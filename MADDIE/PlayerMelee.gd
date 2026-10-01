@@ -4,68 +4,59 @@ class_name PlayerMelee extends Node2D
 
 var Sprite : Sprite2D
 var TimeSinceShot : float = 0
-
 const WhichLayerBlocksBullets : int = 3
 
 @export_category("MELEE ATTACK COMPONENTS")
-@export var WindUpTime : float = 0.5
-@export var AttackTime : float = 1.0
-@export var RecoveryTime : float = 0.5
-
-@export var Hit_Box : Area2D
-@export var AttackAnimation : UnlimitedRulebook.MeleeAnimation
-
-@export var MeleeAttackPath : Path2D
-@export var MeleeAttackPathFollow : PathFollow2D
-@export var PositionInPathOverAttackTime : Curve
-@export var ScaleOverAttackTime : Curve
+@export var Attacks : Array[MeleeAttack]
+@export var CurrentAttack : MeleeAttack
+var AttackIndex : int = 0
 
 var BaseBodyPosition : Vector2
 var Body : Node2D
-@export var BodyAttackPath : Path2D
-@export var BodyAttackPathFollow : PathFollow2D
-@export var BodyPositionInPathOverAttackTime : Curve
 
 var AttackSigmaDelta : float = 0
 var IsAttacking : bool = false
-
+var IsRecovering : bool = false
+var AttackQueued : bool = false
+var CanChainAttack : bool = false
 @export_category("Data")
-@export var GunTexture : Texture2D:
-	set(NewText):
-		GunTexture = NewText
-		ChangeGunPreview()
+#@export var GunTexture : Texture2D:
+	#set(NewText):
+		#GunTexture = NewText
+		#ChangeGunPreview()
 @export var TimeBetweenShots : float = 1
 @export var Crosshair : PackedScene
-
-@export_category("Key Points")
-var PivotPoint : Vector2:
-	set(NewValue):
-		PivotPoint = NewValue
-		if(Engine.is_editor_hint()):
-			if(PivotPointHelperGizmo!=null):
-				PivotPointHelperGizmo.Pos = NewValue
-
-var FirePoint : Vector2:
-	set(NewValue):
-		FirePoint = NewValue
-		if(Engine.is_editor_hint()):
-			if(FirePointHelperGizmo!=null):
-				FirePointHelperGizmo.Pos = NewValue
-
-var GunPoint : Vector2:
-	set(NewValue):
-		GunPoint = NewValue
-		if(Engine.is_editor_hint()):
-			if(GunPreviewHelperGizmo!=null):
-				GunPreviewHelperGizmo.Pos = NewValue
+#
+#@export_category("Key Points")
+#var PivotPoint : Vector2:
+	#set(NewValue):
+		#PivotPoint = NewValue
+		#if(Engine.is_editor_hint()):
+			#if(PivotPointHelperGizmo!=null):
+				#PivotPointHelperGizmo.Pos = NewValue
+#
+#var FirePoint : Vector2:
+	#set(NewValue):
+		#FirePoint = NewValue
+		#if(Engine.is_editor_hint()):
+			#if(FirePointHelperGizmo!=null):
+				#FirePointHelperGizmo.Pos = NewValue
+#
+#var GunPoint : Vector2:
+	#set(NewValue):
+		#GunPoint = NewValue
+		#if(Engine.is_editor_hint()):
+			#if(GunPreviewHelperGizmo!=null):
+				#GunPreviewHelperGizmo.Pos = NewValue
 
 func _ready() -> void:
-	if(Engine.is_editor_hint()):
-		CreateEditorGizmos()
-	else:
-		if(GunPreviewSprite!=null):
-			GunPreviewSprite.queue_free()
-		ConstructGun()
+	#if(Engine.is_editor_hint()):
+		#CreateEditorGizmos()
+	#else:
+		#if(GunPreviewSprite!=null):
+			#GunPreviewSprite.queue_free()
+		##ConstructGun()
+	Sprite = Sprite2D.new()
 	UnlimitedRulebook.playerWeapon = self
 	Body = UnlimitedRulebook.player
 	SetCrosshairScaleAppropiateToSpread()
@@ -77,40 +68,40 @@ func SetCrosshairScaleAppropiateToSpread():
 		CrosshairNode.get_node("Sprite2D").scale = Vector2.ONE #* (HitscanBulletSpread/16)
 
 func _process(delta: float) -> void:
-	if(Engine.is_editor_hint()):
-		FirePoint = FirePointHelperGizmo.global_position
-		PivotPoint = PivotPointHelperGizmo.global_position
-		GunPoint = GunPreviewHelperGizmo.global_position
-		return
+	#if(Engine.is_editor_hint()):
+		#FirePoint = FirePointHelperGizmo.global_position
+		#PivotPoint = PivotPointHelperGizmo.global_position
+		#GunPoint = GunPreviewHelperGizmo.global_position
+		#return
 	
 	if(!IsAttacking):
-		if(Hit_Box.monitoring):
-			Hit_Box.monitoring = false
+		if(CurrentAttack.Hit_Box.monitoring):
+			CurrentAttack.Hit_Box.monitoring = false
 		TimeSinceShot += delta
 	else:
 		AttackSigmaDelta += delta
 		
-		BodyAttackPathFollow.progress_ratio = BodyPositionInPathOverAttackTime.sample_baked(AttackSigmaDelta)/(WindUpTime+RecoveryTime+AttackTime)
-		if(AttackSigmaDelta<WindUpTime+RecoveryTime+AttackTime):
+		CurrentAttack.BodyAttackPathFollow.progress_ratio = CurrentAttack.BodyPositionInPathOverAttackTime.sample_baked(AttackSigmaDelta)/(CurrentAttack.WindUpTime+CurrentAttack.RecoveryTime+CurrentAttack.AttackTime)
+		if(AttackSigmaDelta<CurrentAttack.WindUpTime+CurrentAttack.RecoveryTime+CurrentAttack.AttackTime):
 			#Body.global_position = BaseBodyPosition + (Body.dir * BodyAttackPathFollow.position)
-			var BodyPos = BodyAttackPathFollow.position
+			var BodyPos = CurrentAttack.BodyAttackPathFollow.position
 			if(Body.dir < 0):
 				BodyPos.x *= -1
 			if(Body.dir > 0):
 				BodyPos.x *= 1
 			Body.global_position = BaseBodyPosition + (BodyPos)
 	
-		Hit_Box.scale = Vector2.ONE * ScaleOverAttackTime.sample_baked(AttackSigmaDelta)
-		MeleeAttackPathFollow.progress_ratio = PositionInPathOverAttackTime.sample_baked(AttackSigmaDelta)/(WindUpTime+RecoveryTime+AttackTime)
-		Hit_Box.global_position = MeleeAttackPathFollow.global_position
+		CurrentAttack.Hit_Box.scale = Vector2.ONE * CurrentAttack.ScaleOverAttackTime.sample_baked(AttackSigmaDelta)
+		CurrentAttack.MeleeAttackPathFollow.progress_ratio = CurrentAttack.PositionInPathOverAttackTime.sample_baked(AttackSigmaDelta)/(CurrentAttack.WindUpTime+CurrentAttack.RecoveryTime+CurrentAttack.AttackTime)
+		CurrentAttack.Hit_Box.global_position = CurrentAttack.MeleeAttackPathFollow.global_position
 
-## Before this function is called the sprite is an editor-only preview
-func ConstructGun():
-	Sprite = Sprite2D.new()
-	add_child(Sprite)
-	Sprite.offset = PivotPoint
-	Sprite.position = GunPoint
-	Sprite.texture = GunTexture
+### Before this function is called the sprite is an editor-only preview
+#func ConstructGun():
+	#Sprite = Sprite2D.new()
+	#add_child(Sprite)`
+	#Sprite.offset = PivotPoint
+	#Sprite.position = GunPoint
+	#Sprite.texture = GunTexture
 
 func Use():
 	if(CheckIfCanShoot()):
@@ -118,11 +109,14 @@ func Use():
 		return true
 		#UnlimitedRulebook.player.melee_helper.Attack()
 	else:
-		print("SHOOT DISALLOWED")
+		#print("SHOOT DISALLOWED")
 		return false
 		#print("Wait More Time Before Shooting Again")
 
 func CheckIfCanShoot():
+	if(CanChainAttack):
+		AttackQueued = true
+		return false
 	if(UnlimitedRulebook.player.machine.get_state() in ["talk","cutscene"]):
 		return false
 	if(TimeSinceShot>=TimeBetweenShots):
@@ -137,71 +131,109 @@ func Shoot():
 	WindUp()
 
 func WindUp():
-	get_tree().create_timer(WindUpTime).timeout.connect(Attack)
+	get_tree().create_timer(CurrentAttack.WindUpTime).timeout.connect(Attack)
 
 func Attack():
-	Hit_Box.monitoring = true
-	get_tree().create_timer(AttackTime).timeout.connect(Recovery)
+	CurrentAttack.Hit_Box.monitoring = true
+	get_tree().create_timer(CurrentAttack.AttackTime).timeout.connect(Recovery)
 
 func Recovery():
-	get_tree().create_timer(RecoveryTime).timeout.connect(RecoveryFinished)
+	IsRecovering = true
+	CurrentAttack.Hit_Box.monitoring = false
+	CanChainAttack = true
+	get_tree().create_timer(CurrentAttack.RecoveryTime).timeout.connect(RecoveryFinished)
 
 func RecoveryFinished():
+	if(AttackQueued):
+		ChainAttack()
+		return
+	IsRecovering = false
 	IsAttacking = false
 	AttackSigmaDelta = 0
+	get_tree().create_timer(CurrentAttack.AttackChainTime).timeout.connect(CloseChainAttackWindow)
+
+func CloseChainAttackWindow():
+	CanChainAttack = false
+	if(!didChain):
+		CycleAttack(0)
+		AttackQueued = false
+	else:
+		didChain = false
+
 	#Body.global_position = BaseBodyPosition + BodyAttackPath.curve.sample_baked(0.99)
-
-#region Editor Only
-#Editor Only
-@export var FirePointHelperGizmo : HelperGizmo
-@export var PivotPointHelperGizmo : HelperGizmo
-@export var GunPreviewHelperGizmo : HelperGizmo
-@export var GunPreviewSprite : Sprite2D
-
-func CreateEditorGizmos():
-	if(!has_node("Fire Point")):
-		FirePointHelperGizmo = HelperGizmo.new("Fire Point")
-		add_child(FirePointHelperGizmo)
-		FirePointHelperGizmo.Pos = FirePoint
+var didChain : bool = false
+func ChainAttack():
+	AttackIndex += 1
+	AttackQueued = false
+	if(AttackIndex>Attacks.size()-1):
+		AttackIndex = 0
+		CycleAttack(0)
+		AttackQueued = false
+		
+		RecoveryFinished()
 	else:
-		FirePointHelperGizmo = get_node("Fire Point") as HelperGizmo
-		FirePoint = FirePointHelperGizmo.global_position
-	
-	if(!has_node("Pivot Point")):
-		PivotPointHelperGizmo = HelperGizmo.new("Pivot Point")
-		add_child(PivotPointHelperGizmo)
-		PivotPointHelperGizmo.Pos = PivotPoint
-	else:
-		PivotPointHelperGizmo = get_node("Pivot Point") as HelperGizmo
-		PivotPoint = PivotPointHelperGizmo.global_position
-	
-	if(!has_node("Pivot Point/Gun Preview")):
-		GunPreviewHelperGizmo = HelperGizmo.new("Gun Preview")
-		if(GunTexture!=null):
-			ChangeGunPreview()
-		PivotPointHelperGizmo.add_child(GunPreviewHelperGizmo)
-		GunPreviewHelperGizmo.Pos = PivotPoint
-	else:
-		GunPreviewHelperGizmo = get_node("Pivot Point/Gun Preview") as HelperGizmo
-		GunPoint = GunPreviewHelperGizmo.global_position
-		if(GunTexture!=null):
-			ChangeGunPreview()
+		CycleAttack(AttackIndex)
+		didChain = true
+		AttackSigmaDelta = 0
+		UnlimitedRulebook.player.machine.change_state_to("meleeAttack")
+		Shoot()
 
-func ChangeGunPreview():
-	if(Engine.is_editor_hint()):
-		if(GunPreviewSprite==null):
-			GunPreviewSprite = Sprite2D.new()
-			GunPreviewHelperGizmo.add_child(GunPreviewSprite)
-			GunPreviewSprite.position = Vector2.ZERO
-		GunPreviewSprite.texture = GunTexture
-	else:
-		if(GunPreviewSprite!=null):
-			GunPreviewSprite.queue_free()
-			GunPreviewSprite=null
-
-###FOR DROPDOWN-CHECKBOXES
-func _validate_property(property: Dictionary) -> void:
-	pass
+func CycleAttack(towhichattack : int):
+	#clear old attack
+	#make new
+	CurrentAttack = Attacks[towhichattack]
+#
+##region Editor Only
+##Editor Only
+#@export var FirePointHelperGizmo : HelperGizmo
+#@export var PivotPointHelperGizmo : HelperGizmo
+#@export var GunPreviewHelperGizmo : HelperGizmo
+#@export var GunPreviewSprite : Sprite2D
+#
+#func CreateEditorGizmos():
+	#if(!has_node("Fire Point")):
+		#FirePointHelperGizmo = HelperGizmo.new("Fire Point")
+		#add_child(FirePointHelperGizmo)
+		#FirePointHelperGizmo.Pos = FirePoint
+	#else:
+		#FirePointHelperGizmo = get_node("Fire Point") as HelperGizmo
+		#FirePoint = FirePointHelperGizmo.global_position
+	#
+	#if(!has_node("Pivot Point")):
+		#PivotPointHelperGizmo = HelperGizmo.new("Pivot Point")
+		#add_child(PivotPointHelperGizmo)
+		#PivotPointHelperGizmo.Pos = PivotPoint
+	#else:
+		#PivotPointHelperGizmo = get_node("Pivot Point") as HelperGizmo
+		#PivotPoint = PivotPointHelperGizmo.global_position
+	#
+	#if(!has_node("Pivot Point/Gun Preview")):
+		#GunPreviewHelperGizmo = HelperGizmo.new("Gun Preview")
+		#if(GunTexture!=null):
+			#ChangeGunPreview()
+		#PivotPointHelperGizmo.add_child(GunPreviewHelperGizmo)
+		#GunPreviewHelperGizmo.Pos = PivotPoint
+	#else:
+		#GunPreviewHelperGizmo = get_node("Pivot Point/Gun Preview") as HelperGizmo
+		#GunPoint = GunPreviewHelperGizmo.global_position
+		#if(GunTexture!=null):
+			#ChangeGunPreview()
+#
+#func ChangeGunPreview():
+	#if(Engine.is_editor_hint()):
+		#if(GunPreviewSprite==null):
+			#GunPreviewSprite = Sprite2D.new()
+			#GunPreviewHelperGizmo.add_child(GunPreviewSprite)
+			#GunPreviewSprite.position = Vector2.ZERO
+		#GunPreviewSprite.texture = GunTexture
+	#else:
+		#if(GunPreviewSprite!=null):
+			#GunPreviewSprite.queue_free()
+			#GunPreviewSprite=null
+#
+####FOR DROPDOWN-CHECKBOXES
+#func _validate_property(property: Dictionary) -> void:
+	#pass
 	#for i in BulletProperties:
 		#if(property.name == i && !DoShootProjectile):
 			#property.usage |= PROPERTY_USAGE_NONE

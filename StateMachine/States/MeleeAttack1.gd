@@ -2,9 +2,9 @@ extends State
 
 func Start():
 	stateOwner.velocity.x = 0
-	ProcessAnimation(UnlimitedRulebook.playerWeapon.AttackAnimation)
+	ProcessAnimation(UnlimitedRulebook.playerWeapon.CurrentAttack.AttackAnimation)
 	var pweapon = UnlimitedRulebook.playerWeapon
-	var time = (pweapon.WindUpTime+pweapon.RecoveryTime+pweapon.AttackTime)
+	var time = (pweapon.CurrentAttack.WindUpTime+pweapon.CurrentAttack.RecoveryTime+pweapon.CurrentAttack.AttackTime)
 	await get_tree().create_timer(time).timeout
 	machine.change_state_to("idle")
 

@@ -730,6 +730,9 @@ size = Vector2(42, 69)
 [node name="Player" type="CharacterBody2D" unique_id=779898413 groups=["player"]]
 script = ExtResource("1_l8h54")
 
+[node name="MeleeWeaponParent" type="Node2D" parent="." unique_id=498292919]
+position = Vector2(0, -45)
+
 [node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("2_od3ui")]
 MAX_HEALTH = 100.0
 health = 100.0
@@ -756,9 +759,6 @@ healthComp = NodePath("../../HealthComp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/HurtBox" unique_id=866720104]
 position = Vector2(0, -43)
 shape = SubResource("CapsuleShape2D_od3ui")
-
-[node name="MeleeWeaponParent" type="Node2D" parent="Marker2D" unique_id=498292919]
-position = Vector2(0, -45)
 
 [node name="StateMachine" parent="." unique_id=29357077 node_paths=PackedStringArray("initialState") instance=ExtResource("2_k53q1")]
 initialState = NodePath("Idle")
@@ -795,7 +795,7 @@ canOnlyTransitionTo = PackedStringArray("idle", "gunWalk", "roll", "jump", "Mele
 
 [node name="MeleeAttack" parent="StateMachine" unique_id=1923569428 instance=ExtResource("25_8viyr")]
 script = ExtResource("27_efx54")
-canOnlyTransitionTo = PackedStringArray("idle")
+canOnlyTransitionTo = PackedStringArray("idle", "meleeAttack")
 
 [node name="Hook" parent="StateMachine" unique_id=1990031089 instance=ExtResource("36_f4lon")]
 
@@ -853,7 +853,7 @@ inventory_hud = NodePath("../InventoryDisplayer")
 
 [node name="PlayerWeaponsAndTools" type="Node" parent="." unique_id=781864843 node_paths=PackedStringArray("MeleeHoldParent", "RangedHoldParent", "PlayerInventoryComponent", "PlayerStateMachine", "MeleeableStates", "RangeeableStates")]
 script = ExtResource("40_8ynux")
-MeleeHoldParent = NodePath("../Marker2D/MeleeWeaponParent")
+MeleeHoldParent = NodePath("../MeleeWeaponParent")
 RangedHoldParent = NodePath("../IKArmPlayer/Skeleton2D/UpperArm/ForeArm/RangedWeaponParent")
 PlayerInventoryComponent = NodePath("../PlayerInventoryComponent")
 PlayerStateMachine = NodePath("../StateMachine")

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bjxk5mlmgk2uf"]
+
+[ext_resource type="Script" uid="uid://ww4q0kgox3xk" path="res://MADDIE/MeleeAttack.gd" id="1_xo53j"]
+[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="2_v2v3p"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="3_hyyse"]
+
+[sub_resource type="Curve2D" id="Curve2D_v2v3p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -0.5, -0.5, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 37.5, -14.5, 0, 0, 0, 0, -0.5, 0)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_hyyse"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lb3t1"]
+radius = 16.0
+
+[node name="MeleeAttack" type="Node2D" unique_id=456058279]
+script = ExtResource("1_xo53j")
+
+[node name="AttackPath" type="Path2D" parent="." unique_id=1403965372]
+curve = SubResource("Curve2D_v2v3p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="AttackPath" unique_id=402669630]
+position = Vector2(-0.5, -0.5)
+rotation = 0.021273386
+loop = false
+
+[node name="BodyPath" type="Path2D" parent="." unique_id=36384264]
+curve = SubResource("Curve2D_hyyse")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="BodyPath" unique_id=824441172]
+loop = false
+
+[node name="HitBox" parent="." unique_id=187917931 instance=ExtResource("2_v2v3p")]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1960100638]
+shape = SubResource("CircleShape2D_lb3t1")
+
+[node name="Sprite2D" type="Sprite2D" parent="HitBox" unique_id=1234113136]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_hyyse")
