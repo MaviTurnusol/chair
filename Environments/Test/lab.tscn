@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://dkhw0k8ijjhy8"]
 
 [ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://Environments/Test/koridor5w1.png" id="1_7xo5u"]
-[ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="1_gtdyc"]
 [ext_resource type="Texture2D" uid="uid://d2wi5tl1myxoo" path="res://Dialogues/Characters/hatsunemiku.png" id="1_qieeq"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/vignette.gdshader" id="1_w1gcx"]
 [ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/Test/koridor5w1_n.png" id="2_w1gcx"]
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Actionable.tscn" id="2_y3jmy"]
 [ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/testDialogue.dialogue" id="3_7xo5u"]
-[ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="4_w1gcx"]
-[ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="5_gbuu4"]
 [ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://MADDIE/nana_silhouette_1.png" id="9_ktjvv"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_gbuu4"]
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Wormy/CeilingWorm.tscn" id="13_esouf"]
@@ -158,13 +155,6 @@ shape = SubResource("RectangleShape2D_6refc")
 position = Vector2(453, 67)
 shape = SubResource("RectangleShape2D_6refc")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=639033392 node_paths=PackedStringArray("target")]
-position = Vector2(170, 270)
-process_callback = 0
-position_smoothing_enabled = true
-script = ExtResource("4_w1gcx")
-target = NodePath("../Player/camTarget")
-
 [node name="Nana1" type="Sprite2D" parent="." unique_id=1307031169]
 position = Vector2(275, 238)
 texture = ExtResource("16_2wxxo")
@@ -172,14 +162,6 @@ texture = ExtResource("16_2wxxo")
 [node name="PointLight2D" type="PointLight2D" parent="Nana1" unique_id=2106200763]
 blend_mode = 2
 texture = ExtResource("9_ktjvv")
-
-[node name="Player" parent="." unique_id=779898413 instance=ExtResource("1_gtdyc")]
-modulate = Color(0.5, 0.5, 0.5, 1)
-position = Vector2(170, 270)
-
-[node name="camTarget" type="Node2D" parent="Player" unique_id=255049655]
-position = Vector2(0, -69.33334)
-script = ExtResource("5_gbuu4")
 
 [node name="LedLight" parent="." unique_id=2003837725 instance=ExtResource("10_gbuu4")]
 position = Vector2(261, 113)

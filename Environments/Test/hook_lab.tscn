@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://de7vd21bnh3rn"]
 
 [ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="1_jkfd2"]
-[ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="2_2k8j5"]
-[ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="2_g253a"]
-[ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="3_g253a"]
 [ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Environments/hookable_position.tscn" id="6_ajgnu"]
 [ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/Cursor.tscn" id="7_e2aq0"]
 
@@ -46,21 +43,6 @@ shape = SubResource("RectangleShape2D_pjrn0")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=2104983109]
 position = Vector2(585, 791.5)
 shape = SubResource("RectangleShape2D_ajgnu")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=277998935 node_paths=PackedStringArray("target")]
-position = Vector2(170, 270)
-process_callback = 0
-position_smoothing_enabled = true
-script = ExtResource("2_g253a")
-target = NodePath("../Player/camTarget")
-
-[node name="Player" parent="." unique_id=779898413 instance=ExtResource("2_2k8j5")]
-modulate = Color(0.5, 0.5, 0.5, 1)
-position = Vector2(240, 810)
-
-[node name="camTarget" type="Node2D" parent="Player" unique_id=950062917]
-position = Vector2(0, -69.33334)
-script = ExtResource("3_g253a")
 
 [node name="hookablePosition" parent="." unique_id=649971908 instance=ExtResource("6_ajgnu")]
 position = Vector2(585, 697)
