@@ -5,5 +5,6 @@ func action():
 	inventory_displayer.visible = !inventory_displayer.visible
 
 func _process(delta: float) -> void:
-	if(UnlimitedRulebook.player.global_position.distance_to(global_position)>PlayerMaxRange):
-		inventory_displayer.visible = false
+	if(UnlimitedRulebook.player):
+		if(UnlimitedRulebook.player.global_position.distance_to(global_position)>PlayerMaxRange):
+			inventory_displayer.visible = false

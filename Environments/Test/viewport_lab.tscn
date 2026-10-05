@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dt2voiy38cchi"]
 
+[ext_resource type="Script" uid="uid://8tj1i7ksiugd" path="res://Environments/Test/SubviewportSwitcher.gd" id="1_ranql"]
 [ext_resource type="PackedScene" uid="uid://de7vd21bnh3rn" path="res://Environments/Test/hook_lab.tscn" id="1_xjayh"]
 [ext_resource type="PackedScene" uid="uid://dkhw0k8ijjhy8" path="res://Environments/Test/lab.tscn" id="2_lgyqr"]
 [ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="3_ayey4"]
@@ -8,21 +9,14 @@
 
 [node name="ViewportLab" type="Node2D" unique_id=1582361756]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=287254245]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=287254245 node_paths=PackedStringArray("plyr", "camer")]
 texture_repeat = 2
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(3, 3)
-
-[node name="SubViewport2" type="SubViewport" parent="SubViewportContainer" unique_id=804619532]
-handle_input_locally = false
-snap_2d_transforms_to_pixel = true
-canvas_item_default_texture_repeat = 1
-size = Vector2i(640, 360)
-render_target_update_mode = 4
-
-[node name="Lab" parent="SubViewportContainer/SubViewport2" unique_id=775964121 instance=ExtResource("2_lgyqr")]
-visible = false
+script = ExtResource("1_ranql")
+plyr = NodePath("SubViewport2/Lab/Player2")
+camer = NodePath("SubViewport2/Lab/Camera2D2")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=430924171]
 handle_input_locally = false
@@ -33,15 +27,29 @@ render_target_update_mode = 4
 
 [node name="HookLab" parent="SubViewportContainer/SubViewport" unique_id=622899540 instance=ExtResource("1_xjayh")]
 
-[node name="Player" parent="SubViewportContainer/SubViewport/HookLab" unique_id=779898413 instance=ExtResource("3_ayey4")]
-modulate = Color(0.5, 0.5, 0.5, 1)
-position = Vector2(79.33333, 228.33331)
+[node name="SubViewport2" type="SubViewport" parent="SubViewportContainer" unique_id=804619532]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+canvas_item_default_texture_repeat = 1
+size = Vector2i(640, 360)
+render_target_update_mode = 4
 
-[node name="camTarget" type="Node2D" parent="SubViewportContainer/SubViewport/HookLab/Player" unique_id=1179107]
+[node name="Lab" parent="SubViewportContainer/SubViewport2" unique_id=775964121 instance=ExtResource("2_lgyqr")]
+
+[node name="Player2" parent="SubViewportContainer/SubViewport2/Lab" unique_id=779898413 instance=ExtResource("3_ayey4")]
+modulate = Color(0.5, 0.5, 0.5, 1)
+position = Vector2(113, 231.66667)
+
+[node name="camTarget" type="Node2D" parent="SubViewportContainer/SubViewport2/Lab/Player2" unique_id=1179107]
 position = Vector2(0, -69.33334)
 script = ExtResource("4_vy661")
 
-[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/HookLab" unique_id=414067892]
+[node name="Camera2D2" type="Camera2D" parent="SubViewportContainer/SubViewport2/Lab" unique_id=414067892]
 script = ExtResource("5_vy661")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=269823526]
+
+[node name="Label" type="Label" parent="UI" unique_id=2137994446]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Maybe we make  the ui reparent to this instead of the scene root"

@@ -16,6 +16,7 @@ size = Vector2(64, 125)
 script = ExtResource("1_jkfd2")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1658677967]
+position = Vector2(132, -573)
 
 [node name="ColorRect" type="ColorRect" parent="Sprites" unique_id=402564116]
 offset_left = -132.0
@@ -32,6 +33,7 @@ offset_bottom = 862.0
 color = Color(0, 0, 0, 1)
 
 [node name="Collisions" type="Node2D" parent="." unique_id=1583388602]
+position = Vector2(132, -573)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=1891834209]
 collision_layer = 5
@@ -45,9 +47,10 @@ position = Vector2(585, 791.5)
 shape = SubResource("RectangleShape2D_ajgnu")
 
 [node name="hookablePosition" parent="." unique_id=649971908 instance=ExtResource("6_ajgnu")]
-position = Vector2(585, 697)
+position = Vector2(717, 124)
 
 [node name="hookablePosition2" parent="." unique_id=1109479604 instance=ExtResource("6_ajgnu")]
-position = Vector2(936, 697)
+position = Vector2(1068, 124)
 
 [node name="Cursor" parent="." unique_id=354788821 instance=ExtResource("7_e2aq0")]
+position = Vector2(132, -573)

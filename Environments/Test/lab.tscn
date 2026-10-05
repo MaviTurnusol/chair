@@ -65,7 +65,7 @@ height = 109.65
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
 size = Vector2(40, 96)
 
-[sub_resource type="Resource" id="Resource_eholx"]
+[sub_resource type="Resource" id="Resource_8nl8p"]
 script = ExtResource("17_y301g")
 ItemName = "example"
 ground_tex = ExtResource("16_2wxxo")
@@ -75,7 +75,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("17_eholx")
 
-[sub_resource type="Resource" id="Resource_0syli"]
+[sub_resource type="Resource" id="Resource_och0h"]
 script = ExtResource("17_y301g")
 ground_tex = ExtResource("18_gixq4")
 inventory_tex = ExtResource("18_gixq4")
@@ -214,11 +214,11 @@ position = Vector2(1030, 223)
 
 [node name="PickupableItem" parent="The real maddie" unique_id=1324268814 instance=ExtResource("16_y301g")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_eholx")
+WhatItemAmI = SubResource("Resource_8nl8p")
 
 [node name="PickupableItem2" parent="The real maddie" unique_id=1100030553 instance=ExtResource("16_y301g")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_0syli")
+WhatItemAmI = SubResource("Resource_och0h")
 
 [node name="sceneInitializer" type="Node" parent="." unique_id=152984821]
 script = ExtResource("14_hs8mn")
@@ -283,6 +283,59 @@ InteractObject = NodePath("..")
 texture = SubResource("GradientTexture2D_y1xy0")
 
 [node name="Label" type="Label" parent="Locker" unique_id=1783365779]
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 26.0
+offset_bottom = -3.0
+text = "Locker"
+
+[node name="Locker2" type="Node2D" parent="." unique_id=43892741]
+position = Vector2(556, 219)
+script = ExtResource("21_och0h")
+PlayerMaxRange = 150.0
+
+[node name="InventoryComponent" type="Node" parent="Locker2" unique_id=950996564 node_paths=PackedStringArray("inventory_hud")]
+script = ExtResource("22_dc4ob")
+InventorySize = Vector2i(6, 6)
+inventory_hud = NodePath("../InventoryDisplayer")
+StartItems = Array[ExtResource("17_y301g")]([ExtResource("22_du6ky"), ExtResource("23_8nl8p")])
+
+[node name="InventoryDisplayer" type="CanvasLayer" parent="Locker2" unique_id=1138460974 node_paths=PackedStringArray("_InventoryComponent")]
+visible = false
+script = ExtResource("21_ycysq")
+_InventoryComponent = NodePath("../InventoryComponent")
+
+[node name="Control" type="Control" parent="Locker2/InventoryDisplayer" unique_id=1731549148]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Inventory" type="Control" parent="Locker2/InventoryDisplayer/Control" unique_id=110586645]
+anchors_preset = 0
+offset_left = 1310.0
+offset_right = 1910.0
+offset_bottom = 600.0
+
+[node name="GridContainer" type="GridContainer" parent="Locker2/InventoryDisplayer/Control/Inventory" unique_id=204165169]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractionPrompter" parent="Locker2" unique_id=520667606 node_paths=PackedStringArray("InteractObject") instance=ExtResource("26_y1xy0")]
+z_index = 1
+InteractObject = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Locker2" unique_id=1499345556]
+texture = SubResource("GradientTexture2D_y1xy0")
+
+[node name="Label" type="Label" parent="Locker2" unique_id=2140136166]
 offset_left = -26.0
 offset_top = -26.0
 offset_right = 26.0
