@@ -251,7 +251,7 @@ func ShootBullet():
 		await get_tree().create_timer(TimeBetweenBulletWaves).timeout
 
 func FireBullet():
-	var NewBullet : Area2D = Bullet.instantiate()
+	var NewBullet : Node2D = Bullet.instantiate()
 	NewBullet.global_position = to_global(FirePoint)
 	UnlimitedRulebook.currentScene.add_child(NewBullet)
 	NewBullet.global_rotation = global_rotation

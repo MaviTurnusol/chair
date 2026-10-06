@@ -1,26 +1,43 @@
 extends SubViewportContainer
 
-var SubviewportChildren : Array[SubViewport]
+var LoadedScenes : Array[RoomParent]
 
 @export var plyr : Player
 @export var camer : Camera2D
 
+@export var StartingLoadedRoom : String
+
+func GetActiveScene():
+	return LoadedScenes[0]
+
 func _ready() -> void:
-	RegetAllChildren()
+	LoadScene("Lab")
+	LoadScene("Hook Lab")
+	LoadScene("Nana Boss Fight")
 
 func RegetAllChildren():
-	SubviewportChildren.clear()
+	LoadedScenes.clear()
 	for c in get_children():
-		if(c is SubViewport):
-			SubviewportChildren.append(c)
+		if(c is RoomParent):
+			LoadedScenes.append(c)
+	
 
 func  _input(event: InputEvent) -> void:
-	return
-	if(event.is_action_pressed("attack")):
+	if(event.is_action_pressed("switchscene")):
 		RegetAllChildren()
 		SetActiveScene()
 
 func SetActiveScene():
-	plyr.reparent(SubviewportChildren[0])
-	camer.reparent(SubviewportChildren[0])
-	move_child(SubviewportChildren[0],-1)
+	UnlimitedRulebook.currentScene = LoadedScenes[0]
+	plyr.reparent(LoadedScenes[0])
+	camer.reparent(LoadedScenes[0])
+	move_child(LoadedScenes[0],-1)
+
+func LoadScene(SceneName : String):
+	var NewRoom : RoomParent = RoomParent.new()
+	NewRoom.room = SceneManager.RoomDict[SceneName]
+	add_child(NewRoom)
+	RegetAllChildren()
+	await get_tree().process_frame
+	SetActiveScene()
+	

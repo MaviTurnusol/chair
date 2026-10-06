@@ -1,51 +1,20 @@
 [gd_scene format=3 uid="uid://dt2voiy38cchi"]
 
 [ext_resource type="Script" uid="uid://8tj1i7ksiugd" path="res://Environments/Test/SubviewportSwitcher.gd" id="1_ranql"]
-[ext_resource type="PackedScene" uid="uid://de7vd21bnh3rn" path="res://Environments/Test/hook_lab.tscn" id="1_xjayh"]
-[ext_resource type="PackedScene" uid="uid://dkhw0k8ijjhy8" path="res://Environments/Test/lab.tscn" id="2_lgyqr"]
 [ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="3_ayey4"]
 [ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="4_vy661"]
 [ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="5_vy661"]
 
 [node name="ViewportLab" type="Node2D" unique_id=1582361756]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=287254245 node_paths=PackedStringArray("plyr", "camer")]
+[node name="RoomGod" type="SubViewportContainer" parent="." unique_id=287254245 node_paths=PackedStringArray("plyr", "camer")]
 texture_repeat = 2
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(3, 3)
 script = ExtResource("1_ranql")
-plyr = NodePath("SubViewport2/Lab/Player2")
-camer = NodePath("SubViewport2/Lab/Camera2D2")
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=430924171]
-handle_input_locally = false
-snap_2d_transforms_to_pixel = true
-canvas_item_default_texture_repeat = 1
-size = Vector2i(640, 360)
-render_target_update_mode = 4
-
-[node name="HookLab" parent="SubViewportContainer/SubViewport" unique_id=622899540 instance=ExtResource("1_xjayh")]
-
-[node name="SubViewport2" type="SubViewport" parent="SubViewportContainer" unique_id=804619532]
-handle_input_locally = false
-snap_2d_transforms_to_pixel = true
-canvas_item_default_texture_repeat = 1
-size = Vector2i(640, 360)
-render_target_update_mode = 4
-
-[node name="Lab" parent="SubViewportContainer/SubViewport2" unique_id=775964121 instance=ExtResource("2_lgyqr")]
-
-[node name="Player2" parent="SubViewportContainer/SubViewport2/Lab" unique_id=779898413 instance=ExtResource("3_ayey4")]
-modulate = Color(0.5, 0.5, 0.5, 1)
-position = Vector2(113, 231.66667)
-
-[node name="camTarget" type="Node2D" parent="SubViewportContainer/SubViewport2/Lab/Player2" unique_id=1179107]
-position = Vector2(0, -69.33334)
-script = ExtResource("4_vy661")
-
-[node name="Camera2D2" type="Camera2D" parent="SubViewportContainer/SubViewport2/Lab" unique_id=414067892]
-script = ExtResource("5_vy661")
+plyr = NodePath("../Player2")
+camer = NodePath("../Camera2D2")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=269823526]
 
@@ -53,3 +22,14 @@ script = ExtResource("5_vy661")
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Maybe we make  the ui reparent to this instead of the scene root"
+
+[node name="Player2" parent="." unique_id=779898413 instance=ExtResource("3_ayey4")]
+modulate = Color(0.5, 0.5, 0.5, 1)
+position = Vector2(113, 231.66667)
+
+[node name="camTarget" type="Node2D" parent="Player2" unique_id=1179107]
+position = Vector2(0, -69.33334)
+script = ExtResource("4_vy661")
+
+[node name="Camera2D2" type="Camera2D" parent="." unique_id=414067892]
+script = ExtResource("5_vy661")

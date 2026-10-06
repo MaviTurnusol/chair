@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bpwddkq74vscf"]
+
+[ext_resource type="Script" uid="uid://bl7ahucvhbqfy" path="res://BigGuns/PlayerBullet2.gd" id="1_ii6jf"]
+[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="2_shwse"]
+
+[sub_resource type="Gradient" id="Gradient_u56je"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.76578677, 0.117823236, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qwfmr"]
+gradient = SubResource("Gradient_u56je")
+width = 16
+height = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vhep4"]
+radius = 16.0
+
+[node name="ProjectileBullet" type="Node2D" unique_id=2097256047 groups=["Bullet"]]
+script = ExtResource("1_ii6jf")
+
+[node name="BulletSprite" type="Sprite2D" parent="." unique_id=1794019888]
+texture = SubResource("GradientTexture2D_qwfmr")
+
+[node name="HitBox" parent="." unique_id=187917931 instance=ExtResource("2_shwse")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=608322131]
+shape = SubResource("CircleShape2D_vhep4")

@@ -2,15 +2,11 @@
 
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/vignette.gdshader" id="1_itcny"]
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Actionable.tscn" id="3_xe74q"]
-[ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="5_rqrfy"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/nana1.png" id="6_ivb18"]
 [ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://MADDIE/nana_silhouette_1.png" id="7_mmuvu"]
-[ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="8_ikjqk"]
-[ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="9_2n7tg"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_4s2yy"]
 [ext_resource type="Resource" uid="uid://cx6kuth4rk3v4" path="res://MADDIE/testnanaboss1.dialogue" id="10_mm1ir"]
 [ext_resource type="Script" uid="uid://cj5jewgd12t6" path="res://MADDIE/debug_deletethiswithnocrucialeffectbossfightstart.gd" id="11_nyqwe"]
-[ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="14_vwgln"]
 
 [sub_resource type="Environment" id="Environment_0g1q7"]
 background_mode = 3
@@ -117,20 +113,6 @@ position = Vector2(579, 0)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_q6i0n")
 
-[node name="Player" parent="." unique_id=779898413 instance=ExtResource("8_ikjqk")]
-modulate = Color(0.5, 0.5, 0.5, 1)
-position = Vector2(170, 270)
-
-[node name="camTarget" type="Node2D" parent="Player" unique_id=1942104171]
-position = Vector2(0, -69.33334)
-script = ExtResource("9_2n7tg")
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=749505008]
-position = Vector2(170, 270)
-process_callback = 0
-position_smoothing_enabled = true
-script = ExtResource("5_rqrfy")
-
 [node name="LedLight" parent="." unique_id=2003837725 instance=ExtResource("10_4s2yy")]
 position = Vector2(711, 527)
 
@@ -139,9 +121,6 @@ position = Vector2(405, 68)
 
 [node name="LedLight2" parent="." unique_id=10132843 instance=ExtResource("10_4s2yy")]
 position = Vector2(111, 497)
-
-[node name="sceneInitializer" type="Node" parent="." unique_id=859827278]
-script = ExtResource("14_vwgln")
 
 [node name="Nana1" type="Sprite2D" parent="." unique_id=1155605111]
 position = Vector2(392, 236)

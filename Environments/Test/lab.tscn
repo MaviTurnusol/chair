@@ -11,9 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Wormy/CeilingWorm.tscn" id="13_esouf"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="13_hs8mn"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
-[ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="14_hs8mn"]
 [ext_resource type="Script" uid="uid://ci3kpfsla23mb" path="res://MADDIE/MaddieDoor.gd" id="15_lh5rw"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/nana1.png" id="16_2wxxo"]
+[ext_resource type="PackedScene" uid="uid://bvt72vdia2itb" path="res://Weapons/ProjectileGun.tscn" id="16_och0h"]
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://MADDIE/Inventory/PickupableItem.tscn" id="16_y301g"]
 [ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://MADDIE/player_melee_test.tscn" id="17_eholx"]
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="17_y301g"]
@@ -74,6 +74,22 @@ inv_scalemulti = 1.5
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("17_eholx")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aji2t"]
+load_path = "res://.godot/imported/nana1.png-a4e5770ef0326fcefa6beca20d4dc203.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_helpb"]
+load_path = "res://.godot/imported/nana1.png-a4e5770ef0326fcefa6beca20d4dc203.ctex"
+
+[sub_resource type="Resource" id="Resource_bkcvn"]
+script = ExtResource("17_y301g")
+ItemName = "example"
+ground_tex = SubResource("CompressedTexture2D_aji2t")
+inventory_tex = SubResource("CompressedTexture2D_helpb")
+inv_scalemulti = 1.5
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
+ItemAttributes = Array[int]([2])
+AssociatedScene = ExtResource("16_och0h")
 
 [sub_resource type="Resource" id="Resource_och0h"]
 script = ExtResource("17_y301g")
@@ -216,12 +232,13 @@ position = Vector2(1030, 223)
 position = Vector2(113, 229)
 WhatItemAmI = SubResource("Resource_8nl8p")
 
+[node name="PickupableItem3" parent="The real maddie" unique_id=233581645 instance=ExtResource("16_y301g")]
+position = Vector2(1001, 238)
+WhatItemAmI = SubResource("Resource_bkcvn")
+
 [node name="PickupableItem2" parent="The real maddie" unique_id=1100030553 instance=ExtResource("16_y301g")]
 position = Vector2(645, 225)
 WhatItemAmI = SubResource("Resource_och0h")
-
-[node name="sceneInitializer" type="Node" parent="." unique_id=152984821]
-script = ExtResource("14_hs8mn")
 
 [node name="Door" type="Node2D" parent="." unique_id=292551020]
 position = Vector2(249, 219)
@@ -290,7 +307,7 @@ offset_bottom = -3.0
 text = "Locker"
 
 [node name="Locker2" type="Node2D" parent="." unique_id=43892741]
-position = Vector2(556, 219)
+position = Vector2(1460, 209)
 script = ExtResource("21_och0h")
 PlayerMaxRange = 150.0
 

@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://de7vd21bnh3rn"]
 
-[ext_resource type="Script" uid="uid://c5kcb8f7f8hq3" path="res://Environments/Test/scene_initializer.gd" id="1_jkfd2"]
 [ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Environments/hookable_position.tscn" id="6_ajgnu"]
 [ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/Cursor.tscn" id="7_e2aq0"]
 
@@ -11,9 +10,6 @@ size = Vector2(2087, 89)
 size = Vector2(64, 125)
 
 [node name="HookLab" type="Node2D" unique_id=622899540]
-
-[node name="sceneInitializer" type="Node" parent="." unique_id=967319519]
-script = ExtResource("1_jkfd2")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1658677967]
 position = Vector2(132, -573)

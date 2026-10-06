@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Room" format=3 uid="uid://cqgs242egffgr"]
+
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://MADDIE/Room.gd" id="1_1vdia"]
+
+[resource]
+script = ExtResource("1_1vdia")
+Name = "Nana Boss Fight"
+SceneFilePath = "res://MADDIE/NanaBossFight.tscn"
+metadata/_custom_type_script = "uid://dtoaby0j0tekp"

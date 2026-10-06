@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bu2p6l1xrf5ud" path="res://BigGuns/BulletCasing1.tscn" id="4_fp7sm"]
 [ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://BigGuns/HelperGizmo.gd" id="5_iblcv"]
 
-[node name="PlayerGun" type="Node2D" unique_id=811895720 node_paths=PackedStringArray("FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo")]
+[node name="PlayerGun" type="Node2D" unique_id=811895720 node_paths=PackedStringArray("FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo", "GunPreviewSprite")]
 script = ExtResource("1_6hm4i")
 GunTexture = ExtResource("2_omhe4")
 TimeBetweenShots = 0.1
@@ -31,19 +31,20 @@ BulletCasingShootDirection = Vector2(0.1, -1)
 FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
+GunPreviewSprite = NodePath("")
 metadata/_custom_type_script = "uid://y10s2jb0y8n1"
 
 [node name="Fire Point" type="Marker2D" parent="." unique_id=2096501808]
 position = Vector2(21.89089, -7.129158)
 script = ExtResource("5_iblcv")
-Pos = Vector2(24, 45)
+Pos = Vector2(21.89089, -7.129158)
 
 [node name="Pivot Point" type="Marker2D" parent="." unique_id=607079071]
 position = Vector2(-3.5762787e-06, -1.4305115e-06)
 script = ExtResource("5_iblcv")
-Pos = Vector2(5, 31.999996)
+Pos = Vector2(-3.5762787e-06, -1.4305115e-06)
 
 [node name="Gun Preview" type="Marker2D" parent="Pivot Point" unique_id=2014610722]
 position = Vector2(9.634333, -2.68075)
 script = ExtResource("5_iblcv")
-Pos = Vector2(13, 37.999996)
+Pos = Vector2(9.634329, -2.6807513)

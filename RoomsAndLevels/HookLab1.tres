@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Room" format=3 uid="uid://3tcjp0b8les4"]
+
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://MADDIE/Room.gd" id="1_hfgmu"]
+
+[resource]
+script = ExtResource("1_hfgmu")
+Name = "Hook Lab"
+SceneFilePath = "res://Environments/Test/hook_lab.tscn"
+metadata/_custom_type_script = "uid://dtoaby0j0tekp"

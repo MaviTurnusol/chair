@@ -739,6 +739,9 @@ father = NodePath("..")
 z_index = 1
 position = Vector2(-6, -66)
 
+[node name="RangedWeaponParent" parent="IKArmPlayer/Skeleton2D/UpperArm/ForeArm" parent_id_path=PackedInt32Array(559927148, 215936278) index="2" unique_id=1936912245]
+z_index = 5
+
 [node name="IkForeArm" parent="IKArmPlayer/Sprites" parent_id_path=PackedInt32Array(559927148, 946141560) index="0" unique_id=980587244]
 position = Vector2(-11.636646, 10.980812)
 

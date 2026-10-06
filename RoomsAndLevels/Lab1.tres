@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Room" format=3 uid="uid://wo8ob84fd6no"]
+
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://MADDIE/Room.gd" id="1_7bx2w"]
+
+[resource]
+script = ExtResource("1_7bx2w")
+Name = "Lab"
+SceneFilePath = "res://Environments/Test/lab.tscn"
+metadata/_custom_type_script = "uid://dtoaby0j0tekp"
