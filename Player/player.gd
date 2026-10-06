@@ -79,10 +79,12 @@ func _physics_process(delta):
 				if weapon_equipped:
 					machine.change_state_to("gunWalk")
 				if Input.is_action_pressed("shift"):
-					velocity.x = lerp(velocity.x, dir*speed*1.6, 0.1)
+					#moved to state
+					#velocity.x = lerp(velocity.x, dir*speed*1.6, 0.1)
 					machine.change_state_to("run")
 				else:
-					velocity.x = lerp(velocity.x, dir*speed, 0.1)
+					#moved to state
+					#velocity.x = lerp(velocity.x, dir*speed, 0.1)
 					machine.change_state_to("walk")
 			else:
 				velocity.x = lerp(velocity.x, 0.0, 0.1)

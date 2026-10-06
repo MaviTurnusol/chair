@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://o4c52t0244wj" path="res://StateMachine/States/Turn.tscn" id="13_p5o4e"]
 [ext_resource type="PackedScene" uid="uid://4v1foex4d4rf" path="res://StateMachine/States/Fall.tscn" id="16_pisgm"]
 [ext_resource type="PackedScene" uid="uid://dovqwt5o05qk1" path="res://StateMachine/States/Jump.tscn" id="17_pisgm"]
+[ext_resource type="Script" uid="uid://btjkk170mnvqc" path="res://Player/StaminaAction.gd" id="19_jp1hh"]
 [ext_resource type="PackedScene" uid="uid://c8qglu8y3jox0" path="res://StateMachine/States/FallRecovery.tscn" id="19_o28un"]
 [ext_resource type="PackedScene" uid="uid://cnqb10l3d1ayh" path="res://StateMachine/States/GroundAttack.tscn" id="21_7emwf"]
 [ext_resource type="PackedScene" uid="uid://djx5vcp8nk1es" path="res://StateMachine/States/Talk.tscn" id="21_gpjlu"]
@@ -30,6 +31,8 @@
 [ext_resource type="PackedScene" uid="uid://cdhl38422h57f" path="res://StateMachine/States/GunWalk.tscn" id="24_qemgg"]
 [ext_resource type="PackedScene" uid="uid://dumxxtk7wv87d" path="res://StateMachine/States/GunIdle.tscn" id="25_8viyr"]
 [ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://StateMachine/States/MeleeAttack1.gd" id="27_efx54"]
+[ext_resource type="Script" uid="uid://cswibj42kh6rk" path="res://StateMachine/state.gd" id="32_qs4pp"]
+[ext_resource type="Script" uid="uid://bnk3elc0sohqe" path="res://stamina_comp.gd" id="35_c6x0f"]
 [ext_resource type="PackedScene" uid="uid://mu6favus5m8y" path="res://StateMachine/States/Hook.tscn" id="36_f4lon"]
 [ext_resource type="Script" uid="uid://b5jve74l872gw" path="res://MADDIE/Inventory/InventoryComponent.gd" id="36_jp1hh"]
 [ext_resource type="Script" uid="uid://bj3j7fsh4325h" path="res://MADDIE/Inventory/Inventory.gd" id="36_qs4pp"]
@@ -772,7 +775,22 @@ initialState = NodePath("Idle")
 
 [node name="Roll" parent="StateMachine" unique_id=1304739926 instance=ExtResource("5_od3ui")]
 
+[node name="StaminaAction" type="Node" parent="StateMachine/Roll" unique_id=665415463 node_paths=PackedStringArray("StamComp")]
+script = ExtResource("19_jp1hh")
+StaminaRequired = 25.0
+StamComp = NodePath("../../../StaminaComp")
+StateToReturnAfterDrainingStamina = "roll"
+
 [node name="Run" parent="StateMachine" unique_id=184304677 instance=ExtResource("12_p5o4e")]
+
+[node name="StaminaAction" type="Node" parent="StateMachine/Run" unique_id=2086335884 node_paths=PackedStringArray("StamComp")]
+script = ExtResource("19_jp1hh")
+StaminaRequired = 5.0
+MinStaminaToPerform = 20.0
+StamComp = NodePath("../../../StaminaComp")
+ReduceStaminaOnStart = false
+DrainStaminaRate = 25.0
+StateToReturnAfterDrainingStamina = "walk"
 
 [node name="Turn" parent="StateMachine" unique_id=2141766051 instance=ExtResource("13_p5o4e")]
 
@@ -801,6 +819,10 @@ script = ExtResource("27_efx54")
 canOnlyTransitionTo = PackedStringArray("idle", "meleeAttack")
 
 [node name="Hook" parent="StateMachine" unique_id=1990031089 instance=ExtResource("36_f4lon")]
+
+[node name="NoStamina" type="Node" parent="StateMachine" unique_id=1392513913]
+script = ExtResource("32_qs4pp")
+animOnStart = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2077871060]
 position = Vector2(0, -33)
@@ -862,5 +884,10 @@ PlayerInventoryComponent = NodePath("../PlayerInventoryComponent")
 PlayerStateMachine = NodePath("../StateMachine")
 MeleeableStates = [NodePath("../StateMachine/Idle"), NodePath("../StateMachine/Walk"), NodePath("../StateMachine/Run"), NodePath("../StateMachine/Turn"), NodePath("../StateMachine/MeleeAttack")]
 RangeeableStates = [NodePath("../StateMachine/GunIdle"), NodePath("../StateMachine/GunWalk")]
+
+[node name="StaminaComp" type="Node" parent="." unique_id=2040095792 node_paths=PackedStringArray("father")]
+script = ExtResource("35_c6x0f")
+MAX_STAMINA = 100.0
+father = NodePath("..")
 
 [editable path="IKArmPlayer"]
