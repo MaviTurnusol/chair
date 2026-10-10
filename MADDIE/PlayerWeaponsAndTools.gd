@@ -18,6 +18,8 @@ var CanRanged : bool
 var CurrentMeleeWeaponIndex : int = 0
 var CurrentRangedWeaponIndex : int = 0
 
+var TimeSinceMelee : float = 0
+
 func GetAllMeleeWeapons()->Array[InventoryItem]:
 	var invgrid : InventoryGrid = PlayerInventoryComponent.OwnInventoryGrid
 	var meleeweapons : Array[InventoryItem]
@@ -117,3 +119,6 @@ func GetCurrentRangedWeapon(index : int = 0):
 		if(GetAllRangedWeapons().size()>0):
 			CurrentRangedWeapon = GetAllRangedWeapons()[index]
 	return CurrentRangedWeapon
+
+func _process(delta: float) -> void:
+	TimeSinceMelee+=delta

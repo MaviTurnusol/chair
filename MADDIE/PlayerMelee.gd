@@ -136,11 +136,12 @@ func WindUp():
 func Attack():
 	CurrentAttack.Hit_Box.monitoring = true
 	get_tree().create_timer(CurrentAttack.AttackTime).timeout.connect(Recovery)
+	CanChainAttack = true
 
 func Recovery():
 	IsRecovering = true
 	CurrentAttack.Hit_Box.monitoring = false
-	CanChainAttack = true
+	#CanChainAttack = true
 	get_tree().create_timer(CurrentAttack.RecoveryTime).timeout.connect(RecoveryFinished)
 
 func RecoveryFinished():
