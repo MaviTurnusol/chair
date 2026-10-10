@@ -32,6 +32,8 @@ enum MeleeAnimation{
 	Stab1,
 	Thrust1,
 	idk,
+	KnifeSlash1,
+	
 }
 
 #####Make this better sometime, these are signals for dialogue events

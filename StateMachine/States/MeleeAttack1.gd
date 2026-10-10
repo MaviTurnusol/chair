@@ -24,3 +24,5 @@ func ProcessAnimation(mAnimation : UnlimitedRulebook.MeleeAnimation):
 			animator.play("thrust1")
 		UnlimitedRulebook.MeleeAnimation.idk:
 			animator.play("fall")
+		UnlimitedRulebook.MeleeAnimation.KnifeSlash1:
+			animator.play("knifeslash1")

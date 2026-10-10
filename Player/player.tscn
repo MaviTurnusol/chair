@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://i4icnxv6vniq" path="res://StateMachine/States/Roll.tscn" id="5_od3ui"]
 [ext_resource type="Texture2D" uid="uid://c7lkrco3qj785" path="res://Player/Animations/idle-Sheet.png" id="6_fhl08"]
 [ext_resource type="Texture2D" uid="uid://bxiqfdls3cl21" path="res://Player/Animations/xochiTurn-Sheet.png" id="6_gu6f8"]
+[ext_resource type="Texture2D" uid="uid://bj082of7173hv" path="res://Player/Animations/knifeSlash1.png" id="9_qs4pp"]
 [ext_resource type="Texture2D" uid="uid://dv03h810ova7e" path="res://Player/Animations/xocherstab-Sheet.png" id="11_j2n6q"]
 [ext_resource type="PackedScene" uid="uid://j31ghs8e1fqo" path="res://StateMachine/States/Run.tscn" id="12_p5o4e"]
 [ext_resource type="PackedScene" uid="uid://o4c52t0244wj" path="res://StateMachine/States/Turn.tscn" id="13_p5o4e"]
@@ -184,6 +185,26 @@ region = Rect2(336, 0, 84, 103)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3e3ym"]
 atlas = ExtResource("3_lfmf2")
 region = Rect2(420, 0, 84, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8h25"]
+atlas = ExtResource("9_qs4pp")
+region = Rect2(0, 0, 128, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2krxc"]
+atlas = ExtResource("9_qs4pp")
+region = Rect2(128, 0, 128, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mw2es"]
+atlas = ExtResource("9_qs4pp")
+region = Rect2(256, 0, 128, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7odc"]
+atlas = ExtResource("9_qs4pp")
+region = Rect2(384, 0, 128, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beqdq"]
+atlas = ExtResource("9_qs4pp")
+region = Rect2(512, 0, 128, 109)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4o1l"]
 atlas = ExtResource("4_apopc")
@@ -535,6 +556,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_i8h25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2krxc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mw2es")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7odc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beqdq")
+}],
+"loop": false,
+"name": &"knifeslash1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_i4o1l")
 }, {
 "duration": 1.0,
@@ -752,7 +793,7 @@ position = Vector2(-11.636646, 10.980812)
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"thrust1"
+animation = &"knifeslash1"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
