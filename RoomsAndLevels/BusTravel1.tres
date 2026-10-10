@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Room" format=3 uid="uid://dxb88x6ua61y5"]
+
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://MADDIE/Room.gd" id="1_vhv61"]
+
+[resource]
+script = ExtResource("1_vhv61")
+Name = "Bus Travel"
+SceneFilePath = "res://MADDIE/BusSceneMockup/MockupBus.tscn"
+BringPlayer = false
+metadata/_custom_type_script = "uid://dtoaby0j0tekp"

@@ -6,3 +6,6 @@ class_name Room
 @export var ScenePackedScene : PackedScene
 
 var Scene : PackedScene
+
+@export_category("Flags")
+@export var BringPlayer : bool = true

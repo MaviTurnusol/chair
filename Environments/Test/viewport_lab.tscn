@@ -29,6 +29,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="StaminaDisplayer" type="ProgressBar" parent="UI/Control" unique_id=1372275042 node_paths=PackedStringArray("StaminaComponentFather")]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -43,6 +44,7 @@ StaminaComponentFather = NodePath("../../../Player")
 ChangeSpeed = 100.0
 
 [node name="Label" type="Label" parent="UI/Control" unique_id=2137994446]
+visible = false
 layout_mode = 0
 offset_right = 500.0
 offset_bottom = 23.0

@@ -33,4 +33,3 @@ func ReduceStamina(drain)->bool:
 		return false
 	else:
 		return true
-	print(stamina)

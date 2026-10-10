@@ -14,6 +14,7 @@ func _ready() -> void:
 	LoadScene("Lab")
 	LoadScene("Hook Lab")
 	LoadScene("Nana Boss Fight")
+	LoadScene("Bus Travel")
 
 func RegetAllChildren():
 	LoadedScenes.clear()
@@ -29,8 +30,18 @@ func  _input(event: InputEvent) -> void:
 
 func SetActiveScene():
 	UnlimitedRulebook.currentScene = LoadedScenes[0]
-	plyr.reparent(LoadedScenes[0])
-	camer.reparent(LoadedScenes[0])
+	var ActiveSceneSceneName : String = LoadedScenes[0].room.Name	
+	
+	if(SceneManager.RoomDict[ActiveSceneSceneName].BringPlayer):
+		plyr.reparent(LoadedScenes[0])
+		camer.reparent(LoadedScenes[0])
+		camer.enabled = true
+		plyr.set_process(true)
+		plyr.set_physics_process(true)
+	else:
+		plyr.set_process(false)
+		plyr.set_physics_process(false)
+		camer.disabled = false
 	move_child(LoadedScenes[0],-1)
 
 func LoadScene(SceneName : String):

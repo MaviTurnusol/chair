@@ -1,0 +1,541 @@
+[gd_scene format=3 uid="uid://by10u4d6r6dgw"]
+
+[ext_resource type="Script" uid="uid://8nquyrt544j" path="res://MADDIE/BusSceneMockup/CameraShake/camerashake.gd" id="1_2g2a4"]
+[ext_resource type="Texture2D" uid="uid://cvhtll5bp5j13" path="res://MADDIE/BusSceneMockup/Sprites/Pylon1.png" id="1_88jox"]
+[ext_resource type="Texture2D" uid="uid://bqefhiq8ajibn" path="res://MADDIE/BusSceneMockup/Sprites/bus1_transparent.png" id="1_en0ep"]
+[ext_resource type="Script" uid="uid://btre1xiack35" path="res://MADDIE/BusSceneMockup/addons/camera_shake.gd" id="2_5s285"]
+[ext_resource type="Texture2D" uid="uid://k3ttnifxpirg" path="res://MADDIE/BusSceneMockup/Sprites/idle-Sheet.png" id="2_5u3yx"]
+[ext_resource type="Resource" uid="uid://dmquj41fg454b" path="res://MADDIE/BusSceneMockup/CameraShake/CameraSway.tres" id="2_23pjr"]
+[ext_resource type="Texture2D" uid="uid://b1kw82m73p2vb" path="res://MADDIE/BusSceneMockup/Sprites/Bush1.png" id="4_8mcmu"]
+[ext_resource type="Shader" uid="uid://drw1mabot6gdo" path="res://MADDIE/BusSceneMockup/GaussBlur.gdshader" id="5_23pjr"]
+[ext_resource type="Texture2D" uid="uid://cra7se8f2piie" path="res://MADDIE/BusSceneMockup/Sprites/temporarynana.png" id="7_1ul2c"]
+[ext_resource type="Texture2D" uid="uid://baplrjatkbn3j" path="res://MADDIE/BusSceneMockup/Sprites/socialhousing.png" id="7_vsyeb"]
+[ext_resource type="Texture2D" uid="uid://bqrbya8rbt2sp" path="res://MADDIE/BusSceneMockup/Sprites/TexturedBusPosterized.png" id="10_1771t"]
+[ext_resource type="Texture2D" uid="uid://cwldwy8ksdxjv" path="res://MADDIE/BusSceneMockup/Sprites/BusPeople1.png" id="11_dft4d"]
+[ext_resource type="Texture2D" uid="uid://bb3hvwp8mbths" path="res://MADDIE/BusSceneMockup/Sprites/WheelRough1.png" id="12_1771t"]
+
+[sub_resource type="Gradient" id="Gradient_vr7ih"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.7019608, 0.41960785, 0.21176471, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_en0ep"]
+gradient = SubResource("Gradient_vr7ih")
+width = 640
+height = 133
+
+[sub_resource type="Gradient" id="Gradient_88jox"]
+colors = PackedColorArray(0.49019608, 0.3647059, 0.32941177, 1, 0.7019608, 0.41960785, 0.21176471, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g0o1k"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5u3yx"]
+width = 640
+height = 133
+noise = SubResource("FastNoiseLite_g0o1k")
+color_ramp = SubResource("Gradient_88jox")
+seamless = true
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_88jox"]
+size = Vector2(80, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ufx2"]
+atlas = ExtResource("1_88jox")
+region = Rect2(0, 0, 80, 160)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6llpc"]
+atlas = ExtResource("1_88jox")
+region = Rect2(0, 0, 80, 155)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5mtv"]
+atlas = ExtResource("1_88jox")
+region = Rect2(0, 0, 80, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6llpc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ufx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6llpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5mtv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6llpc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="Curve" id="Curve_88jox"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5458167, 0.8011472), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8mcmu"]
+shader = ExtResource("5_23pjr")
+shader_parameter/strength = 1
+
+[sub_resource type="Gradient" id="Gradient_en0ep"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.45490196, 0.49803922, 0.61960787, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5u3yx"]
+gradient = SubResource("Gradient_en0ep")
+width = 635
+height = 266
+
+[sub_resource type="Gradient" id="Gradient_5u3yx"]
+offsets = PackedFloat32Array(0.5745192, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.41960785)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_88jox"]
+noise_type = 3
+frequency = 0.0099
+offset = Vector3(0, 352.11, 0)
+fractal_octaves = 2
+fractal_lacunarity = 2.35
+fractal_weighted_strength = 1.0
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vr7ih"]
+width = 1280
+height = 266
+noise = SubResource("FastNoiseLite_88jox")
+color_ramp = SubResource("Gradient_5u3yx")
+seamless = true
+seamless_blend_skirt = 0.84
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vr7ih"]
+seed = 1
+frequency = 0.0096
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_en0ep"]
+width = 1280
+height = 266
+noise = SubResource("FastNoiseLite_vr7ih")
+color_ramp = SubResource("Gradient_5u3yx")
+seamless = true
+seamless_blend_skirt = 0.84
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1d6t"]
+atlas = ExtResource("11_dft4d")
+region = Rect2(0, 0, 243, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dr76"]
+atlas = ExtResource("11_dft4d")
+region = Rect2(243, 0, 243, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_injff"]
+atlas = ExtResource("11_dft4d")
+region = Rect2(486, 0, 243, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57ggw"]
+atlas = ExtResource("11_dft4d")
+region = Rect2(729, 0, 243, 62)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hefii"]
+atlas = ExtResource("11_dft4d")
+region = Rect2(972, 0, 243, 62)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8r4bf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1d6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dr76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_injff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_57ggw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hefii")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r4bf"]
+atlas = ExtResource("12_1771t")
+region = Rect2(0, 0, 102, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gw22"]
+atlas = ExtResource("12_1771t")
+region = Rect2(102, 0, 102, 91)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0te7"]
+atlas = ExtResource("12_1771t")
+region = Rect2(204, 0, 102, 91)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kk5q3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r4bf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gw22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0te7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5u3yx"]
+size = Vector2(256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88jox"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(0, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0o1k"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(64, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2g2a4"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(128, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5s285"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(192, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23pjr"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(256, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mcmu"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(320, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ul2c"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(384, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsyeb"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(448, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5086l"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(512, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dft4d"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(576, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1771t"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(640, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qvv0"]
+atlas = ExtResource("2_5u3yx")
+region = Rect2(704, 0, 64, 103)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k1d6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88jox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0o1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2g2a4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5s285")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23pjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mcmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ul2c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsyeb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5086l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dft4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1771t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qvv0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1293292557]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1874430234]
+position_smoothing_enabled = true
+position_smoothing_speed = 1.105
+script = ExtResource("1_2g2a4")
+CameraShakeProfile = ExtResource("2_23pjr")
+
+[node name="CameraShake" type="Node" parent="Camera2D" unique_id=253050169]
+script = ExtResource("2_5s285")
+
+[node name="Ground" type="Node" parent="." unique_id=1042103098]
+
+[node name="HorizonGround" type="Sprite2D" parent="Ground" unique_id=443248763]
+position = Vector2(0, 134)
+texture = SubResource("GradientTexture2D_en0ep")
+
+[node name="Parallax2D" type="Parallax2D" parent="Ground" unique_id=2092697508]
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-1000, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Parallax2D" unique_id=350442451]
+position = Vector2(320, 138)
+texture = SubResource("NoiseTexture2D_5u3yx")
+
+[node name="Parallax2D4" type="Parallax2D" parent="Ground" unique_id=1371682634]
+repeat_size = Vector2(640, 0)
+autoscroll = Vector2(-500, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=1563951919]
+position = Vector2(392, 100)
+scale = Vector2(0.6903845, 0.7138932)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=1335999690]
+position = Vector2(469, 152)
+scale = Vector2(1.5477724, 1.3097163)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=1603150904]
+position = Vector2(299, 152)
+scale = Vector2(1.081409, 1.2360653)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=1295698288]
+position = Vector2(539, 116)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=1868262116]
+position = Vector2(627, 152)
+scale = Vector2(1.8279442, 1.7698516)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=1017809172]
+position = Vector2(686, 100)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=641765476]
+position = Vector2(740, 137)
+scale = Vector2(1.8004411, 1.5376365)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=712157319]
+position = Vector2(837, 84)
+scale = Vector2(0.5944015, 0.5988094)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=340401409]
+position = Vector2(821, 152)
+texture = ExtResource("4_8mcmu")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Ground/Parallax2D4" unique_id=664445013]
+position = Vector2(882, 168)
+scale = Vector2(1.6436406, 1.4461237)
+texture = ExtResource("4_8mcmu")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Ground" unique_id=116185353]
+z_index = 1
+repeat_size = Vector2(500, 0)
+autoscroll = Vector2(-250, 0)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Parallax2D2" unique_id=121360137]
+visible = false
+z_index = 1
+position = Vector2(0, -13)
+texture = SubResource("PlaceholderTexture2D_88jox")
+
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="Ground/Parallax2D2" unique_id=976595813]
+z_index = 1
+position = Vector2(0, -13)
+sprite_frames = SubResource("SpriteFrames_6llpc")
+autoplay = "default"
+frame_progress = 0.8087228
+
+[node name="Line2D" type="Line2D" parent="Ground/Parallax2D2/Sprite2D2" unique_id=1540880467]
+points = PackedVector2Array(522, -2, 747, 78.77, 979, 2)
+width = 2.0
+width_curve = SubResource("Curve_88jox")
+default_color = Color(0, 0, 0, 0.16862746)
+
+[node name="Line2D2" type="Line2D" parent="Ground/Parallax2D2/Sprite2D2" unique_id=1948166378]
+points = PackedVector2Array(522, -26, 753, 71.67, 979, -26)
+width = 2.0
+width_curve = SubResource("Curve_88jox")
+default_color = Color(0, 0, 0, 0.16862746)
+
+[node name="Line2D3" type="Line2D" parent="Ground/Parallax2D2/Sprite2D2" unique_id=469899260]
+points = PackedVector2Array(526, -47, 762, 60.805, 973, -47)
+width = 2.0
+width_curve = SubResource("Curve_88jox")
+default_color = Color(0, 0, 0, 0.16862746)
+
+[node name="Parallax2D3" type="Parallax2D" parent="Ground" unique_id=1380274508]
+visible = false
+z_index = 2
+repeat_size = Vector2(8000, 0)
+autoscroll = Vector2(-2000, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Parallax2D3" unique_id=467090624]
+visible = false
+z_index = 1
+position = Vector2(0, -13)
+texture = SubResource("PlaceholderTexture2D_88jox")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ground/Parallax2D3" unique_id=703939156]
+z_index = 1
+material = SubResource("ShaderMaterial_8mcmu")
+position = Vector2(0, -92.99999)
+scale = Vector2(5, 5)
+texture = ExtResource("1_88jox")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Ground/Parallax2D3" unique_id=298473042]
+self_modulate = Color(1, 1, 1, 0.29411766)
+z_index = 1
+position = Vector2(40, -93)
+scale = Vector2(5, 5)
+texture = ExtResource("1_88jox")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Ground/Parallax2D3" unique_id=1917958302]
+self_modulate = Color(1, 1, 1, 0.29411766)
+z_index = 1
+position = Vector2(69, -93)
+scale = Vector2(5, 5)
+texture = ExtResource("1_88jox")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Ground/Parallax2D3" unique_id=1474052273]
+self_modulate = Color(1, 1, 1, 0.13725491)
+z_index = 1
+position = Vector2(99, -93)
+scale = Vector2(5, 5)
+texture = ExtResource("1_88jox")
+
+[node name="HOUSE" type="Parallax2D" parent="Ground" unique_id=2129217839]
+visible = false
+scroll_scale = Vector2(0, 0)
+follow_viewport = false
+
+[node name="housing" type="Sprite2D" parent="Ground/HOUSE" unique_id=194843745]
+visible = false
+z_index = 1
+position = Vector2(200, -17)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_vsyeb")
+
+[node name="Sky" type="Node" parent="." unique_id=1056462620]
+
+[node name="HorizonSky" type="Sprite2D" parent="Sky" unique_id=79504049]
+position = Vector2(0, -66)
+texture = SubResource("GradientTexture2D_5u3yx")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Sky" unique_id=257950343]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-30, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/Parallax2D2" unique_id=472600051]
+position = Vector2(0, -74)
+texture = SubResource("NoiseTexture2D_vr7ih")
+
+[node name="Parallax2D3" type="Parallax2D" parent="Sky" unique_id=1197506667]
+repeat_size = Vector2(1280, 0)
+autoscroll = Vector2(-25, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky/Parallax2D3" unique_id=1747623839]
+position = Vector2(0, -74)
+texture = SubResource("NoiseTexture2D_en0ep")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sky" unique_id=1177075159]
+visible = false
+position = Vector2(315, -54)
+scale = Vector2(0.09, 0.082)
+texture = ExtResource("7_1ul2c")
+
+[node name="Bus1" type="Sprite2D" parent="." unique_id=1094744321]
+visible = false
+z_index = 3
+position = Vector2(0, 116)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_en0ep")
+
+[node name="Bus2" type="Sprite2D" parent="." unique_id=320704862]
+self_modulate = Color(0.6158285, 0.6158285, 0.6158285, 1)
+z_index = 3
+position = Vector2(0, 116)
+texture = ExtResource("10_1771t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bus2" unique_id=950147551]
+visible = false
+position = Vector2(-78, -25)
+sprite_frames = SubResource("SpriteFrames_8r4bf")
+autoplay = "default"
+frame_progress = 0.74359834
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Bus2" unique_id=1786628999]
+position = Vector2(-165, 94)
+sprite_frames = SubResource("SpriteFrames_kk5q3")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Bus2" unique_id=1578375027]
+position = Vector2(219, 90)
+sprite_frames = SubResource("SpriteFrames_kk5q3")
+autoplay = "default"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1151653592]
+clip_children = 1
+z_index = 3
+position = Vector2(-239, 75)
+scale = Vector2(0.2, 0.2)
+texture = SubResource("PlaceholderTexture2D_5u3yx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D" unique_id=1914491775]
+position = Vector2(-24.999992, 130.00015)
+scale = Vector2(4.9999995, 4.9999995)
+sprite_frames = SubResource("SpriteFrames_k1d6t")
+autoplay = "default"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1889999365]
+visible = false
+z_index = 5
+offset_left = -305.0
+offset_top = -19.0
+offset_right = 317.46503
+offset_bottom = 256.755
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1125928395]
+size = Vector2i(640, 400)
