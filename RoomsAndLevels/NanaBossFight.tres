@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_1vdia")
 Name = "Nana Boss Fight"
-SceneFilePath = "res://MADDIE/NanaBossFight.tscn"
+SceneFilePath = "uid://cp3gykhd1eorl"
 metadata/_custom_type_script = "uid://dtoaby0j0tekp"
