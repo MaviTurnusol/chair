@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://be3o6gmdo0qay"]
 
 [ext_resource type="PackedScene" uid="uid://bvt72vdia2itb" path="res://Weapons/oldweapons/ProjectileRanged/ProjectileGun.tscn" id="1_1ov0g"]
-[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="2_mmnry"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/Scripts/InventoryItem.gd" id="2_mmnry"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aji2t"]
 load_path = "res://.godot/imported/nana1.png-a4e5770ef0326fcefa6beca20d4dc203.ctex"

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://de7vd21bnh3rn"]
 
-[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RealDoor.tscn" id="3_2k8j5"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="3_2k8j5"]
 [ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Environments/hookable_position.tscn" id="6_ajgnu"]
 [ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/Cursor.tscn" id="7_e2aq0"]
 

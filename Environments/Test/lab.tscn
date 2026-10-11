@@ -6,21 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/Test/koridor5w1_n.png" id="2_w1gcx"]
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Actionable.tscn" id="2_y3jmy"]
 [ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/testDialogue.dialogue" id="3_7xo5u"]
-[ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://MADDIE/nana_silhouette_1.png" id="9_ktjvv"]
+[ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://MADDIE/Nana/nana_silhouette_1.png" id="9_ktjvv"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_gbuu4"]
-[ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Wormy/CeilingWorm.tscn" id="13_esouf"]
+[ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Enemies/Wormy/CeilingWorm.tscn" id="13_esouf"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="13_hs8mn"]
-[ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
-[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Weapons/MeleeWeapons/player_melee_test.tscn" id="14_1oah0"]
-[ext_resource type="Script" uid="uid://ci3kpfsla23mb" path="res://MADDIE/MaddieDoor.gd" id="15_lh5rw"]
-[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="15_ycysq"]
-[ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/nana1.png" id="16_2wxxo"]
-[ext_resource type="PackedScene" uid="uid://bvt72vdia2itb" path="res://Weapons/oldweapons/ProjectileRanged/ProjectileGun.tscn" id="16_dc4ob"]
-[ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://MADDIE/Inventory/PickupableItem.tscn" id="16_y301g"]
-[ext_resource type="PackedScene" uid="uid://c3wm4v4rx7sv6" path="res://Weapons/RangedWeapons/player_gun_test.tscn" id="17_du6ky"]
-[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Wormy/Worm1.png" id="18_8nl8p"]
-[ext_resource type="PackedScene" uid="uid://s276hxsynqwg" path="res://MADDIE/locker.tscn" id="20_ycysq"]
-[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RealDoor.tscn" id="21_1oah0"]
+[ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Enemies/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
+[ext_resource type="Script" uid="uid://ci3kpfsla23mb" path="res://DeletionQueue/MaddieDoor.gd" id="15_lh5rw"]
+[ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/Nana/nana1.png" id="16_2wxxo"]
+[ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://MADDIE/Inventory/Scenes/PickupableItem.tscn" id="16_y301g"]
+[ext_resource type="PackedScene" uid="uid://s276hxsynqwg" path="res://MADDIE/Inventory/Scenes/locker.tscn" id="20_ycysq"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="21_1oah0"]
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -60,43 +55,6 @@ height = 109.65
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
 size = Vector2(40, 96)
-
-[sub_resource type="Resource" id="Resource_1oah0"]
-script = ExtResource("15_ycysq")
-ItemName = "example"
-ground_tex = ExtResource("16_2wxxo")
-inventory_tex = ExtResource("16_2wxxo")
-inv_scalemulti = 1.5
-ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
-ItemAttributes = Array[int]([1])
-AssociatedScene = ExtResource("14_1oah0")
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aji2t"]
-load_path = "res://.godot/imported/nana1.png-a4e5770ef0326fcefa6beca20d4dc203.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_helpb"]
-load_path = "res://.godot/imported/nana1.png-a4e5770ef0326fcefa6beca20d4dc203.ctex"
-
-[sub_resource type="Resource" id="Resource_ycysq"]
-script = ExtResource("15_ycysq")
-ItemName = "example"
-ground_tex = SubResource("CompressedTexture2D_aji2t")
-inventory_tex = SubResource("CompressedTexture2D_helpb")
-inv_scalemulti = 1.5
-ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
-ItemAttributes = Array[int]([2])
-AssociatedScene = ExtResource("16_dc4ob")
-
-[sub_resource type="Resource" id="Resource_dc4ob"]
-script = ExtResource("15_ycysq")
-ground_tex = ExtResource("18_8nl8p")
-inventory_tex = ExtResource("18_8nl8p")
-ground_scalemulti = 2.0
-inv_scalemulti = 1.5
-ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
-ItemAttributes = Array[int]([2])
-AssociatedScene = ExtResource("17_du6ky")
-metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh5rw"]
 size = Vector2(96, 96)
@@ -220,15 +178,12 @@ position = Vector2(1030, 223)
 
 [node name="PickupableItem" parent="The real maddie" unique_id=1324268814 instance=ExtResource("16_y301g")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_1oah0")
 
 [node name="PickupableItem3" parent="The real maddie" unique_id=233581645 instance=ExtResource("16_y301g")]
 position = Vector2(1001, 238)
-WhatItemAmI = SubResource("Resource_ycysq")
 
 [node name="PickupableItem2" parent="The real maddie" unique_id=1100030553 instance=ExtResource("16_y301g")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_dc4ob")
 
 [node name="fake door due deletion" type="Node2D" parent="." unique_id=292551020]
 position = Vector2(1604, 119)

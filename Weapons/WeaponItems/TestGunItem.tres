@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cbkk7lu7av8d8"]
 
 [ext_resource type="PackedScene" uid="uid://c3wm4v4rx7sv6" path="res://Weapons/RangedWeapons/player_gun_test.tscn" id="1_nbyc2"]
-[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Wormy/Worm1.png" id="2_435le"]
-[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="3_iyjmu"]
+[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Enemies/Wormy/Worm1.png" id="2_435le"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/Scripts/InventoryItem.gd" id="3_iyjmu"]
 
 [resource]
 script = ExtResource("3_iyjmu")
