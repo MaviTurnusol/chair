@@ -1,4 +1,4 @@
-@tool
+#@tool
 #@icon("res://Guns/Held_SmallGun1.png")
 class_name PlayerMelee extends Node2D
 
