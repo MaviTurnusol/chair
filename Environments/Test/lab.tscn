@@ -248,3 +248,9 @@ position = Vector2(556, 219)
 
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("21_1oah0")]
 position = Vector2(251, 223)
+DoSetPositionAtNewScene = true
+
+[node name="RealDoor2" parent="." unique_id=1318754282 instance=ExtResource("21_1oah0")]
+position = Vector2(1089, 221)
+DoorIdentifier = "Lab-HookLab-2"
+DoSetPositionAtNewScene = true

@@ -3,6 +3,8 @@ extends Node
 var RoomDict : Dictionary[String,Room]
 
 signal switchscene(String)
+signal setplayerposition(Vector2)
+signal screamtodoors(String)
 
 func _ready() -> void:
 	var Rooms = dir_contents("res://RoomsAndLevels/")
@@ -38,3 +40,12 @@ func dir_contents(path):
 
 func SwitchScene(WhatScene : String):
 	switchscene.emit(WhatScene)
+
+func SetPlayerPosition(NewPosition :Vector2):
+	setplayerposition.emit(NewPosition)
+
+func SwitchSceneAndPosition(WhatScene : String,WhatID:String):
+	SwitchScene(WhatScene)
+	await get_tree().process_frame
+	screamtodoors.emit(WhatID)
+	

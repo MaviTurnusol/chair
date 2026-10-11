@@ -15,6 +15,10 @@ var weapon : Node2D
 
 func _ready() -> void:
 	UnlimitedRulebook.player = self
+	SceneManager.setplayerposition.connect(SetGlobalPosition)
+
+func SetGlobalPosition(WhatPosition : Vector2):
+	global_position = WhatPosition
 
 func _physics_process(delta):
 	$debugState.text = str(machine.get_state())
