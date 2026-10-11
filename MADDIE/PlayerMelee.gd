@@ -66,6 +66,8 @@ func _ready() -> void:
 		#if(GunPreviewSprite!=null):
 			#GunPreviewSprite.queue_free()
 		##ConstructGun()
+	if(CurrentAttack==null):
+		CurrentAttack = Attacks[0]
 	Sprite = Sprite2D.new()
 	UnlimitedRulebook.playerWeapon = self
 	Body = UnlimitedRulebook.player
