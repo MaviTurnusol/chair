@@ -1,3 +1,4 @@
+@icon("uid://cycx8ge2kfc28")
 extends Resource
 class_name Room
 @export var Name : String

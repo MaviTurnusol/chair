@@ -1,4 +1,5 @@
 @tool
+@icon("uid://c58sbq1oa6cvf")
 extends Node2D
 
 @onready var interaction_prompt: InteractionPrompt = $InteractionPrompter

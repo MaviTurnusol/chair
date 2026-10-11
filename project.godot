@@ -38,6 +38,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://RoomsAndLevels/": "yellow",
 "res://Weapons/MeleeWeapons/": "yellow",
 "res://Weapons/RangedWeapons/": "yellow",
 "res://Weapons/WeaponItems/": "yellow"

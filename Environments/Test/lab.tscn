@@ -6,16 +6,28 @@
 [ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/Test/koridor5w1_n.png" id="2_w1gcx"]
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Actionable.tscn" id="2_y3jmy"]
 [ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/testDialogue.dialogue" id="3_7xo5u"]
-[ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://MADDIE/Nana/nana_silhouette_1.png" id="9_ktjvv"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_gbuu4"]
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Enemies/Wormy/CeilingWorm.tscn" id="13_esouf"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="13_hs8mn"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Enemies/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
-[ext_resource type="Script" uid="uid://ci3kpfsla23mb" path="res://DeletionQueue/MaddieDoor.gd" id="15_lh5rw"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Weapons/MeleeWeapons/player_melee_test.tscn" id="14_1oah0"]
+[ext_resource type="PackedScene" uid="uid://c3wm4v4rx7sv6" path="res://Weapons/RangedWeapons/player_gun_test.tscn" id="14_roi12"]
+[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Enemies/Wormy/Worm1.png" id="15_y301g"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/Scripts/InventoryItem.gd" id="15_ycysq"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/Nana/nana1.png" id="16_2wxxo"]
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://MADDIE/Inventory/Scenes/PickupableItem.tscn" id="16_y301g"]
 [ext_resource type="PackedScene" uid="uid://s276hxsynqwg" path="res://MADDIE/Inventory/Scenes/locker.tscn" id="20_ycysq"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="21_1oah0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
+size = Vector2(1240.5, 115)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gbuu4"]
+diffuse_texture = ExtResource("1_7xo5u")
+normal_texture = ExtResource("2_w1gcx")
+specular_texture = ExtResource("1_7xo5u")
+specular_color = Color(0.88235295, 1, 1, 1)
+specular_shininess = 0.1
 
 [sub_resource type="Environment" id="Environment_w1gcx"]
 background_mode = 3
@@ -36,18 +48,29 @@ shader_parameter/intensity = 3.0
 shader_parameter/contrast = 1.20000003325
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_gbuu4"]
-diffuse_texture = ExtResource("1_7xo5u")
-normal_texture = ExtResource("2_w1gcx")
-specular_texture = ExtResource("1_7xo5u")
-specular_color = Color(0.88235295, 1, 1, 1)
-specular_shininess = 0.1
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
-size = Vector2(1240.5, 115)
+[sub_resource type="Resource" id="Resource_gixq4"]
+script = ExtResource("15_ycysq")
+ItemName = "example"
+ground_tex = ExtResource("16_2wxxo")
+inventory_tex = ExtResource("16_2wxxo")
+inv_scalemulti = 1.5
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
+ItemAttributes = Array[int]([1])
+AssociatedScene = ExtResource("14_1oah0")
+
+[sub_resource type="Resource" id="Resource_1oah0"]
+script = ExtResource("15_ycysq")
+ground_tex = ExtResource("15_y301g")
+inventory_tex = ExtResource("15_y301g")
+ground_scalemulti = 2.0
+inv_scalemulti = 1.5
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+ItemAttributes = Array[int]([2])
+AssociatedScene = ExtResource("14_roi12")
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs8mn"]
 radius = 25.0
@@ -56,20 +79,51 @@ height = 109.65
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
 size = Vector2(40, 96)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lh5rw"]
-size = Vector2(96, 96)
-
 [node name="Lab" type="Node2D" unique_id=775964121]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1280648369]
+[node name="Environment" type="Node2D" parent="." unique_id=1170476236]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment" unique_id=1174702601]
+position = Vector2(166, -3)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D" unique_id=1707381969]
+position = Vector2(453.75, 342.5)
+shape = SubResource("RectangleShape2D_6refc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/StaticBody2D" unique_id=1890948738]
+position = Vector2(453, 67)
+shape = SubResource("RectangleShape2D_6refc")
+
+[node name="bg" type="Node2D" parent="Environment" unique_id=900721234]
+
+[node name="ColorRect" type="ColorRect" parent="Environment/bg" unique_id=893654717]
+offset_left = -1288.0
+offset_top = -646.0
+offset_right = 2691.0
+offset_bottom = 1300.0
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/bg" unique_id=1828161032]
+light_mask = 2
+texture = SubResource("CanvasTexture_gbuu4")
+centered = false
+
+[node name="LedLight" parent="Environment" unique_id=2003837725 instance=ExtResource("10_gbuu4")]
+position = Vector2(261, 113)
+
+[node name="LedLight2" parent="Environment" unique_id=1385647229 instance=ExtResource("10_gbuu4")]
+position = Vector2(816, 112)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1280648369]
 environment = SubResource("Environment_w1gcx")
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=2000743457]
+[node name="CanvasModulate" type="CanvasModulate" parent="Environment" unique_id=2000743457]
 color = Color(0.45, 0.45, 0.45, 1)
 
-[node name="vignette" type="CanvasLayer" parent="." unique_id=1173212707]
+[node name="vignette" type="CanvasLayer" parent="Environment" unique_id=1173212707]
 
-[node name="ColorRect" type="ColorRect" parent="vignette" unique_id=326334068]
+[node name="ColorRect" type="ColorRect" parent="Environment/vignette" unique_id=326334068]
 material = SubResource("ShaderMaterial_gbuu4")
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,126 +131,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="bg" type="Node2D" parent="." unique_id=900721234]
-
-[node name="ColorRect" type="ColorRect" parent="bg" unique_id=893654717]
-offset_left = -1288.0
-offset_top = -646.0
-offset_right = 2691.0
-offset_bottom = 1300.0
-color = Color(0.0627451, 0.0627451, 0.0627451, 1)
-
-[node name="Sprite2D" type="Sprite2D" parent="bg" unique_id=1828161032]
-light_mask = 2
-texture = SubResource("CanvasTexture_gbuu4")
-centered = false
-
-[node name="Hatsunemiku" type="Sprite2D" parent="." unique_id=742045063]
-modulate = Color(0.6, 0.6, 0.6, 1)
-position = Vector2(437.83337, 230.16257)
+[node name="Dialoguable" parent="." unique_id=559728107 instance=ExtResource("2_y3jmy")]
+position = Vector2(417.66666, 227.66667)
 scale = Vector2(0.09705162, 0.097051635)
-texture = ExtResource("1_qieeq")
-
-[node name="Dialoguable" parent="Hatsunemiku" unique_id=559728107 instance=ExtResource("2_y3jmy")]
-position = Vector2(-207.79361, -25.717133)
 dialogue_resource = ExtResource("3_7xo5u")
 talking_point = Vector2(354, 282)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hatsunemiku/Dialoguable" unique_id=1718363251]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialoguable" unique_id=1718363251]
 position = Vector2(0.00035095215, 41.214966)
 scale = Vector2(1, 0.9999998)
 shape = SubResource("RectangleShape2D_ynjs4")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1174702601]
-position = Vector2(166, -3)
-collision_layer = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1707381969]
-position = Vector2(453.75, 342.5)
-shape = SubResource("RectangleShape2D_6refc")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1890948738]
-position = Vector2(453, 67)
-shape = SubResource("RectangleShape2D_6refc")
-
-[node name="Nana1" type="Sprite2D" parent="." unique_id=1307031169]
-position = Vector2(275, 238)
-texture = ExtResource("16_2wxxo")
-
-[node name="PointLight2D" type="PointLight2D" parent="Nana1" unique_id=2106200763]
-blend_mode = 2
-texture = ExtResource("9_ktjvv")
-
-[node name="LedLight" parent="." unique_id=2003837725 instance=ExtResource("10_gbuu4")]
-position = Vector2(261, 113)
-
-[node name="LedLight2" parent="." unique_id=1385647229 instance=ExtResource("10_gbuu4")]
-position = Vector2(816, 112)
-
-[node name="The real maddie" type="Node" parent="." unique_id=1283741702]
-
-[node name="TEMP_DEBUG_HitBox" parent="The real maddie" unique_id=187917931 instance=ExtResource("13_hs8mn")]
-position = Vector2(58, 209)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="The real maddie/TEMP_DEBUG_HitBox" unique_id=1704919889]
-shape = SubResource("CapsuleShape2D_hs8mn")
-
-[node name="Label" type="Label" parent="The real maddie/TEMP_DEBUG_HitBox" unique_id=1977121166]
-offset_left = -33.0
-offset_top = -36.0
-offset_right = 36.0
-offset_bottom = 39.0
-text = "DEBUG 
-DAMAGE
-BOX"
-
-[node name="CeilingWorm2" parent="The real maddie" unique_id=908797744 instance=ExtResource("13_esouf")]
-position = Vector2(745, 110)
-
-[node name="CeilingWorm3" parent="The real maddie" unique_id=1121628834 instance=ExtResource("13_esouf")]
-position = Vector2(560, 116)
-
-[node name="CeilingWorm4" parent="The real maddie" unique_id=2141160138 instance=ExtResource("13_esouf")]
-position = Vector2(645, 116)
-
-[node name="JustANormalGuy" parent="The real maddie" unique_id=1552983653 instance=ExtResource("13_lh5rw")]
-modulate = Color(0.77038866, 3.85046e-07, 0.39466476, 1)
-position = Vector2(927, 225)
-
-[node name="BulletBlocker_IMPENETRABLE" type="StaticBody2D" parent="The real maddie/JustANormalGuy" unique_id=871633439]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="The real maddie/JustANormalGuy/BulletBlocker_IMPENETRABLE" unique_id=1932140953]
-shape = SubResource("RectangleShape2D_hs8mn")
-
-[node name="JustANormalGuy2" parent="The real maddie" unique_id=521501233 instance=ExtResource("13_lh5rw")]
-position = Vector2(816, 227)
-
-[node name="JustANormalGuy3" parent="The real maddie" unique_id=753228336 instance=ExtResource("13_lh5rw")]
-position = Vector2(1030, 223)
-
-[node name="PickupableItem" parent="The real maddie" unique_id=1324268814 instance=ExtResource("16_y301g")]
-position = Vector2(113, 229)
-
-[node name="PickupableItem3" parent="The real maddie" unique_id=233581645 instance=ExtResource("16_y301g")]
-position = Vector2(1001, 238)
-
-[node name="PickupableItem2" parent="The real maddie" unique_id=1100030553 instance=ExtResource("16_y301g")]
-position = Vector2(645, 225)
-
-[node name="fake door due deletion" type="Node2D" parent="." unique_id=292551020]
-position = Vector2(1604, 119)
-script = ExtResource("15_lh5rw")
-DoorKey = 1
-
-[node name="EntryPoint" type="Marker2D" parent="fake door due deletion" unique_id=1766998694]
-position = Vector2(0, 51)
-
-[node name="Area2D" type="Area2D" parent="fake door due deletion" unique_id=1315888316]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fake door due deletion/Area2D" unique_id=473948010]
-shape = SubResource("RectangleShape2D_lh5rw")
+[node name="Hatsunemiku" type="Sprite2D" parent="Dialoguable" unique_id=742045063]
+modulate = Color(0.6, 0.6, 0.6, 1)
+position = Vector2(207.79346, 25.717041)
+scale = Vector2(1, 0.99999994)
+texture = ExtResource("1_qieeq")
 
 [node name="Locker" parent="." unique_id=51756075 instance=ExtResource("20_ycysq")]
 position = Vector2(556, 219)
@@ -211,3 +161,58 @@ DoSetPositionAtNewScene = true
 position = Vector2(1089, 221)
 TargetSceneName = "Bus Travel"
 DoSetPositionAtNewScene = true
+
+[node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_y301g")]
+position = Vector2(113, 229)
+WhatItemAmI = SubResource("Resource_gixq4")
+
+[node name="PickupableItem3" parent="." unique_id=233581645 instance=ExtResource("16_y301g")]
+position = Vector2(1001, 238)
+
+[node name="PickupableItem2" parent="." unique_id=1100030553 instance=ExtResource("16_y301g")]
+position = Vector2(645, 225)
+WhatItemAmI = SubResource("Resource_1oah0")
+
+[node name="TEMP_DEBUG_HitBox" parent="." unique_id=187917931 instance=ExtResource("13_hs8mn")]
+visible = false
+position = Vector2(58, 209)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TEMP_DEBUG_HitBox" unique_id=1704919889]
+shape = SubResource("CapsuleShape2D_hs8mn")
+
+[node name="Label" type="Label" parent="TEMP_DEBUG_HitBox" unique_id=1977121166]
+offset_left = -33.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 39.0
+text = "DEBUG 
+DAMAGE
+BOX"
+
+[node name="Enemies" type="Node" parent="." unique_id=1498710853]
+
+[node name="CeilingWorm2" parent="Enemies" unique_id=908797744 instance=ExtResource("13_esouf")]
+position = Vector2(745, 110)
+
+[node name="CeilingWorm3" parent="Enemies" unique_id=1121628834 instance=ExtResource("13_esouf")]
+position = Vector2(560, 116)
+
+[node name="CeilingWorm4" parent="Enemies" unique_id=2141160138 instance=ExtResource("13_esouf")]
+position = Vector2(645, 116)
+
+[node name="JustANormalGuy" parent="Enemies" unique_id=1552983653 instance=ExtResource("13_lh5rw")]
+modulate = Color(0.77038866, 3.85046e-07, 0.39466476, 1)
+position = Vector2(927, 225)
+
+[node name="BulletBlocker_IMPENETRABLE" type="StaticBody2D" parent="Enemies/JustANormalGuy" unique_id=871633439]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/JustANormalGuy/BulletBlocker_IMPENETRABLE" unique_id=1932140953]
+shape = SubResource("RectangleShape2D_hs8mn")
+
+[node name="JustANormalGuy2" parent="Enemies" unique_id=521501233 instance=ExtResource("13_lh5rw")]
+position = Vector2(816, 227)
+
+[node name="JustANormalGuy3" parent="Enemies" unique_id=753228336 instance=ExtResource("13_lh5rw")]
+position = Vector2(1030, 223)
