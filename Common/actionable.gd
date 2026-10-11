@@ -1,6 +1,5 @@
-@icon("uid://ljn3bxpexmdk")
+@icon("uid://d3lr2uas6ax8v")
 extends Area2D
-
 
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"

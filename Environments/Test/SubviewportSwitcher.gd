@@ -1,3 +1,4 @@
+@icon("uid://4uvvr76misin")
 extends SubViewportContainer
 
 var LoadedScenes : Array[RoomParent]
