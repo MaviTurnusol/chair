@@ -1,6 +1,9 @@
 extends Node
 
 var RoomDict : Dictionary[String,Room]
+
+signal switchscene(String)
+
 func _ready() -> void:
 	var Rooms = dir_contents("res://RoomsAndLevels/")
 	for r : Room in Rooms:
@@ -32,3 +35,6 @@ func dir_contents(path):
 		print("An error occurred when trying to access the path.")
 
 	return res_loads
+
+func SwitchScene(WhatScene : String):
+	switchscene.emit(WhatScene)

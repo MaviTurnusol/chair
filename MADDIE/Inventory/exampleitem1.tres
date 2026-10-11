@@ -9,3 +9,4 @@ ItemName = "example"
 ground_tex = ExtResource("1_l66e8")
 inventory_tex = ExtResource("1_l66e8")
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
+ItemAttributes = Array[int]([1, 0, 0])
