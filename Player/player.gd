@@ -1,3 +1,4 @@
+@icon("uid://bq0j64m8a0ocr")
 extends CharacterBody2D
 class_name Player
 var speed = 130.0

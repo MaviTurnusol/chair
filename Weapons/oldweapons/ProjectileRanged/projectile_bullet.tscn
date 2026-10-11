@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bpwddkq74vscf"]
 
-[ext_resource type="Script" uid="uid://bl7ahucvhbqfy" path="res://BigGuns/PlayerBullet2.gd" id="1_ii6jf"]
+[ext_resource type="Script" uid="uid://bl7ahucvhbqfy" path="res://Weapons/Scripts/PlayerBullet2.gd" id="1_ii6jf"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="2_shwse"]
 
 [sub_resource type="Gradient" id="Gradient_u56je"]

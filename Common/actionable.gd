@@ -1,3 +1,4 @@
+@icon("uid://ljn3bxpexmdk")
 extends Area2D
 
 

@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bjxk5mlmgk2uf"]
 
-[ext_resource type="Script" uid="uid://ww4q0kgox3xk" path="res://MADDIE/MeleeAttack.gd" id="1_xo53j"]
-[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="2_v2v3p"]
-[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="3_hyyse"]
+[ext_resource type="Script" uid="uid://ww4q0kgox3xk" path="res://Weapons/Scripts/MeleeAttack.gd" id="1_dj01j"]
+[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="2_iy5i6"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="3_5t6yl"]
 
 [sub_resource type="Curve2D" id="Curve2D_v2v3p"]
 _data = {
@@ -20,7 +20,7 @@ point_count = 2
 radius = 16.0
 
 [node name="MeleeAttack" type="Node2D" unique_id=456058279]
-script = ExtResource("1_xo53j")
+script = ExtResource("1_dj01j")
 
 [node name="AttackPath" type="Path2D" parent="." unique_id=1403965372]
 curve = SubResource("Curve2D_v2v3p")
@@ -36,7 +36,7 @@ curve = SubResource("Curve2D_hyyse")
 [node name="PathFollow2D" type="PathFollow2D" parent="BodyPath" unique_id=824441172]
 loop = false
 
-[node name="HitBox" parent="." unique_id=187917931 instance=ExtResource("2_v2v3p")]
+[node name="HitBox" parent="." unique_id=187917931 instance=ExtResource("2_iy5i6")]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1960100638]
@@ -44,4 +44,4 @@ shape = SubResource("CircleShape2D_lb3t1")
 
 [node name="Sprite2D" type="Sprite2D" parent="HitBox" unique_id=1234113136]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("3_hyyse")
+texture = ExtResource("3_5t6yl")

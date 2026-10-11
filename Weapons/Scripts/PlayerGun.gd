@@ -1,5 +1,5 @@
 @tool
-#@icon("res://Guns/Held_SmallGun1.png")
+@icon("uid://025g8065lqpj")
 class_name PlayerGun extends Node2D
 
 var Sprite : Sprite2D

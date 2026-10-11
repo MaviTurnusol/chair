@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnigf0kimh55k"
-path="res://.godot/imported/crossairCircle.png-01a43dddf1b25bb7fedf5c40e89f35f0.ctex"
+uid="uid://byivr7lrs5l23"
+path="res://.godot/imported/Icon_Gun.png-c0b35b2e618e9dba4a53e935b3006bc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://BigGuns/crossairCircle.png"
-dest_files=["res://.godot/imported/crossairCircle.png-01a43dddf1b25bb7fedf5c40e89f35f0.ctex"]
+source_file="res://Icons/Icon_Gun.png"
+dest_files=["res://.godot/imported/Icon_Gun.png-c0b35b2e618e9dba4a53e935b3006bc2.ctex"]
 
 [params]
 

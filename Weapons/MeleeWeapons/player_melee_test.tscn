@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://df4j7gu4thxps"]
 
-[ext_resource type="Script" uid="uid://by2pyc8q6m3ry" path="res://MADDIE/PlayerMelee.gd" id="1_y8hdp"]
-[ext_resource type="Script" uid="uid://ww4q0kgox3xk" path="res://MADDIE/MeleeAttack.gd" id="3_awxei"]
-[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://BigGuns/crossAir.tscn" id="3_lj0cf"]
-[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="5_awxei"]
-[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="6_hopsy"]
+[ext_resource type="Script" uid="uid://by2pyc8q6m3ry" path="res://Weapons/Scripts/PlayerMelee.gd" id="1_qhynl"]
+[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://Weapons/GunsVFX/crossAir.tscn" id="2_exvhq"]
+[ext_resource type="Script" uid="uid://ww4q0kgox3xk" path="res://Weapons/Scripts/MeleeAttack.gd" id="3_2gx34"]
+[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="4_a7asb"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="5_8ll5b"]
 
 [sub_resource type="Curve" id="Curve_y8hdp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -60,14 +60,14 @@ point_count = 2
 [node name="PlayerMelee" type="Node2D" unique_id=1697537417 node_paths=PackedStringArray("Attacks")]
 process_mode = 3
 texture_filter = 1
-script = ExtResource("1_y8hdp")
+script = ExtResource("1_qhynl")
 Attacks = [NodePath("MeleeAttack"), NodePath("MeleeAttack2")]
 TimeBetweenShots = 0.1
-Crosshair = ExtResource("3_lj0cf")
+Crosshair = ExtResource("2_exvhq")
 metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
 
 [node name="MeleeAttack" type="Node2D" parent="." unique_id=456058279 node_paths=PackedStringArray("Hit_Box", "MeleeAttackPath", "MeleeAttackPathFollow", "BodyAttackPath", "BodyAttackPathFollow")]
-script = ExtResource("3_awxei")
+script = ExtResource("3_2gx34")
 Hit_Box = NodePath("HitBox")
 WindUpTime = 0.0
 AttackTime = 0.5
@@ -96,7 +96,7 @@ curve = SubResource("Curve2D_kunqw")
 [node name="PathFollow2D" type="PathFollow2D" parent="MeleeAttack/BodyPath" unique_id=824441172]
 loop = false
 
-[node name="HitBox" parent="MeleeAttack" unique_id=187917931 instance=ExtResource("5_awxei")]
+[node name="HitBox" parent="MeleeAttack" unique_id=187917931 instance=ExtResource("4_a7asb")]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttack/HitBox" unique_id=1960100638]
@@ -104,10 +104,10 @@ shape = SubResource("CircleShape2D_lb3t1")
 
 [node name="Sprite2D" type="Sprite2D" parent="MeleeAttack/HitBox" unique_id=1234113136]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("6_hopsy")
+texture = ExtResource("5_8ll5b")
 
 [node name="MeleeAttack2" type="Node2D" parent="." unique_id=80572609 node_paths=PackedStringArray("Hit_Box", "MeleeAttackPath", "MeleeAttackPathFollow", "BodyAttackPath", "BodyAttackPathFollow")]
-script = ExtResource("3_awxei")
+script = ExtResource("3_2gx34")
 Hit_Box = NodePath("HitBox")
 WindUpTime = 0.15
 AttackTime = 0.8
@@ -136,7 +136,7 @@ curve = SubResource("Curve2D_hopsy")
 [node name="PathFollow2D" type="PathFollow2D" parent="MeleeAttack2/BodyPath" unique_id=31881978]
 loop = false
 
-[node name="HitBox" parent="MeleeAttack2" unique_id=68644062 instance=ExtResource("5_awxei")]
+[node name="HitBox" parent="MeleeAttack2" unique_id=68644062 instance=ExtResource("4_a7asb")]
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeAttack2/HitBox" unique_id=715430606]
@@ -144,4 +144,4 @@ shape = SubResource("CircleShape2D_lb3t1")
 
 [node name="Sprite2D" type="Sprite2D" parent="MeleeAttack2/HitBox" unique_id=1587921811]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("6_hopsy")
+texture = ExtResource("5_8ll5b")

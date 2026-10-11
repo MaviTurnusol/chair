@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://infn7fgrvkrv"]
 
-[ext_resource type="Script" uid="uid://by2pyc8q6m3ry" path="res://MADDIE/PlayerMelee.gd" id="1_x3bk2"]
-[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://BigGuns/HelperGizmo.gd" id="4_givae"]
+[ext_resource type="Script" uid="uid://by2pyc8q6m3ry" path="res://Weapons/Scripts/PlayerMelee.gd" id="1_x3bk2"]
+[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://Weapons/GunsVFX/HelperGizmo.gd" id="4_givae"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="5_3hoq7"]
 [ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="6_sfm16"]
 

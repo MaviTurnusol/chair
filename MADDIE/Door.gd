@@ -1,3 +1,4 @@
+@icon("uid://dh4y12fn6jv5x")
 extends Node2D
 
 @export var TargetSceneName : String

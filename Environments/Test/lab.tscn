@@ -11,14 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://MADDIE/Wormy/CeilingWorm.tscn" id="13_esouf"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="13_hs8mn"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://MADDIE/Guy/NormalWalkingEnemy1.tscn" id="13_lh5rw"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Weapons/MeleeWeapons/player_melee_test.tscn" id="14_1oah0"]
 [ext_resource type="Script" uid="uid://ci3kpfsla23mb" path="res://MADDIE/MaddieDoor.gd" id="15_lh5rw"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="15_ycysq"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/nana1.png" id="16_2wxxo"]
-[ext_resource type="PackedScene" uid="uid://bvt72vdia2itb" path="res://Weapons/ProjectileGun.tscn" id="16_och0h"]
+[ext_resource type="PackedScene" uid="uid://bvt72vdia2itb" path="res://Weapons/oldweapons/ProjectileRanged/ProjectileGun.tscn" id="16_dc4ob"]
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://MADDIE/Inventory/PickupableItem.tscn" id="16_y301g"]
-[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://MADDIE/player_melee_test.tscn" id="17_eholx"]
-[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/InventoryItem.gd" id="17_y301g"]
-[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Wormy/Worm1.png" id="18_gixq4"]
-[ext_resource type="PackedScene" uid="uid://c3wm4v4rx7sv6" path="res://MADDIE/player_gun_test.tscn" id="18_y1xy0"]
+[ext_resource type="PackedScene" uid="uid://c3wm4v4rx7sv6" path="res://Weapons/RangedWeapons/player_gun_test.tscn" id="17_du6ky"]
+[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://MADDIE/Wormy/Worm1.png" id="18_8nl8p"]
 [ext_resource type="PackedScene" uid="uid://s276hxsynqwg" path="res://MADDIE/locker.tscn" id="20_ycysq"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RealDoor.tscn" id="21_1oah0"]
 
@@ -62,14 +62,14 @@ height = 109.65
 size = Vector2(40, 96)
 
 [sub_resource type="Resource" id="Resource_1oah0"]
-script = ExtResource("17_y301g")
+script = ExtResource("15_ycysq")
 ItemName = "example"
 ground_tex = ExtResource("16_2wxxo")
 inventory_tex = ExtResource("16_2wxxo")
 inv_scalemulti = 1.5
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
-AssociatedScene = ExtResource("17_eholx")
+AssociatedScene = ExtResource("14_1oah0")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aji2t"]
 load_path = "res://.godot/imported/nana1.png-a4e5770ef0326fcefa6beca20d4dc203.ctex"
@@ -78,24 +78,24 @@ load_path = "res://.godot/imported/nana1.png-a4e5770ef0326fcefa6beca20d4dc203.ct
 load_path = "res://.godot/imported/nana1.png-a4e5770ef0326fcefa6beca20d4dc203.ctex"
 
 [sub_resource type="Resource" id="Resource_ycysq"]
-script = ExtResource("17_y301g")
+script = ExtResource("15_ycysq")
 ItemName = "example"
 ground_tex = SubResource("CompressedTexture2D_aji2t")
 inventory_tex = SubResource("CompressedTexture2D_helpb")
 inv_scalemulti = 1.5
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([2])
-AssociatedScene = ExtResource("16_och0h")
+AssociatedScene = ExtResource("16_dc4ob")
 
 [sub_resource type="Resource" id="Resource_dc4ob"]
-script = ExtResource("17_y301g")
-ground_tex = ExtResource("18_gixq4")
-inventory_tex = ExtResource("18_gixq4")
+script = ExtResource("15_ycysq")
+ground_tex = ExtResource("18_8nl8p")
+inventory_tex = ExtResource("18_8nl8p")
 ground_scalemulti = 2.0
 inv_scalemulti = 1.5
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
 ItemAttributes = Array[int]([2])
-AssociatedScene = ExtResource("18_y1xy0")
+AssociatedScene = ExtResource("17_du6ky")
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lh5rw"]
@@ -139,12 +139,12 @@ position = Vector2(437.83337, 230.16257)
 scale = Vector2(0.09705162, 0.097051635)
 texture = ExtResource("1_qieeq")
 
-[node name="Actionable" parent="Hatsunemiku" unique_id=559728107 instance=ExtResource("2_y3jmy")]
+[node name="Dialoguable" parent="Hatsunemiku" unique_id=559728107 instance=ExtResource("2_y3jmy")]
 position = Vector2(-207.79361, -25.717133)
 dialogue_resource = ExtResource("3_7xo5u")
 talking_point = Vector2(354, 282)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hatsunemiku/Actionable" unique_id=1718363251]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hatsunemiku/Dialoguable" unique_id=1718363251]
 position = Vector2(0.00035095215, 41.214966)
 scale = Vector2(1, 0.9999998)
 shape = SubResource("RectangleShape2D_ynjs4")
@@ -248,9 +248,11 @@ position = Vector2(556, 219)
 
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("21_1oah0")]
 position = Vector2(251, 223)
+TargetSceneName = "Hook Lab"
+DoorIdentifier = "Lab-HookLab-1"
 DoSetPositionAtNewScene = true
 
 [node name="RealDoor2" parent="." unique_id=1318754282 instance=ExtResource("21_1oah0")]
 position = Vector2(1089, 221)
-DoorIdentifier = "Lab-HookLab-2"
+TargetSceneName = "Bus Travel"
 DoSetPositionAtNewScene = true

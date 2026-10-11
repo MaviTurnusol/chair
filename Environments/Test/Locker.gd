@@ -1,3 +1,4 @@
+@icon("uid://cbi1n2nhvnoi2")
 extends Node2D
 @onready var inventory_displayer: InventoryHud = $InventoryDisplayer
 @export var PlayerMaxRange : float = 100

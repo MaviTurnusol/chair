@@ -1,5 +1,5 @@
 #@tool
-#@icon("res://Guns/Held_SmallGun1.png")
+@icon("uid://lw455p8jq31p")
 class_name PlayerMelee extends Node2D
 
 var Sprite : Sprite2D

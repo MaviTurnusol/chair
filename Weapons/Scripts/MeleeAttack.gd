@@ -1,3 +1,4 @@
+@icon("uid://brrsfmisj4ou5")
 extends Node2D
 class_name MeleeAttack
 

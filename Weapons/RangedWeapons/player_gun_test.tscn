@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://c3wm4v4rx7sv6"]
 
-[ext_resource type="Script" uid="uid://y10s2jb0y8n1" path="res://BigGuns/PlayerGun.gd" id="1_6hm4i"]
-[ext_resource type="Texture2D" uid="uid://025g8065lqpj" path="res://Player/Held_SmallGun1-export.png" id="2_omhe4"]
-[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://BigGuns/crossAir.tscn" id="3_2oapy"]
-[ext_resource type="PackedScene" uid="uid://bu2p6l1xrf5ud" path="res://BigGuns/BulletCasing1.tscn" id="4_fp7sm"]
-[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://BigGuns/HelperGizmo.gd" id="5_iblcv"]
+[ext_resource type="Script" uid="uid://y10s2jb0y8n1" path="res://Weapons/Scripts/PlayerGun.gd" id="1_be5vi"]
+[ext_resource type="Texture2D" uid="uid://025g8065lqpj" path="res://Player/Held_SmallGun1-export.png" id="2_8kwv4"]
+[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://Weapons/GunsVFX/crossAir.tscn" id="3_n3s4y"]
+[ext_resource type="PackedScene" uid="uid://bu2p6l1xrf5ud" path="res://Weapons/GunsVFX/BulletCasing1.tscn" id="4_pmhlx"]
+[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://Weapons/GunsVFX/HelperGizmo.gd" id="5_c4387"]
 
 [node name="PlayerGun" type="Node2D" unique_id=811895720 node_paths=PackedStringArray("FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo", "GunPreviewSprite")]
-script = ExtResource("1_6hm4i")
-GunTexture = ExtResource("2_omhe4")
+script = ExtResource("1_be5vi")
+GunTexture = ExtResource("2_8kwv4")
 TimeBetweenShots = 0.1
-Crosshair = ExtResource("3_2oapy")
+Crosshair = ExtResource("3_n3s4y")
 DoShootHitscan = true
-HitscanBullet = ExtResource("3_2oapy")
+HitscanBullet = ExtResource("3_n3s4y")
 HitscanBulletSpread = Vector2(8, 8)
 HitscanBulletAmount = 2
 HitscanBulletDamage = 0.25
@@ -23,28 +23,28 @@ HitscanTimeBetweenBulletWaves = 0.05
 HitscanAesthetic = null
 HitscanLineWidth = 2.5
 HitscanLineColour = Color(1, 1, 1, 1)
-BulletCasing = ExtResource("4_fp7sm")
+BulletCasing = ExtResource("4_pmhlx")
 DoThrowBulletCasing = true
-BulletCasing = ExtResource("4_fp7sm")
+BulletCasing = ExtResource("4_pmhlx")
 BulletCasingShootStrength = Vector2(100, 150)
 BulletCasingShootDirection = Vector2(0.1, -1)
 FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@20949")
 metadata/_custom_type_script = "uid://y10s2jb0y8n1"
 
 [node name="Fire Point" type="Marker2D" parent="." unique_id=2096501808]
 position = Vector2(21.89089, -7.129158)
-script = ExtResource("5_iblcv")
+script = ExtResource("5_c4387")
 Pos = Vector2(21.89089, -7.129158)
 
 [node name="Pivot Point" type="Marker2D" parent="." unique_id=607079071]
 position = Vector2(-3.5762787e-06, -1.4305115e-06)
-script = ExtResource("5_iblcv")
+script = ExtResource("5_c4387")
 Pos = Vector2(-3.5762787e-06, -1.4305115e-06)
 
 [node name="Gun Preview" type="Marker2D" parent="Pivot Point" unique_id=2014610722]
 position = Vector2(9.634333, -2.68075)
-script = ExtResource("5_iblcv")
+script = ExtResource("5_c4387")
 Pos = Vector2(9.634329, -2.6807513)
