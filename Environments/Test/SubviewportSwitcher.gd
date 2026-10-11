@@ -12,7 +12,7 @@ func GetActiveScene():
 
 func _ready() -> void:
 	SceneManager.switchscene.connect(SwitchToScene)
-	LoadScene("Lab")
+	LoadScene(StartingLoadedRoom)
 	await get_tree().process_frame
 	SetActiveScene()
 	#LoadScene("Hook Lab")
