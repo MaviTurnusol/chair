@@ -78,11 +78,11 @@ func SetCrosshairScaleAppropiateToSpread():
 		CrosshairNode.get_node("Sprite2D").scale = Vector2.ONE #* (HitscanBulletSpread/16)
 
 func _process(delta: float) -> void:
-	#if(Engine.is_editor_hint()):
+	if(Engine.is_editor_hint()):
 		#FirePoint = FirePointHelperGizmo.global_position
 		#PivotPoint = PivotPointHelperGizmo.global_position
 		#GunPoint = GunPreviewHelperGizmo.global_position
-		#return
+		return
 	
 	if(!IsAttacking):
 		if(CurrentAttack.Hit_Box.monitoring):

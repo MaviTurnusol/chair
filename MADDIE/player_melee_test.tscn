@@ -57,12 +57,11 @@ _data = {
 }
 point_count = 2
 
-[node name="PlayerMelee" type="Node2D" unique_id=1697537417 node_paths=PackedStringArray("Attacks", "CurrentAttack")]
+[node name="PlayerMelee" type="Node2D" unique_id=1697537417 node_paths=PackedStringArray("Attacks")]
 process_mode = 3
 texture_filter = 1
 script = ExtResource("1_y8hdp")
 Attacks = [NodePath("MeleeAttack"), NodePath("MeleeAttack2")]
-CurrentAttack = NodePath("MeleeAttack")
 TimeBetweenShots = 0.1
 Crosshair = ExtResource("3_lj0cf")
 metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
@@ -70,6 +69,7 @@ metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
 [node name="MeleeAttack" type="Node2D" parent="." unique_id=456058279 node_paths=PackedStringArray("Hit_Box", "MeleeAttackPath", "MeleeAttackPathFollow", "BodyAttackPath", "BodyAttackPathFollow")]
 script = ExtResource("3_awxei")
 Hit_Box = NodePath("HitBox")
+WindUpTime = 0.0
 AttackTime = 0.5
 RecoveryTime = 0.0
 AttackAnimation = 4
