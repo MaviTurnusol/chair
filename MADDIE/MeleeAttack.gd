@@ -10,12 +10,13 @@ class_name MeleeAttack
 
 @export var AttackAnimation : UnlimitedRulebook.MeleeAnimation
 @export var AttackShouldLastAnimationDurationOverride : bool = false
-@export_category("PAths And Curves")
+@export_category("Curves")
 @export var PositionInPathOverAttackTime : Curve
 @export var ScaleOverAttackTime : Curve
+@export var BodyPositionInPathOverAttackTime : Curve
+
+@export_category("Paths")
 @export var MeleeAttackPath : Path2D
 @export var MeleeAttackPathFollow : PathFollow2D
-
 @export var BodyAttackPath : Path2D
 @export var BodyAttackPathFollow : PathFollow2D
-@export var BodyPositionInPathOverAttackTime : Curve
