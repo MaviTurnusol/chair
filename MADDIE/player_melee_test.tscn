@@ -47,9 +47,9 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_awxei"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -0.5, -0.5, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 37.5, -14.5, 0, 0, 0, 0, -0.5, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, -0.615, 0, 0, 0, 0, 60, 0)
 }
-point_count = 4
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_hopsy"]
 _data = {
@@ -73,6 +73,7 @@ Hit_Box = NodePath("HitBox")
 AttackTime = 0.5
 RecoveryTime = 0.0
 AttackAnimation = 4
+AttackShouldLastAnimationDurationOverride = true
 PositionInPathOverAttackTime = SubResource("Curve_y8hdp")
 ScaleOverAttackTime = SubResource("Curve_lj0cf")
 MeleeAttackPath = NodePath("AttackPath")
@@ -108,8 +109,9 @@ texture = ExtResource("6_hopsy")
 [node name="MeleeAttack2" type="Node2D" parent="." unique_id=80572609 node_paths=PackedStringArray("Hit_Box", "MeleeAttackPath", "MeleeAttackPathFollow", "BodyAttackPath", "BodyAttackPathFollow")]
 script = ExtResource("3_awxei")
 Hit_Box = NodePath("HitBox")
-WindUpTime = 0.25
-RecoveryTime = 0.1
+WindUpTime = 0.15
+AttackTime = 0.8
+RecoveryTime = 0.0
 AttackChainTime = 0.1
 AttackAnimation = 2
 PositionInPathOverAttackTime = SubResource("Curve_hopsy")
@@ -124,8 +126,7 @@ BodyPositionInPathOverAttackTime = SubResource("Curve_8yfo6")
 curve = SubResource("Curve2D_awxei")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="MeleeAttack2/AttackPath" unique_id=1710185264]
-position = Vector2(-0.5, -0.5)
-rotation = 0.021273386
+rotation = -0.012299379
 loop = false
 
 [node name="BodyPath" type="Path2D" parent="MeleeAttack2" unique_id=310068570]

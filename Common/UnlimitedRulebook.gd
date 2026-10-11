@@ -33,7 +33,13 @@ enum MeleeAnimation{
 	Thrust1,
 	idk,
 	KnifeSlash1,
-	
+}
+var MeleeAnimationDict : Dictionary[MeleeAnimation,String]={
+	MeleeAnimation.Null:"idle",
+	MeleeAnimation.Stab1:"stab1",
+	MeleeAnimation.Thrust1:"thrust1",
+	MeleeAnimation.idk:"thrust1",
+	MeleeAnimation.KnifeSlash1:"knifeslash1"
 }
 
 #####Make this better sometime, these are signals for dialogue events

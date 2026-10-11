@@ -15,14 +15,5 @@ func PhysicsProcess(_delta):
 func ProcessAnimation(mAnimation : UnlimitedRulebook.MeleeAnimation):
 	var animator = stateOwner.anima
 	animator.stop()
-	match mAnimation:
-		UnlimitedRulebook.MeleeAnimation.Null:
-			pass
-		UnlimitedRulebook.MeleeAnimation.Stab1:
-			animator.play("stab1")
-		UnlimitedRulebook.MeleeAnimation.Thrust1:
-			animator.play("thrust1")
-		UnlimitedRulebook.MeleeAnimation.idk:
-			animator.play("fall")
-		UnlimitedRulebook.MeleeAnimation.KnifeSlash1:
-			animator.play("knifeslash1")
+	animator.play(UnlimitedRulebook.MeleeAnimationDict[mAnimation])
+	

@@ -8,7 +8,16 @@ const WhichLayerBlocksBullets : int = 3
 
 @export_category("MELEE ATTACK COMPONENTS")
 @export var Attacks : Array[MeleeAttack]
-@export var CurrentAttack : MeleeAttack
+@export var CurrentAttack : MeleeAttack:
+	set(value):
+		if(value.AttackShouldLastAnimationDurationOverride):
+			value.RecoveryTime = 0
+			value.WindUpTime = 0
+			var animTime : float = 0
+			var animaref : AnimatedSprite2D= UnlimitedRulebook.player.anima
+			animTime = animaref.sprite_frames.get_frame_count(UnlimitedRulebook.MeleeAnimationDict[value.AttackAnimation])/animaref.sprite_frames.get_animation_speed(UnlimitedRulebook.MeleeAnimationDict[value.AttackAnimation])
+			value.AttackTime = animTime
+		CurrentAttack = value
 var AttackIndex : int = 0
 
 var BaseBodyPosition : Vector2
@@ -26,6 +35,7 @@ var CanChainAttack : bool = false
 		#ChangeGunPreview()
 @export var TimeBetweenShots : float = 1
 @export var Crosshair : PackedScene
+
 #
 #@export_category("Key Points")
 #var PivotPoint : Vector2:
