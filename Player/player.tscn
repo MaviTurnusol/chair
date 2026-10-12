@@ -806,6 +806,10 @@ shape = SubResource("CapsuleShape2D_od3ui")
 [node name="MeleeWeaponParent" type="Node2D" parent="Marker2D" unique_id=498292919]
 position = Vector2(0, -45)
 
+[node name="WallCheck" type="RayCast2D" parent="Marker2D" unique_id=605265196]
+target_position = Vector2(35, 0)
+collision_mask = 4
+
 [node name="StateMachine" parent="." unique_id=29357077 node_paths=PackedStringArray("initialState") instance=ExtResource("2_k53q1")]
 initialState = NodePath("Idle")
 

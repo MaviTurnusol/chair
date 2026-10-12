@@ -6,6 +6,7 @@ var jumpVelocity = -440.0
 @onready var anima = $Marker2D/anima
 @onready var machine = $StateMachine
 #@onready var weaponHolder = $Marker2D/weaponHolder
+@onready var wall_check: RayCast2D = $Marker2D/WallCheck
 
 @onready var inventory_component: InventoryComponent = $PlayerInventoryComponent
 
@@ -20,6 +21,13 @@ func _ready() -> void:
 
 func SetGlobalPosition(WhatPosition : Vector2):
 	global_position = WhatPosition
+
+func CheckIfMovingNearWall()->bool:
+	if(wall_check.is_colliding()):
+		return true
+	else:
+		return false
+	
 
 func _physics_process(delta):
 	$debugState.text = str(machine.get_state())

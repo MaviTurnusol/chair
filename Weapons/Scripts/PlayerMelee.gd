@@ -101,8 +101,9 @@ func _process(delta: float) -> void:
 				BodyPos.x *= -1
 			if(Body.dir > 0):
 				BodyPos.x *= 1
-			Body.global_position = BaseBodyPosition + (BodyPos)
-	
+			if(!UnlimitedRulebook.player.CheckIfMovingNearWall()):
+				Body.global_position = BaseBodyPosition + (BodyPos)
+			
 		CurrentAttack.Hit_Box.scale = Vector2.ONE * CurrentAttack.ScaleOverAttackTime.sample_baked(AttackSigmaDelta)
 		CurrentAttack.MeleeAttackPathFollow.progress_ratio = CurrentAttack.PositionInPathOverAttackTime.sample_baked(AttackSigmaDelta)/(CurrentAttack.WindUpTime+CurrentAttack.RecoveryTime+CurrentAttack.AttackTime)
 		CurrentAttack.Hit_Box.global_position = CurrentAttack.MeleeAttackPathFollow.global_position
@@ -156,7 +157,7 @@ func Recovery():
 	IsRecovering = true
 	CurrentAttack.Hit_Box.monitoring = false
 	#CanChainAttack = true
-	print(CurrentAttack.RecoveryTime)
+	#print(CurrentAttack.RecoveryTime)
 	if(CurrentAttack.RecoveryTime!=0):
 		get_tree().create_timer(CurrentAttack.RecoveryTime).timeout.connect(RecoveryFinished)
 	else:
