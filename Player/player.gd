@@ -54,7 +54,11 @@ func _physics_process(delta):
 	#Rolling
 	if Input.is_action_just_pressed("space"):
 		machine.change_state_to("roll")
-	
+
+	#Parry
+	if(Input.is_action_just_pressed("Parry")):
+		machine.change_state_to("parry")
+
 	#Inventory Toggle
 	if(Input.is_action_just_pressed("InventoryToggle")):
 		inventory_component.inventory_hud.visible = ! inventory_component.inventory_hud.visible
@@ -79,7 +83,7 @@ func _physics_process(delta):
 	var dir_ = Input.get_axis("left", "right")
 	if machine.get_state() not in ["roll", "turn", "jump", 
 	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack"
-	,"hook"]:
+	,"hook","parry"]:
 		#Turning
 		if sign(dir_) == sign(-velocity.x) && dir_:
 			machine.change_state_to("turn")

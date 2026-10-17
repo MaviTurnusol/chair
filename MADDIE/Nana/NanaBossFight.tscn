@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Actionable.tscn" id="3_xe74q"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/Nana/nana1.png" id="6_ivb18"]
 [ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://MADDIE/Nana/nana_silhouette_1.png" id="7_mmuvu"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="8_oqs1f"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="10_4s2yy"]
 [ext_resource type="Resource" uid="uid://cx6kuth4rk3v4" path="res://MADDIE/Nana/testnanaboss1.dialogue" id="10_mm1ir"]
 [ext_resource type="Script" uid="uid://cj5jewgd12t6" path="res://DeletionQueue/debug_deletethiswithnocrucialeffectbossfightstart.gd" id="11_nyqwe"]
@@ -143,3 +144,9 @@ offset_top = 113.0
 offset_right = 535.0
 offset_bottom = 153.0
 script = ExtResource("11_nyqwe")
+
+[node name="RealDoor2" parent="." unique_id=696739252 instance=ExtResource("8_oqs1f")]
+position = Vector2(613, 233)
+TargetSceneName = "Lab"
+DoorIdentifier = "nana1"
+DoSetPositionAtNewScene = true

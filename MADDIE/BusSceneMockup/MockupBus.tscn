@@ -380,10 +380,8 @@ texture = SubResource("PlaceholderTexture2D_88jox")
 
 [node name="Sprite2D2" type="AnimatedSprite2D" parent="Ground/Parallax2D2" unique_id=976595813]
 z_index = 1
-position = Vector2(0, -13)
+position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_6llpc")
-autoplay = "default"
-frame_progress = 0.8087228
 
 [node name="Line2D" type="Line2D" parent="Ground/Parallax2D2/Sprite2D2" unique_id=1540880467]
 points = PackedVector2Array(522, -2, 747, 78.77, 979, 2)

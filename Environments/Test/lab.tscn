@@ -159,7 +159,8 @@ DoSetPositionAtNewScene = true
 
 [node name="RealDoor2" parent="." unique_id=1318754282 instance=ExtResource("21_1oah0")]
 position = Vector2(1089, 221)
-TargetSceneName = "Bus Travel"
+TargetSceneName = "Nana Boss Fight"
+DoorIdentifier = "nana1"
 DoSetPositionAtNewScene = true
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_y301g")]
