@@ -1131,7 +1131,7 @@ cantTransitionFrom = PackedStringArray("parry", "jump", "fall", "roll", "groundA
 
 [node name="FallRecovery" parent="StateMachine" unique_id=108244701 instance=ExtResource("19_o28un")]
 
-[node name="GroundAttack" parent="StateMachine" unique_id=1184040215 instance=ExtResource("21_7emwf")]
+[node name="OBSOLETEGroundAttack" parent="StateMachine" unique_id=1184040215 instance=ExtResource("21_7emwf")]
 
 [node name="Talk" parent="StateMachine" unique_id=1021014801 instance=ExtResource("21_gpjlu")]
 
