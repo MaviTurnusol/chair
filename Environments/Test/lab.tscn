@@ -163,6 +163,10 @@ TargetSceneName = "Nana Boss Fight"
 DoorIdentifier = "nana1"
 DoSetPositionAtNewScene = true
 
+[node name="RealDoor3" parent="." unique_id=1260977748 instance=ExtResource("21_1oah0")]
+position = Vector2(35, 228)
+TargetSceneName = "Bus Travel"
+
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_y301g")]
 position = Vector2(113, 229)
 WhatItemAmI = SubResource("Resource_roi12")

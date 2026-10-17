@@ -402,7 +402,6 @@ width_curve = SubResource("Curve_88jox")
 default_color = Color(0, 0, 0, 0.16862746)
 
 [node name="Parallax2D3" type="Parallax2D" parent="Ground" unique_id=1380274508]
-visible = false
 z_index = 2
 repeat_size = Vector2(8000, 0)
 autoscroll = Vector2(-2000, 0)
