@@ -16,7 +16,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_ranql")
 plyr = NodePath("../Player")
 camer = NodePath("../Camera2D2")
-StartingLoadedRoom = "Lab"
+StartingLoadedRoom = "Xochi_Bedroom"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=269823526]
 
@@ -52,6 +52,7 @@ offset_bottom = 23.0
 text = "Maybe we make  the ui reparent to this instead of the scene root"
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=414067892 node_paths=PackedStringArray("target")]
+position_smoothing_enabled = true
 script = ExtResource("5_vy661")
 target = NodePath("../Player/camTarget")
 
