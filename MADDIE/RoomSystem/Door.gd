@@ -12,7 +12,7 @@ extends Node2D
 @export var PlayerMaxRange : float = 100
 func action():
 	print(UnlimitedRulebook.player.machine.get_state())
-	if(UnlimitedRulebook.player.machine.get_state() not in ["roll","meleeAttack"]):
+	if(UnlimitedRulebook.player.machine.get_state() not in ["meleeAttack"]):
 		GoThroughDoor()
 
 func GoThroughDoor():

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://Environments/Test/koridor5w1.png" id="1_yc8od"]
 [ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/Test/koridor5w1_n.png" id="2_4ts47"]
 [ext_resource type="Texture2D" uid="uid://760vqqhnam7t" path="res://MADDIE/XochiHouse/BedroomUnLayered.png" id="3_yc8od"]
+[ext_resource type="Texture2D" uid="uid://bw4t2px6qmu8w" path="res://MADDIE/XochiHouse/JustFlower.png" id="4_4ts47"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="4_rrbtx"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/vignette.gdshader" id="5_2cql4"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="6_3njhu"]
@@ -82,6 +83,14 @@ centered = false
 light_mask = 2
 scale = Vector2(0.085, 0.085)
 texture = ExtResource("3_yc8od")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="Environment/bg" unique_id=847864576]
+light_mask = 2
+z_index = 3
+position = Vector2(187, 65)
+scale = Vector2(0.1, 0.085)
+texture = ExtResource("4_4ts47")
 centered = false
 
 [node name="LedLight" parent="Environment" unique_id=2003837725 instance=ExtResource("4_rrbtx")]
