@@ -38,7 +38,10 @@ func _ready() -> void:
 	
 	#PASS UI SUBVIEWPORT SCALING FIX
 	await get_tree().process_frame
-	reparent(get_tree().root)
+	if(UnlimitedRulebook.UIGod):
+		reparent(UnlimitedRulebook.UIGod)
+	else:
+		reparent(get_tree().root)
 
 func HoverThisInventory():
 	UnlimitedRulebook.HoveredInventory = _InventoryComponent

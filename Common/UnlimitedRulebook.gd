@@ -9,6 +9,7 @@ var playerWeapon
 var currentScene
 
 var HoveredInventory : InventoryComponent
+var UIGod : Node
 
 signal got_on_the_talking_point
 signal hook_ender
