@@ -1,11 +1,11 @@
 @icon("uid://cbi1n2nhvnoi2")
 extends Node2D
-@onready var inventory_displayer: InventoryHud = $InventoryDisplayer
+@export var InventoryDisplayer : InventoryHud
 @export var PlayerMaxRange : float = 100
 func action():
-	inventory_displayer.visible = !inventory_displayer.visible
+	InventoryDisplayer.visible = !InventoryDisplayer.visible
 
 func _process(delta: float) -> void:
 	if(UnlimitedRulebook.player):
 		if(UnlimitedRulebook.player.global_position.distance_to(global_position)>PlayerMaxRange):
-			inventory_displayer.visible = false
+			InventoryDisplayer.visible = false

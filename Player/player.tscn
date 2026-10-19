@@ -1174,11 +1174,11 @@ cutscene_state = NodePath("../StateMachine/Cutscene")
 position = Vector2(0, -34.5)
 shape = SubResource("RectangleShape2D_gpjlu")
 
-[node name="InventoryDisplayer" type="CanvasLayer" parent="." unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent")]
+[node name="PlayerInventoryDisplayer" type="CanvasLayer" parent="." unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent")]
 script = ExtResource("36_qs4pp")
 _InventoryComponent = NodePath("../PlayerInventoryComponent")
 
-[node name="Control" type="Control" parent="InventoryDisplayer" unique_id=1330011099]
+[node name="Control" type="Control" parent="PlayerInventoryDisplayer" unique_id=634247233]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1187,14 +1187,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Inventory" type="Control" parent="InventoryDisplayer/Control" unique_id=2130786499]
+[node name="Inventory" type="Control" parent="PlayerInventoryDisplayer/Control" unique_id=621423805]
+z_index = 1
 anchors_preset = 0
-offset_left = 95.0
-offset_top = 65.0
-offset_right = 695.0
-offset_bottom = 665.0
+offset_right = 650.0
+offset_bottom = 650.0
 
-[node name="GridContainer" type="GridContainer" parent="InventoryDisplayer/Control/Inventory" unique_id=92347144]
+[node name="GridContainer" type="GridContainer" parent="PlayerInventoryDisplayer/Control/Inventory" unique_id=1012758651]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1206,8 +1206,8 @@ theme_override_constants/v_separation = 0
 
 [node name="PlayerInventoryComponent" type="Node" parent="." unique_id=652975170 node_paths=PackedStringArray("inventory_hud")]
 script = ExtResource("36_jp1hh")
-InventorySize = Vector2i(5, 5)
-inventory_hud = NodePath("../InventoryDisplayer")
+InventorySize = Vector2i(6, 6)
+inventory_hud = NodePath("../PlayerInventoryDisplayer")
 
 [node name="PlayerWeaponsAndTools" type="Node" parent="." unique_id=781864843 node_paths=PackedStringArray("MeleeHoldParent", "RangedHoldParent", "PlayerInventoryComponent", "PlayerStateMachine", "MeleeableStates", "RangeeableStates")]
 script = ExtResource("40_8ynux")

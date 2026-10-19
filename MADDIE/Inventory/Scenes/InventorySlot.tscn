@@ -11,6 +11,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 84.0
 offset_bottom = 84.0
+mouse_filter = 1
 script = ExtResource("1_e07lh")
 onText = ExtResource("2_rwhmx")
 offText = ExtResource("3_ju4rd")

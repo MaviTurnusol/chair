@@ -14,21 +14,22 @@
 gradient = SubResource("Gradient_och0h")
 height = 110
 
-[node name="Locker" type="Node2D" unique_id=51756075]
+[node name="Locker" type="Node2D" unique_id=51756075 node_paths=PackedStringArray("InventoryDisplayer")]
 script = ExtResource("1_4gyf8")
+InventoryDisplayer = NodePath("LockerInventoryDisplayer")
 PlayerMaxRange = 150.0
 
 [node name="InventoryComponent" type="Node" parent="." unique_id=1874044462 node_paths=PackedStringArray("inventory_hud")]
 script = ExtResource("2_fih0u")
 InventorySize = Vector2i(6, 6)
-inventory_hud = NodePath("../InventoryDisplayer")
+inventory_hud = NodePath("../LockerInventoryDisplayer")
 StartItems = Array[ExtResource("3_cnfnm")]([ExtResource("4_xwsmt"), ExtResource("5_kbjsi")])
 
-[node name="InventoryDisplayer" type="CanvasLayer" parent="." unique_id=568854709 node_paths=PackedStringArray("_InventoryComponent")]
+[node name="LockerInventoryDisplayer" type="CanvasLayer" parent="." unique_id=568854709 node_paths=PackedStringArray("_InventoryComponent")]
 script = ExtResource("6_w7sn5")
 _InventoryComponent = NodePath("../InventoryComponent")
 
-[node name="Control" type="Control" parent="InventoryDisplayer" unique_id=526149465]
+[node name="Control" type="Control" parent="LockerInventoryDisplayer" unique_id=526149465]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,13 +38,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Inventory" type="Control" parent="InventoryDisplayer/Control" unique_id=942229128]
+[node name="Inventory" type="Control" parent="LockerInventoryDisplayer/Control" unique_id=942229128]
+z_index = 1
 anchors_preset = 0
 offset_left = 1310.0
 offset_right = 1910.0
 offset_bottom = 600.0
 
-[node name="GridContainer" type="GridContainer" parent="InventoryDisplayer/Control/Inventory" unique_id=183463360]
+[node name="GridContainer" type="GridContainer" parent="LockerInventoryDisplayer/Control/Inventory" unique_id=183463360]
+z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
