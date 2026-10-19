@@ -6,7 +6,7 @@ extends Node2D
 
 @export var WhatItemAmI : InventoryItem
 @onready var sprite : Sprite2D = $Sprite2D
-
+var pickedup : bool = false
 func _ready() -> void:
 	if(WhatItemAmI):
 		WhatItemAmI = WhatItemAmI.duplicate()
@@ -20,6 +20,9 @@ func _ready() -> void:
 		sprite.scale = Vector2.ONE * WhatItemAmI.ground_scalemulti
 
 func action():
+	if(pickedup):
+		return
+	pickedup = true
 	interaction_prompt.DestroyAndAnimate()
 	UnlimitedRulebook.player.inventory_component.AddItemToInventory(WhatItemAmI)
 	queue_free()

@@ -39,6 +39,10 @@ func DropItem(_WhatItem : InventoryItem):
 	get_parent().add_sibling(NewPickupable)
 	Refresh()
 
+func RemoveItem(_WhatItem : InventoryItem):
+	if(_WhatItem in OwnInventoryGrid.ItemsInInv):
+		OwnInventoryGrid.ItemsInInv.erase(_WhatItem)
+	Refresh()
 #func ReleaseItem(_where : Vector2i):
 	#HeldItem.Position = _whereAddItemToInventory()
 

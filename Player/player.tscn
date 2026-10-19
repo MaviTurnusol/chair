@@ -1189,10 +1189,10 @@ mouse_filter = 2
 
 [node name="Inventory" type="Control" parent="InventoryDisplayer/Control" unique_id=2130786499]
 anchors_preset = 0
-offset_left = 18.0
-offset_top = 7.0
-offset_right = 418.0
-offset_bottom = 407.0
+offset_left = 95.0
+offset_top = 65.0
+offset_right = 695.0
+offset_bottom = 665.0
 
 [node name="GridContainer" type="GridContainer" parent="InventoryDisplayer/Control/Inventory" unique_id=92347144]
 layout_mode = 1
@@ -1201,6 +1201,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
 
 [node name="PlayerInventoryComponent" type="Node" parent="." unique_id=652975170 node_paths=PackedStringArray("inventory_hud")]
 script = ExtResource("36_jp1hh")
