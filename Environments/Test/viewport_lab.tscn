@@ -17,7 +17,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_ranql")
 plyr = NodePath("../Player")
 camer = NodePath("../Camera2D2")
-StartingLoadedRoom = "Lab"
+StartingLoadedRoom = "Xochi_Bedroom"
 
 [node name="UI" type="Node" parent="." unique_id=118202750]
 script = ExtResource("2_ranql")
