@@ -11,6 +11,7 @@ func Start():
 	TimeToWait += transData.Delay
 	TimeToWait += transData.EntryTime
 	TimeToWait += transData.SustainTime
+	TimeToWait += transData.AnimExitDelay
 	
 	stateOwner.anima.play(transData.PlayerAnimationOnEnter)
 	await get_tree().create_timer(TimeToWait).timeout

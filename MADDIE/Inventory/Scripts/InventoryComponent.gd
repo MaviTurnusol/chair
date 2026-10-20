@@ -7,6 +7,7 @@ var BodyRef : Node2D
 @export var inventory_hud: InventoryHud
 @onready var PickupableItemScene : PackedScene = preload("uid://52s8lsucji0v")
 @export var StartItems : Array[InventoryItem]
+@export var OwnerBody : Node2D
 signal ItemAddedToInventory
 func _ready() -> void:
 	OwnInventoryGrid = InventoryGrid.new(InventorySize)
@@ -35,8 +36,9 @@ func DropItem(_WhatItem : InventoryItem):
 		OwnInventoryGrid.ItemsInInv.erase(_WhatItem)
 	var NewPickupable = PickupableItemScene.instantiate()
 	NewPickupable.WhatItemAmI = _WhatItem
-	NewPickupable.global_position = get_parent().global_position
-	get_parent().add_sibling(NewPickupable)
+	NewPickupable.global_position = OwnerBody.global_position #get_parent().global_position
+	#get_parent().add_sibling(NewPickupable)
+	OwnerBody.add_sibling(NewPickupable)
 	Refresh()
 
 func RemoveItem(_WhatItem : InventoryItem):

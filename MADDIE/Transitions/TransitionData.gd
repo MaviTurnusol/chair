@@ -18,6 +18,7 @@ class_name TransitionData
 @export var ExitTTweenEase : Tween.EaseType
 
 @export_category("Player Animation")
+@export var AnimExitDelay : float = 0
 @export var PlayerAnimationOnEnter : String = "EnterDoor"
 @export var PlayerAnimationOnExit : String = "ExitDoor"
 #Secret Variables

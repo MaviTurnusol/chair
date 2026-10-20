@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://mu6favus5m8y" path="res://StateMachine/States/Hook.tscn" id="36_f4lon"]
 [ext_resource type="Script" uid="uid://b5jve74l872gw" path="res://MADDIE/Inventory/Scripts/InventoryComponent.gd" id="36_jp1hh"]
 [ext_resource type="Script" uid="uid://bj3j7fsh4325h" path="res://MADDIE/Inventory/Scripts/Inventory.gd" id="36_qs4pp"]
+[ext_resource type="Script" uid="uid://dsr4lse0y86k0" path="res://MADDIE/PlayerInventory.gd" id="40_6pogt"]
 [ext_resource type="Script" uid="uid://hwruf5cnd1xn" path="res://Weapons/Scripts/PlayerWeaponsAndTools.gd" id="40_8ynux"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_get7g"]
@@ -1143,11 +1144,28 @@ cutscene_state = NodePath("../StateMachine/Cutscene")
 position = Vector2(0, -34.5)
 shape = SubResource("RectangleShape2D_gpjlu")
 
-[node name="PlayerInventoryDisplayer" type="CanvasLayer" parent="." unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent")]
+[node name="PlayerWeaponsAndTools" type="Node" parent="." unique_id=781864843 node_paths=PackedStringArray("MeleeHoldParent", "RangedHoldParent", "PlayerInventoryComponent", "PlayerStateMachine", "MeleeableStates", "RangeeableStates")]
+script = ExtResource("40_8ynux")
+MeleeHoldParent = NodePath("../Marker2D/MeleeWeaponParent")
+RangedHoldParent = NodePath("../IKArmPlayer/Skeleton2D/UpperArm/ForeArm/RangedWeaponParent")
+PlayerInventoryComponent = NodePath("../PlayerInventory/PlayerInventoryComponent")
+PlayerStateMachine = NodePath("../StateMachine")
+MeleeableStates = [NodePath("../StateMachine/Idle"), NodePath("../StateMachine/Walk"), NodePath("../StateMachine/Run"), NodePath("../StateMachine/Turn"), NodePath("../StateMachine/MeleeAttack")]
+RangeeableStates = [NodePath("../StateMachine/GunIdle"), NodePath("../StateMachine/GunWalk")]
+
+[node name="StaminaComp" type="Node" parent="." unique_id=2040095792 node_paths=PackedStringArray("father")]
+script = ExtResource("35_c6x0f")
+MAX_STAMINA = 100.0
+father = NodePath("..")
+
+[node name="PlayerInventory" type="Node" parent="." unique_id=818656536]
+script = ExtResource("40_6pogt")
+
+[node name="PlayerInventoryDisplayer" type="CanvasLayer" parent="PlayerInventory" unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent")]
 script = ExtResource("36_qs4pp")
 _InventoryComponent = NodePath("../PlayerInventoryComponent")
 
-[node name="Control" type="Control" parent="PlayerInventoryDisplayer" unique_id=634247233]
+[node name="Control" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer" unique_id=634247233]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -1156,13 +1174,14 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Inventory" type="Control" parent="PlayerInventoryDisplayer/Control" unique_id=621423805]
+[node name="Inventory" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer/Control" unique_id=621423805]
 z_index = 1
 anchors_preset = 0
 offset_right = 650.0
 offset_bottom = 650.0
+pivot_offset = Vector2(325, 325)
 
-[node name="GridContainer" type="GridContainer" parent="PlayerInventoryDisplayer/Control/Inventory" unique_id=1012758651]
+[node name="GridContainer" type="GridContainer" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=1012758651]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -1173,23 +1192,10 @@ grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
-[node name="PlayerInventoryComponent" type="Node" parent="." unique_id=652975170 node_paths=PackedStringArray("inventory_hud")]
+[node name="PlayerInventoryComponent" type="Node" parent="PlayerInventory" unique_id=652975170 node_paths=PackedStringArray("inventory_hud", "OwnerBody")]
 script = ExtResource("36_jp1hh")
 InventorySize = Vector2i(6, 6)
 inventory_hud = NodePath("../PlayerInventoryDisplayer")
-
-[node name="PlayerWeaponsAndTools" type="Node" parent="." unique_id=781864843 node_paths=PackedStringArray("MeleeHoldParent", "RangedHoldParent", "PlayerInventoryComponent", "PlayerStateMachine", "MeleeableStates", "RangeeableStates")]
-script = ExtResource("40_8ynux")
-MeleeHoldParent = NodePath("../Marker2D/MeleeWeaponParent")
-RangedHoldParent = NodePath("../IKArmPlayer/Skeleton2D/UpperArm/ForeArm/RangedWeaponParent")
-PlayerInventoryComponent = NodePath("../PlayerInventoryComponent")
-PlayerStateMachine = NodePath("../StateMachine")
-MeleeableStates = [NodePath("../StateMachine/Idle"), NodePath("../StateMachine/Walk"), NodePath("../StateMachine/Run"), NodePath("../StateMachine/Turn"), NodePath("../StateMachine/MeleeAttack")]
-RangeeableStates = [NodePath("../StateMachine/GunIdle"), NodePath("../StateMachine/GunWalk")]
-
-[node name="StaminaComp" type="Node" parent="." unique_id=2040095792 node_paths=PackedStringArray("father")]
-script = ExtResource("35_c6x0f")
-MAX_STAMINA = 100.0
-father = NodePath("..")
+OwnerBody = NodePath("../..")
 
 [editable path="IKArmPlayer"]

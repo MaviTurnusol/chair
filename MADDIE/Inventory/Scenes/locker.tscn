@@ -19,11 +19,12 @@ script = ExtResource("1_4gyf8")
 InventoryDisplayer = NodePath("LockerInventoryDisplayer")
 PlayerMaxRange = 150.0
 
-[node name="InventoryComponent" type="Node" parent="." unique_id=1874044462 node_paths=PackedStringArray("inventory_hud")]
+[node name="InventoryComponent" type="Node" parent="." unique_id=1874044462 node_paths=PackedStringArray("inventory_hud", "OwnerBody")]
 script = ExtResource("2_fih0u")
 InventorySize = Vector2i(6, 6)
 inventory_hud = NodePath("../LockerInventoryDisplayer")
 StartItems = Array[ExtResource("3_cnfnm")]([ExtResource("4_xwsmt"), ExtResource("5_kbjsi")])
+OwnerBody = NodePath("..")
 
 [node name="LockerInventoryDisplayer" type="CanvasLayer" parent="." unique_id=568854709 node_paths=PackedStringArray("_InventoryComponent")]
 script = ExtResource("6_w7sn5")

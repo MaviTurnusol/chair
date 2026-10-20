@@ -8,7 +8,8 @@ var jumpVelocity = -440.0
 #@onready var weaponHolder = $Marker2D/weaponHolder
 @onready var wall_check: RayCast2D = $Marker2D/WallCheck
 
-@onready var inventory_component: InventoryComponent = $PlayerInventoryComponent
+@onready var inventory_component: InventoryComponent = $PlayerInventory/PlayerInventoryComponent
+@onready var player_inventory: Node = $PlayerInventory
 
 var dir = 0.0
 
@@ -61,7 +62,7 @@ func _physics_process(delta):
 
 	#Inventory Toggle
 	if(Input.is_action_just_pressed("InventoryToggle")):
-		inventory_component.inventory_hud.visible = ! inventory_component.inventory_hud.visible
+		player_inventory.ToggleInventory()
 	
 	#Gun
 	if Input.is_action_just_pressed("equip"):
