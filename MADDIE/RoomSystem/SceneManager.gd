@@ -58,6 +58,7 @@ func PassTransition(transitionData : TransitionData,WhatScene : String,WhatID:St
 	await get_tree().process_frame
 	UnlimitedRulebook.player.machine.change_state_to("dooring")
 	
+	await get_tree().create_timer(transitionData.Delay).timeout
 	fader_color_rect.color = transitionData.TransparentMaskColour
 	
 	var FadeTween : Tween = get_tree().create_tween()

@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_i1m0p")
+Delay = 1.0
 EntryTweenTransition = 1
 ExitTime = 0.8
 ExitTweenTransition = 1
