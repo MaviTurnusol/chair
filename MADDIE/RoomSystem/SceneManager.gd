@@ -71,8 +71,8 @@ func PassTransition(transitionData : TransitionData,WhatScene : String,WhatID:St
 		FadeTween.tween_callback(SwitchScene.bind(WhatScene))
 	FadeTween.tween_interval(transitionData.SustainTime)
 	
-	FadeTween.set_ease(transitionData.EntryTweenEase)
-	FadeTween.set_trans(transitionData.EntryTweenTransition)
+	FadeTween.set_ease(transitionData.ExitTTweenEase)
+	FadeTween.set_trans(transitionData.ExitTweenTransition)
 	FadeTween.tween_property(fader_color_rect,"color",transitionData.TransparentMaskColour,transitionData.ExitTime)
 	
 	await FadeTween.finished

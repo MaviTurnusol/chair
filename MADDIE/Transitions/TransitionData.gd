@@ -15,7 +15,7 @@ class_name TransitionData
 @export_category("Exit")
 @export var ExitTime : float = 1
 @export var ExitTweenTransition : Tween.TransitionType
-@export var ExitTEntryTweenEase : Tween.EaseType
+@export var ExitTTweenEase : Tween.EaseType
 
 @export_category("Player Animation")
 @export var PlayerAnimationOnEnter : String = "EnterDoor"
