@@ -22,7 +22,7 @@ config/icon="res://icon.svg"
 UnlimitedRulebook="*uid://eci8t7yweqay"
 DialogueManager="*uid://c3rodes2l3gxb"
 Effects="*uid://by25ovsbulcpt"
-SceneManager="*uid://dvcf7in08wd6m"
+SceneManager="*uid://ddfrwiuyknepf"
 
 [display]
 

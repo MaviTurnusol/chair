@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="4_r6kp1"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/vignette.gdshader" id="5_6su8s"]
 [ext_resource type="Texture2D" uid="uid://bm0tyuvvw5ohs" path="res://MADDIE/XochiHouse/BalconyDoorFrame.png" id="5_ecdmf"]
+[ext_resource type="Resource" uid="uid://dchngvenktk3v" path="res://MADDIE/Transitions/FadeBlack1.tres" id="9_17jth"]
 [ext_resource type="Script" uid="uid://cx3xyxhm3ekod" path="res://MADDIE/XochiHouse/CameraOverrideTargetArea.gd" id="9_url1c"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="10_jii1a"]
 [ext_resource type="Texture2D" uid="uid://5827efl7epj" path="res://Enemies/Teccizlabcoat/Teccizlabcoat.png" id="10_srjmy"]
@@ -200,6 +201,7 @@ grow_vertical = 2
 position = Vector2(465, 281)
 TargetSceneName = "Xochi_Bedroom"
 DoorIdentifier = "Living-Bed1"
+transitionData = ExtResource("9_17jth")
 DoSetPositionAtNewScene = true
 
 [node name="InteractionPrompter" parent="RealDoor" index="0" unique_id=1185201784]

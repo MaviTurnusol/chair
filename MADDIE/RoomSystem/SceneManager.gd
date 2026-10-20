@@ -1,5 +1,4 @@
 extends Node
-
 var RoomDict : Dictionary[String,Room]
 
 signal switchscene(String)
@@ -48,4 +47,34 @@ func SwitchSceneAndPosition(WhatScene : String,WhatID:String):
 	SwitchScene(WhatScene)
 	await get_tree().process_frame
 	screamtodoors.emit(WhatID)
+
+
+#region Transition Specifics
+var ActiveTransitionData : TransitionData
+@onready var fader_color_rect: ColorRect = $FaderLayer/FaderColorRect
+
+func PassTransition(transitionData : TransitionData,WhatScene : String,WhatID:String):
+	ActiveTransitionData = transitionData
+	await get_tree().process_frame
+	UnlimitedRulebook.player.machine.change_state_to("dooring")
 	
+	fader_color_rect.color = transitionData.TransparentMaskColour
+	
+	var FadeTween : Tween = get_tree().create_tween()
+	FadeTween.set_ease(transitionData.EntryTweenEase)
+	FadeTween.set_trans(transitionData.EntryTweenTransition)
+	FadeTween.tween_property(fader_color_rect,"color",transitionData.MaskColour,transitionData.EntryTime)
+	
+	if(transitionData.DoSetPosition):
+		FadeTween.tween_callback(SwitchSceneAndPosition.bind(WhatScene,WhatID))
+	else:
+		FadeTween.tween_callback(SwitchScene.bind(WhatScene))
+	FadeTween.tween_interval(transitionData.SustainTime)
+	
+	FadeTween.set_ease(transitionData.EntryTweenEase)
+	FadeTween.set_trans(transitionData.EntryTweenTransition)
+	FadeTween.tween_property(fader_color_rect,"color",transitionData.TransparentMaskColour,transitionData.ExitTime)
+	
+	await FadeTween.finished
+	
+	ActiveTransitionData = null

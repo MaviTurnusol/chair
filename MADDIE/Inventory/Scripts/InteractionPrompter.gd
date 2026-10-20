@@ -11,6 +11,8 @@ class_name InteractionPrompt
 var IsInteractable : bool = false
 var _playerInteractor : ActionableFinder
 
+var talking_point: Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PromptArea.get_node("CollisionShape2D").shape = CircleShape2D.new()
