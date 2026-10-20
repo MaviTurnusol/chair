@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Environments/Test/LedLight.tscn" id="4_rrbtx"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/vignette.gdshader" id="5_2cql4"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="6_3njhu"]
-[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://MADDIE/Transitions/TransitionData.gd" id="8_77bg7"]
+[ext_resource type="Resource" uid="uid://dchngvenktk3v" path="res://MADDIE/Transitions/FadeBlack1.tres" id="8_77bg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
@@ -37,10 +37,6 @@ shader_parameter/softness = 0.750000035625
 shader_parameter/intensity = 3.0
 shader_parameter/contrast = 1.20000003325
 shader_parameter/vignette_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Resource" id="Resource_77bg7"]
-script = ExtResource("8_77bg7")
-metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
 
 [node name="XochiHouse_BedRoom" type="Node2D" unique_id=775964121]
 
@@ -125,9 +121,8 @@ grow_vertical = 2
 position = Vector2(463, 291)
 TargetSceneName = "Xochi_LivingRoom"
 DoorIdentifier = "Living-Bed1"
-transitionData = SubResource("Resource_77bg7")
+transitionData = ExtResource("8_77bg7")
 DoSetPositionAtNewScene = true
-talking_point = Vector2(448, 288)
 
 [node name="InteractionPrompter" parent="RealDoor2" index="0" unique_id=1185201784]
 position = Vector2(0, -55)

@@ -8,6 +8,8 @@ class_name InteractionPrompt
 @onready var prompt: Node2D = $Prompt
 @export var InteractObject : Node
 
+@export var PromptOffset : Vector2
+
 var IsInteractable : bool = false
 var _playerInteractor : ActionableFinder
 
@@ -19,6 +21,7 @@ func _ready() -> void:
 	PromptArea.get_node("CollisionShape2D").shape.radius = InteractRange
 	SetPromptToActionKey()
 	prompt.visible = IsInteractable
+	prompt.position += PromptOffset
 	if(!prompt.visible):
 		prompt.scale = Vector2.ZERO
 	PromptArea.area_entered.connect(PromptAreaEntered)

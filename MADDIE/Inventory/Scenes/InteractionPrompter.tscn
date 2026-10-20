@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c308dwxg2ndyo" path="res://MADDIE/Inventory/Scripts/InteractionPrompter.gd" id="1_hoo6b"]
 
 [sub_resource type="Gradient" id="Gradient_hoo6b"]
-offsets = PackedFloat32Array(0.4783654, 1)
+offsets = PackedFloat32Array(0.2489712, 0.58230454)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_cmo2t"]
@@ -22,7 +22,6 @@ InteractRange = 50.0
 InteractEvent = "interact"
 
 [node name="Prompt" type="Node2D" parent="." unique_id=21325865]
-scale = Vector2(2, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Prompt" unique_id=680541696]
 position = Vector2(0, 20)

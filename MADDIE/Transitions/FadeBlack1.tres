@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_i1m0p")
+EntryTweenTransition = 1
+ExitTime = 0.8
+ExitTweenTransition = 1
 metadata/_custom_type_script = "uid://b4o6b7xr5ybel"

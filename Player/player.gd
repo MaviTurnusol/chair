@@ -127,5 +127,7 @@ func set_collisions(foo) -> void:
 	#not actually collision but the hurtbox, i got lazy to rename this
 	if foo:
 		$Marker2D/HurtBox/CollisionShape2D.set_deferred("disabled", false)
+		$ActionableFinder/CollisionShape2D.set_deferred("disabled",false)
 	else:
 		$Marker2D/HurtBox/CollisionShape2D.set_deferred("disabled", true)
+		$ActionableFinder/CollisionShape2D.set_deferred("disabled",true)
