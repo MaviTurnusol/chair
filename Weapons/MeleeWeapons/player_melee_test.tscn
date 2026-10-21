@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://df4j7gu4thxps"]
 
 [ext_resource type="Script" uid="uid://by2pyc8q6m3ry" path="res://Weapons/Scripts/PlayerMelee.gd" id="1_qhynl"]
-[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://Weapons/GunsVFX/crossAir.tscn" id="2_exvhq"]
 [ext_resource type="Script" uid="uid://ww4q0kgox3xk" path="res://Weapons/Scripts/MeleeAttack.gd" id="3_2gx34"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/Boxes/HitBox.tscn" id="4_a7asb"]
 [ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://icon.svg" id="5_8ll5b"]
@@ -63,7 +62,6 @@ texture_filter = 1
 script = ExtResource("1_qhynl")
 Attacks = [NodePath("MeleeAttack"), NodePath("MeleeAttack2")]
 TimeBetweenShots = 0.0
-Crosshair = ExtResource("2_exvhq")
 metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
 
 [node name="MeleeAttack" type="Node2D" parent="." unique_id=456058279 node_paths=PackedStringArray("Hit_Box", "MeleeAttackPath", "MeleeAttackPathFollow", "BodyAttackPath", "BodyAttackPathFollow")]

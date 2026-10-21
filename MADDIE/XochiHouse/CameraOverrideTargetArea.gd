@@ -2,7 +2,8 @@ extends Area2D
 
 var OldTarget : Node2D
 @export var NewTarget : Node2D
-
+@export var CamZoomOverride : float = 1
+@export var Smooth : bool = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	body_entered.connect(BodyEntered)
@@ -10,10 +11,13 @@ func _ready() -> void:
 
 func BodyEntered(body):
 	if(body == UnlimitedRulebook.player):
+		
 		OldTarget = UnlimitedRulebook.cam.target
-		UnlimitedRulebook.cam.position_smoothing_enabled = true
+		UnlimitedRulebook.cam.position_smoothing_enabled = Smooth
 		UnlimitedRulebook.cam.position_smoothing_speed = 5
-		UnlimitedRulebook.cam.target = NewTarget
+		if(NewTarget):
+			UnlimitedRulebook.cam.target = NewTarget
+		UnlimitedRulebook.cam.targetzoom = CamZoomOverride
 func BodyExited(body):
 	if(body == UnlimitedRulebook.player):
 		UnlimitedRulebook.cam.target = OldTarget
@@ -21,3 +25,4 @@ func BodyExited(body):
 		await get_tree().create_timer(0.5).timeout
 		if(UnlimitedRulebook.cam.target != NewTarget):
 			UnlimitedRulebook.cam.position_smoothing_enabled = false
+			UnlimitedRulebook.cam.targetzoom = 1

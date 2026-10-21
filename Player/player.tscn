@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://dumxxtk7wv87d" path="res://StateMachine/States/GunIdle.tscn" id="25_8viyr"]
 [ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://StateMachine/States/MeleeAttack1.gd" id="27_efx54"]
 [ext_resource type="Script" uid="uid://cswibj42kh6rk" path="res://StateMachine/state.gd" id="32_qs4pp"]
-[ext_resource type="Script" uid="uid://bnk3elc0sohqe" path="res://DeletionQueue/stamina_comp.gd" id="35_c6x0f"]
+[ext_resource type="Script" uid="uid://cj5jewgd12t6" path="res://DeletionQueue/debug_deletethiswithnocrucialeffectbossfightstart.gd" id="35_c6x0f"]
 [ext_resource type="PackedScene" uid="uid://mu6favus5m8y" path="res://StateMachine/States/Hook.tscn" id="36_f4lon"]
 [ext_resource type="Script" uid="uid://b5jve74l872gw" path="res://MADDIE/Inventory/Scripts/InventoryComponent.gd" id="36_jp1hh"]
 [ext_resource type="Script" uid="uid://bj3j7fsh4325h" path="res://MADDIE/Inventory/Scripts/Inventory.gd" id="36_qs4pp"]

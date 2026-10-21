@@ -1,7 +1,8 @@
-extends ColorRect
+extends Node
 
 func _ready() -> void:
 	UnlimitedRulebook.NanaDialogueEndedBossFightStart.connect(FightStarted)
 
 func FightStarted():
-	color = Color.RED
+	pass
+	#color = Color.RED

@@ -18,6 +18,10 @@ boot_splash/stretch_mode=2
 boot_splash/image="uid://dwwca06w0bu6o"
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://blrn888jehiyf"
+
 [autoload]
 
 UnlimitedRulebook="*uid://eci8t7yweqay"

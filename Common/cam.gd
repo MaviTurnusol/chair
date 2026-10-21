@@ -6,6 +6,8 @@ extends Camera2D
 var current_target: Vector2
 @export var disabled = false
 
+var targetzoom : float = 1
+
 func _ready() -> void:
 	UnlimitedRulebook.cam = self
 	if(target==null):
@@ -20,6 +22,8 @@ func _process(_delta: float) -> void:
 			global_position = current_target
 		elif target:
 			global_position = target.global_position
+		if(zoom != Vector2.ONE * targetzoom):
+			zoom = zoom.move_toward(Vector2.ONE*targetzoom,_delta)
 
 
 func world_position_to_screen_position(world_position: Vector2) -> Vector2:
