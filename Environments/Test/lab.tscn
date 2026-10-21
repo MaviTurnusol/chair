@@ -16,8 +16,11 @@
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://MADDIE/Inventory/Scripts/InventoryItem.gd" id="15_ycysq"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://MADDIE/Nana/nana1.png" id="16_2wxxo"]
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://MADDIE/Inventory/Scenes/PickupableItem.tscn" id="16_y301g"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Audio/AudioSystem/MusicPlayOnSceneLoad.gd" id="19_1oah0"]
+[ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/Imen Kheru.mp3" id="20_dc4ob"]
 [ext_resource type="PackedScene" uid="uid://s276hxsynqwg" path="res://MADDIE/Inventory/Scenes/locker.tscn" id="20_ycysq"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="21_1oah0"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Environments/Test/OnSceneLoadCall.gd" id="21_du6ky"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
@@ -221,3 +224,12 @@ position = Vector2(816, 227)
 
 [node name="JustANormalGuy3" parent="Enemies" unique_id=753228336 instance=ExtResource("13_lh5rw")]
 position = Vector2(1030, 223)
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=1456549778]
+script = ExtResource("19_1oah0")
+Track = ExtResource("20_dc4ob")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=534217810 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("21_du6ky")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"

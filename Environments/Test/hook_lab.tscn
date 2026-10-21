@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://de7vd21bnh3rn"]
 
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://MADDIE/RoomSystem/RealDoor.tscn" id="3_2k8j5"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Environments/Test/OnSceneLoadCall.gd" id="4_pofgw"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Audio/AudioSystem/MusicPlayOnSceneLoad.gd" id="5_ajgnu"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="5_e2aq0"]
 [ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Environments/hookable_position.tscn" id="6_ajgnu"]
 [ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/Cursor.tscn" id="7_e2aq0"]
 
@@ -63,3 +66,12 @@ position = Vector2(919, 229)
 TargetSceneName = "Lab"
 DoorIdentifier = "Lab-HookLab-2"
 DoSetPositionAtNewScene = true
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
+script = ExtResource("5_ajgnu")
+Track = ExtResource("5_e2aq0")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("4_pofgw")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"

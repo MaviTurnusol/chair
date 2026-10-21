@@ -28,6 +28,7 @@ UnlimitedRulebook="*uid://eci8t7yweqay"
 DialogueManager="*uid://c3rodes2l3gxb"
 Effects="*uid://by25ovsbulcpt"
 SceneManager="*uid://ddfrwiuyknepf"
+AudioSystem="*uid://ccyp82i2p677e"
 
 [display]
 

@@ -11,6 +11,7 @@ extends Node2D
 @export var talking_point_offset: Vector2
 
 @export var PlayerMaxRange : float = 100
+
 func action():
 	#print(UnlimitedRulebook.player.machine.get_state())
 	
