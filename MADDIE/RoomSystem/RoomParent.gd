@@ -15,4 +15,5 @@ func _ready() -> void:
 	render_target_update_mode = SubViewport.UPDATE_ALWAYS
 	handle_input_locally = false
 	snap_2d_transforms_to_pixel = true
+	canvas_item_default_texture_filter = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_FILTER_NEAREST
 	canvas_item_default_texture_repeat = Viewport.DEFAULT_CANVAS_ITEM_TEXTURE_REPEAT_ENABLED

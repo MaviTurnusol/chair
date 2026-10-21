@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Room" format=3 uid="uid://4pxfrf6dhvwk"]
+
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://MADDIE/RoomSystem/Room.gd" id="1_dj14s"]
+
+[resource]
+script = ExtResource("1_dj14s")
+Name = "Bus Interior"
+SceneFilePath = "uid://bukbufxii46du"
+metadata/_custom_type_script = "uid://dtoaby0j0tekp"

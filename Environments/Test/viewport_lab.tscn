@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://8tj1i7ksiugd" path="res://Environments/Test/SubviewportSwitcher.gd" id="1_ranql"]
 [ext_resource type="Script" uid="uid://bcc3v0dayfufc" path="res://Environments/Test/UIGod.gd" id="2_ranql"]
-[ext_resource type="Script" uid="uid://li4tx78gcvga" path="res://Environments/Test/StaminaDisplayer.gd" id="2_vy661"]
 [ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="3_ayey4"]
 [ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="4_vy661"]
 [ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="5_vy661"]
@@ -17,7 +16,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_ranql")
 plyr = NodePath("../Player")
 camer = NodePath("../Camera2D2")
-StartingLoadedRoom = "Xochi_Bedroom"
+StartingLoadedRoom = "Lab"
 
 [node name="UI" type="Node" parent="." unique_id=118202750]
 script = ExtResource("2_ranql")
@@ -31,21 +30,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-
-[node name="StaminaDisplayer" type="ProgressBar" parent="UI/Control" unique_id=1372275042 node_paths=PackedStringArray("StaminaComponentFather")]
-visible = false
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -227.0
-offset_right = 800.0
-offset_bottom = -27.0
-grow_vertical = 0
-show_percentage = false
-script = ExtResource("2_vy661")
-StaminaComponentFather = NodePath("../../../Player")
-ChangeSpeed = 100.0
 
 [node name="Label" type="Label" parent="UI/Control" unique_id=2137994446]
 visible = false

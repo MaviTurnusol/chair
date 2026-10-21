@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bqrbya8rbt2sp" path="res://MADDIE/BusSceneMockup/Sprites/TexturedBusPosterized.png" id="10_1771t"]
 [ext_resource type="Texture2D" uid="uid://cwldwy8ksdxjv" path="res://MADDIE/BusSceneMockup/Sprites/BusPeople1.png" id="11_dft4d"]
 [ext_resource type="Texture2D" uid="uid://bb3hvwp8mbths" path="res://MADDIE/BusSceneMockup/Sprites/WheelRough1.png" id="12_1771t"]
+[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://MADDIE/Transitions/TransitionData.gd" id="15_6llpc"]
+[ext_resource type="Script" uid="uid://chylvsc88ajmv" path="res://MADDIE/BusSceneMockup/CutsceneSwitcher.gd" id="16_j6e1t"]
 
 [sub_resource type="Gradient" id="Gradient_vr7ih"]
 offsets = PackedFloat32Array(1)
@@ -288,6 +290,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_6llpc"]
+script = ExtResource("15_6llpc")
+EntryTime = 0.1
+SustainTime = 1.0
+ExitTime = 3.0
+PlayerAnimationOnEnter = ""
+PlayerAnimationOnExit = "idle"
+metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
+
 [node name="Node2D" type="Node2D" unique_id=1293292557]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1874430234]
@@ -536,3 +547,10 @@ offset_bottom = 256.755
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1125928395]
 size = Vector2i(640, 400)
+
+[node name="CutscceneSceneSwitcher" type="Node" parent="." unique_id=1267755874]
+script = ExtResource("16_j6e1t")
+TargetSceneName = "Bus Interior"
+DoorIdentifier = "XochiSeat"
+transitionData = SubResource("Resource_6llpc")
+DoSetPositionAtNewScene = true

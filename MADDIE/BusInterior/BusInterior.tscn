@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bukbufxii46du"]
+
+[ext_resource type="Texture2D" uid="uid://ob0x50c2r4mj" path="res://MADDIE/BusInterior/BusInteriorGreybox1.png" id="1_1fk0a"]
+[ext_resource type="Script" uid="uid://svdr36nui5oh" path="res://MADDIE/BusInterior/camerashrinkonload.gd" id="3_on1lm"]
+[ext_resource type="Script" uid="uid://ck2swh1t3dvvm" path="res://MADDIE/BusInterior/DoorScreamer.gd" id="5_cl6h8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lnsc"]
+size = Vector2(1000, 50)
+
+[node name="BusInterior" type="Node2D" unique_id=1529746384]
+metadata/_edit_horizontal_guides_ = [-198.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1767105018]
+scale = Vector2(0.73, 0.73)
+texture = ExtResource("1_1fk0a")
+
+[node name="DoorScreamer" type="Node2D" parent="." unique_id=591458981]
+position = Vector2(-271, 53)
+script = ExtResource("5_cl6h8")
+DoorIdentifier = "XochiSeat"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=345513160]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1105446985]
+position = Vector2(18, 79)
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1280023816]
+position = Vector2(23, -183)
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=637110357]
+position = Vector2(-317, 11)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=514221209]
+position = Vector2(184, 19)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1893380338]
+offset_left = -295.0
+offset_top = 53.0
+offset_right = 99.70001
+offset_bottom = 123.355
+color = Color(0.16470589, 0.16470589, 0.16470589, 1)
+
+[node name="camerashrinkonload" type="Node" parent="." unique_id=464754487]
+script = ExtResource("3_on1lm")
