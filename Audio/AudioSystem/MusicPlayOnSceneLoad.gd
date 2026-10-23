@@ -12,6 +12,6 @@ func _ready() -> void:
 
 func OnLoad():
 	AudioSystem.LoadTrackIntoDeck(Track,AudioSystem.GetInactiveDeck())
-	AudioSystem.CrossfadeDeck(1)
+	AudioSystem.CrossfadeDeck(1.5)
 	AudioSystem.PlayDeck(AudioSystem.CurrentDeck)
 	

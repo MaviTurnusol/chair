@@ -53,7 +53,7 @@ func _physics_process(delta):
 			velocity.y += get_gravity().y * delta * 1.33
 	
 	#Rolling
-	if Input.is_action_just_pressed("space"):
+	if Input.is_action_just_pressed("roll"):
 		machine.change_state_to("roll")
 
 	#Parry
