@@ -27,45 +27,13 @@ var AttackSigmaDelta : float = 0
 var IsAttacking : bool = false
 var IsRecovering : bool = false
 var AttackQueued : bool = false
-var CanChainAttack : bool = false
+var CanChain : bool = false
+
 @export_category("Data")
-#@export var GunTexture : Texture2D:
-	#set(NewText):
-		#GunTexture = NewText
-		#ChangeGunPreview()
 @export var TimeBetweenShots : float = 1
 @export var Crosshair : PackedScene
 
-#
-#@export_category("Key Points")
-#var PivotPoint : Vector2:
-	#set(NewValue):
-		#PivotPoint = NewValue
-		#if(Engine.is_editor_hint()):
-			#if(PivotPointHelperGizmo!=null):
-				#PivotPointHelperGizmo.Pos = NewValue
-#
-#var FirePoint : Vector2:
-	#set(NewValue):
-		#FirePoint = NewValue
-		#if(Engine.is_editor_hint()):
-			#if(FirePointHelperGizmo!=null):
-				#FirePointHelperGizmo.Pos = NewValue
-#
-#var GunPoint : Vector2:
-	#set(NewValue):
-		#GunPoint = NewValue
-		#if(Engine.is_editor_hint()):
-			#if(GunPreviewHelperGizmo!=null):
-				#GunPreviewHelperGizmo.Pos = NewValue
-
 func _ready() -> void:
-	#if(Engine.is_editor_hint()):
-		#CreateEditorGizmos()
-	#else:
-		#if(GunPreviewSprite!=null):
-			#GunPreviewSprite.queue_free()
-		##ConstructGun()
 	if(CurrentAttack==null):
 		CurrentAttack = Attacks[0]
 	Sprite = Sprite2D.new()
@@ -108,37 +76,40 @@ func _process(delta: float) -> void:
 		CurrentAttack.MeleeAttackPathFollow.progress_ratio = CurrentAttack.PositionInPathOverAttackTime.sample_baked(AttackSigmaDelta)/(CurrentAttack.WindUpTime+CurrentAttack.RecoveryTime+CurrentAttack.AttackTime)
 		CurrentAttack.Hit_Box.global_position = CurrentAttack.MeleeAttackPathFollow.global_position
 
-### Before this function is called the sprite is an editor-only preview
-#func ConstructGun():
-	#Sprite = Sprite2D.new()
-	#add_child(Sprite)`
-	#Sprite.offset = PivotPoint
-	#Sprite.position = GunPoint
-	#Sprite.texture = GunTexture
-
 func Use():
 	if(CheckIfCanShoot()):
-		Shoot()
-		return true
-		#UnlimitedRulebook.player.melee_helper.Attack()
+		if(CanChain):
+			AttackIndex += 1
+			CycleAttack(AttackIndex)
+			Shoot()
+			return true
+		if(IsAttacking):
+			AttackQueued = true
+			return false
+		if(!IsAttacking):
+			CurrentAttack = Attacks[AttackIndex]
+			Shoot()
+			return true
 	else:
 		#print("SHOOT DISALLOWED")
 		return false
-		#print("Wait More Time Before Shooting Again")
 
 func CheckIfCanShoot():
-	if(CanChainAttack):
-		AttackQueued = true
-		return false
 	if(UnlimitedRulebook.player.machine.get_state() in ["talk","cutscene"]):
 		return false
+	if(CanChain):
+		return true
 	if(TimeSinceShot>=TimeBetweenShots):
 		return true
-	else:
-		return false
+	#print(CurrentAttack.AttackChainTime)
+	#if(AttackIndex!=0 && TimeSinceShot <= CurrentAttack.AttackChainTime && !AttackQueued):
+		#return true
+	return false
 
 func Shoot():
+	print(AttackIndex)
 	TimeSinceShot = 0
+	AttackSigmaDelta = 0
 	BaseBodyPosition = Body.global_position
 	IsAttacking = true
 	WindUp()
@@ -149,203 +120,62 @@ func WindUp():
 func Attack():
 	CurrentAttack.Hit_Box.monitoring = true
 	get_tree().create_timer(CurrentAttack.AttackTime).timeout.connect(Recovery)
-	if(AttackIndex<Attacks.size()):
-		CanChainAttack = true
+	#if(AttackIndex<Attacks.size()):
+		#CanChainAttack = true
 	
 
 func Recovery():
 	IsRecovering = true
 	CurrentAttack.Hit_Box.monitoring = false
-	#CanChainAttack = true
-	#print(CurrentAttack.RecoveryTime)
+
 	if(CurrentAttack.RecoveryTime!=0):
 		get_tree().create_timer(CurrentAttack.RecoveryTime).timeout.connect(RecoveryFinished)
 	else:
 		RecoveryFinished()
 
 func RecoveryFinished():
-	if(AttackQueued):
-		ChainAttack()
-		return
+	#if(AttackQueued):
+		#Attack()
+		#return
 	IsRecovering = false
 	IsAttacking = false
 	AttackSigmaDelta = 0
-	get_tree().create_timer(CurrentAttack.AttackChainTime).timeout.connect(CloseChainAttackWindow)
-
-func CloseChainAttackWindow():
-	CanChainAttack = false
-	if(!didChain):
-		CycleAttack(0)
-		AttackQueued = false
-	else:
-		didChain = false
-
-	#Body.global_position = BaseBodyPosition + BodyAttackPath.curve.sample_baked(0.99)
-var didChain : bool = false
-func ChainAttack():
-	AttackIndex += 1
-	AttackQueued = false
-	if(AttackIndex>Attacks.size()-1):
-		AttackIndex = 0
-		CycleAttack(0)
-		AttackQueued = false
-		
-		RecoveryFinished()
-	else:
-		CycleAttack(AttackIndex)
-		didChain = true
-		AttackSigmaDelta = 0
-		UnlimitedRulebook.player.machine.change_state_to("meleeAttack")
-		Shoot()
-
-func CycleAttack(towhichattack : int):
-	#clear old attack
-	#make new
-	CurrentAttack = Attacks[towhichattack]
-#
-##region Editor Only
-##Editor Only
-#@export var FirePointHelperGizmo : HelperGizmo
-#@export var PivotPointHelperGizmo : HelperGizmo
-#@export var GunPreviewHelperGizmo : HelperGizmo
-#@export var GunPreviewSprite : Sprite2D
-#
-#func CreateEditorGizmos():
-	#if(!has_node("Fire Point")):
-		#FirePointHelperGizmo = HelperGizmo.new("Fire Point")
-		#add_child(FirePointHelperGizmo)
-		#FirePointHelperGizmo.Pos = FirePoint
-	#else:
-		#FirePointHelperGizmo = get_node("Fire Point") as HelperGizmo
-		#FirePoint = FirePointHelperGizmo.global_position
-	#
-	#if(!has_node("Pivot Point")):
-		#PivotPointHelperGizmo = HelperGizmo.new("Pivot Point")
-		#add_child(PivotPointHelperGizmo)
-		#PivotPointHelperGizmo.Pos = PivotPoint
-	#else:
-		#PivotPointHelperGizmo = get_node("Pivot Point") as HelperGizmo
-		#PivotPoint = PivotPointHelperGizmo.global_position
-	#
-	#if(!has_node("Pivot Point/Gun Preview")):
-		#GunPreviewHelperGizmo = HelperGizmo.new("Gun Preview")
-		#if(GunTexture!=null):
-			#ChangeGunPreview()
-		#PivotPointHelperGizmo.add_child(GunPreviewHelperGizmo)
-		#GunPreviewHelperGizmo.Pos = PivotPoint
-	#else:
-		#GunPreviewHelperGizmo = get_node("Pivot Point/Gun Preview") as HelperGizmo
-		#GunPoint = GunPreviewHelperGizmo.global_position
-		#if(GunTexture!=null):
-			#ChangeGunPreview()
-#
-#func ChangeGunPreview():
-	#if(Engine.is_editor_hint()):
-		#if(GunPreviewSprite==null):
-			#GunPreviewSprite = Sprite2D.new()
-			#GunPreviewHelperGizmo.add_child(GunPreviewSprite)
-			#GunPreviewSprite.position = Vector2.ZERO
-		#GunPreviewSprite.texture = GunTexture
-	#else:
-		#if(GunPreviewSprite!=null):
-			#GunPreviewSprite.queue_free()
-			#GunPreviewSprite=null
-#
-####FOR DROPDOWN-CHECKBOXES
-#func _validate_property(property: Dictionary) -> void:
-	#pass
-	#for i in BulletProperties:
-		#if(property.name == i && !DoShootProjectile):
-			#property.usage |= PROPERTY_USAGE_NONE
-		#if(property.name == i && DoShootProjectile):
-			#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-	#
-	#if(property.name == "TimeBetweenBulletWaves"):
-		#if(DoShootProjectile):
-			#if(BulletWaveAmount == 1):
-				#property.usage |=  PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_READ_ONLY
-			#else:
-				#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-		#else:
-			#property.usage |= PROPERTY_USAGE_NONE
-	#
-	#if(property.name == "HitscanTimeBetweenBulletWaves"):
-		#if(DoShootHitscan):
-			#if(HitscanBulletWaveAmount == 1):
-				#property.usage |=  PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_READ_ONLY
-			#else:
-				#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-		#else:
-			#property.usage |= PROPERTY_USAGE_NONE
-	#
-	#for i in HitscanBulletProperties:
-		#if(property.name == i && !DoShootHitscan):
-			#property.usage |= PROPERTY_USAGE_NONE
-		#if(property.name == i && DoShootHitscan):
-			#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-	#
-	#for i in recoilProperties:
-		#if(property.name == i && !DoRecoil):
-			#property.usage |= PROPERTY_USAGE_NONE
-		#if(property.name == i && DoRecoil):
-			#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-	#
-	#for i in ScreenShakeProperties:
-		#if(property.name == i && !DoScreenShake):
-			#property.usage |= PROPERTY_USAGE_NONE
-		#if(property.name == i && DoScreenShake):
-			#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-	#
-	#if(property.name == "BulletCasingShootStrength"):
-		#if(DoThrowBulletCasing):
-			#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-		#else:
-			#property.usage |= PROPERTY_USAGE_NONE
-	#if(property.name == "BulletCasingShootDirection"):
-		#if(DoThrowBulletCasing):
-			#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-		#else:
-			#property.usage |= PROPERTY_USAGE_NONE
-	#
-	#if(property.name == "BulletCasing"):
-		#if(DoThrowBulletCasing):
-			#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-		#else:
-			#property.usage |= PROPERTY_USAGE_NONE
-	#
-	#for i in SlowMoProperties:
-		#if(property.name == i && !DoSlowMo):
-			#property.usage |= PROPERTY_USAGE_NONE
-		#if(property.name == i && DoSlowMo):
-			#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-	#
-	#if(DoSlowMo):
-		#if(!DoRecoil):
-			#if(property.name == "SlowMoDuration"):
-				#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-			#if(property.name == "IsSlowMoDurationDifferentToRecoil"):
-				#property.usage |=  PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_READ_ONLY
-		#else:
-			#if(property.name == "IsSlowMoDurationDifferentToRecoil"):
-				#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-			#if(IsSlowMoDurationDifferentToRecoil):
-				#if(property.name == "SlowMoDuration"):
-					#property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
-	#
-	#if(DoShootHitscan && property.name == "HitscanAesthetic"):
-		#property.usage = PROPERTY_USAGE_SUBGROUP + PROPERTY_USAGE_STORAGE
-	#if(property.name == "HitscanLineEasing")  && DoShootHitscan:
-		#property.usage += PROPERTY_USAGE_CLASS_IS_ENUM + PROPERTY_USAGE_STORAGE +  PROPERTY_USAGE_EDITOR 
-		#property.hint = PropertyHint.PROPERTY_HINT_ENUM
-		#var EaseString : String
-		#EaseString = "EASE_IN:0," + "EASE_OUT:1," + "EASE_IN_OUT:2," + "EASE_OUT_IN:3"
-		#property.hint_string = EaseString
-	#if(property.name == "HitscanLineTrans") && DoShootHitscan:
-		#property.usage += PROPERTY_USAGE_CLASS_IS_ENUM + PROPERTY_USAGE_STORAGE +  PROPERTY_USAGE_EDITOR 
-		#property.hint = PropertyHint.PROPERTY_HINT_ENUM
-		#var TransString : String
-		#TransString = "TRANS_LINEAR:0,"+"TRANS_SINE:1,"+"TRANS_QUINT:2,"+"TRANS_QUART:3,"+"TRANS_QUAD:4,"+"TRANS_EXPO:5,"+"TRANS_ELASTIC:6,"+"TRANS_CUBIC:7,"+"TRANS_CIRC:8,"+"TRANS_BOUNCE: = 9,"+"TRANS_BACK:10,"+"TRANS_SPRING:11"
-		#property.hint_string = TransString
 	
 
-#endregion
+	
+	if(AttackIndex+1<Attacks.size()):
+		if(AttackQueued):
+			AttackIndex += 1
+			CycleAttack(AttackIndex)
+			UnlimitedRulebook.player.machine.change_state_to("meleeAttack")
+			AttackQueued = false
+			Shoot()
+		else:
+			if(CurrentAttack.AttackChainTime>0):
+				CanChain = true
+				get_tree().create_timer(CurrentAttack.AttackChainTime).timeout.connect(AttackChainTimeout.bind(AttackIndex))
+			else:
+				CanChain = false
+	else:
+		CanChain = false
+		AttackIndex = 0
+
+func AttackChainTimeout(Whatattackchainindex : int):
+	if(Whatattackchainindex == AttackIndex):
+		CanChain = false
+
+#AttackIndex += 1
+#if(AttackIndex>Attacks.size()-1):
+	#AttackIndex = 0
+	#CycleAttack(0)
+	#AttackQueued = false
+	#
+	#RecoveryFinished()
+#else:
+	#CycleAttack(AttackIndex)
+	#didChain = true
+	#AttackSigmaDelta = 0
+	#Shoot()
+
+func CycleAttack(towhichattack : int):
+	CurrentAttack = Attacks[towhichattack]

@@ -65,6 +65,7 @@ func ShowMelee():
 		MeleeHoldParent.add_child(MeleeWeaponNode)
 func HideMelee():
 	if(MeleeWeaponNode):
+		print("DESTROYED")
 		MeleeWeaponNode.queue_free()
 		MeleeWeaponNode = null
 

@@ -1153,10 +1153,8 @@ PlayerStateMachine = NodePath("../StateMachine")
 MeleeableStates = [NodePath("../StateMachine/Idle"), NodePath("../StateMachine/Walk"), NodePath("../StateMachine/Run"), NodePath("../StateMachine/Turn"), NodePath("../StateMachine/MeleeAttack")]
 RangeeableStates = [NodePath("../StateMachine/GunIdle"), NodePath("../StateMachine/GunWalk")]
 
-[node name="StaminaComp" type="Node" parent="." unique_id=2040095792 node_paths=PackedStringArray("father")]
+[node name="StaminaComp" type="Node" parent="." unique_id=2040095792]
 script = ExtResource("35_c6x0f")
-MAX_STAMINA = 100.0
-father = NodePath("..")
 
 [node name="PlayerInventory" type="Node" parent="." unique_id=818656536]
 script = ExtResource("40_6pogt")
