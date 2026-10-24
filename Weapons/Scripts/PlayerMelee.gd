@@ -79,6 +79,7 @@ func _process(delta: float) -> void:
 func Use():
 	if(CheckIfCanShoot()):
 		if(CanChain):
+			CanChain = false
 			AttackIndex += 1
 			CycleAttack(AttackIndex)
 			Shoot()

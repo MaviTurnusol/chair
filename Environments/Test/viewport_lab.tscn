@@ -5,8 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Player/player.tscn" id="3_ayey4"]
 [ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/cam_target.gd" id="4_vy661"]
 [ext_resource type="Script" uid="uid://c4s023ol4f4gf" path="res://Common/cam.gd" id="5_vy661"]
-[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Audio/AudioSystem/MusicPlayOnSceneLoad.gd" id="6_ranql"]
-[ext_resource type="AudioStream" uid="uid://bexsf6lorsp50" path="res://Audio/Music/They Fade Away.mp3" id="7_60g2g"]
 [ext_resource type="PackedScene" uid="uid://bd263yqfsdm1l" path="res://MADDIE/Settings/Settings.tscn" id="8_1xik2"]
 
 [node name="ViewportLab" type="Node2D" unique_id=1582361756]
@@ -52,10 +50,5 @@ position = Vector2(155, 318)
 [node name="camTarget" type="Node2D" parent="Player" unique_id=1179107]
 position = Vector2(113, 162.33333)
 script = ExtResource("4_vy661")
-
-[node name="MusicOnLoad" type="Node" parent="." unique_id=507459749]
-script = ExtResource("6_ranql")
-Track = ExtResource("7_60g2g")
-OnReady = true
 
 [node name="Settings" parent="." unique_id=1752606228 instance=ExtResource("8_1xik2")]

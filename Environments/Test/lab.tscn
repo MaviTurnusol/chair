@@ -54,7 +54,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_roi12"]
+[sub_resource type="Resource" id="Resource_1oah0"]
 script = ExtResource("15_ycysq")
 ItemName = "example"
 ground_tex = ExtResource("16_2wxxo")
@@ -64,7 +64,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("14_1oah0")
 
-[sub_resource type="Resource" id="Resource_y301g"]
+[sub_resource type="Resource" id="Resource_ycysq"]
 script = ExtResource("15_ycysq")
 ground_tex = ExtResource("15_y301g")
 inventory_tex = ExtResource("15_y301g")
@@ -174,14 +174,14 @@ TargetSceneName = "Bus Travel"
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_y301g")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_roi12")
+WhatItemAmI = SubResource("Resource_1oah0")
 
 [node name="PickupableItem3" parent="." unique_id=233581645 instance=ExtResource("16_y301g")]
 position = Vector2(1001, 238)
 
 [node name="PickupableItem2" parent="." unique_id=1100030553 instance=ExtResource("16_y301g")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_y301g")
+WhatItemAmI = SubResource("Resource_ycysq")
 
 [node name="TEMP_DEBUG_HitBox" parent="." unique_id=187917931 instance=ExtResource("13_hs8mn")]
 visible = false
@@ -230,6 +230,7 @@ position = Vector2(1030, 223)
 [node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=1456549778]
 script = ExtResource("19_1oah0")
 Track = ExtResource("20_dc4ob")
+OnReady = true
 
 [node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=534217810 node_paths=PackedStringArray("ObjectToCall")]
 script = ExtResource("21_du6ky")
