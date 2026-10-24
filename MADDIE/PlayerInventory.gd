@@ -30,3 +30,4 @@ func ToggleInventory():
 
 func _ready() -> void:
 	IsActive = player_inventory_displayer.visible
+	HideInventory()
