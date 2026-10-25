@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="TransitionData" format=3 uid="uid://dchngvenktk3v"]
+
+[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="1_i1m0p"]
+
+[resource]
+script = ExtResource("1_i1m0p")
+Delay = 0.5
+EntryTweenTransition = 1
+ExitTime = 0.8
+ExitTweenTransition = 1
+AnimExitDelay = 0.5
+metadata/_custom_type_script = "uid://b4o6b7xr5ybel"

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ul4lirqhf58o"
+path="res://.godot/imported/Imen Kheru.mp3-8b11b41492f05c3040967ce0e1c6fa63.mp3str"
+
+[deps]
+
+source_file="res://Systems/Audio/Music/Imen Kheru.mp3"
+dest_files=["res://.godot/imported/Imen Kheru.mp3-8b11b41492f05c3040967ce0e1c6fa63.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

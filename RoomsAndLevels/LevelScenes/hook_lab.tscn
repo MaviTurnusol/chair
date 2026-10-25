@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://de7vd21bnh3rn"]
+
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="3_2k8j5"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="4_pofgw"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/Audio/AudioSystem/MusicPlayOnSceneLoad.gd" id="5_ajgnu"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Systems/Audio/Music/Reverie Talks.mp3" id="5_e2aq0"]
+[ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Entities/PlayerXochi/Hooking/hookable_position.tscn" id="6_ajgnu"]
+[ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/CameraCursor/Cursor.tscn" id="7_e2aq0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrn0"]
+size = Vector2(2087, 89)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajgnu"]
+size = Vector2(64, 125)
+
+[node name="HookLab" type="Node2D" unique_id=622899540]
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1658677967]
+position = Vector2(132, -573)
+
+[node name="ColorRect" type="ColorRect" parent="Sprites" unique_id=402564116]
+offset_left = -132.0
+offset_top = 853.0
+offset_right = 1952.0
+offset_bottom = 943.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Sprites" unique_id=1520332844]
+offset_left = 553.0
+offset_top = 729.0
+offset_right = 618.0
+offset_bottom = 862.0
+color = Color(0, 0, 0, 1)
+
+[node name="Collisions" type="Node2D" parent="." unique_id=1583388602]
+position = Vector2(132, -573)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=1891834209]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=2076735749]
+position = Vector2(909, 898.5)
+shape = SubResource("RectangleShape2D_pjrn0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=2104983109]
+position = Vector2(585, 791.5)
+shape = SubResource("RectangleShape2D_ajgnu")
+
+[node name="hookablePosition" parent="." unique_id=649971908 instance=ExtResource("6_ajgnu")]
+position = Vector2(717, 124)
+
+[node name="hookablePosition2" parent="." unique_id=1109479604 instance=ExtResource("6_ajgnu")]
+position = Vector2(1068, 124)
+
+[node name="Cursor" parent="." unique_id=354788821 instance=ExtResource("7_e2aq0")]
+position = Vector2(132, -573)
+
+[node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("3_2k8j5")]
+position = Vector2(548, 229)
+TargetSceneName = "Lab"
+DoorIdentifier = "Lab-HookLab-1"
+DoSetPositionAtNewScene = true
+
+[node name="RealDoor2" parent="." unique_id=922850617 instance=ExtResource("3_2k8j5")]
+position = Vector2(919, 229)
+TargetSceneName = "Lab"
+DoorIdentifier = "Lab-HookLab-2"
+DoSetPositionAtNewScene = true
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
+script = ExtResource("5_ajgnu")
+Track = ExtResource("5_e2aq0")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("4_pofgw")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"

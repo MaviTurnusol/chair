@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://bukbufxii46du"]
+
+[ext_resource type="Texture2D" uid="uid://drvtdw72kwvg5" path="res://EnvironmentSprites/BusOutSprites/BusTexturedBigInterior.png" id="1_pp75j"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="4_cl6h8"]
+[ext_resource type="Script" uid="uid://cx3xyxhm3ekod" path="res://Common/CameraCursor/CameraOverrideTargetArea.gd" id="4_pp75j"]
+[ext_resource type="Script" uid="uid://ck2swh1t3dvvm" path="res://Systems/RoomSystem/DoorScreamer.gd" id="5_cl6h8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0lnsc"]
+size = Vector2(1000, 50)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_on1lm"]
+radius = 7.53
+height = 503.4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cl6h8"]
+size = Vector2(500, 256)
+
+[sub_resource type="Animation" id="Animation_17jth"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NewTarget:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-199, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NewTarget:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(72, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_srjmy"]
+resource_name = "wobble"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NewTarget:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(-199, -0.25, 0, 0.25, 0, -221, -0.095, 1.3299999, 0.07166667, -1.0033334, -213, -0.16666667, 2.3333335, 0, 0, -199, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.57, 1, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NewTarget:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(72, -0.25, 0, 0.25, 0, 93.999985, -0.095, 1.52, 0.07166667, -1.1466668, 56, -0.16666667, 2.6666667, 0, 0, 72, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.57, 1, 1.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycdoo"]
+_data = {
+&"RESET": SubResource("Animation_17jth"),
+&"wobble": SubResource("Animation_srjmy")
+}
+
+[node name="BusInterior" type="Node2D" unique_id=1529746384]
+metadata/_edit_horizontal_guides_ = [-198.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1767105018]
+position = Vector2(3, 32)
+scale = Vector2(0.585, 0.585)
+texture = ExtResource("1_pp75j")
+
+[node name="DoorScreamer" type="Node2D" parent="." unique_id=591458981]
+position = Vector2(-195, 58)
+script = ExtResource("5_cl6h8")
+DoorIdentifier = "XochiSeat"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=345513160]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1105446985]
+position = Vector2(-418, 104)
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1243237843]
+position = Vector2(629, 175)
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=461446350]
+position = Vector2(303.99997, 179)
+rotation = -1.1830407
+shape = SubResource("CapsuleShape2D_on1lm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1280023816]
+position = Vector2(23, -183)
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=637110357]
+position = Vector2(-259, 9)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=514221209]
+position = Vector2(186, -603)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_0lnsc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1893380338]
+visible = false
+offset_left = -295.0
+offset_top = 53.0
+offset_right = 99.70001
+offset_bottom = 123.355
+color = Color(0.16470589, 0.16470589, 0.16470589, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1861415972]
+offset_left = -406.0
+offset_top = 151.0
+offset_right = 1567.5
+offset_bottom = 251.0
+color = Color(0.5965247, 0.61476654, 0.6056074, 1)
+
+[node name="CamZoomZone" type="Area2D" parent="." unique_id=1285371334]
+position = Vector2(-68, -26)
+script = ExtResource("4_pp75j")
+CamZoomOverride = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamZoomZone" unique_id=554905213]
+position = Vector2(-1, -7)
+shape = SubResource("RectangleShape2D_cl6h8")
+
+[node name="NewTarget" type="Node2D" parent="CamZoomZone" unique_id=1200964962]
+position = Vector2(-199, 72)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CamZoomZone" unique_id=1636584463]
+libraries/ = SubResource("AnimationLibrary_ycdoo")
+autoplay = &"wobble"
+speed_scale = 0.2
+
+[node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("4_cl6h8")]
+position = Vector2(499, 95)
+TargetSceneName = "Hook Lab"
+DoorIdentifier = "Lab-HookLab-1"
+DoSetPositionAtNewScene = true

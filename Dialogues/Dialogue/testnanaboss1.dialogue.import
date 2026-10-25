@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cx6kuth4rk3v4"
+path="res://.godot/imported/testnanaboss1.dialogue-4463aafdf558b6045bdd656d09a4a3fa.tres"
+
+[deps]
+
+source_file="res://Dialogues/Dialogue/testnanaboss1.dialogue"
+dest_files=["res://.godot/imported/testnanaboss1.dialogue-4463aafdf558b6045bdd656d09a4a3fa.tres"]
+
+[params]
+
+defaults=true

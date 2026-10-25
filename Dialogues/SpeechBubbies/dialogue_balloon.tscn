@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cymh7ycse8w3t" path="res://Dialogues/SpeechBubbies/Tecciz_SpeechB.png" id="1_qdnhd"]
 [ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_tlfrf"]
-[ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/testDialogue.dialogue" id="2_2eq46"]
+[ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/Dialogue/testDialogue.dialogue" id="2_2eq46"]
 [ext_resource type="Texture2D" uid="uid://djwoa3iwypdxj" path="res://Dialogues/SpeechBubbies/RW_Normal_Small.png" id="2_qdnhd"]
 [ext_resource type="FontFile" uid="uid://bk10ax337voq8" path="res://Dialogues/zh-cn.ttf" id="3_7hjy8"]
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="3_ppob3"]

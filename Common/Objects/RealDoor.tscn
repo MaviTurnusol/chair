@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://cdw5aopwktgrm"]
+
+[ext_resource type="Script" uid="uid://ccqjrb1g54dem" path="res://Systems/RoomSystem/Door.gd" id="1_mpbii"]
+[ext_resource type="PackedScene" uid="uid://03m157s1pacd" path="res://Systems/Inventory/Scenes/InteractionPrompter.tscn" id="2_tnu0i"]
+
+[sub_resource type="Gradient" id="Gradient_och0h"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_y1xy0"]
+gradient = SubResource("Gradient_och0h")
+height = 110
+
+[node name="RealDoor" type="Node2D" unique_id=696739252]
+script = ExtResource("1_mpbii")
+
+[node name="InteractionPrompter" parent="." unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("2_tnu0i")]
+z_index = 1
+InteractObject = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1212615574]
+texture = SubResource("GradientTexture2D_y1xy0")
+
+[node name="Door" type="Label" parent="." unique_id=321743909]
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 26.0
+offset_bottom = -3.0
+text = "Door"

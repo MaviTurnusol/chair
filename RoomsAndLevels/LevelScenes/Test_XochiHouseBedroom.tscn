@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://bi541uejugr8r"]
+
+[ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://EnvironmentSprites/LabSprites/koridor5w1.png" id="1_yc8od"]
+[ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://EnvironmentSprites/LabSprites/koridor5w1_n.png" id="2_4ts47"]
+[ext_resource type="Texture2D" uid="uid://760vqqhnam7t" path="res://EnvironmentSprites/Xochi_HouseSprites/BedroomUnLayered.png" id="3_yc8od"]
+[ext_resource type="Texture2D" uid="uid://bw4t2px6qmu8w" path="res://EnvironmentSprites/Xochi_HouseSprites/JustFlower.png" id="4_4ts47"]
+[ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Common/Objects/LedLight.tscn" id="4_rrbtx"]
+[ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/FX/Shaders/vignette.gdshader" id="5_2cql4"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="6_3njhu"]
+[ext_resource type="Resource" uid="uid://dchngvenktk3v" path="res://RoomsAndLevels/Transitions/FadeBlack1.tres" id="8_77bg7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
+size = Vector2(1240.5, 115)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gbuu4"]
+diffuse_texture = ExtResource("1_yc8od")
+normal_texture = ExtResource("2_4ts47")
+specular_texture = ExtResource("1_yc8od")
+specular_color = Color(0.88235295, 1, 1, 1)
+specular_shininess = 0.1
+
+[sub_resource type="Environment" id="Environment_w1gcx"]
+background_mode = 3
+tonemap_mode = 1
+tonemap_exposure = 0.6
+glow_enabled = true
+glow_intensity = 1.25
+glow_strength = 1.1
+glow_bloom = 0.15
+glow_blend_mode = 0
+glow_hdr_threshold = 0.95
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbuu4"]
+shader = ExtResource("5_2cql4")
+shader_parameter/radius = 0.70000003325
+shader_parameter/softness = 0.750000035625
+shader_parameter/intensity = 3.0
+shader_parameter/contrast = 1.20000003325
+shader_parameter/vignette_color = Color(0, 0, 0, 1)
+
+[node name="XochiHouse_BedRoom" type="Node2D" unique_id=775964121]
+
+[node name="Environment" type="Node2D" parent="." unique_id=1170476236]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Environment" unique_id=1174702601]
+position = Vector2(166, -3)
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Environment/StaticBody2D" unique_id=1707381969]
+z_index = 5
+position = Vector2(455, 349)
+shape = SubResource("RectangleShape2D_6refc")
+debug_color = Color(0.94509804, 0.9254902, 0.90588236, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Environment/StaticBody2D" unique_id=1532339732]
+z_index = 5
+position = Vector2(449, -54)
+shape = SubResource("RectangleShape2D_6refc")
+debug_color = Color(0.94509804, 0.9254902, 0.90588236, 1)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Environment/StaticBody2D" unique_id=1544514863]
+z_index = 5
+position = Vector2(735, -65)
+rotation = 1.5771717
+shape = SubResource("RectangleShape2D_6refc")
+debug_color = Color(0.94509804, 0.9254902, 0.90588236, 1)
+
+[node name="bg" type="Node2D" parent="Environment" unique_id=900721234]
+
+[node name="ColorRect" type="ColorRect" parent="Environment/bg" unique_id=893654717]
+offset_left = -1288.0
+offset_top = -646.0
+offset_right = 2691.0
+offset_bottom = 1300.0
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/bg" unique_id=1828161032]
+visible = false
+light_mask = 2
+texture = SubResource("CanvasTexture_gbuu4")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Environment/bg" unique_id=1236361839]
+light_mask = 2
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("3_yc8od")
+centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="Environment/bg" unique_id=847864576]
+light_mask = 2
+z_index = 3
+position = Vector2(187, 65)
+scale = Vector2(0.1, 0.085)
+texture = ExtResource("4_4ts47")
+centered = false
+
+[node name="LedLight" parent="Environment" unique_id=2003837725 instance=ExtResource("4_rrbtx")]
+visible = false
+position = Vector2(261, 113)
+
+[node name="LedLight2" parent="Environment" unique_id=1385647229 instance=ExtResource("4_rrbtx")]
+visible = false
+position = Vector2(816, 112)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1280648369]
+environment = SubResource("Environment_w1gcx")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Environment" unique_id=2000743457]
+
+[node name="vignette" type="CanvasLayer" parent="Environment" unique_id=1173212707]
+
+[node name="ColorRect" type="ColorRect" parent="Environment/vignette" unique_id=326334068]
+material = SubResource("ShaderMaterial_gbuu4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RealDoor2" parent="." unique_id=39950090 instance=ExtResource("6_3njhu")]
+position = Vector2(463, 291)
+TargetSceneName = "Xochi_LivingRoom"
+DoorIdentifier = "Living-Bed1"
+transitionData = ExtResource("8_77bg7")
+DoSetPositionAtNewScene = true
+
+[node name="InteractionPrompter" parent="RealDoor2" index="0" unique_id=1185201784]
+position = Vector2(0, -55)
+
+[node name="Sprite2D" parent="RealDoor2" index="1" unique_id=1212615574]
+visible = false
+
+[editable path="RealDoor2"]

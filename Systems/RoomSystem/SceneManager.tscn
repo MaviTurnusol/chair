@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ddfrwiuyknepf"]
+
+[ext_resource type="Script" uid="uid://dvcf7in08wd6m" path="res://Systems/RoomSystem/SceneManager.gd" id="1_u8xi2"]
+
+[node name="SceneManager" type="Node" unique_id=2065925467]
+script = ExtResource("1_u8xi2")
+
+[node name="FaderLayer" type="CanvasLayer" parent="." unique_id=1127971589]
+layer = 10
+
+[node name="FaderColorRect" type="ColorRect" parent="FaderLayer" unique_id=1682645329]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_use_anchors_ = true

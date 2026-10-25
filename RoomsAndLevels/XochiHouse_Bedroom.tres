@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Room" format=3 uid="uid://b1yy8w8ngpo6s"]
 
-[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://MADDIE/RoomSystem/Room.gd" id="1_gq38o"]
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://Systems/RoomSystem/Room.gd" id="1_gq38o"]
 
 [resource]
 script = ExtResource("1_gq38o")
 Name = "Xochi_Bedroom"
-SceneFilePath = "res://MADDIE/XochiHouse/Test_XochiHouseBedroom.tscn"
+SceneFilePath = "res://RoomsAndLevels/LevelScenes/Test_XochiHouseBedroom.tscn"
 metadata/_custom_type_script = "uid://dtoaby0j0tekp"
