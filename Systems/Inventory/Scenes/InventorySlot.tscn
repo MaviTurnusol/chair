@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dprud6reoi3k6"]
 
 [ext_resource type="Script" uid="uid://oft56yywr37x" path="res://Systems/Inventory/Scripts/InventorySlot.gd" id="1_e07lh"]
-[ext_resource type="Texture2D" uid="uid://c4boe2ksgylvt" path="res://EnvironmentSprites/ui/ChairUiTry3.png" id="2_1q88v"]
-[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://EnvironmentSprites/TestSprites/icon.svg" id="2_g7v3p"]
-[ext_resource type="Texture2D" uid="uid://js7gi7y6iyss" path="res://EnvironmentSprites/ui/InventorySlot1.png" id="2_rwhmx"]
-[ext_resource type="Texture2D" uid="uid://bussvqj5ou4s8" path="res://EnvironmentSprites/ui/InventorySlot2.png" id="3_ju4rd"]
+[ext_resource type="Texture2D" uid="uid://c4boe2ksgylvt" path="res://Environments/ui/ChairUiTry3.png" id="2_1q88v"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://Environments/TestSprites/icon.svg" id="2_g7v3p"]
+[ext_resource type="Texture2D" uid="uid://js7gi7y6iyss" path="res://Environments/ui/InventorySlot1.png" id="2_rwhmx"]
+[ext_resource type="Texture2D" uid="uid://bussvqj5ou4s8" path="res://Environments/ui/InventorySlot2.png" id="3_ju4rd"]
 
 [node name="InventorySlot" type="Control" unique_id=372329341]
 custom_minimum_size = Vector2(84, 84)

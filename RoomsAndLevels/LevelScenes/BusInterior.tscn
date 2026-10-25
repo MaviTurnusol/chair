@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bukbufxii46du"]
 
-[ext_resource type="Texture2D" uid="uid://drvtdw72kwvg5" path="res://EnvironmentSprites/BusOutSprites/BusTexturedBigInterior.png" id="1_pp75j"]
+[ext_resource type="Texture2D" uid="uid://drvtdw72kwvg5" path="res://Environments/BusOutSprites/BusTexturedBigInterior.png" id="1_pp75j"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="4_cl6h8"]
 [ext_resource type="Script" uid="uid://cx3xyxhm3ekod" path="res://Common/CameraCursor/CameraOverrideTargetArea.gd" id="4_pp75j"]
 [ext_resource type="Script" uid="uid://ck2swh1t3dvvm" path="res://Systems/RoomSystem/DoorScreamer.gd" id="5_cl6h8"]

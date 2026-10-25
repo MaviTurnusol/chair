@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bl2deb8kc0o7k"]
 
-[ext_resource type="Texture2D" uid="uid://4rnlvtfq0ut3" path="res://EnvironmentSprites/LabSprites/ledOn.png" id="1_6lpvl"]
-[ext_resource type="Texture2D" uid="uid://bvbe30duk14nh" path="res://EnvironmentSprites/TestSprites/light.png" id="2_0a8jf"]
+[ext_resource type="Texture2D" uid="uid://4rnlvtfq0ut3" path="res://Environments/LabSprites/ledOn.png" id="1_6lpvl"]
+[ext_resource type="Texture2D" uid="uid://bvbe30duk14nh" path="res://Environments/TestSprites/light.png" id="2_0a8jf"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6lpvl"]
 polygon = PackedVector2Array(-43, 2, -43, -3, -43, -3, 43, -3, 43, 2, 45, 1, 45, -4, -45, -4, -45, 0)

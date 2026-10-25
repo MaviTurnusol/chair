@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://ndqrl8odqqig"]
+
+[ext_resource type="Script" uid="uid://bix0atb2wrbvu" path="res://Environments/ui/MainMenu/MainMenu.gd" id="1_bfgpf"]
+[ext_resource type="Texture2D" uid="uid://7p8uhfyn5h85" path="res://Environments/ui/MainMenu/StartButton.png" id="3_0hhro"]
+
+[node name="SaveFileSelect" type="Node2D" unique_id=310983679]
+script = ExtResource("1_bfgpf")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1947101940]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=242268099]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1264042349]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Control" unique_id=858537210]
+visible = false
+layout_mode = 0
+offset_left = 153.0
+offset_top = 139.0
+offset_right = 161.0
+offset_bottom = 147.0
+scale = Vector2(3, 3)
+icon = ExtResource("3_0hhro")
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=439788102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.32915837, 0.3291584, 0.3291584, 1)
+
+[node name="SaveSlotList" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1376770068]
+layout_mode = 1
+offset_left = 43.0
+offset_top = 533.0
+offset_right = 1043.0
+offset_bottom = 1033.0
+theme_override_constants/separation = 163
+
+[node name="SaveSlot" type="Control" parent="CanvasLayer/Control/SaveSlotList" unique_id=1432982669]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/SaveSlotList/SaveSlot" unique_id=1793079645]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.573792, 0.5737919, 0.5737919, 1)
+
+[node name="SaveSlot2" type="Control" parent="CanvasLayer/Control/SaveSlotList" unique_id=1896998201]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/SaveSlotList/SaveSlot2" unique_id=561370675]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.573792, 0.5737919, 0.5737919, 1)
+
+[node name="SaveSlot3" type="Control" parent="CanvasLayer/Control/SaveSlotList" unique_id=1721647521]
+custom_minimum_size = Vector2(500, 250)
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/SaveSlotList/SaveSlot3" unique_id=203416117]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.573792, 0.5737919, 0.5737919, 1)

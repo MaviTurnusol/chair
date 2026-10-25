@@ -1160,6 +1160,7 @@ script = ExtResource("35_c6x0f")
 script = ExtResource("40_6pogt")
 
 [node name="PlayerInventoryDisplayer" type="CanvasLayer" parent="PlayerInventory" unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent")]
+visible = false
 script = ExtResource("36_qs4pp")
 _InventoryComponent = NodePath("../PlayerInventoryComponent")
 

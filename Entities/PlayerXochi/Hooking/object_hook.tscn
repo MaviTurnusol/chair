@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbu14877r2cp5" path="res://Entities/PlayerXochi/Hooking/hookTexturePlaceholder2.png" id="1_iiecd"]
 [ext_resource type="Script" uid="uid://h3ics0ei62xx" path="res://Entities/PlayerXochi/Hooking/object_hook.gd" id="1_wache"]
-[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://EnvironmentSprites/TestSprites/icon.svg" id="2_iiecd"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://Environments/TestSprites/icon.svg" id="2_iiecd"]
 
 [sub_resource type="Curve" id="Curve_wache"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.35017535, 0.82927275), 0.0, 0.0, 0, 0, Vector2(0.70424104, 0.6616369), 0.0, 0.0, 0, 0, Vector2(1, 0.48023403), 0.0, 0.0, 0, 0]

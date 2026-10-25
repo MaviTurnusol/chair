@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://by2pyc8q6m3ry" path="res://Systems/Weapons/Scripts/PlayerMelee.gd" id="1_bqt7k"]
 [ext_resource type="Script" uid="uid://ww4q0kgox3xk" path="res://Systems/Weapons/Scripts/MeleeAttack.gd" id="2_puk1x"]
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/HP_Boxes/HitBox.tscn" id="3_glnor"]
-[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://EnvironmentSprites/TestSprites/icon.svg" id="4_rh0vb"]
+[ext_resource type="Texture2D" uid="uid://dj7r2em7bwwnf" path="res://Environments/TestSprites/icon.svg" id="4_rh0vb"]
 
 [sub_resource type="Curve" id="Curve_y8hdp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

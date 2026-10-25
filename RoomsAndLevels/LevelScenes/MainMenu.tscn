@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dh248op87d5c4"]
+
+[ext_resource type="Texture2D" uid="uid://byfaldi7a3s5y" path="res://Environments/HeroArt/titlescreen_A.png" id="1_g3jpp"]
+[ext_resource type="Script" uid="uid://bix0atb2wrbvu" path="res://Environments/ui/MainMenu/MainMenu.gd" id="1_y0kec"]
+[ext_resource type="Resource" uid="uid://kijdllddx7el" path="res://RoomsAndLevels/ViewportGod.tres" id="2_8ym1v"]
+[ext_resource type="AudioStream" uid="uid://cm8gf8plhydac" path="res://Audio/Music/Nantenehua.mp3" id="2_k2qnf"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="2_y0kec"]
+[ext_resource type="Texture2D" uid="uid://7p8uhfyn5h85" path="res://Environments/ui/MainMenu/StartButton.png" id="3_askim"]
+[ext_resource type="Shader" uid="uid://de4ryjam452mb" path="res://Common/FX/Shaders/DarkNoise.gdshader" id="4_skfjx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8ym1v"]
+shader = ExtResource("4_skfjx")
+shader_parameter/radius = 0.505
+shader_parameter/speed = 25.0
+shader_parameter/_alpha = 1.0
+shader_parameter/effect_color = Color(0.251, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_skfjx"]
+shader = ExtResource("4_skfjx")
+shader_parameter/radius = 0.505
+shader_parameter/speed = 25.0
+shader_parameter/_alpha = 0.2290000108775
+shader_parameter/effect_color = Color(0.2528886, 0, 0, 1)
+
+[node name="MainMenu" type="Node2D" unique_id=310983679]
+script = ExtResource("1_y0kec")
+NextScene = ExtResource("2_8ym1v")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1947101940]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=202777220]
+texture = ExtResource("1_g3jpp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=242268099]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1264042349]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Control" unique_id=858537210]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 139.0
+offset_right = 161.0
+offset_bottom = 147.0
+scale = Vector2(3, 3)
+icon = ExtResource("3_askim")
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=9751130]
+material = SubResource("ShaderMaterial_8ym1v")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=709251848]
+material = SubResource("ShaderMaterial_skfjx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -60.0
+offset_top = -42.0
+offset_right = 40.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer" unique_id=1342250071]
+material = SubResource("ShaderMaterial_skfjx")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -42.0
+offset_top = -55.0
+offset_right = 58.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=1609263059]
+script = ExtResource("2_y0kec")
+Track = ExtResource("2_k2qnf")
+OnReady = true

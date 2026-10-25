@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://k8id7thruf5r"]
 
 [ext_resource type="Script" uid="uid://bapcumsdqfdpj" path="res://Entities/PlayerXochi/Hooking/hookable_position.gd" id="1_7b1rl"]
-[ext_resource type="Texture2D" uid="uid://bn4btssyys82q" path="res://EnvironmentSprites/TestSprites/bigRedArrow.png" id="2_rrtql"]
+[ext_resource type="Texture2D" uid="uid://bn4btssyys82q" path="res://Environments/TestSprites/bigRedArrow.png" id="2_rrtql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrtql"]
 size = Vector2(64, 64)

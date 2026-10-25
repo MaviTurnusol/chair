@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Room" format=3 uid="uid://kijdllddx7el"]
+
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://Systems/RoomSystem/Room.gd" id="1_ms3pe"]
+[ext_resource type="PackedScene" uid="uid://dt2voiy38cchi" path="res://Common/viewport_lab.tscn" id="1_repf8"]
+
+[resource]
+script = ExtResource("1_ms3pe")
+Name = "Viewport God"
+ScenePackedScene = ExtResource("1_repf8")
+metadata/_custom_type_script = "uid://dtoaby0j0tekp"

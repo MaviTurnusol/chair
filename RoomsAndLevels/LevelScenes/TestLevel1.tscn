@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://3u0dvxs0fmru"]
 
-[ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://EnvironmentSprites/LabSprites/koridor5w1.png" id="1_gsogs"]
-[ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://EnvironmentSprites/LabSprites/koridor5w1_n.png" id="2_2l1wt"]
+[ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://Environments/LabSprites/koridor5w1.png" id="1_gsogs"]
+[ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/LabSprites/koridor5w1_n.png" id="2_2l1wt"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Common/Objects/LedLight.tscn" id="3_07ufu"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/FX/Shaders/vignette.gdshader" id="4_a4y63"]
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Objects/Actionable.tscn" id="5_lcy8w"]

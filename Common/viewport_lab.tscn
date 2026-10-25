@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Entities/PlayerXochi/player.tscn" id="4_8sudm"]
 [ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/CameraCursor/cam_target.gd" id="5_ofyqh"]
 [ext_resource type="PackedScene" uid="uid://bd263yqfsdm1l" path="res://Systems/Settings/Settings.tscn" id="6_8p3vs"]
+[ext_resource type="Script" uid="uid://clbw834853auk" path="res://Localization/ForceLocale.gd" id="7_fqrem"]
 
 [node name="ViewportLab" type="Node2D" unique_id=1582361756]
 
@@ -52,3 +53,34 @@ position = Vector2(113, 162.33333)
 script = ExtResource("5_ofyqh")
 
 [node name="Settings" parent="." unique_id=1752606228 instance=ExtResource("6_8p3vs")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1743485732]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1447762392]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ForceLocale2" type="Button" parent="CanvasLayer/Control" unique_id=1871639676]
+layout_mode = 0
+offset_left = 406.0
+offset_top = 33.0
+offset_right = 472.0
+offset_bottom = 64.0
+text = "English"
+script = ExtResource("7_fqrem")
+LocaleCode = "en"
+
+[node name="ForceLocale" type="Button" parent="CanvasLayer/Control" unique_id=2061782836]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 33.0
+offset_right = 554.0
+offset_bottom = 64.0
+text = "Turkish"
+script = ExtResource("7_fqrem")
+LocaleCode = "tr"

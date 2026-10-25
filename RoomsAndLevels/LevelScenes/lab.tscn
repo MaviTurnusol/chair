@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dkhw0k8ijjhy8"]
 
-[ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://EnvironmentSprites/LabSprites/koridor5w1.png" id="1_s0a5h"]
-[ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://EnvironmentSprites/LabSprites/koridor5w1_n.png" id="2_dhn3p"]
+[ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://Environments/LabSprites/koridor5w1.png" id="1_s0a5h"]
+[ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/LabSprites/koridor5w1_n.png" id="2_dhn3p"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Common/Objects/LedLight.tscn" id="3_ptpbc"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/FX/Shaders/vignette.gdshader" id="4_u3lwi"]
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Objects/Actionable.tscn" id="5_lfb30"]
@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/HP_Boxes/HitBox.tscn" id="16_rixi8"]
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://Entities/Wormy/CeilingWorm.tscn" id="17_csb2s"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://Entities/Guy/NormalWalkingEnemy1.tscn" id="18_q1pqm"]
-[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/Audio/AudioSystem/MusicPlayOnSceneLoad.gd" id="19_r8l8j"]
-[ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Systems/Audio/Music/Imen Kheru.mp3" id="20_3uelr"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="19_r8l8j"]
+[ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/Imen Kheru.mp3" id="20_3uelr"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="21_pnd1w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]

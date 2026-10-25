@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(1, 1, 1, 1)
 boot_splash/stretch_mode=2
 boot_splash/image="uid://dwwca06w0bu6o"
-config/icon="res://EnvironmentSprites/TestSprites/icon.svg"
+config/icon="res://Environments/TestSprites/icon.svg"
 
 [audio]
 
@@ -48,6 +48,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 [file_customization]
 
 folder_colors={
+"res://Audio/": "purple",
 "res://Common/FX/Shaders/": "purple",
 "res://Common/FX/ShakePresets/": "yellow",
 "res://Common/Objects/": "yellow",
@@ -59,6 +60,7 @@ folder_colors={
 "res://Icons/": "gray",
 "res://Items/": "yellow",
 "res://Items/WeaponItems/": "yellow",
+"res://Localization/": "red",
 "res://Obsolete/": "gray",
 "res://Obsolete/oldweapons/": "gray",
 "res://RoomsAndLevels/": "yellow",
@@ -170,6 +172,7 @@ Settings={
 
 [internationalization]
 
+locale/translations=PackedStringArray("res://Localization/Localisation.en.translation", "res://Localization/Localisation.tr.translation")
 locale/translations_pot_files=PackedStringArray("res://Dialogues/Dialogue/testDialogue.dialogue", "res://Dialogues/Dialogue/testnanaboss1.dialogue")
 
 [layer_names]

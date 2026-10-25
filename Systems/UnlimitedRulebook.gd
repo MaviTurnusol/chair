@@ -50,6 +50,8 @@ var globalitemdictionary : Dictionary[String,String]={
 	"IceCream": "uid://7a81k12kb5h0", 
 	"Yellow": "",} #uid / paths
 
-func GivePlayerItem(whatItemName : String):
+func GivePlayerItem(whatItemName : String,doDuplicate = true):
 	var itemload : InventoryItem = load(globalitemdictionary[whatItemName])
+	if(doDuplicate):
+		itemload = itemload.duplicate(true)
 	player.inventory_component.AddItemToInventory(itemload)
