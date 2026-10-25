@@ -4,8 +4,10 @@
 [ext_resource type="Script" uid="uid://cl08wplqhcq6j" path="res://Systems/Settings/KeyRebindParent.gd" id="1_x37td"]
 [ext_resource type="Script" uid="uid://i4nblmy0glcm" path="res://Systems/Settings/Volume.gd" id="2_6ih6q"]
 [ext_resource type="PackedScene" uid="uid://c3l1lunehtnn2" path="res://Systems/Settings/ControlRebind.tscn" id="2_x37td"]
+[ext_resource type="Script" uid="uid://d3shg0myviu48" path="res://Systems/Settings/KeybindPresetButton.gd" id="4_qc3li"]
 
 [node name="Settings" type="Node" unique_id=1752606228]
+process_mode = 3
 script = ExtResource("1_ajxtv")
 
 [node name="SettingsCanvasLayer" type="CanvasLayer" parent="." unique_id=629402265]
@@ -113,10 +115,10 @@ horizontal_alignment = 1
 
 [node name="Keys" type="Control" parent="SettingsCanvasLayer/Control" unique_id=1195890213]
 anchors_preset = 0
-offset_left = 918.0
-offset_top = 358.0
-offset_right = 1918.0
-offset_bottom = 958.0
+offset_left = 906.0
+offset_top = 314.0
+offset_right = 1906.0
+offset_bottom = 1034.0
 mouse_filter = 2
 script = ExtResource("1_x37td")
 rebindstring = "rebinding"
@@ -131,11 +133,36 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.5575289, 0.34071338, 0.27012336, 1)
 
+[node name="KeyPresest" type="VBoxContainer" parent="SettingsCanvasLayer/Control/Keys" unique_id=1287872255]
+layout_mode = 0
+offset_left = -212.0
+offset_top = -3.0
+offset_right = -12.0
+offset_bottom = 597.0
+
+[node name="PresetButton" type="Button" parent="SettingsCanvasLayer/Control/Keys/KeyPresest" unique_id=614747236]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 62
+text = "WASD"
+script = ExtResource("4_qc3li")
+KeybindFilePath = "res://KeybindPresets/WASD_Keybind.ini"
+
+[node name="PresetButton2" type="Button" parent="SettingsCanvasLayer/Control/Keys/KeyPresest" unique_id=1457466635]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 62
+text = "ZXCV"
+script = ExtResource("4_qc3li")
+KeybindFilePath = "res://KeybindPresets/PLAT_Keybind.ini"
+
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsCanvasLayer/Control/Keys" unique_id=304349773]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 4.0
+offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -210,3 +237,8 @@ RebindActionName = "interact"
 layout_mode = 2
 DisplayActionName = "Rotate"
 RebindActionName = "RotateItem"
+
+[node name="ControlRebind11" parent="SettingsCanvasLayer/Control/Keys/VBoxContainer/GridContainer" unique_id=463576235 instance=ExtResource("2_x37td")]
+layout_mode = 2
+DisplayActionName = "Sprint"
+RebindActionName = "shift"

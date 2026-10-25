@@ -51,8 +51,8 @@ func SaveKeybindSettings():
 	# Save it to a file (overwrite if already exists).
 	config.save(SaveManager.SettingsConfigFilePath)
 
-func LoadKeybindSettings():
-	var config = SaveManager.GetConfigFile(SaveManager.SettingsConfigFilePath)
+func LoadKeybindSettings(PathOverride : String = SaveManager.SettingsConfigFilePath):
+	var config = SaveManager.GetConfigFile(PathOverride)
 	if(config.has_section("Keybind")):
 		for i in ControlRebinders:
 			if(config.get_value("Keybind",i.RebindActionName)!=null):
