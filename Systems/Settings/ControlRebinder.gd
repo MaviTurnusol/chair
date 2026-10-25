@@ -1,6 +1,6 @@
 @tool
 extends Control
-
+class_name ControlRebinder
 ## The text to show on screen
 @export var DisplayActionName : String:
 	set(value):
@@ -15,7 +15,7 @@ extends Control
 			SetLabelToAction()
 
 
-@onready var KeyRebindParent : KeyRebinder =  $"../../.."
+@onready var KeyRebindParent : KeyRebinderParent =  $"../../.."
 @onready var start_rebind_button: Button = $StartRebind
 @onready var action_name_label: RichTextLabel = $ActionName
 

@@ -1,17 +1,15 @@
 extends Node
 
-func _ready() -> void:
-	pass # Replace with function body.
+const SettingsConfigFilePath : String = "user://settings.cfg"
 
-func SaveConfigFile():
-	# Create new ConfigFile object.
+func GetConfigFile(FilePath : String)->ConfigFile:
 	var config = ConfigFile.new()
+	var err = config.load(FilePath)
+	if err != OK:
+		return CreateConfigFile(FilePath)
+	return config
 
-	# Store some values.
-	config.set_value("Player1", "player_name", "Steve")
-	config.set_value("Player1", "best_score", 10)
-	config.set_value("Player2", "player_name", "V3geta")
-	config.set_value("Player2", "best_score", 9001)
-
-	# Save it to a file (overwrite if already exists).
-	config.save("user://scores.cfg")
+func CreateConfigFile(FilePath : String):
+	var config = ConfigFile.new()
+	config.save(FilePath)
+	return config
