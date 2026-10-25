@@ -7,7 +7,7 @@
 [ext_resource type="FontFile" uid="uid://bk10ax337voq8" path="res://Dialogues/zh-cn.ttf" id="3_7hjy8"]
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="3_ppob3"]
 [ext_resource type="PackedScene" uid="uid://ccpmoqjdxcsxs" path="res://Dialogues/dialogue_character.tscn" id="3_wq8lq"]
-[ext_resource type="Texture2D" uid="uid://dqnp8asms870f" path="res://Dialogues/Characters/flowerguyy.png" id="4_mtjp2"]
+[ext_resource type="Texture2D" uid="uid://dqnp8asms870f" path="res://Dialogues/Characters/flowerguyyfake.png" id="4_mtjp2"]
 [ext_resource type="Texture2D" uid="uid://d2wi5tl1myxoo" path="res://Dialogues/Characters/hatsunemiku.png" id="4_n51f1"]
 [ext_resource type="Theme" uid="uid://44ekro1icl8t" path="res://Dialogues/SpeechBubbies/colorlesstheme.tres" id="10_oq5t2"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="10_wbp80"]

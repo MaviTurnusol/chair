@@ -22,6 +22,8 @@ extends Control
 func _ready() -> void:
 	SetLabelToAction()
 	action_name_label.text = DisplayActionName
+	if(Engine.is_editor_hint()):
+		return
 	start_rebind_button.pressed.connect(StartRebind)
 	KeyRebindParent.KeyReboundSignal.connect(SetLabelToAction)
 
@@ -72,6 +74,6 @@ func GetActionKeyFromDefs(WhatAction : String)-> String:
 					keyname = "RMB"
 				3:
 					keyname = "MMB"
-			print(keyname)
+			#print(keyname)
 		return keyname
 	return "No Input Action"

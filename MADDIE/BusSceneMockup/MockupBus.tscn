@@ -14,7 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://cwldwy8ksdxjv" path="res://MADDIE/BusSceneMockup/Sprites/BusPeople1.png" id="11_dft4d"]
 [ext_resource type="Texture2D" uid="uid://bb3hvwp8mbths" path="res://MADDIE/BusSceneMockup/Sprites/WheelRough1.png" id="12_1771t"]
 [ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://MADDIE/Transitions/TransitionData.gd" id="15_6llpc"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Environments/Test/OnSceneLoadCall.gd" id="16_gqxha"]
 [ext_resource type="Script" uid="uid://chylvsc88ajmv" path="res://MADDIE/BusSceneMockup/CutsceneSwitcher.gd" id="16_j6e1t"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Audio/AudioSystem/MusicPlayOnSceneLoad.gd" id="16_vvk42"]
+[ext_resource type="AudioStream" uid="uid://bexsf6lorsp50" path="res://Audio/Music/They Fade Away.mp3" id="17_5xn8b"]
 
 [sub_resource type="Gradient" id="Gradient_vr7ih"]
 offsets = PackedFloat32Array(1)
@@ -554,3 +557,12 @@ TargetSceneName = "Bus Interior"
 DoorIdentifier = "XochiSeat"
 transitionData = SubResource("Resource_6llpc")
 DoSetPositionAtNewScene = true
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=538683801]
+script = ExtResource("16_vvk42")
+Track = ExtResource("17_5xn8b")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=2019648763 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("16_gqxha")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
