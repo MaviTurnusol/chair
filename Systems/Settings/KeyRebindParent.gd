@@ -59,7 +59,7 @@ func LoadKeybindSettings():
 				var KeyString : String = config.get_value("Keybind",i.RebindActionName)
 				if(KeyString[0]=="m"):
 					var NewMB : InputEventMouseButton = InputEventMouseButton.new()
-					NewMB.button_index = int(KeyString.lstrip("m"))
+					NewMB.button_index = int(KeyString.lstrip("m")) as MouseButton
 					SetActionToNewEvent(i.RebindActionName,NewMB)
 				else:
 					var NewMKB : InputEventKey = InputEventKey.new()
