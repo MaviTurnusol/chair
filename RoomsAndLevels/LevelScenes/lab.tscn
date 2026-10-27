@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/HP_Boxes/HitBox.tscn" id="16_rixi8"]
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://Entities/Wormy/CeilingWorm.tscn" id="17_csb2s"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://Entities/Guy/NormalWalkingEnemy1.tscn" id="18_q1pqm"]
+[ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="19_dhn3p"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="19_r8l8j"]
 [ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/Imen Kheru.mp3" id="20_3uelr"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="21_pnd1w"]
@@ -221,11 +222,35 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/JustANormalGuy/BulletBlocker_IMPENETRABLE" unique_id=1932140953]
 shape = SubResource("RectangleShape2D_hs8mn")
 
+[node name="SaveLoad" type="Node" parent="Enemies/JustANormalGuy" unique_id=2105588640 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("19_dhn3p")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"global_position": "Guy1Position"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
 [node name="JustANormalGuy2" parent="Enemies" unique_id=521501233 instance=ExtResource("18_q1pqm")]
 position = Vector2(816, 227)
 
+[node name="SaveLoad" type="Node" parent="Enemies/JustANormalGuy2" unique_id=718917776 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("19_dhn3p")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"global_position": "Guy2Position"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
 [node name="JustANormalGuy3" parent="Enemies" unique_id=753228336 instance=ExtResource("18_q1pqm")]
 position = Vector2(1030, 223)
+
+[node name="SaveLoad" type="Node" parent="Enemies/JustANormalGuy3" unique_id=1971599765 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("19_dhn3p")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"global_position": "Guy3Position"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=1456549778]
 script = ExtResource("19_r8l8j")

@@ -42,6 +42,7 @@
 [ext_resource type="Script" uid="uid://bj3j7fsh4325h" path="res://Systems/Inventory/Scripts/Inventory.gd" id="36_qs4pp"]
 [ext_resource type="Script" uid="uid://dsr4lse0y86k0" path="res://Entities/PlayerXochi/PlayerInventory.gd" id="40_6pogt"]
 [ext_resource type="Script" uid="uid://hwruf5cnd1xn" path="res://Systems/Weapons/Scripts/PlayerWeaponsAndTools.gd" id="40_8ynux"]
+[ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="43_33gln"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_get7g"]
 atlas = ExtResource("4_8ynux")
@@ -1196,5 +1197,12 @@ script = ExtResource("36_jp1hh")
 InventorySize = Vector2i(6, 6)
 inventory_hud = NodePath("../PlayerInventoryDisplayer")
 OwnerBody = NodePath("../..")
+
+[node name="SaveLoad" type="Node" parent="." unique_id=13185599 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("43_33gln")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"global_position": "PlayerPosition"
+})
 
 [editable path="IKArmPlayer"]

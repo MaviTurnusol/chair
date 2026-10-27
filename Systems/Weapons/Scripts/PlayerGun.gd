@@ -338,7 +338,7 @@ func HitscanAestheticFunction(WhichLine2D : Line2D):
 	var TweenLineWidth : Tween = get_tree().create_tween()
 	TweenLineWidth.set_ease(HitscanLineEasing)
 	TweenLineWidth.set_trans(HitscanLineTrans)
-	print(HitscanLineTrans)
+	#print(HitscanLineTrans)
 	TweenLineWidth.tween_property(WhichLine2D,"width",0,HitscanBulletTime)
 	
 	TweenTail(WhichLine2D,WhichLine2D.points[0],0)

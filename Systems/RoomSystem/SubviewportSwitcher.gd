@@ -13,6 +13,7 @@ func GetActiveScene():
 
 func _ready() -> void:
 	SceneManager.switchscene.connect(SwitchToScene)
+	SaveManager.SetValueFromSave("StartingLoadedRoom","CurrentRoom",self)
 	LoadScene(StartingLoadedRoom)
 	await get_tree().process_frame
 	SetActiveScene()

@@ -65,6 +65,6 @@ func LoadKeybindSettings(PathOverride : String = SaveManager.SettingsConfigFileP
 				else:
 					var NewMKB : InputEventKey = InputEventKey.new()
 					NewMKB.physical_keycode = OS.find_keycode_from_string(KeyString)
-					print(NewMKB)
+					#print(NewMKB)
 					SetActionToNewEvent(i.RebindActionName,NewMKB)
 	KeyReboundSignal.emit()
