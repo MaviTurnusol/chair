@@ -8,6 +8,8 @@ extends Node2D
 @onready var sprite : Sprite2D = $Sprite2D
 var pickedup : bool = false
 func _ready() -> void:
+	if(pickedup):
+		queue_free()
 	if(WhatItemAmI):
 		WhatItemAmI = WhatItemAmI.duplicate()
 	else:

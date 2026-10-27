@@ -10,6 +10,9 @@ func Save():
 	
 	for key in QueueSavedData.keys():
 		SavedData[key] = QueueSavedData[key]
+	QueueSavedData.clear()
+	print(SavedData["PlayerInventory"].ItemsInInv)
+	
 
 func SaveCurrentRoom():
 	SavedData["CurrentRoom"] = UnlimitedRulebook.currentScene.room.Name

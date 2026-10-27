@@ -1198,6 +1198,13 @@ InventorySize = Vector2i(6, 6)
 inventory_hud = NodePath("../PlayerInventoryDisplayer")
 OwnerBody = NodePath("../..")
 
+[node name="SaveLoad" type="Node" parent="PlayerInventory/PlayerInventoryComponent" unique_id=455672912 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("43_33gln")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"OwnInventoryGrid": "PlayerInventory"
+})
+
 [node name="SaveLoad" type="Node" parent="." unique_id=13185599 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("43_33gln")
 ObjToSave = NodePath("..")

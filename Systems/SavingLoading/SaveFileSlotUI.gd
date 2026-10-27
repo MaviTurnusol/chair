@@ -17,10 +17,10 @@ func _ready() -> void:
 	load_save.pressed.connect(LoadSave)
 
 func LoadSave():
-	if(FileAccess.file_exists("user://save_game"+str(Index)+"_geo_"+".tres")):
-		SaveManager.LoadSaveFile("user://save_game"+str(Index)+"_geo_")
+	if(FileAccess.file_exists("user://save_game"+str(Index)+"_geo_.tres")):
+		SaveManager.LoadSaveFile("user://save_game"+str(Index)+"_geo_.tres")
 	else:
-		SaveManager.CreateSaveFile("user://save_game"+str(Index)+"_geo_")
+		SaveManager.CreateSaveFile("user://save_game"+str(Index)+"_geo_.tres")
 		print("FUCK YOU")
 	StartGame()
 
@@ -36,7 +36,7 @@ func ClearSavePressed():
 		print("SAVE CLEARED")
 
 func ClearSave():
-	SaveManager.ClearSaveFile("user://save_game"+str(Index)+"_geo_")
+	SaveManager.ClearSaveFile("user://save_game"+str(Index)+"_geo_.tres")
 
 func ClearConfirmationDialogueChoice(Code : int):
 	match Code:

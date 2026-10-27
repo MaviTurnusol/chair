@@ -17,11 +17,13 @@ func CreateConfigFile(FilePath : String):
 	return config
 
 func LoadSaveFile(savefilepath : String): 
-	LoadedSaveFile = ResourceLoader.load(savefilepath+".tres")
+	print("I LOADED")
+	LoadedSaveFile = ResourceLoader.load(savefilepath)
 
 func CreateSaveFile(savefilepath : String):
+	print("YABBA")
 	LoadedSaveFile = SaveFile.new()
-	LoadedSaveFile.SaveFilePath = savefilepath+".tres"
+	LoadedSaveFile.SaveFilePath = savefilepath
 	ResourceSaver.save(LoadedSaveFile,LoadedSaveFile.SaveFilePath)
 
 func ClearSaveFile(savefilepath : String):
@@ -39,8 +41,9 @@ func _input(event: InputEvent) -> void:
 			print("DEBUG BUILD SAVE COMMAND")
 			SaveCurrentGame()
 
-func SetValueFromSave(targetVar : String,key : String,callingnode : Object):
+func SetValueFromSave(targetVar : String,key : String,callingnode : Object)->bool:
 	if(LoadedSaveFile):
 		if(LoadedSaveFile.SavedData.has(key)):
 			callingnode.set(targetVar,LoadedSaveFile.SavedData[key])
-	return null
+			return true
+	return false

@@ -55,7 +55,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_s0a5h"]
+[sub_resource type="Resource" id="Resource_dhn3p"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ground_tex = ExtResource("12_rdico")
@@ -65,7 +65,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_dhn3p"]
+[sub_resource type="Resource" id="Resource_ptpbc"]
 script = ExtResource("13_4ma8g")
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
@@ -157,6 +157,13 @@ texture = ExtResource("7_b6emh")
 [node name="Locker" parent="." unique_id=51756075 instance=ExtResource("8_vfr4p")]
 position = Vector2(556, 219)
 
+[node name="SaveLoad" type="Node" parent="Locker/InventoryComponent" parent_id_path=PackedInt32Array(51756075, 1874044462) index="0" unique_id=54379004 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("19_dhn3p")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"OwnInventoryGrid": "LabLocker1"
+})
+
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("9_3cjrj")]
 position = Vector2(251, 223)
 TargetSceneName = "Hook Lab"
@@ -175,14 +182,38 @@ TargetSceneName = "Bus Travel"
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_s0a5h")
+WhatItemAmI = SubResource("Resource_dhn3p")
+
+[node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("19_dhn3p")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem3" parent="." unique_id=233581645 instance=ExtResource("10_r58iw")]
 position = Vector2(1001, 238)
 
+[node name="SaveLoad" type="Node" parent="PickupableItem3" unique_id=1596869963 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("19_dhn3p")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun2PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
 [node name="PickupableItem2" parent="." unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_dhn3p")
+WhatItemAmI = SubResource("Resource_ptpbc")
+
+[node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("19_dhn3p")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun2PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="TEMP_DEBUG_HitBox" parent="." unique_id=187917931 instance=ExtResource("16_rixi8")]
 visible = false
@@ -261,3 +292,5 @@ OnReady = true
 script = ExtResource("21_pnd1w")
 ObjectToCall = NodePath("..")
 FunctionName = "OnLoad"
+
+[editable path="Locker"]

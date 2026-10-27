@@ -2,11 +2,12 @@ extends Resource
 class_name InventoryGrid
 
 var InventoryDict : Dictionary[Vector2i,InventoryItem] #Whereandwhat
-var ItemsInInv : Array[InventoryItem]
+@export var ItemsInInv : Array[InventoryItem]
 var InventorySize : Vector2
 
-func _init(_size : Vector2i) -> void:
-	InventorySize = _size
+func _init(_size : Vector2i = Vector2i.ZERO) -> void:
+	if(_size!=Vector2i.ZERO):
+		InventorySize = _size
 
 func UpdateInventoryDict():
 	#Set all values to null
