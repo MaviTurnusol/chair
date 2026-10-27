@@ -93,4 +93,5 @@ mouse_filter = 2
 [node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=1609263059]
 script = ExtResource("2_y0kec")
 Track = ExtResource("2_k2qnf")
+FadeTime = 0.0
 OnReady = true
