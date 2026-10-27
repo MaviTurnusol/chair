@@ -32,6 +32,7 @@ func SetActionToNewEvent(ActionName : String,event : InputEvent):
 	InputMap.erase_action(ActionName)
 	InputMap.add_action(ActionName)
 	InputMap.action_add_event(ActionName,event)
+	UnlimitedRulebook.KeybindChanged.emit()
 
 func SaveKeybindSettings():
 	# Create new ConfigFile object.

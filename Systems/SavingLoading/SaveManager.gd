@@ -1,5 +1,6 @@
 extends Node
 
+var LoadedSaveFile : SaveFile
 const SettingsConfigFilePath : String = "user://settings.cfg"
 
 func GetConfigFile(FilePath : String)->ConfigFile:
@@ -13,3 +14,24 @@ func CreateConfigFile(FilePath : String):
 	var config = ConfigFile.new()
 	config.save(FilePath)
 	return config
+
+func LoadSaveFile(savefilepath : String): 
+	ResourceLoader.load(savefilepath+".tres")
+
+func CreateSaveFile(savefilepath : String):
+	LoadedSaveFile = SaveFile.new()
+	LoadedSaveFile.SaveFilePath = savefilepath+".tres"
+	ResourceSaver.save(LoadedSaveFile,LoadedSaveFile.SaveFilePath)
+
+func ClearSaveFile(savefilepath : String):
+	CreateSaveFile(savefilepath)
+
+func SaveCurrentGame():
+	if(LoadedSaveFile):
+		ResourceSaver.save(LoadedSaveFile,LoadedSaveFile.SaveFilePath)
+
+func _input(event: InputEvent) -> void:
+	if(event.is_action_pressed("SAVEGAMEDEBUG")):
+		if(OS.is_debug_build()):
+			print("DEBUG BUILD SAVE COMMAND")
+			SaveCurrentGame()

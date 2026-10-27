@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://djrq50ser2q2y"]
+
+[ext_resource type="Script" uid="uid://ctkks67anc2i" path="res://Obsolete/Test/PauseMenu.gd" id="1_lj4oq"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=28161592]
+process_mode = 3
+layer = 25
+script = ExtResource("1_lj4oq")
+
+[node name="PauseMenuControl" type="Control" parent="." unique_id=345273321]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenuControl" unique_id=1876070393]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 400.0
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PauseMenuControl/VBoxContainer" unique_id=114940926]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 58
+bbcode_enabled = true
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseMenuControl/VBoxContainer" unique_id=498745925]
+custom_minimum_size = Vector2(0, 135)
+layout_mode = 2
+text = "RESUME"
+
+[node name="SettingsButton" type="Button" parent="PauseMenuControl/VBoxContainer" unique_id=843709326]
+custom_minimum_size = Vector2(0, 135)
+layout_mode = 2
+text = "SETTING"
+
+[node name="SaveLoadButton" type="Button" parent="PauseMenuControl/VBoxContainer" unique_id=1248496213]
+custom_minimum_size = Vector2(0, 135)
+layout_mode = 2
+text = "SAVE/LOAD MANAGER"
+
+[node name="QuitTitleButton" type="Button" parent="PauseMenuControl/VBoxContainer" unique_id=1856695194]
+custom_minimum_size = Vector2(0, 135)
+layout_mode = 2
+text = "QUIT TO TITLE"
+
+[node name="QuitAppButton" type="Button" parent="PauseMenuControl/VBoxContainer" unique_id=2088500155]
+custom_minimum_size = Vector2(0, 135)
+layout_mode = 2
+text = "QUIT APPLICATION"
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenuControl" unique_id=1347087868]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.43134022, 0.43134025, 0.43134025, 0.4627451)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenuControl" unique_id=1630378639]
+layout_mode = 0
+offset_left = 400.0
+offset_right = 1200.0
+offset_bottom = 100.0
+
+[node name="Button" type="Button" parent="PauseMenuControl/HBoxContainer" unique_id=1983212950]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+text = "AUDIO"
+
+[node name="Button2" type="Button" parent="PauseMenuControl/HBoxContainer" unique_id=32835548]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+text = "VISUAL"
+
+[node name="Button3" type="Button" parent="PauseMenuControl/HBoxContainer" unique_id=1457138804]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+text = "KEYBINDS"
+
+[node name="Button4" type="Button" parent="PauseMenuControl/HBoxContainer" unique_id=1320864843]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+text = "ASSIST"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=1305383701]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(400, 200)
+always_on_top = true
+accessibility_name = "Quit Application Confirmation"
+ok_button_text = "Quit"
+dialog_text = "Unsaved progress will be lost,
+are you sure you want to quit?"

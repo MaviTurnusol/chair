@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://byfaldi7a3s5y" path="res://Environments/HeroArt/titlescreen_A.png" id="1_g3jpp"]
 [ext_resource type="Script" uid="uid://bix0atb2wrbvu" path="res://Environments/ui/MainMenu/MainMenu.gd" id="1_y0kec"]
-[ext_resource type="Resource" uid="uid://kijdllddx7el" path="res://RoomsAndLevels/ViewportGod.tres" id="2_8ym1v"]
+[ext_resource type="Resource" uid="uid://6sicjhutyp5p" path="res://RoomsAndLevels/SaveFileSelect.tres" id="2_8ym1v"]
 [ext_resource type="AudioStream" uid="uid://cm8gf8plhydac" path="res://Audio/Music/Nantenehua.mp3" id="2_k2qnf"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="2_y0kec"]
 [ext_resource type="Texture2D" uid="uid://7p8uhfyn5h85" path="res://Environments/ui/MainMenu/StartButton.png" id="3_askim"]
