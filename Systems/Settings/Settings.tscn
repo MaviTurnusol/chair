@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://i4nblmy0glcm" path="res://Systems/Settings/Volume.gd" id="2_6ih6q"]
 [ext_resource type="PackedScene" uid="uid://c3l1lunehtnn2" path="res://Systems/Settings/ControlRebind.tscn" id="2_x37td"]
 [ext_resource type="Script" uid="uid://d3shg0myviu48" path="res://Systems/Settings/KeybindPresetButton.gd" id="4_qc3li"]
+[ext_resource type="Script" uid="uid://clbw834853auk" path="res://Localization/ForceLocale.gd" id="6_lug2x"]
 
 [node name="Settings" type="Node" unique_id=1752606228]
 process_mode = 3
@@ -242,3 +243,36 @@ RebindActionName = "RotateItem"
 layout_mode = 2
 DisplayActionName = "Sprint"
 RebindActionName = "shift"
+
+[node name="Languages" type="Control" parent="SettingsCanvasLayer/Control" unique_id=1893101683]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 694.0
+offset_top = 36.0
+offset_right = -1026.0
+offset_bottom = -844.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsCanvasLayer/Control/Languages" unique_id=425782851]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ForceLocale2" type="Button" parent="SettingsCanvasLayer/Control/Languages/VBoxContainer" unique_id=1693759250]
+layout_mode = 2
+text = "English"
+script = ExtResource("6_lug2x")
+LocaleCode = "en"
+
+[node name="ForceLocale" type="Button" parent="SettingsCanvasLayer/Control/Languages/VBoxContainer" unique_id=1114398110]
+layout_mode = 2
+text = "Turkish"
+script = ExtResource("6_lug2x")
+LocaleCode = "tr"

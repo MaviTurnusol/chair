@@ -2,21 +2,38 @@ extends Node
 class_name InventoryComponent 
 
 @export var InventorySize : Vector2i = Vector2i(4,4)
-var OwnInventoryGrid : InventoryGrid
+@export var OwnInventoryGrid : InventoryGrid
 var BodyRef : Node2D
 @export var inventory_hud: InventoryHud
 @onready var PickupableItemScene : PackedScene = preload("uid://52s8lsucji0v")
 @export var StartItems : Array[InventoryItem]
 @export var OwnerBody : Node2D
 signal ItemAddedToInventory
+
 func _ready() -> void:
+	#if(!LoadedInv):
+	#print("I DID DO")
+	var CloneGrid : InventoryGrid
+	if(OwnInventoryGrid!=null):
+		CloneGrid = OwnInventoryGrid.duplicate()
+	
 	OwnInventoryGrid = InventoryGrid.new(InventorySize)
+	
 	OwnInventoryGrid.UpdateInventoryDict()
+	
 	await get_tree().process_frame
-	for i in StartItems:
-		AddItemToInventory(i)
+	if(!CloneGrid):
+		for i in StartItems:
+			AddItemToInventory(i)
+	else:
+		for i in CloneGrid.ItemsInInv:
+			AddItemToInventory(i)
+	inventory_hud.visible = true
 	await get_tree().process_frame
+	OwnInventoryGrid.UpdateInventoryDict()
 	inventory_hud.DisplayInventoryGrid(OwnInventoryGrid)
+	await get_tree().process_frame
+	inventory_hud.visible = false
 
 func AddItemToInventory(_NewItem : InventoryItem):
 	#ItemsInInventory.append(_NewItem)

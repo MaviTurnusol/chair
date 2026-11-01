@@ -32,6 +32,7 @@ func SetActionToNewEvent(ActionName : String,event : InputEvent):
 	InputMap.erase_action(ActionName)
 	InputMap.add_action(ActionName)
 	InputMap.action_add_event(ActionName,event)
+	UnlimitedRulebook.KeybindChanged.emit()
 
 func SaveKeybindSettings():
 	# Create new ConfigFile object.
@@ -64,6 +65,6 @@ func LoadKeybindSettings(PathOverride : String = SaveManager.SettingsConfigFileP
 				else:
 					var NewMKB : InputEventKey = InputEventKey.new()
 					NewMKB.physical_keycode = OS.find_keycode_from_string(KeyString)
-					print(NewMKB)
+					#print(NewMKB)
 					SetActionToNewEvent(i.RebindActionName,NewMKB)
 	KeyReboundSignal.emit()

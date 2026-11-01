@@ -2,6 +2,7 @@
 extends Node2D
 @export var InventoryDisplayer : InventoryHud
 @export var PlayerMaxRange : float = 100
+
 func action():
 	InventoryDisplayer.visible = !InventoryDisplayer.visible
 

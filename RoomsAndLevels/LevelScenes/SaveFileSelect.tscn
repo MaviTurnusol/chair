@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://ndqrl8odqqig"]
 
-[ext_resource type="Script" uid="uid://bix0atb2wrbvu" path="res://Environments/ui/MainMenu/MainMenu.gd" id="1_bfgpf"]
+[ext_resource type="Script" uid="uid://bja2y3seqtfby" path="res://Systems/SavingLoading/SaveFileLoaderMenu.gd" id="2_77fg7"]
 [ext_resource type="Texture2D" uid="uid://7p8uhfyn5h85" path="res://Environments/ui/MainMenu/StartButton.png" id="3_0hhro"]
+[ext_resource type="Resource" uid="uid://kijdllddx7el" path="res://RoomsAndLevels/ViewportGod.tres" id="4_8ctrf"]
+[ext_resource type="Script" uid="uid://c8n60kpbklfwr" path="res://Systems/SavingLoading/SaveFileSlotUI.gd" id="4_bf8ow"]
 
 [node name="SaveFileSelect" type="Node2D" unique_id=310983679]
-script = ExtResource("1_bfgpf")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1947101940]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=242268099]
+[node name="SaveFileLoaderCreator" type="Node" parent="." unique_id=932099901]
+script = ExtResource("2_77fg7")
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=1264042349]
+[node name="CanvasLayer" type="CanvasLayer" parent="SaveFileLoaderCreator" unique_id=242268099]
+
+[node name="Control" type="Control" parent="SaveFileLoaderCreator/CanvasLayer" unique_id=1264042349]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="StartButton" type="Button" parent="CanvasLayer/Control" unique_id=858537210]
+[node name="StartButton" type="Button" parent="SaveFileLoaderCreator/CanvasLayer/Control" unique_id=858537210]
 visible = false
 layout_mode = 0
 offset_left = 153.0
@@ -29,7 +33,7 @@ scale = Vector2(3, 3)
 icon = ExtResource("3_0hhro")
 flat = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=439788102]
+[node name="ColorRect" type="ColorRect" parent="SaveFileLoaderCreator/CanvasLayer/Control" unique_id=439788102]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +42,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.32915837, 0.3291584, 0.3291584, 1)
 
-[node name="SaveSlotList" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1376770068]
+[node name="SaveSlotList" type="HBoxContainer" parent="SaveFileLoaderCreator/CanvasLayer/Control" unique_id=1376770068]
 layout_mode = 1
 offset_left = 43.0
 offset_top = 533.0
@@ -46,11 +50,13 @@ offset_right = 1043.0
 offset_bottom = 1033.0
 theme_override_constants/separation = 163
 
-[node name="SaveSlot" type="Control" parent="CanvasLayer/Control/SaveSlotList" unique_id=1432982669]
+[node name="SaveSlot" type="Control" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList" unique_id=1432982669]
 custom_minimum_size = Vector2(500, 250)
 layout_mode = 2
+script = ExtResource("4_bf8ow")
+NextScene = ExtResource("4_8ctrf")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/SaveSlotList/SaveSlot" unique_id=1793079645]
+[node name="ColorRect" type="ColorRect" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot" unique_id=1793079645]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -59,11 +65,66 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.573792, 0.5737919, 0.5737919, 1)
 
-[node name="SaveSlot2" type="Control" parent="CanvasLayer/Control/SaveSlotList" unique_id=1896998201]
+[node name="LoadSave" type="Button" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot" unique_id=151612285]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 67
+text = "Create / Load"
+
+[node name="ClearSave" type="Button" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot" unique_id=905448465]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_right = 150.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 44
+text = "Clear"
+
+[node name="SaveSlotLabel" type="RichTextLabel" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot" unique_id=1518220989]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 89
+bbcode_enabled = true
+text = "[shake]Save Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot" unique_id=398153838]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 152.0
+offset_right = 489.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 66
+text = "Playtime: 0"
+
+[node name="QuitConfirmationDialog" type="ConfirmationDialog" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot" unique_id=508220438]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(400, 200)
+always_on_top = true
+accessibility_name = "Quit Application Confirmation"
+ok_button_text = "DELETE "
+dialog_text = "Are you sure you want to clear the save?
+This is unrecoverable."
+
+[node name="SaveSlot2" type="Control" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList" unique_id=1191533475]
 custom_minimum_size = Vector2(500, 250)
 layout_mode = 2
+script = ExtResource("4_bf8ow")
+NextScene = ExtResource("4_8ctrf")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/SaveSlotList/SaveSlot2" unique_id=561370675]
+[node name="ColorRect" type="ColorRect" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot2" unique_id=1301614409]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,11 +133,66 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.573792, 0.5737919, 0.5737919, 1)
 
-[node name="SaveSlot3" type="Control" parent="CanvasLayer/Control/SaveSlotList" unique_id=1721647521]
+[node name="LoadSave" type="Button" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot2" unique_id=1546614916]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 67
+text = "Create / Load"
+
+[node name="ClearSave" type="Button" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot2" unique_id=1836210148]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_right = 150.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 44
+text = "Clear"
+
+[node name="SaveSlotLabel" type="RichTextLabel" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot2" unique_id=1935546199]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 89
+bbcode_enabled = true
+text = "[shake]Save Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot2" unique_id=1111545669]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 152.0
+offset_right = 489.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 66
+text = "Playtime: 0"
+
+[node name="QuitConfirmationDialog" type="ConfirmationDialog" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot2" unique_id=1790789670]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(400, 200)
+always_on_top = true
+accessibility_name = "Quit Application Confirmation"
+ok_button_text = "DELETE "
+dialog_text = "Are you sure you want to clear the save?
+This is unrecoverable."
+
+[node name="SaveSlot3" type="Control" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList" unique_id=1196230003]
 custom_minimum_size = Vector2(500, 250)
 layout_mode = 2
+script = ExtResource("4_bf8ow")
+NextScene = ExtResource("4_8ctrf")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/SaveSlotList/SaveSlot3" unique_id=203416117]
+[node name="ColorRect" type="ColorRect" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot3" unique_id=337394022]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -84,3 +200,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.573792, 0.5737919, 0.5737919, 1)
+
+[node name="LoadSave" type="Button" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot3" unique_id=249705586]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 67
+text = "Create / Load"
+
+[node name="ClearSave" type="Button" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot3" unique_id=1376467955]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_right = 150.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 44
+text = "Clear"
+
+[node name="SaveSlotLabel" type="RichTextLabel" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot3" unique_id=19853492]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -150.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 89
+bbcode_enabled = true
+text = "[shake]Save Slot"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot3" unique_id=1741571842]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 152.0
+offset_right = 489.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 66
+text = "Playtime: 0"
+
+[node name="QuitConfirmationDialog" type="ConfirmationDialog" parent="SaveFileLoaderCreator/CanvasLayer/Control/SaveSlotList/SaveSlot3" unique_id=478186306]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(400, 200)
+always_on_top = true
+accessibility_name = "Quit Application Confirmation"
+ok_button_text = "DELETE "
+dialog_text = "Are you sure you want to clear the save?
+This is unrecoverable."
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SaveFileLoaderCreator/CanvasLayer/Control" unique_id=897259211]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 250.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 175
+bbcode_enabled = true
+text = "[shake]CHAIR Save/Load"
+horizontal_alignment = 1
+vertical_alignment = 1

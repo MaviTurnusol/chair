@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_i2dre")
+Name = "Save File Select"
 SceneFilePath = "res://RoomsAndLevels/LevelScenes/SaveFileSelect.tscn"
 metadata/_custom_type_script = "uid://dtoaby0j0tekp"

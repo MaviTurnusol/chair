@@ -17,6 +17,7 @@ var UIGod : Node
 
 signal got_on_the_talking_point
 signal hook_ender
+signal KeybindChanged
 
 #0: Character Name, 1: Textbox Color
 var char_archive = {

@@ -108,7 +108,7 @@ func CheckIfCanShoot():
 	return false
 
 func Shoot():
-	print(AttackIndex)
+	#print(AttackIndex)
 	TimeSinceShot = 0
 	AttackSigmaDelta = 0
 	BaseBodyPosition = Body.global_position

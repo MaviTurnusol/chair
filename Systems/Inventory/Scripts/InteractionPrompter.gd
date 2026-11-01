@@ -19,6 +19,7 @@ var talking_point: Vector2
 func _ready() -> void:
 	PromptArea.get_node("CollisionShape2D").shape = CircleShape2D.new()
 	PromptArea.get_node("CollisionShape2D").shape.radius = InteractRange
+	UnlimitedRulebook.KeybindChanged.connect(SetPromptToActionKey)
 	SetPromptToActionKey()
 	prompt.visible = IsInteractable
 	prompt.position += PromptOffset
