@@ -28,9 +28,12 @@ func StateChanged(_OldState : States,NewState : States):
 		pass
 
 func death():
+	if UnlimitedRulebook.livestock.has(self):
+		UnlimitedRulebook.livestock.erase(self)
 	queue_free()
 
 func _ready() -> void:
+	UnlimitedRulebook.livestock.append(self)
 	aggro_zone.body_entered.connect(BodyEnteredAggroZone)
 
 func _process(delta: float) -> void:

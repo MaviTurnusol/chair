@@ -14,3 +14,12 @@ export_credentials.cfg
 .mono/
 data_*/
 mono_crash.*.json
+Enemies/Teccizlabcoat/Teccizlabcoat-Kick.png.import
+Enemies/Teccizlabcoat/Teccizlabcoat.png.import
+Enemies/Teccizlabcoat/Teccizlabcoat_Side.png.import
+Player/Animations/hiding.png.import
+Player/Animations/hurtFromBehind.png.import
+Player/Animations/hurtFromFront.png.import
+Player/Animations/knifeSlash1.png.import
+Player/Animations/punch1.png.import
+Player/Animations/punch2.png.import

@@ -17,6 +17,9 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	if UnlimitedRulebook.lockedEnemyPosition != Vector2(0, 0):
+		current_target = (target.global_position*2 + UnlimitedRulebook.lockedEnemyPosition)/3
+	
 	if !disabled:
 		if current_target != Vector2(0, 0):
 			global_position = current_target

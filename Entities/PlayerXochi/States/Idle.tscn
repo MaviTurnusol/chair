@@ -7,3 +7,9 @@ script = ExtResource("1_ae7oq")
 animName = "idle"
 animOnStart = false
 metadata/_custom_type_script = "uid://cswibj42kh6rk"
+
+[node name="Timer" type="Timer" parent="." unique_id=636755625]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

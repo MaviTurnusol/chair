@@ -1,7 +1,7 @@
 @icon("uid://bq0j64m8a0ocr")
 extends CharacterBody2D
 class_name Player
-var speed = 130.0
+var speed = 100.0
 var jumpVelocity = -440.0
 @onready var anima = $Marker2D/anima
 @onready var machine = $StateMachine
@@ -15,6 +15,8 @@ var dir = 0.0
 
 var weapon_equipped = false
 var weapon : Node2D
+
+var locked_in = false
 
 func _ready() -> void:
 	UnlimitedRulebook.player = self
@@ -86,10 +88,11 @@ func _physics_process(delta):
 	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack"
 	,"hook","parry"]:
 		#Turning
-		if sign(dir_) == sign(-velocity.x) && dir_:
-			machine.change_state_to("turn")
-			dir_ = -dir_
-			dir = dir_
+		if !locked_in:
+			if sign(dir_) == sign(-velocity.x) && dir_:
+				machine.change_state_to("turn")
+				dir_ = -dir_
+				dir = dir_
 		#Walking/Running
 		if machine.get_state() not in ["turn"]:
 			if dir_:
@@ -112,10 +115,11 @@ func _physics_process(delta):
 					machine.change_state_to("gunIdle")
 			
 		#Flipping Sprite/Hurtbox
-		if Input.is_action_pressed("left"):
-			flip("left")
-		elif Input.is_action_pressed("right"):
-			flip("right")
+		if !(locked_in && machine.get_state() in ["walk", "gunWalk", "idle"]):
+			if Input.is_action_pressed("left"):
+				flip("left")
+			elif Input.is_action_pressed("right"):
+				flip("right")
 
 func flip(foo) -> void:
 	match foo:

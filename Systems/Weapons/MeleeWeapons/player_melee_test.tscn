@@ -13,9 +13,9 @@ point_count = 2
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_awxei"]
-_data = [Vector2(0, 0), 0.0, 1.0557513, 0, 0, Vector2(1, 1), 1.2781669, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Curve" id="Curve_xlu66"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.45790255, 0.4567219), 1.9418732, 1.9418732, 0, 0, Vector2(0.81468534, 0.9200616), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_xo53j"]
 _data = {
@@ -25,7 +25,7 @@ point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_kunqw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 200, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0)
 }
 point_count = 2
 
@@ -40,9 +40,9 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_8yfo6"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.81468534, 0.9200616), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
+[sub_resource type="Curve" id="Curve_2r5r4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.45790255, 0.4567219), 1.9418732, 1.9418732, 0, 0, Vector2(0.81468534, 0.9200616), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Curve2D" id="Curve2D_awxei"]
 _data = {
@@ -52,7 +52,7 @@ point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_hopsy"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 400, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0)
 }
 point_count = 2
 
@@ -67,12 +67,15 @@ metadata/_custom_type_script = "uid://by2pyc8q6m3ry"
 [node name="MeleeAttack" type="Node2D" parent="." unique_id=456058279 node_paths=PackedStringArray("Hit_Box", "MeleeAttackPath", "MeleeAttackPathFollow", "BodyAttackPath", "BodyAttackPathFollow")]
 script = ExtResource("3_2gx34")
 Hit_Box = NodePath("HitBox")
-WindUpTime = 0.0
+WindUpTime = 0.15
+AttackTime = 0.8
+RecoveryTime = 0.0
+AttackChainTime = 0.0
 AttackAnimation = 4
 AttackShouldLastAnimationDurationOverride = true
 PositionInPathOverAttackTime = SubResource("Curve_y8hdp")
 ScaleOverAttackTime = SubResource("Curve_lj0cf")
-BodyPositionInPathOverAttackTime = SubResource("Curve_awxei")
+BodyPositionInPathOverAttackTime = SubResource("Curve_xlu66")
 MeleeAttackPath = NodePath("AttackPath")
 MeleeAttackPathFollow = NodePath("AttackPath/PathFollow2D")
 BodyAttackPath = NodePath("BodyPath")
@@ -83,7 +86,7 @@ curve = SubResource("Curve2D_xo53j")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="MeleeAttack/AttackPath" unique_id=402669630]
 position = Vector2(-0.5, -0.5)
-rotation = 0.021273386
+rotation = 0.021273388
 loop = false
 
 [node name="BodyPath" type="Path2D" parent="MeleeAttack" unique_id=36384264]
@@ -111,9 +114,10 @@ AttackTime = 0.8
 RecoveryTime = 0.0
 AttackChainTime = 0.0
 AttackAnimation = 2
+AttackShouldLastAnimationDurationOverride = true
 PositionInPathOverAttackTime = SubResource("Curve_hopsy")
 ScaleOverAttackTime = SubResource("Curve_pm4dr")
-BodyPositionInPathOverAttackTime = SubResource("Curve_8yfo6")
+BodyPositionInPathOverAttackTime = SubResource("Curve_2r5r4")
 MeleeAttackPath = NodePath("AttackPath")
 MeleeAttackPathFollow = NodePath("AttackPath/PathFollow2D")
 BodyAttackPath = NodePath("BodyPath")

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cqykb35b52swq"]
+
+[ext_resource type="Texture2D" uid="uid://bnigf0kimh55k" path="res://Systems/Weapons/GunsVFX/crossairCircle.png" id="1_2iwb5"]
+
+[node name="focusThingy" type="Node2D" unique_id=352624074]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=459087981]
+texture = ExtResource("1_2iwb5")

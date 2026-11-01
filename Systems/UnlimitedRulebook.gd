@@ -4,9 +4,13 @@ var player : Player
 var cam
 var the_woke_left = "Blank"
 var the_asleep_right = "Blank"
-var crossHair #Im so dumb i thought it was spelled crossair
+var crossHair #i thought it was spelled crossair mb
 var playerWeapon
 var currentScene
+
+var livestock = []
+var lockedEnemy = null
+var lockedEnemyPosition := Vector2(0, 0)
 
 var HoveredInventory : InventoryComponent
 var UIGod : Node
@@ -55,3 +59,57 @@ func GivePlayerItem(whatItemName : String,doDuplicate = true):
 	if(doDuplicate):
 		itemload = itemload.duplicate(true)
 	player.inventory_component.AddItemToInventory(itemload)
+
+func LockOnEnemy(enemy):
+	if !enemy:
+		return
+	if !is_instance_valid(enemy):
+		return
+	if !player:
+		return
+	if !is_instance_valid(player):
+		return
+	lockedEnemyPosition = enemy.global_position
+	
+	pass
+
+func UnlockCamera():
+	lockedEnemyPosition = Vector2(0, 0)
+	if cam:
+		if is_instance_valid(cam):
+			cam.current_target = Vector2(0, 0)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("focus"):
+		if lockedEnemy == null:
+			lockedEnemy = FindClosestEnemy(livestock)
+		else:
+			if livestock.has(lockedEnemy):
+				var newstock = livestock
+				newstock.erase(lockedEnemy)
+				lockedEnemy = FindClosestEnemy(newstock)
+	if Input.is_action_just_pressed("drop_focus"):
+		lockedEnemy = null
+
+func FindClosestEnemy(enemyArray):
+	if !player:
+		return
+	if is_instance_valid(player):
+		return
+	
+	var closest_enemy = null
+	for creature in enemyArray:
+		if !creature:
+			continue
+		if !is_instance_valid(creature):
+			continue
+		
+		if closest_enemy == null:
+			creature = closest_enemy
+			continue
+		
+		if creature.global_position.distance_to(player.global_position) < closest_enemy.global_position.distance_to(player.global_position):
+			creature = closest_enemy
+			continue
+	
+	return closest_enemy
