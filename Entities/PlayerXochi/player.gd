@@ -88,7 +88,7 @@ func _physics_process(delta):
 	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack"
 	,"hook","parry"]:
 		#Turning
-		if !locked_in:
+		if UnlimitedRulebook.lockedEnemyPosition != Vector2(0, 0):
 			if sign(dir_) == sign(-velocity.x) && dir_:
 				machine.change_state_to("turn")
 				dir_ = -dir_
@@ -115,7 +115,7 @@ func _physics_process(delta):
 					machine.change_state_to("gunIdle")
 			
 		#Flipping Sprite/Hurtbox
-		if !(locked_in && machine.get_state() in ["walk", "gunWalk", "idle"]):
+		if !(UnlimitedRulebook.lockedEnemyPosition == Vector2(0, 0) && machine.get_state() in ["walk", "gunWalk", "idle"]):
 			if Input.is_action_pressed("left"):
 				flip("left")
 			elif Input.is_action_pressed("right"):

@@ -7,7 +7,7 @@ func Start():
 	$Timer.start()
 	
 func PhysicsProcess(_delta):
-	print(can_anim)
+	#print(can_anim)
 	if abs(stateOwner.velocity.x) < 80.0 && can_anim:
 		stateOwner.anima.play(animName)
 	stateOwner.move_and_slide()

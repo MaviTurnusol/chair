@@ -9,6 +9,7 @@ var playerWeapon
 var currentScene
 
 var livestock = []
+var iteratedLivestock = []
 var lockedEnemy = null
 var lockedEnemyPosition := Vector2(0, 0)
 
@@ -72,6 +73,9 @@ func LockOnEnemy(enemy):
 		return
 	lockedEnemyPosition = enemy.global_position
 	
+	#if cam:
+		#if is_instance_valid(cam):
+			#cam.current_target = lockedEnemyPosition
 	pass
 
 func UnlockCamera():
@@ -84,18 +88,25 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("focus"):
 		if lockedEnemy == null:
 			lockedEnemy = FindClosestEnemy(livestock)
+			print(FindClosestEnemy(livestock))
+			print(lockedEnemy)
 		else:
 			if livestock.has(lockedEnemy):
-				var newstock = livestock
+				var newstock = livestock.duplicate()
 				newstock.erase(lockedEnemy)
 				lockedEnemy = FindClosestEnemy(newstock)
 	if Input.is_action_just_pressed("drop_focus"):
 		lockedEnemy = null
+		UnlockCamera()
+	
+	if lockedEnemy:
+		if is_instance_valid(lockedEnemy):
+			LockOnEnemy(lockedEnemy)
 
 func FindClosestEnemy(enemyArray):
 	if !player:
 		return
-	if is_instance_valid(player):
+	if !is_instance_valid(player):
 		return
 	
 	var closest_enemy = null
@@ -106,11 +117,11 @@ func FindClosestEnemy(enemyArray):
 			continue
 		
 		if closest_enemy == null:
-			creature = closest_enemy
+			closest_enemy = creature
 			continue
 		
 		if creature.global_position.distance_to(player.global_position) < closest_enemy.global_position.distance_to(player.global_position):
-			creature = closest_enemy
+			closest_enemy = creature
 			continue
 	
 	return closest_enemy
