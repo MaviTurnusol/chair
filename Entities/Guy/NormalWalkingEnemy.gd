@@ -30,6 +30,10 @@ func StateChanged(_OldState : States,NewState : States):
 func death():
 	if UnlimitedRulebook.livestock.has(self):
 		UnlimitedRulebook.livestock.erase(self)
+		if UnlimitedRulebook.lockedEnemy == self:
+			UnlimitedRulebook.UnlockCamera()
+			UnlimitedRulebook.lockedEnemy = null
+			UnlimitedRulebook.lockedEnemyPosition = Vector2(0, 0)
 	queue_free()
 
 func _ready() -> void:

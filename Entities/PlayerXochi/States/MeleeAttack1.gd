@@ -1,6 +1,8 @@
 extends State
 
 func Start():
+	#stateOwner.flip()
+	
 	stateOwner.velocity.x = 0
 	ProcessAnimation(UnlimitedRulebook.playerWeapon.CurrentAttack.AttackAnimation)
 	var pweapon = UnlimitedRulebook.playerWeapon
