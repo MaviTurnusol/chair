@@ -2,6 +2,10 @@ extends State
 
 func Start():
 	#stateOwner.flip()
+	#var markerdir = stateOwner.marker_2d.scale.x
+	stateOwner.marker_2d.scale.x = Input.get_axis("left","right")
+	print(stateOwner.marker_2d.scale.x)
+	#stateOwner.get_node("Marker2D").scale.x = stateOwner.dir
 	
 	stateOwner.velocity.x = 0
 	ProcessAnimation(UnlimitedRulebook.playerWeapon.CurrentAttack.AttackAnimation)
@@ -26,3 +30,10 @@ func ProcessAnimation(mAnimation : UnlimitedRulebook.MeleeAnimation):
 	animator.stop()
 	animator.play(UnlimitedRulebook.MeleeAnimationDict[mAnimation])
 	
+func End():
+	if UnlimitedRulebook.lockedEnemyPosition != Vector2(0, 0):
+		stateOwner.get_node("Marker2D").scale.x = sign(UnlimitedRulebook.lockedEnemyPosition.x - stateOwner.global_position.x)
+	else:
+		var newdir = Input.get_axis("left","right")
+		if(newdir):
+			stateOwner.get_node("Marker2D").scale.x = newdir

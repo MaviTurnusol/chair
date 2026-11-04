@@ -65,9 +65,14 @@ func _process(delta: float) -> void:
 		if(AttackSigmaDelta<CurrentAttack.WindUpTime+CurrentAttack.RecoveryTime+CurrentAttack.AttackTime):
 			#Body.global_position = BaseBodyPosition + (Body.dir * BodyAttackPathFollow.position)
 			var BodyPos = CurrentAttack.BodyAttackPathFollow.position
-			if(Body.dir < 0):
+			var markerdir = Body.marker_2d.scale.x
+			#if(Body.dir < 0):
+				#BodyPos.x *= -1
+			#if(Body.dir > 0):
+				#BodyPos.x *= 1
+			if(markerdir < 0):
 				BodyPos.x *= -1
-			if(Body.dir > 0):
+			if(markerdir > 0):
 				BodyPos.x *= 1
 			if(!UnlimitedRulebook.player.CheckIfMovingNearWall()):
 				Body.global_position = BaseBodyPosition + (BodyPos)

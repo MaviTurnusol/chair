@@ -6,6 +6,7 @@ var jumpVelocity = -440.0
 @onready var anima = $Marker2D/anima
 @onready var machine = $StateMachine
 #@onready var weaponHolder = $Marker2D/weaponHolder
+@onready var marker_2d: Marker2D = $Marker2D
 @onready var wall_check: RayCast2D = $Marker2D/WallCheck
 
 @onready var inventory_component: InventoryComponent = $PlayerInventory/PlayerInventoryComponent
@@ -93,6 +94,7 @@ func _physics_process(delta):
 				machine.change_state_to("turn")
 				dir_ = -dir_
 				dir = dir_
+
 		#Walking/Running
 		if machine.get_state() not in ["turn"]:
 			if dir_:

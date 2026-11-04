@@ -36,11 +36,11 @@ func SaveCurrentGame():
 		ResourceSaver.save(LoadedSaveFile,LoadedSaveFile.SaveFilePath)
 
 func _input(event: InputEvent) -> void:
-	if(event.is_action_pressed("SAVEGAMEDEBUG")):
-		if(OS.is_debug_build()):
-			print("DEBUG BUILD SAVE COMMAND")
-			SaveCurrentGame()
-
+	#if(event.is_action_pressed("SAVEGAMEDEBUG")):
+		#if(OS.is_debug_build()):
+			#print("DEBUG BUILD SAVE COMMAND")
+			#SaveCurrentGame()
+	pass
 func SetValueFromSave(targetVar : String,key : String,callingnode : Object)->bool:
 	if(LoadedSaveFile):
 		if(LoadedSaveFile.SavedData.has(key)):
