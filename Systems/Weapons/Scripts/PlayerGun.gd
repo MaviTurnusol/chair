@@ -295,7 +295,10 @@ func ShootHitscan():
 func FireHitscan():
 	var NewHitLine : Line2D = Line2D.new()
 	UnlimitedRulebook.currentScene.add_child(NewHitLine)
-	HitscanTarget = get_global_mouse_position()
+	if(UnlimitedRulebook.lockedEnemyPosition==Vector2.ZERO):
+		HitscanTarget = get_global_mouse_position()
+	else:
+		HitscanTarget = UnlimitedRulebook.lockedEnemyPosition
 	var SpreadTarget = HitscanTarget + Vector2(randf_range(-HitscanBulletSpread.x,HitscanBulletSpread.x),randf_range(-HitscanBulletSpread.y,HitscanBulletSpread.y))
 	NewHitLine.add_point(to_global(FirePoint))
 	NewHitLine.add_point(SpreadTarget)

@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="19_r8l8j"]
 [ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/Imen Kheru.mp3" id="20_3uelr"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="21_pnd1w"]
+[ext_resource type="Texture2D" uid="uid://rmghv121cmw7" path="res://MADDIE/TlalocBad.png" id="23_ptpbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
@@ -298,5 +299,11 @@ OnReady = true
 script = ExtResource("21_pnd1w")
 ObjectToCall = NodePath("..")
 FunctionName = "OnLoad"
+
+[node name="TlalocBad" type="Sprite2D" parent="." unique_id=396651307]
+position = Vector2(180, 229)
+texture = ExtResource("23_ptpbc")
+
+[node name="Fogger" type="Node" parent="." unique_id=1448403586]
 
 [editable path="Locker"]
