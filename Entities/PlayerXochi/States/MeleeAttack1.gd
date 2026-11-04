@@ -3,9 +3,11 @@ extends State
 func Start():
 	#stateOwner.flip()
 	#var markerdir = stateOwner.marker_2d.scale.x
-	stateOwner.marker_2d.scale.x = Input.get_axis("left","right")
-	print(stateOwner.marker_2d.scale.x)
-	#stateOwner.get_node("Marker2D").scale.x = stateOwner.dir
+	if(Input.get_axis("left","right")):
+		stateOwner.marker_2d.scale.x = Input.get_axis("left","right")
+	else:
+		stateOwner.get_node("Marker2D").scale.x = stateOwner.dir
+	#print(stateOwner.marker_2d.scale.x)
 	
 	stateOwner.velocity.x = 0
 	ProcessAnimation(UnlimitedRulebook.playerWeapon.CurrentAttack.AttackAnimation)

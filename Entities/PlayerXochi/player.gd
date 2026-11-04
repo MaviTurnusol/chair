@@ -12,7 +12,7 @@ var jumpVelocity = -440.0
 @onready var inventory_component: InventoryComponent = $PlayerInventory/PlayerInventoryComponent
 @onready var player_inventory: Node = $PlayerInventory
 
-var dir = 0.0
+var dir = 1.0
 
 var weapon_equipped = false
 var weapon : Node2D
