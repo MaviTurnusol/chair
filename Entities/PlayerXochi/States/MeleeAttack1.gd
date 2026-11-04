@@ -5,6 +5,7 @@ func Start():
 	#var markerdir = stateOwner.marker_2d.scale.x
 	if(Input.get_axis("left","right")):
 		stateOwner.marker_2d.scale.x = Input.get_axis("left","right")
+		stateOwner.dir = stateOwner.marker_2d.scale.x
 	else:
 		stateOwner.get_node("Marker2D").scale.x = stateOwner.dir
 	#print(stateOwner.marker_2d.scale.x)
@@ -39,3 +40,6 @@ func End():
 		var newdir = Input.get_axis("left","right")
 		if(newdir):
 			stateOwner.get_node("Marker2D").scale.x = newdir
+		#else:
+			#stateOwner.dir = 0
+	

@@ -90,10 +90,13 @@ func _physics_process(delta):
 	,"hook","parry"]:
 		#Turning
 		if UnlimitedRulebook.lockedEnemyPosition == Vector2(0, 0):
-			if sign(dir_) == sign(-velocity.x) && dir_:
-				machine.change_state_to("turn")
-				dir_ = -dir_
-				dir = dir_
+			if(dir_):
+				if(sign(dir_)!= sign(dir)):
+					machine.change_state_to("turn")
+					dir_ = -dir_
+					dir = dir_
+			#if sign(dir_) == sign(-velocity.x) && dir_:
+				#
 
 		#Walking/Running
 		if machine.get_state() not in ["turn"]:

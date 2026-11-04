@@ -1159,7 +1159,7 @@ position = Vector2(-11.636646, 10.980812)
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"turn"
+animation = &"stab1"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
