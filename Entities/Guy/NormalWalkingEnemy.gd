@@ -22,7 +22,7 @@ var WalkDirection : int = 0
 var KnockbackTargetPoint : Vector2
 var PointAtWhichWasKnockedBack : Vector2
 @export var StaggerDuration : float = 1
-
+var KBTween : Tween
 func StateChanged(_OldState : States,NewState : States):
 	match NewState:
 		pass
@@ -51,8 +51,10 @@ func _process(delta: float) -> void:
 					ChangeDirection(1)
 		position.x += ChaseSpeed*delta*WalkDirection
 	
-	if(CurrentState == States.Stunned):
-		position = position.move_toward(PointAtWhichWasKnockedBack+KnockbackTargetPoint,KnockedbackAmount/StaggerDuration*delta)
+	if(CurrentState != States.Stunned):
+		if(KBTween):
+			KBTween.kill()
+		#position = position.move_toward(PointAtWhichWasKnockedBack+KnockbackTargetPoint,KnockedbackAmount/StaggerDuration*delta)
 
 func BodyEnteredAggroZone(body : Node2D):
 	if(CurrentState != States.Idle):
@@ -71,5 +73,9 @@ func knockback(attacker:Node2D):
 	KnockbackTargetPoint = Vector2(global_position.x - attacker.global_position.x,0).normalized()
 	KnockbackTargetPoint *= KnockedbackAmount
 	CurrentState = States.Stunned
+	KBTween = get_tree().create_tween()
+	KBTween.set_ease(Tween.EASE_OUT)
+	KBTween.set_trans(Tween.TRANS_CUBIC)
+	KBTween.tween_property(self,"position",PointAtWhichWasKnockedBack+KnockbackTargetPoint,StaggerDuration)
 	await get_tree().create_timer(StaggerDuration).timeout
 	CurrentState = States.Chasing

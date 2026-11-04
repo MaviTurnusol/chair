@@ -245,6 +245,8 @@ position = Vector2(645, 116)
 [node name="JustANormalGuy" parent="Enemies" unique_id=1552983653 instance=ExtResource("18_q1pqm")]
 modulate = Color(0.77038866, 3.85046e-07, 0.39466476, 1)
 position = Vector2(927, 225)
+KnockedbackAmount = 75.0
+StaggerDuration = 0.5
 
 [node name="BulletBlocker_IMPENETRABLE" type="StaticBody2D" parent="Enemies/JustANormalGuy" unique_id=871633439]
 collision_layer = 4
@@ -263,6 +265,8 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="JustANormalGuy2" parent="Enemies" unique_id=521501233 instance=ExtResource("18_q1pqm")]
 position = Vector2(816, 227)
+KnockedbackAmount = 75.0
+StaggerDuration = 0.25
 
 [node name="SaveLoad" type="Node" parent="Enemies/JustANormalGuy2" unique_id=718917776 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -274,6 +278,8 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="JustANormalGuy3" parent="Enemies" unique_id=753228336 instance=ExtResource("18_q1pqm")]
 position = Vector2(1030, 223)
+KnockedbackAmount = 75.0
+StaggerDuration = 0.25
 
 [node name="SaveLoad" type="Node" parent="Enemies/JustANormalGuy3" unique_id=1971599765 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
