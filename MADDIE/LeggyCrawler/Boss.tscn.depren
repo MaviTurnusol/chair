@@ -1,0 +1,138 @@
+[gd_scene format=4 uid="uid://bnyujau5vsttq"]
+
+[ext_resource type="Script" uid="uid://pu1u4iljhte8" path="res://MADDIE/LeggyCrawler/WanderingVagrant.gd" id="1_8x4hd"]
+[ext_resource type="Texture2D" uid="uid://dl2dhp1s0kucl" path="res://Entities/Mummy/Mummy.png" id="3_v4y2m"]
+[ext_resource type="Script" uid="uid://dapkbqak2tg5t" path="res://MADDIE/LeggyCrawler/BossLegger.gd" id="4_j13hd"]
+[ext_resource type="Script" uid="uid://bxdsgeacxboei" path="res://MADDIE/LeggyCrawler/mADDIEStateMachine.gd" id="5_mucav"]
+[ext_resource type="Script" uid="uid://cs1jwl1lefjwo" path="res://MADDIE/LeggyCrawler/BossIdle.gd" id="6_4xbeb"]
+[ext_resource type="Script" uid="uid://bgqxll0llgswg" path="res://MADDIE/LeggyCrawler/BossWalk.gd" id="7_3uy2a"]
+[ext_resource type="Script" uid="uid://c06bqhq0epivu" path="res://MADDIE/LeggyCrawler/BendyLeg.gd" id="8_badyg"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="10_6ms6a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d0lx"]
+atlas = ExtResource("3_v4y2m")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nxog5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d0lx")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_lnu2k"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.53478265, 0.22471917), 0.0, 0.0, 0, 0, Vector2(0.8434783, 0.13483155), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yxfbn"]
+texture = ExtResource("10_6ms6a")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jgflt"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_yxfbn")
+
+[node name="Boss" type="Node" unique_id=298427931]
+
+[node name="WanderingVagrant" type="Node2D" parent="." unique_id=1733331244 node_paths=PackedStringArray("PathFindingLayer")]
+position = Vector2(1657, -458)
+script = ExtResource("1_8x4hd")
+PathFindingLayer = NodePath("../PathfindingBoss")
+
+[node name="BossCore" type="Node2D" parent="WanderingVagrant" unique_id=133755316]
+position = Vector2(-44, 80)
+
+[node name="Marker2D" type="Marker2D" parent="WanderingVagrant/BossCore" unique_id=144882744]
+
+[node name="Sprite2D" type="Sprite2D" parent="WanderingVagrant/BossCore" unique_id=1559317441]
+visible = false
+z_index = 2
+texture = ExtResource("10_6ms6a")
+
+[node name="RayCast2D" type="RayCast2D" parent="WanderingVagrant/BossCore" unique_id=1957807370]
+target_position = Vector2(400, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WanderingVagrant/BossCore" unique_id=1263995305]
+z_index = 2
+position = Vector2(0, -39)
+rotation = 0.025756538
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_nxog5")
+animation = &"new_animation"
+
+[node name="TripedLegs" type="Node2D" parent="WanderingVagrant" unique_id=106003078 node_paths=PackedStringArray("BossCore", "PathFindingLayer")]
+script = ExtResource("4_j13hd")
+BossCore = NodePath("../BossCore")
+PathFindingLayer = NodePath("../../PathfindingBoss")
+
+[node name="Leg1" type="Line2D" parent="WanderingVagrant/TripedLegs" unique_id=677214389]
+visible = false
+z_index = 1
+default_color = Color(0.12941177, 0.14509805, 0.2, 0.37254903)
+
+[node name="Leg2" type="Line2D" parent="WanderingVagrant/TripedLegs" unique_id=217750785]
+visible = false
+z_index = 1
+default_color = Color(0.12941177, 0.14509805, 0.2, 0.37254903)
+
+[node name="Leg3" type="Line2D" parent="WanderingVagrant/TripedLegs" unique_id=41827948]
+visible = false
+z_index = 1
+default_color = Color(0.12941177, 0.14509805, 0.2, 0.37254903)
+
+[node name="StateMachine" type="Node" parent="WanderingVagrant" unique_id=1927261542 node_paths=PackedStringArray("CurrentState", "PRef")]
+script = ExtResource("5_mucav")
+CurrentState = NodePath("BossWalk")
+PRef = NodePath("..")
+
+[node name="BossIdle" type="Node" parent="WanderingVagrant/StateMachine" unique_id=501461171]
+script = ExtResource("6_4xbeb")
+
+[node name="BossWalk" type="Node" parent="WanderingVagrant/StateMachine" unique_id=1885125170]
+script = ExtResource("7_3uy2a")
+speed = 250.0
+target = null
+
+[node name="BendyLeg" type="Line2D" parent="WanderingVagrant" unique_id=1961043146 node_paths=PackedStringArray("BossRef")]
+z_index = 1
+width = 32.0
+width_curve = SubResource("Curve_lnu2k")
+default_color = Color(0.13725491, 0.79607844, 0.74509805, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("8_badyg")
+BossRef = NodePath("..")
+
+[node name="BendyLeg2" type="Line2D" parent="WanderingVagrant" unique_id=568061459 node_paths=PackedStringArray("BossRef")]
+z_index = 1
+width = 32.0
+width_curve = SubResource("Curve_lnu2k")
+default_color = Color(0.13725491, 0.79607844, 0.74509805, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("8_badyg")
+BossRef = NodePath("..")
+LegIndex = 1
+
+[node name="BendyLeg3" type="Line2D" parent="WanderingVagrant" unique_id=1406676035 node_paths=PackedStringArray("BossRef")]
+z_index = 1
+width = 32.0
+width_curve = SubResource("Curve_lnu2k")
+default_color = Color(0.13725491, 0.79607844, 0.74509805, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("8_badyg")
+BossRef = NodePath("..")
+LegIndex = 2
+
+[node name="PathfindingBoss" type="TileMapLayer" parent="." unique_id=1915488674]
+tile_map_data = PackedByteArray("AAAWAPX/AQAAAAAAAAAXAPX/AQAAAAAAAAAYAPX/AQAAAAAAAAAZAPX/AQAAAAAAAAAaAPX/AQAAAAAAAAAbAPX/AQAAAAAAAAAcAPX/AQAAAAAAAAAdAPX/AQAAAAAAAAAeAPX/AQAAAAAAAAAeAPb/AQAAAAAAAAAeAPf/AQAAAAAAAAAeAPn/AQAAAAAAAAAeAPj/AQAAAAAAAAAeAPr/AQAAAAAAAAAeAPv/AQAAAAAAAAAeAP7/AQAAAAAAAAAdAP7/AQAAAAAAAAAcAP7/AQAAAAAAAAAbAP7/AQAAAAAAAAAaAP7/AQAAAAAAAAAZAP7/AQAAAAAAAAAYAP7/AQAAAAAAAAAXAP7/AQAAAAAAAAAWAP7/AQAAAAAAAAAVAP7/AQAAAAAAAAAUAP7/AQAAAAAAAAATAP7/AQAAAAAAAAASAP7/AQAAAAAAAAARAP7/AQAAAAAAAAAQAP7/AQAAAAAAAAAPAP7/AQAAAAAAAAAOAP7/AQAAAAAAAAANAP7/AQAAAAAAAAAMAP7/AQAAAAAAAAALAP7/AQAAAAAAAAAJAP7/AQAAAAAAAAAIAP7/AQAAAAAAAAAKAP7/AQAAAAAAAAAQAPX/AQAAAAAAAAAPAPX/AQAAAAAAAAAOAPX/AQAAAAAAAAANAPX/AQAAAAAAAAAMAPX/AQAAAAAAAAALAPX/AQAAAAAAAAAKAPX/AQAAAAAAAAANAPr/AQAAAAAAAAAOAPr/AQAAAAAAAAAPAPr/AQAAAAAAAAAQAPr/AQAAAAAAAAARAPr/AQAAAAAAAAASAPL/AQAAAAAAAAASAPP/AQAAAAAAAAASAPT/AQAAAAAAAAASAPX/AQAAAAAAAAASAPb/AQAAAAAAAAAOAPL/AQAAAAAAAAANAPL/AQAAAAAAAAAMAPL/AQAAAAAAAAALAPL/AQAAAAAAAAAKAPL/AQAAAAAAAAAJAPL/AQAAAAAAAAAEAPP/AQAAAAAAAAADAPP/AQAAAAAAAAACAPP/AQAAAAAAAAABAPP/AQAAAAAAAAAAAPT/AQAAAAAAAAAAAPX/AQAAAAAAAAABAPX/AQAAAAAAAAACAPX/AQAAAAAAAAADAPX/AQAAAAAAAAAEAPX/AQAAAAAAAAAEAPT/AQAAAAAAAAAAAPP/AQAAAAAAAAACAPn/AQAAAAAAAAADAPr/AQAAAAAAAAAEAPr/AQAAAAAAAAAFAPr/AQAAAAAAAAAGAPr/AQAAAAAAAAAGAPn/AQAAAAAAAAAFAPn/AQAAAAAAAAAEAPn/AQAAAAAAAAADAPn/AQAAAAAAAAACAPr/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAAAAP3/AQAAAAAAAAD///3/AQAAAAAAAAD7/wEAAQAAAAAAAAD8/wEAAQAAAAAAAAD9/wEAAQAAAAAAAAD+/wEAAQAAAAAAAAD//wEAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAAAAQAAAAAAAAAGAP//AQAAAAAAAAAGAP7/AQAAAAAAAAAHAP7/AQAAAAAAAAD7/wAAAQAAAAAAAAD7////AQAAAAAAAAD7//7/AQAAAAAAAAD7//3/AQAAAAAAAAD7//z/AQAAAAAAAAD7//v/AQAAAAAAAAD7//r/AQAAAAAAAAD7//n/AQAAAAAAAAD7//j/AQAAAAAAAAD7//f/AQAAAAAAAAD7//b/AQAAAAAAAAD7//X/AQAAAAAAAAD7//T/AQAAAAAAAAD7//P/AQAAAAAAAAD7//L/AQAAAAAAAAD7//H/AQAAAAAAAAD7//D/AQAAAAAAAAD7/+//AQAAAAAAAAD8/+//AQAAAAAAAAD9/+//AQAAAAAAAAD+/+//AQAAAAAAAAD//+//AQAAAAAAAAAAAO//AQAAAAAAAAABAO//AQAAAAAAAAACAO//AQAAAAAAAAADAO//AQAAAAAAAAAEAO//AQAAAAAAAAAEAO7/AQAAAAAAAAAFAO7/AQAAAAAAAAAGAO7/AQAAAAAAAAAHAO7/AQAAAAAAAAAIAO7/AQAAAAAAAAAJAO7/AQAAAAAAAAAKAO7/AQAAAAAAAAALAO7/AQAAAAAAAAAMAO7/AQAAAAAAAAANAO7/AQAAAAAAAAAOAO7/AQAAAAAAAAAPAO7/AQAAAAAAAAAQAO7/AQAAAAAAAAARAO7/AQAAAAAAAAARAO//AQAAAAAAAAASAO//AQAAAAAAAAATAO//AQAAAAAAAAAUAO//AQAAAAAAAAAVAO//AQAAAAAAAAAWAO//AQAAAAAAAAAWAPD/AQAAAAAAAAAWAPH/AQAAAAAAAAAXAPH/AQAAAAAAAAAYAPH/AQAAAAAAAAAZAPH/AQAAAAAAAAAaAPH/AQAAAAAAAAAbAPH/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_jgflt")
