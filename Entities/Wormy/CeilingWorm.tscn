@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c1c5xoms8xmjr"]
 
 [ext_resource type="Script" uid="uid://b64mtxsrtxvan" path="res://Entities/Wormy/CeilingWorm.gd" id="1_1wccn"]
+[ext_resource type="Texture2D" uid="uid://b8tspy085oc2c" path="res://Entities/Wormy/maggotstoleentexture.png" id="2_h4jfa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbuu4"]
 height = 200.0
@@ -12,9 +13,6 @@ radius = 32.1
 _data = [Vector2(0, 0.17977536), 0.0, 0.0, 0, 0, Vector2(0.22500001, 1), 0.0, 0.0, 0, 0, Vector2(0.78999996, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.28089893), 0.0, 0.0, 0, 0]
 point_count = 4
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dmp5"]
-load_path = "res://.godot/imported/Worm1.png-d3b53c0c1becbc26dbc298635a572b2f.ctex"
-
 [node name="CeilingWorm" type="Node2D" unique_id=908797744]
 script = ExtResource("1_1wccn")
 Health = 1
@@ -22,7 +20,7 @@ LaunchSpeed = 250.0
 rearsitsuglylittleheadrange = Vector2(250, 250)
 RearSpeed = 12.0
 ChaseSpeed = 30.0
-SegmentLength = 9.0
+SegmentLength = 7.0
 
 [node name="AggroZone" type="Area2D" parent="." unique_id=1872420234]
 position = Vector2(0, 93)
@@ -42,8 +40,9 @@ hit_from_inside = true
 [node name="WormGraphic" type="Line2D" parent="." unique_id=33849052]
 texture_filter = 1
 texture_repeat = 2
+width = 12.0
 width_curve = SubResource("Curve_esouf")
-texture = SubResource("CompressedTexture2D_7dmp5")
+texture = ExtResource("2_h4jfa")
 texture_mode = 1
 joint_mode = 1
 begin_cap_mode = 2

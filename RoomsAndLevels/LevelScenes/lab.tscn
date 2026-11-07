@@ -31,6 +31,7 @@
 [ext_resource type="Script" uid="uid://dapkbqak2tg5t" path="res://MADDIE/LeggyCrawler/BossLegger.gd" id="27_3l8j0"]
 [ext_resource type="Script" uid="uid://c06bqhq0epivu" path="res://MADDIE/LeggyCrawler/BendyLeg.gd" id="28_rdico"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="29_3cjrj"]
+[ext_resource type="Texture2D" uid="uid://b8tspy085oc2c" path="res://Entities/Wormy/maggotstoleentexture.png" id="30_rdico"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
@@ -61,7 +62,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_r58iw"]
+[sub_resource type="Resource" id="Resource_4ma8g"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ground_tex = ExtResource("12_rdico")
@@ -71,7 +72,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_3l8j0"]
+[sub_resource type="Resource" id="Resource_xfawk"]
 script = ExtResource("13_4ma8g")
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
@@ -266,7 +267,7 @@ TargetSceneName = "Bus Travel"
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_r58iw")
+WhatItemAmI = SubResource("Resource_4ma8g")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -289,7 +290,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="." unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_3l8j0")
+WhatItemAmI = SubResource("Resource_xfawk")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -411,6 +412,7 @@ texture = ExtResource("25_3cjrj")
 target_position = Vector2(400, 0)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Boss/WanderingVagrant/BossCore" unique_id=1263995305]
+visible = false
 z_index = 2
 rotation = 0.025756538
 scale = Vector2(2, 2)
@@ -436,10 +438,43 @@ z_index = 1
 visible = false
 z_index = 1
 
+[node name="Leg4" type="Line2D" parent="Boss/WanderingVagrant/TripedLegs" unique_id=1161493565]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("30_rdico")
+texture_mode = 1
+
+[node name="Leg5" type="Line2D" parent="Boss/WanderingVagrant/TripedLegs" unique_id=1202743091]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("30_rdico")
+texture_mode = 1
+
+[node name="Leg6" type="Line2D" parent="Boss/WanderingVagrant/TripedLegs" unique_id=1356487969]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("30_rdico")
+texture_mode = 1
+
+[node name="Leg7" type="Line2D" parent="Boss/WanderingVagrant/TripedLegs" unique_id=780591629]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("30_rdico")
+texture_mode = 1
+
+[node name="Leg8" type="Line2D" parent="Boss/WanderingVagrant/TripedLegs" unique_id=1522619942]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("30_rdico")
+texture_mode = 1
+
 [node name="BendyLeg" type="Line2D" parent="Boss/WanderingVagrant" unique_id=1961043146 node_paths=PackedStringArray("BossRef")]
 z_index = 1
+texture_repeat = 2
 width = 32.0
 width_curve = SubResource("Curve_lnu2k")
+texture = ExtResource("30_rdico")
+texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("28_rdico")
@@ -447,8 +482,11 @@ BossRef = NodePath("..")
 
 [node name="BendyLeg2" type="Line2D" parent="Boss/WanderingVagrant" unique_id=568061459 node_paths=PackedStringArray("BossRef")]
 z_index = 1
+texture_repeat = 2
 width = 32.0
 width_curve = SubResource("Curve_lnu2k")
+texture = ExtResource("30_rdico")
+texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("28_rdico")
@@ -457,8 +495,11 @@ LegIndex = 1
 
 [node name="BendyLeg3" type="Line2D" parent="Boss/WanderingVagrant" unique_id=1406676035 node_paths=PackedStringArray("BossRef")]
 z_index = 1
+texture_repeat = 2
 width = 32.0
 width_curve = SubResource("Curve_lnu2k")
+texture = ExtResource("30_rdico")
+texture_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("28_rdico")
@@ -467,7 +508,7 @@ LegIndex = 2
 
 [node name="PathfindingBoss" type="TileMapLayer" parent="Boss" unique_id=1915488674]
 visible = false
-tile_map_data = PackedByteArray("AAASAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAACAAQAAQAAAAAAAAABAAQAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAANAAEAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAEAAQAAAAAAAAAQAAEAAQAAAAAAAAARAAEAAQAAAAAAAAASAAEAAQAAAAAAAAATAAEAAQAAAAAAAAATAAIAAQAAAAAAAAATAAMAAQAAAAAAAAATAAQAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAIAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAATAAMAAQAAAAAAAAAIAAMAAQAAAAAAAAD//wIAAQABAAEAAAD//wEAAQABAAEAAAAAAAEAAQABAAEAAAABAAEAAQABAAEAAAACAAEAAQABAAEAAAADAAEAAQABAAEAAAAEAAEAAQABAAEAAAAFAAEAAQABAAEAAAAGAAEAAQABAAEAAAAHAAEAAQABAAEAAAAIAAEAAQABAAEAAAAJAAEAAQABAAEAAAAKAAEAAQABAAEAAAALAAEAAQABAAEAAAAMAAEAAQABAAEAAAANAAEAAQABAAEAAAAOAAEAAQABAAEAAAAPAAEAAQABAAEAAAAQAAEAAQABAAEAAAARAAEAAQABAAEAAAASAAEAAQABAAEAAAATAAEAAQABAAEAAAATAAIAAQABAAEAAAA=")
 tile_set = SubResource("TileSet_jgflt")
 
 [node name="Bonfire" parent="Boss" unique_id=792746957 instance=ExtResource("29_3cjrj")]
