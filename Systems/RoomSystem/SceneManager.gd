@@ -4,6 +4,7 @@ var RoomDict : Dictionary[String,Room]
 signal switchscene(String)
 signal setplayerposition(Vector2)
 signal screamtodoors(String)
+signal unloadallbutcurrentscene(String)
 
 func _ready() -> void:
 	var Rooms = dir_contents("res://RoomsAndLevels/")
@@ -48,6 +49,8 @@ func SwitchSceneAndPosition(WhatScene : String,WhatID:String):
 	await get_tree().process_frame
 	screamtodoors.emit(WhatID)
 
+func UnloadAllButCurrentScene():
+	unloadallbutcurrentscene.emit()
 
 #region Transition Specifics
 var ActiveTransitionData : TransitionData

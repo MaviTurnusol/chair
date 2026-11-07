@@ -19,6 +19,7 @@ func players_on_the_point():
 			
 			SaveManager.SaveCurrentGame()
 			print("GAME SAVED")
+			SceneManager.UnloadAllButCurrentScene()
 			if(SavedParts):
 				SavedParts.emitting = true
 			await get_tree().process_frame

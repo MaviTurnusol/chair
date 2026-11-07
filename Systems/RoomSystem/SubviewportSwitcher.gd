@@ -8,11 +8,13 @@ var LoadedScenes : Array[RoomParent]
 
 @export var StartingLoadedRoom : String
 
-func GetActiveScene():
-	return LoadedScenes[0]
+#func GetActiveScene():
+	##return get_child(0)
+	#return LoadedScenes[0]
 
 func _ready() -> void:
 	SceneManager.switchscene.connect(SwitchToScene)
+	SceneManager.unloadallbutcurrentscene.connect(UnloadAllButCurrent)
 	SaveManager.SetValueFromSave("StartingLoadedRoom","CurrentRoom",self)
 	LoadScene(StartingLoadedRoom)
 	await get_tree().process_frame
@@ -88,3 +90,13 @@ func LoadScene(SceneName : String):
 	NewRoom.room = SceneManager.RoomDict[SceneName]
 	add_child(NewRoom)
 	RegetAllChildren()
+
+
+
+func UnloadAllButCurrent():
+	for sce in LoadedScenes.duplicate():
+		if(sce!=UnlimitedRulebook.currentScene):
+			var keepref = sce
+			LoadedScenes.erase(sce)
+			keepref.queue_free()
+	pass
