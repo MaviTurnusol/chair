@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c3l1lunehtnn2" path="res://Systems/Settings/ControlRebind.tscn" id="2_x37td"]
 [ext_resource type="Script" uid="uid://d3shg0myviu48" path="res://Systems/Settings/KeybindPresetButton.gd" id="4_qc3li"]
 [ext_resource type="Script" uid="uid://clbw834853auk" path="res://Localization/ForceLocale.gd" id="6_lug2x"]
+[ext_resource type="Script" uid="uid://dpxld4y7crmw1" path="res://Systems/Settings/QuitButton.gd" id="7_58h8k"]
 
 [node name="Settings" type="Node" unique_id=1752606228]
 process_mode = 3
@@ -276,3 +277,49 @@ layout_mode = 2
 text = "Turkish"
 script = ExtResource("6_lug2x")
 LocaleCode = "tr"
+
+[node name="QuitButtons" type="Control" parent="SettingsCanvasLayer/settingscontrol" unique_id=1890535348]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsCanvasLayer/settingscontrol/QuitButtons" unique_id=309650990]
+layout_mode = 0
+offset_left = 691.0
+offset_top = 791.0
+offset_right = 891.0
+offset_bottom = 1035.0
+
+[node name="MainMenu" type="Button" parent="SettingsCanvasLayer/settingscontrol/QuitButtons/VBoxContainer" unique_id=1650515993]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "Main Menu"
+script = ExtResource("7_58h8k")
+
+[node name="QuitConfirmationDialog" type="ConfirmationDialog" parent="SettingsCanvasLayer/settingscontrol/QuitButtons/VBoxContainer/MainMenu" unique_id=363528211]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(400, 200)
+always_on_top = true
+accessibility_name = "Quit Application Confirmation"
+ok_button_text = "Quit "
+dialog_text = "Are you sure you want to quit to title?
+Unsaved data will be lost."
+
+[node name="GameEnd" type="Button" parent="SettingsCanvasLayer/settingscontrol/QuitButtons/VBoxContainer" unique_id=821180837]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+text = "Quit Game"
+script = ExtResource("7_58h8k")
+WhatQuitType = 1
+
+[node name="QuitConfirmationDialog" type="ConfirmationDialog" parent="SettingsCanvasLayer/settingscontrol/QuitButtons/VBoxContainer/GameEnd" unique_id=1151317075]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(400, 200)
+always_on_top = true
+accessibility_name = "Quit Application Confirmation"
+ok_button_text = "Quit "
+dialog_text = "Are you sure you want to quit?
+Unsaved data will be lost."

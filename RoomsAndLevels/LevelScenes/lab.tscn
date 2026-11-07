@@ -2,7 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://Environments/LabSprites/koridor5w1.png" id="1_s0a5h"]
 [ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/LabSprites/koridor5w1_n.png" id="2_dhn3p"]
+[ext_resource type="Texture2D" uid="uid://4rnlvtfq0ut3" path="res://Environments/LabSprites/ledOn.png" id="3_3l8j0"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Common/Objects/LedLight.tscn" id="3_ptpbc"]
+[ext_resource type="Texture2D" uid="uid://bvbe30duk14nh" path="res://Environments/TestSprites/light.png" id="4_rdico"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/FX/Shaders/vignette.gdshader" id="4_u3lwi"]
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Objects/Actionable.tscn" id="5_lfb30"]
 [ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/Dialogue/testDialogue.dialogue" id="6_nmeps"]
@@ -39,6 +41,12 @@ normal_texture = ExtResource("2_dhn3p")
 specular_texture = ExtResource("1_s0a5h")
 specular_color = Color(0.88235295, 1, 1, 1)
 specular_shininess = 0.1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3l8j0"]
+load_path = "res://.godot/imported/light.png-d8e4f75f1d88c113b2e6f921995f6a64.ctex"
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6lpvl"]
+polygon = PackedVector2Array(-43, 2, -43, -3, -43, -3, 43, -3, 43, 2, 45, 1, 45, -4, -45, -4, -45, 0)
 
 [sub_resource type="Environment" id="Environment_3cjrj"]
 
@@ -165,8 +173,29 @@ light_mask = 2
 texture = SubResource("CanvasTexture_gbuu4")
 centered = false
 
-[node name="LedLight" parent="Environment" unique_id=2003837725 instance=ExtResource("3_ptpbc")]
+[node name="LedLight" type="Node2D" parent="Environment" unique_id=2003837725]
 position = Vector2(261, 113)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/LedLight" unique_id=432987047]
+texture = ExtResource("3_3l8j0")
+
+[node name="PointLight2D" type="PointLight2D" parent="Environment/LedLight" unique_id=1162527589]
+color = Color(2.7626126, 2.9289904, 2.8180718, 1)
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("CompressedTexture2D_3l8j0")
+texture_scale = 2.0
+height = 100.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="Environment/LedLight" unique_id=1125407185]
+color = Color(0.9411765, 1, 1, 1)
+texture = ExtResource("4_rdico")
+texture_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Environment/LedLight" unique_id=1555525962]
+occluder = SubResource("OccluderPolygon2D_6lpvl")
+occluder_light_mask = 3
 
 [node name="LedLight2" parent="Environment" unique_id=1385647229 instance=ExtResource("3_ptpbc")]
 position = Vector2(816, 112)
@@ -174,7 +203,11 @@ position = Vector2(816, 112)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1280648369]
 environment = SubResource("Environment_3cjrj")
 
+[node name="CanvasModulate2" type="CanvasModulate" parent="Environment" unique_id=1203113252]
+color = Color(0.2382622, 0.2382622, 0.23826218, 1)
+
 [node name="CanvasModulate" type="CanvasModulate" parent="Environment" unique_id=2000743457]
+visible = false
 color = Color(0.45, 0.45, 0.45, 1)
 
 [node name="vignette" type="CanvasLayer" parent="Environment" unique_id=1173212707]
