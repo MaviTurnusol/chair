@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cc7136fdvbnfw"]
+
+[ext_resource type="Script" uid="uid://b4prkggtboxyy" path="res://Common/Objects/Bonfire.gd" id="1_upgfp"]
+[ext_resource type="PackedScene" uid="uid://03m157s1pacd" path="res://Systems/Inventory/Scenes/InteractionPrompter.tscn" id="2_mbeui"]
+[ext_resource type="Texture2D" uid="uid://bvo8q6p0yxf13" path="res://Environments/ui/SavedText.png" id="3_mbeui"]
+
+[sub_resource type="Gradient" id="Gradient_jffth"]
+offsets = PackedFloat32Array(0.002016129, 0.4455645, 0.7439516, 1)
+colors = PackedColorArray(0.8521954, 0.44216013, 0.19640765, 1, 0.6159897, 0.26282233, 0.16456145, 1, 0.47076023, 0.33183974, 0.15933374, 0.41568628, 1, 1, 1, 0.41568628)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ur66"]
+gradient = SubResource("Gradient_jffth")
+fill_from = Vector2(1, 0.85299146)
+
+[sub_resource type="Curve" id="Curve_mbeui"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1521739, 1), 0.0, 0.0, 0, 0, Vector2(0.94565225, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[node name="Bonfire" type="Node2D" unique_id=792746957 node_paths=PackedStringArray("SavedParts")]
+script = ExtResource("1_upgfp")
+SavedParts = NodePath("SavedParticles")
+
+[node name="InteractionPrompter" parent="." unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("2_mbeui")]
+z_index = 1
+position = Vector2(0, -18)
+InteractObject = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1708840486]
+texture = SubResource("GradientTexture2D_4ur66")
+
+[node name="Bonfire" type="Label" parent="." unique_id=1471160982]
+offset_left = -26.0
+offset_top = -26.0
+offset_right = 26.0
+offset_bottom = -3.0
+text = "Bonfire"
+
+[node name="SavedParticles" type="CPUParticles2D" parent="." unique_id=1142614169]
+z_index = 5
+emitting = false
+amount = 1
+texture = ExtResource("3_mbeui")
+lifetime = 2.0
+one_shot = true
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, 100)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+scale_amount_curve = SubResource("Curve_mbeui")

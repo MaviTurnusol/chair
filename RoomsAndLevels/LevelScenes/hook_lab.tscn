@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="5_ajgnu"]
 [ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="5_e2aq0"]
 [ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Entities/PlayerXochi/Hooking/hookable_position.tscn" id="6_ajgnu"]
+[ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="7_8o0jn"]
 [ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/CameraCursor/Cursor.tscn" id="7_e2aq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrn0"]
@@ -75,3 +76,6 @@ Track = ExtResource("5_e2aq0")
 script = ExtResource("4_pofgw")
 ObjectToCall = NodePath("..")
 FunctionName = "OnLoad"
+
+[node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("7_8o0jn")]
+position = Vector2(395, 250)

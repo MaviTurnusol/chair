@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://Entities/Nana/nana_silhouette_1.png" id="26_vfr4p"]
 [ext_resource type="Script" uid="uid://dapkbqak2tg5t" path="res://MADDIE/LeggyCrawler/BossLegger.gd" id="27_3l8j0"]
 [ext_resource type="Script" uid="uid://c06bqhq0epivu" path="res://MADDIE/LeggyCrawler/BendyLeg.gd" id="28_rdico"]
+[ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="29_3cjrj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
@@ -61,7 +62,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_u3lwi"]
+[sub_resource type="Resource" id="Resource_vfr4p"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ground_tex = ExtResource("12_rdico")
@@ -71,7 +72,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_lfb30"]
+[sub_resource type="Resource" id="Resource_3cjrj"]
 script = ExtResource("13_4ma8g")
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
@@ -240,7 +241,7 @@ TargetSceneName = "Bus Travel"
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_u3lwi")
+WhatItemAmI = SubResource("Resource_vfr4p")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -263,7 +264,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="." unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_lfb30")
+WhatItemAmI = SubResource("Resource_3cjrj")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -368,6 +369,8 @@ texture = ExtResource("23_ptpbc")
 [node name="WanderingVagrant" type="Node2D" parent="Boss" unique_id=1733331244]
 position = Vector2(1013, 189)
 script = ExtResource("24_vfr4p")
+speed = 20.0
+legboost = 5.0
 
 [node name="BossCore" type="Node2D" parent="Boss/WanderingVagrant" unique_id=133755316]
 position = Vector2(-44, 80)
@@ -389,7 +392,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_nxog5")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.88997346
+frame_progress = 0.31447652
 
 [node name="TripedLegs" type="Node2D" parent="Boss/WanderingVagrant" unique_id=106003078 node_paths=PackedStringArray("BossCore", "PathFindingLayer")]
 script = ExtResource("27_3l8j0")
@@ -441,5 +444,8 @@ LegIndex = 2
 visible = false
 tile_map_data = PackedByteArray("AAASAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAACAAQAAQAAAAAAAAABAAQAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAAEAAQAAAAAAAAABAAEAAQAAAAAAAAACAAEAAQAAAAAAAAADAAEAAQAAAAAAAAAEAAEAAQAAAAAAAAAFAAEAAQAAAAAAAAAGAAEAAQAAAAAAAAAHAAEAAQAAAAAAAAAIAAEAAQAAAAAAAAAJAAEAAQAAAAAAAAAKAAEAAQAAAAAAAAALAAEAAQAAAAAAAAAMAAEAAQAAAAAAAAANAAEAAQAAAAAAAAAOAAEAAQAAAAAAAAAPAAEAAQAAAAAAAAAQAAEAAQAAAAAAAAARAAEAAQAAAAAAAAASAAEAAQAAAAAAAAATAAEAAQAAAAAAAAATAAIAAQAAAAAAAAATAAMAAQAAAAAAAAATAAQAAQAAAAAAAAD//wQAAQAAAAAAAAD//wMAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAIAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_jgflt")
+
+[node name="Bonfire" parent="Boss" unique_id=792746957 instance=ExtResource("29_3cjrj")]
+position = Vector2(699, 252)
 
 [editable path="Locker"]

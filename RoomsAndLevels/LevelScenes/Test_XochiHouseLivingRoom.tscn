@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://cx3xyxhm3ekod" path="res://Common/CameraCursor/CameraOverrideTargetArea.gd" id="9_url1c"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="10_jii1a"]
 [ext_resource type="Texture2D" uid="uid://5827efl7epj" path="res://Entities/Teccizlabcoat/Teccizlabcoat.png" id="10_srjmy"]
+[ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="12_jffth"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
@@ -250,6 +251,9 @@ text = "Bus Stop"
 [node name="Teccizlabcoat" type="Sprite2D" parent="." unique_id=249622601]
 position = Vector2(173, 7)
 texture = ExtResource("10_srjmy")
+
+[node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("12_jffth")]
+position = Vector2(640, 245)
 
 [editable path="RealDoor"]
 [editable path="RealDoor2"]

@@ -7,6 +7,11 @@
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="2_y0kec"]
 [ext_resource type="Texture2D" uid="uid://7p8uhfyn5h85" path="res://Environments/ui/MainMenu/StartButton.png" id="3_askim"]
 [ext_resource type="Shader" uid="uid://de4ryjam452mb" path="res://Common/FX/Shaders/DarkNoise.gdshader" id="4_skfjx"]
+[ext_resource type="Script" uid="uid://i4nblmy0glcm" path="res://Systems/Settings/Volume.gd" id="8_ipp7f"]
+[ext_resource type="Script" uid="uid://cl08wplqhcq6j" path="res://Systems/Settings/KeyRebindParent.gd" id="9_lugn5"]
+[ext_resource type="Script" uid="uid://d3shg0myviu48" path="res://Systems/Settings/KeybindPresetButton.gd" id="10_q4yx0"]
+[ext_resource type="PackedScene" uid="uid://c3l1lunehtnn2" path="res://Systems/Settings/ControlRebind.tscn" id="11_jnjkx"]
+[ext_resource type="Script" uid="uid://clbw834853auk" path="res://Localization/ForceLocale.gd" id="12_gvlwe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8ym1v"]
 shader = ExtResource("4_skfjx")
@@ -95,3 +100,270 @@ script = ExtResource("2_y0kec")
 Track = ExtResource("2_k2qnf")
 FadeTime = 0.0
 OnReady = true
+
+[node name="SettingsCanvasLayer" type="CanvasLayer" parent="." unique_id=641364964]
+visible = false
+
+[node name="settingscontrol" type="Control" parent="SettingsCanvasLayer" unique_id=1105172672]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Volume" type="Control" parent="SettingsCanvasLayer/settingscontrol" unique_id=1334168411]
+anchors_preset = 0
+offset_left = 918.0
+offset_top = 4.0
+offset_right = 1918.0
+offset_bottom = 305.625
+mouse_filter = 2
+script = ExtResource("8_ipp7f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsCanvasLayer/settingscontrol/Volume" unique_id=915898411]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 52.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+
+[node name="MasterVolume" type="HSlider" parent="SettingsCanvasLayer/settingscontrol/Volume/VBoxContainer" unique_id=1250855779]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsCanvasLayer/settingscontrol/Volume/VBoxContainer/MasterVolume" unique_id=4586121]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="MusicVolume" type="HSlider" parent="SettingsCanvasLayer/settingscontrol/Volume/VBoxContainer" unique_id=1033996769]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsCanvasLayer/settingscontrol/Volume/VBoxContainer/MusicVolume" unique_id=501589551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="SFXVolume" type="HSlider" parent="SettingsCanvasLayer/settingscontrol/Volume/VBoxContainer" unique_id=909651520]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsCanvasLayer/settingscontrol/Volume/VBoxContainer/SFXVolume" unique_id=1229465206]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="VoiceoverVolume" type="HSlider" parent="SettingsCanvasLayer/settingscontrol/Volume/VBoxContainer" unique_id=1337003547]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SettingsCanvasLayer/settingscontrol/Volume/VBoxContainer/VoiceoverVolume" unique_id=2104289473]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -52.0
+offset_bottom = -18.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 36
+text = "Voiceover Volume"
+horizontal_alignment = 1
+
+[node name="Keys" type="Control" parent="SettingsCanvasLayer/settingscontrol" unique_id=1728417575]
+anchors_preset = 0
+offset_left = 906.0
+offset_top = 314.0
+offset_right = 1906.0
+offset_bottom = 1034.0
+mouse_filter = 2
+script = ExtResource("9_lugn5")
+rebindstring = "rebinding"
+
+[node name="ColorRect" type="ColorRect" parent="SettingsCanvasLayer/settingscontrol/Keys" unique_id=274107803]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5575289, 0.34071338, 0.27012336, 1)
+
+[node name="KeyPresest" type="VBoxContainer" parent="SettingsCanvasLayer/settingscontrol/Keys" unique_id=1838724846]
+layout_mode = 0
+offset_left = -212.0
+offset_top = -3.0
+offset_right = -12.0
+offset_bottom = 597.0
+
+[node name="PresetButton" type="Button" parent="SettingsCanvasLayer/settingscontrol/Keys/KeyPresest" unique_id=837414312]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 62
+text = "WASD"
+script = ExtResource("10_q4yx0")
+KeybindFilePath = "res://KeybindPresets/WASD_Keybind.ini"
+
+[node name="PresetButton2" type="Button" parent="SettingsCanvasLayer/settingscontrol/Keys/KeyPresest" unique_id=1582105575]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 62
+text = "ZXCV"
+script = ExtResource("10_q4yx0")
+KeybindFilePath = "res://KeybindPresets/PLAT_Keybind.ini"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsCanvasLayer/settingscontrol/Keys" unique_id=1967775053]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 4.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="KeyText" type="Label" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer" unique_id=138135800]
+layout_mode = 2
+theme_override_font_sizes/font_size = 68
+text = "Click a button to rebind"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/KeyText" unique_id=28585732]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.23541039, 0.12895271, 0.09409664, 1)
+
+[node name="GridContainer" type="GridContainer" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer" unique_id=473807045]
+custom_minimum_size = Vector2(0, 500)
+layout_mode = 2
+columns = 2
+
+[node name="ControlRebind2" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=907569080 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Equip"
+RebindActionName = "equip"
+
+[node name="ControlRebind" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=45078624 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Roll"
+RebindActionName = "roll"
+
+[node name="ControlRebind3" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=1046803230 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Left"
+RebindActionName = "left"
+
+[node name="ControlRebind4" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=458289573 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Right"
+RebindActionName = "right"
+
+[node name="ControlRebind5" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=416347857 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Attack"
+RebindActionName = "attack"
+
+[node name="ControlRebind6" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=1397443861 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Parry"
+RebindActionName = "Parry"
+
+[node name="ControlRebind7" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=552625889 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Swap Tool"
+RebindActionName = "cyclenextweapon"
+
+[node name="ControlRebind8" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=742842560 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Jump"
+RebindActionName = "jump"
+
+[node name="ControlRebind9" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=1954565910 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Interact"
+RebindActionName = "interact"
+
+[node name="ControlRebind10" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=1640069257 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Rotate"
+RebindActionName = "RotateItem"
+
+[node name="ControlRebind11" parent="SettingsCanvasLayer/settingscontrol/Keys/VBoxContainer/GridContainer" unique_id=1948344796 instance=ExtResource("11_jnjkx")]
+layout_mode = 2
+DisplayActionName = "Sprint"
+RebindActionName = "shift"
+
+[node name="Languages" type="Control" parent="SettingsCanvasLayer/settingscontrol" unique_id=1755350323]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 694.0
+offset_top = 36.0
+offset_right = -1026.0
+offset_bottom = -844.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsCanvasLayer/settingscontrol/Languages" unique_id=1049361062]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ForceLocale2" type="Button" parent="SettingsCanvasLayer/settingscontrol/Languages/VBoxContainer" unique_id=51984863]
+layout_mode = 2
+text = "English"
+script = ExtResource("12_gvlwe")
+LocaleCode = "en"
+
+[node name="ForceLocale" type="Button" parent="SettingsCanvasLayer/settingscontrol/Languages/VBoxContainer" unique_id=530686124]
+layout_mode = 2
+text = "Turkish"
+script = ExtResource("12_gvlwe")
+LocaleCode = "tr"
