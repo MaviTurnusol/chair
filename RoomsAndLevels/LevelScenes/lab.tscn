@@ -40,16 +40,7 @@ specular_texture = ExtResource("1_s0a5h")
 specular_color = Color(0.88235295, 1, 1, 1)
 specular_shininess = 0.1
 
-[sub_resource type="Environment" id="Environment_w1gcx"]
-background_mode = 3
-tonemap_mode = 1
-tonemap_exposure = 0.6
-glow_enabled = true
-glow_intensity = 1.25
-glow_strength = 1.1
-glow_bloom = 0.15
-glow_blend_mode = 0
-glow_hdr_threshold = 0.95
+[sub_resource type="Environment" id="Environment_3cjrj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gbuu4"]
 shader = ExtResource("4_u3lwi")
@@ -62,7 +53,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_vfr4p"]
+[sub_resource type="Resource" id="Resource_r58iw"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ground_tex = ExtResource("12_rdico")
@@ -72,7 +63,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_3cjrj"]
+[sub_resource type="Resource" id="Resource_3l8j0"]
 script = ExtResource("13_4ma8g")
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
@@ -181,12 +172,13 @@ position = Vector2(261, 113)
 position = Vector2(816, 112)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1280648369]
-environment = SubResource("Environment_w1gcx")
+environment = SubResource("Environment_3cjrj")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="Environment" unique_id=2000743457]
 color = Color(0.45, 0.45, 0.45, 1)
 
 [node name="vignette" type="CanvasLayer" parent="Environment" unique_id=1173212707]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Environment/vignette" unique_id=326334068]
 material = SubResource("ShaderMaterial_gbuu4")
@@ -241,7 +233,7 @@ TargetSceneName = "Bus Travel"
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_vfr4p")
+WhatItemAmI = SubResource("Resource_r58iw")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -264,7 +256,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="." unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_3cjrj")
+WhatItemAmI = SubResource("Resource_3l8j0")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
