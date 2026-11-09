@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		boss_core.global_position = boss_core.global_position.move_toward(UnlimitedRulebook.player.global_position+Vector2(0,-50),(triped_legs.GetPercentOfLegsAttached()*legboost)*speed*delta)
 	#move_and_slide()
 
-var KnockedbackAmount = 100
+var KnockedbackAmount = 200
 func knockback(attacker:Node2D):
 	var PointAtWhichWasKnockedBack = boss_core.position
 	var KnockbackTargetPoint = Vector2(boss_core.global_position.x - attacker.global_position.x,0).normalized()
