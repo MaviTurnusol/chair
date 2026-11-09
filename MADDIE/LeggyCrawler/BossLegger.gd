@@ -7,8 +7,8 @@ class_name Legger
 
 var Legs : Array[LegUnit]
 
-@export var PathFindingLayer : TileMapLayer
-
+var PathFindingLayer : TileMapLayer
+#var PathFindingLayer : TileMapLayer
 class LegUnit:
 	#variables
 	var LegDetachDistance : float = 400/2
@@ -158,6 +158,7 @@ class LegUnit:
 		isDetached = false
 		IsNewTileFound = false
 func _ready() -> void:
+	await get_tree().process_frame
 	var LegSet : Array[LegUnit]
 	for i in get_children():
 		if(i is Line2D):

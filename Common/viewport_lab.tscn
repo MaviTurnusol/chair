@@ -6,6 +6,111 @@
 [ext_resource type="PackedScene" uid="uid://8vs0mp2k17vj" path="res://Entities/PlayerXochi/player.tscn" id="4_8sudm"]
 [ext_resource type="Script" uid="uid://bm1vfm4vcmw60" path="res://Common/CameraCursor/cam_target.gd" id="5_ofyqh"]
 [ext_resource type="PackedScene" uid="uid://bd263yqfsdm1l" path="res://Systems/Settings/Settings.tscn" id="6_8p3vs"]
+[ext_resource type="Script" uid="uid://cvq3ydmt2umos" path="res://Entities/PlayerXochi/UI/PlayerHPBar.gd" id="7_ubcxc"]
+[ext_resource type="Texture2D" uid="uid://oo6506mxbbj7" path="res://Environments/ui/HUD/leftdragon0000.png" id="8_t3jq8"]
+[ext_resource type="Texture2D" uid="uid://d0kfwvtn4l1ge" path="res://Environments/ui/HUD/leftdragon0001.png" id="9_cgfrk"]
+[ext_resource type="Texture2D" uid="uid://b0eqjonv5thay" path="res://Environments/ui/HUD/leftdragon0002.png" id="10_1n6ed"]
+[ext_resource type="Texture2D" uid="uid://dgmaeuy80dq2c" path="res://Environments/ui/HUD/rightdragon0000.png" id="11_yihwo"]
+[ext_resource type="Texture2D" uid="uid://cxas7q3nvpj6v" path="res://Environments/ui/HUD/rightdragon0001.png" id="12_yb8l6"]
+[ext_resource type="Texture2D" uid="uid://bwaxhe1eqr6up" path="res://Environments/ui/HUD/rightdragon0002.png" id="13_i25fj"]
+
+[sub_resource type="Gradient" id="Gradient_pem85"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xodrj"]
+gradient = SubResource("Gradient_pem85")
+width = 30
+height = 10
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_wkvpm"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.050438598, 1)
+colors = PackedColorArray(0.58431375, 0.49019608, 0.25882354, 1, 0.41785055, 0.08972535, 0.1680415, 1, 0.58455217, 0.48921227, 0.25716206, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_p0653"]
+gradient = SubResource("Gradient_wkvpm")
+width = 30
+height = 10
+fill_from = Vector2(0.49512988, 1)
+fill_to = Vector2(0.49188313, 0.01461039)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5qju8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_t3jq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_cgfrk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1n6ed")
+}],
+"loop": true,
+"name": &"chomp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_t3jq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_1n6ed")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4rsxg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_yihwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yb8l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i25fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yihwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yb8l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_yihwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_yb8l6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i25fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i25fj")
+}],
+"loop": false,
+"name": &"chomp",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_yihwo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i25fj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [node name="ViewportLab" type="Node2D" unique_id=1582361756]
 
@@ -17,7 +122,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_68xj2")
 plyr = NodePath("../Player")
 camer = NodePath("../Camera2D2")
-StartingLoadedRoom = "Hook Lab"
+StartingLoadedRoom = "Enemy Lab"
 
 [node name="UI" type="Node" parent="." unique_id=118202750]
 script = ExtResource("2_fqrem")
@@ -53,3 +158,47 @@ position = Vector2(113, 162.33333)
 script = ExtResource("5_ofyqh")
 
 [node name="Settings" parent="." unique_id=1752606228 instance=ExtResource("6_8p3vs")]
+
+[node name="PlayerHud" type="CanvasLayer" parent="." unique_id=1803367810]
+
+[node name="HPBar" type="Control" parent="PlayerHud" unique_id=2089171737]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("7_ubcxc")
+
+[node name="Node2D" type="Node2D" parent="PlayerHud/HPBar" unique_id=137111294]
+position = Vector2(-40, 36)
+
+[node name="ProgressBar" type="TextureProgressBar" parent="PlayerHud/HPBar/Node2D" unique_id=73012294]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 66.0
+offset_top = -14.045
+offset_right = 666.0
+offset_bottom = 15.955
+grow_vertical = 0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_xodrj")
+texture_progress = SubResource("GradientTexture2D_p0653")
+
+[node name="LeftDragon" type="AnimatedSprite2D" parent="PlayerHud/HPBar/Node2D" unique_id=943405674]
+position = Vector2(70, 0)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_5qju8")
+animation = &"chomp"
+autoplay = "default"
+
+[node name="RightDragon" type="AnimatedSprite2D" parent="PlayerHud/HPBar/Node2D" unique_id=1543412312]
+position = Vector2(605, 0)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_4rsxg")
+animation = &"chomp"
+autoplay = "default"
+offset = Vector2(128, 0)

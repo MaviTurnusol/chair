@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://c2y7ig1b6veyl"]
+
+[ext_resource type="Script" uid="uid://pu1u4iljhte8" path="res://MADDIE/LeggyCrawler/WanderingVagrant.gd" id="1_n4j4j"]
+[ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://Entities/Nana/nana_silhouette_1.png" id="3_w5dic"]
+[ext_resource type="PackedScene" uid="uid://dfk65q1y23ewq" path="res://Common/HP_Boxes/HurtBox.tscn" id="4_f0a1k"]
+[ext_resource type="Script" uid="uid://dapkbqak2tg5t" path="res://MADDIE/LeggyCrawler/BossLegger.gd" id="4_u2gv4"]
+[ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/HP_Boxes/HealthComp.tscn" id="4_w5dic"]
+[ext_resource type="Texture2D" uid="uid://b8tspy085oc2c" path="res://Entities/Wormy/maggotstoleentexture.png" id="5_6dpsy"]
+[ext_resource type="Script" uid="uid://c06bqhq0epivu" path="res://MADDIE/LeggyCrawler/BendyLeg.gd" id="6_6n1jo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cjrj"]
+atlas = ExtResource("3_w5dic")
+region = Rect2(24, 25, 24, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r58iw"]
+atlas = ExtResource("3_w5dic")
+region = Rect2(24, 0, 24, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l8j0"]
+atlas = ExtResource("3_w5dic")
+region = Rect2(48, 0, 24, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdico"]
+atlas = ExtResource("3_w5dic")
+region = Rect2(48, 25, 24, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gt5fq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cjrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r58iw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l8j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdico")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0a1k"]
+radius = 30.4
+
+[sub_resource type="Curve" id="Curve_bolhi"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.53478265, 0.22471917), 0.0, 0.0, 0, 0, Vector2(0.8434783, 0.13483155), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Spiderr" type="Node2D" unique_id=815336775]
+script = ExtResource("1_n4j4j")
+speed = 20.0
+legboost = 5.0
+
+[node name="BossCore" type="Node2D" parent="." unique_id=854577733]
+position = Vector2(-44, 80)
+
+[node name="Marker2D" type="Marker2D" parent="BossCore" unique_id=445701677]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="BossCore" unique_id=1493694768]
+visible = false
+z_index = 2
+rotation = 0.025756538
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_gt5fq")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="HurtBox" parent="BossCore" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_f0a1k")]
+collision_layer = 5
+collision_mask = 5
+father = NodePath("../..")
+healthComp = NodePath("../HealthComp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossCore/HurtBox" unique_id=1171552279]
+shape = SubResource("CircleShape2D_f0a1k")
+
+[node name="HealthComp" parent="BossCore" unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("4_w5dic")]
+MAX_HEALTH = 15.0
+father = NodePath("../..")
+
+[node name="TripedLegs" type="Node2D" parent="." unique_id=1211255569 node_paths=PackedStringArray("BossCore")]
+script = ExtResource("4_u2gv4")
+BossCore = NodePath("../BossCore")
+
+[node name="Leg1" type="Line2D" parent="TripedLegs" unique_id=1959280506]
+visible = false
+z_index = 1
+
+[node name="Leg2" type="Line2D" parent="TripedLegs" unique_id=1822418216]
+visible = false
+z_index = 1
+
+[node name="Leg3" type="Line2D" parent="TripedLegs" unique_id=1088152276]
+visible = false
+z_index = 1
+
+[node name="Leg4" type="Line2D" parent="TripedLegs" unique_id=1069015410]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("5_6dpsy")
+texture_mode = 1
+
+[node name="Leg5" type="Line2D" parent="TripedLegs" unique_id=1627044629]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("5_6dpsy")
+texture_mode = 1
+
+[node name="Leg6" type="Line2D" parent="TripedLegs" unique_id=5374643]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("5_6dpsy")
+texture_mode = 1
+
+[node name="Leg7" type="Line2D" parent="TripedLegs" unique_id=742100919]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("5_6dpsy")
+texture_mode = 1
+
+[node name="Leg8" type="Line2D" parent="TripedLegs" unique_id=1551957337]
+z_index = 1
+texture_repeat = 2
+texture = ExtResource("5_6dpsy")
+texture_mode = 1
+
+[node name="BendyLeg" type="Line2D" parent="." unique_id=718315932 node_paths=PackedStringArray("BossRef")]
+z_index = 1
+texture_repeat = 2
+width = 32.0
+width_curve = SubResource("Curve_bolhi")
+texture = ExtResource("5_6dpsy")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("6_6n1jo")
+BossRef = NodePath("..")
+
+[node name="BendyLeg2" type="Line2D" parent="." unique_id=1900994487 node_paths=PackedStringArray("BossRef")]
+z_index = 1
+texture_repeat = 2
+width = 32.0
+width_curve = SubResource("Curve_bolhi")
+texture = ExtResource("5_6dpsy")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("6_6n1jo")
+BossRef = NodePath("..")
+LegIndex = 1
+
+[node name="BendyLeg3" type="Line2D" parent="." unique_id=1990702251 node_paths=PackedStringArray("BossRef")]
+z_index = 1
+texture_repeat = 2
+width = 32.0
+width_curve = SubResource("Curve_bolhi")
+texture = ExtResource("5_6dpsy")
+texture_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("6_6n1jo")
+BossRef = NodePath("..")
+LegIndex = 2

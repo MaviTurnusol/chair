@@ -1,0 +1,179 @@
+[gd_scene format=4 uid="uid://cfww5mjnido6b"]
+
+[ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/CameraCursor/Cursor.tscn" id="2_yc0wm"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="3_0b5d4"]
+[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="4_iw2fn"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="4_qdili"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="5_bswr5"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="6_5jlu8"]
+[ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="7_bkbvh"]
+[ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="8_k7rv1"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="9_rdp63"]
+[ext_resource type="PackedScene" uid="uid://c2y7ig1b6veyl" path="res://Entities/Spiderrr/spiderrr.tscn" id="10_rdp63"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="11_bkbvh"]
+[ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://Systems/Inventory/Scenes/PickupableItem.tscn" id="16_bolhi"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/player_melee_test.tscn" id="17_21iup"]
+[ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://Entities/Nana/nana1.png" id="18_scnhh"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="19_0ipvf"]
+[ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="19_gmoma"]
+[ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="20_xqul6"]
+[ext_resource type="PackedScene" uid="uid://c3wm4v4rx7sv6" path="res://Systems/Weapons/RangedWeapons/player_gun_test.tscn" id="21_1bhf7"]
+[ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://Entities/Wormy/Worm1.png" id="22_yf8yh"]
+[ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://Entities/Guy/NormalWalkingEnemy1.tscn" id="23_21iup"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
+texture = ExtResource("11_bkbvh")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_scnhh"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_21iup")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrn0"]
+size = Vector2(2087, 89)
+
+[sub_resource type="Resource" id="Resource_yc0wm"]
+script = ExtResource("4_iw2fn")
+metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrqcn"]
+texture = ExtResource("9_rdp63")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_hck02"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
+sources/0 = SubResource("TileSetAtlasSource_mrqcn")
+
+[sub_resource type="Resource" id="Resource_gmoma"]
+script = ExtResource("19_0ipvf")
+ItemName = "example"
+ground_tex = ExtResource("18_scnhh")
+inventory_tex = ExtResource("18_scnhh")
+inv_scalemulti = 1.5
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
+ItemAttributes = Array[int]([1])
+AssociatedScene = ExtResource("17_21iup")
+
+[sub_resource type="Resource" id="Resource_gt5fq"]
+script = ExtResource("19_0ipvf")
+ground_tex = ExtResource("22_yf8yh")
+inventory_tex = ExtResource("22_yf8yh")
+ground_scalemulti = 2.0
+inv_scalemulti = 1.5
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
+ItemAttributes = Array[int]([2])
+AssociatedScene = ExtResource("21_1bhf7")
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[node name="EnemyLab" type="Node2D" unique_id=622899540]
+
+[node name="EnemyPreps" type="Node2D" parent="." unique_id=2035388690]
+script = ExtResource("19_gmoma")
+
+[node name="SpiderPaths" type="TileMapLayer" parent="EnemyPreps" unique_id=2078516604]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAQAAQAAAAAAAAAYAAQAAQAAAAAAAAAZAAQAAQAAAAAAAAAaAAQAAQAAAAAAAAAbAAQAAQAAAAAAAAAcAAQAAQAAAAAAAAAdAAQAAQAAAAAAAAAeAAQAAQAAAAAAAAAfAAQAAQAAAAAAAAAgAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_scnhh")
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1658677967]
+position = Vector2(132, -573)
+
+[node name="ColorRect" type="ColorRect" parent="Sprites" unique_id=402564116]
+offset_left = -132.0
+offset_top = 853.0
+offset_right = 1952.0
+offset_bottom = 943.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Sprites" unique_id=2002809254]
+offset_left = -125.0
+offset_top = 557.0
+offset_right = 1959.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 1)
+
+[node name="Collisions" type="Node2D" parent="." unique_id=1583388602]
+position = Vector2(132, -573)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=1891834209]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=2076735749]
+position = Vector2(909, 898.5)
+shape = SubResource("RectangleShape2D_pjrn0")
+
+[node name="Cursor" parent="." unique_id=354788821 instance=ExtResource("2_yc0wm")]
+position = Vector2(132, -573)
+
+[node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("3_0b5d4")]
+position = Vector2(106, 225)
+TargetSceneName = "Lab"
+DoorIdentifier = "Lab-EnemyLab-1"
+transitionData = SubResource("Resource_yc0wm")
+DoSetPositionAtNewScene = true
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
+script = ExtResource("4_qdili")
+Track = ExtResource("5_bswr5")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("6_5jlu8")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
+
+[node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("7_bkbvh")]
+position = Vector2(395, 250)
+
+[node name="VentRoom" type="Node2D" parent="." unique_id=864136678]
+script = ExtResource("8_k7rv1")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VentRoom" unique_id=1485016729]
+self_modulate = Color(0.57520974, 0.15684047, 0.22424221, 1)
+z_index = 2
+tile_set = SubResource("TileSet_hck02")
+
+[node name="VENTBG" type="ColorRect" parent="VentRoom" unique_id=2006635573]
+visible = false
+z_index = 1
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="Spiderrr" parent="." unique_id=532131844 instance=ExtResource("10_rdp63")]
+
+[node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_bolhi")]
+position = Vector2(556, 212)
+WhatItemAmI = SubResource("Resource_gmoma")
+
+[node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("20_xqul6")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="PickupableItem2" parent="." unique_id=611595821 instance=ExtResource("16_bolhi")]
+position = Vector2(644, 212)
+WhatItemAmI = SubResource("Resource_gt5fq")
+
+[node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=863504184 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("20_xqul6")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun2PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="JustANormalGuy" parent="." unique_id=1552983653 instance=ExtResource("23_21iup")]
+position = Vector2(792, 225)
