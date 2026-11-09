@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bb4cp2umq0dex"]
+
+[ext_resource type="Script" uid="uid://dgnv0o7of087s" path="res://Common/FX/hitflash_player.gd" id="1_w2uhd"]
+
+[node name="hitflashPlayer" type="Node" unique_id=1371641710]
+script = ExtResource("1_w2uhd")

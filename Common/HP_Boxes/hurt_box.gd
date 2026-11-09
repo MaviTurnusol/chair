@@ -14,7 +14,7 @@ func damage(attack, attacker):
 		healthComp.damage(attack)
 		if father:
 			if father.has_node("hitflashPlayer"):
-				father.get_node("hitflashPlayer").play("hitflash")
+				father.get_node("hitflashPlayer").Flash()
 	if not is_inside_tree():return
 	set_deferred("monitorable", false)
 	if not is_inside_tree():return

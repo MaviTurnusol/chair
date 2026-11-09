@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/HP_Boxes/HealthComp.tscn" id="4_w5dic"]
 [ext_resource type="Texture2D" uid="uid://b8tspy085oc2c" path="res://Entities/Wormy/maggotstoleentexture.png" id="5_6dpsy"]
 [ext_resource type="Script" uid="uid://c06bqhq0epivu" path="res://MADDIE/LeggyCrawler/BendyLeg.gd" id="6_6n1jo"]
+[ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="7_w5dic"]
+[ext_resource type="Script" uid="uid://dgnv0o7of087s" path="res://Common/FX/hitflash_player.gd" id="9_u2gv4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3cjrj"]
 atlas = ExtResource("3_w5dic")
@@ -47,9 +49,39 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0a1k"]
 radius = 30.4
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n1jo"]
+shader = ExtResource("7_w5dic")
+shader_parameter/FlashAmount = 0.0
+
+[sub_resource type="Shader" id="Shader_u2gv4"]
+code = "shader_type canvas_item;
+
+uniform float FlashAmount = 0;
+
+void fragment() {
+	COLOR = COLOR + vec4(FlashAmount,FlashAmount,FlashAmount,FlashAmount);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dpsy"]
+shader = SubResource("Shader_u2gv4")
+shader_parameter/FlashAmount = 0.0
+
 [sub_resource type="Curve" id="Curve_bolhi"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.53478265, 0.22471917), 0.0, 0.0, 0, 0, Vector2(0.8434783, 0.13483155), 0.0, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="Shader" id="Shader_w5dic"]
+code = "shader_type canvas_item;
+
+uniform float FlashAmount = 0;
+
+void fragment() {
+	COLOR = COLOR + vec4(FlashAmount,FlashAmount,FlashAmount,FlashAmount);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2gv4"]
+shader = SubResource("Shader_w5dic")
+shader_parameter/FlashAmount = 0.0
 
 [node name="Spiderr" type="Node2D" unique_id=815336775]
 script = ExtResource("1_n4j4j")
@@ -102,36 +134,42 @@ z_index = 1
 [node name="Leg4" type="Line2D" parent="TripedLegs" unique_id=1069015410]
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_6n1jo")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="Leg5" type="Line2D" parent="TripedLegs" unique_id=1627044629]
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_6n1jo")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="Leg6" type="Line2D" parent="TripedLegs" unique_id=5374643]
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_6n1jo")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="Leg7" type="Line2D" parent="TripedLegs" unique_id=742100919]
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_6n1jo")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="Leg8" type="Line2D" parent="TripedLegs" unique_id=1551957337]
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_6n1jo")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="BendyLeg" type="Line2D" parent="." unique_id=718315932 node_paths=PackedStringArray("BossRef")]
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_6dpsy")
 width = 32.0
 width_curve = SubResource("Curve_bolhi")
 texture = ExtResource("5_6dpsy")
@@ -144,6 +182,7 @@ BossRef = NodePath("..")
 [node name="BendyLeg2" type="Line2D" parent="." unique_id=1900994487 node_paths=PackedStringArray("BossRef")]
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_u2gv4")
 width = 32.0
 width_curve = SubResource("Curve_bolhi")
 texture = ExtResource("5_6dpsy")
@@ -157,6 +196,7 @@ LegIndex = 1
 [node name="BendyLeg3" type="Line2D" parent="." unique_id=1990702251 node_paths=PackedStringArray("BossRef")]
 z_index = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_u2gv4")
 width = 32.0
 width_curve = SubResource("Curve_bolhi")
 texture = ExtResource("5_6dpsy")
@@ -166,3 +206,7 @@ end_cap_mode = 2
 script = ExtResource("6_6n1jo")
 BossRef = NodePath("..")
 LegIndex = 2
+
+[node name="hitflashPlayer" type="Node" parent="." unique_id=1524073117 node_paths=PackedStringArray("TargetNodes")]
+script = ExtResource("9_u2gv4")
+TargetNodes = [NodePath("../BendyLeg"), NodePath("../BendyLeg2"), NodePath("../BendyLeg3"), NodePath("../TripedLegs/Leg4"), NodePath("../TripedLegs/Leg5"), NodePath("../TripedLegs/Leg6"), NodePath("../TripedLegs/Leg7"), NodePath("../TripedLegs/Leg8")]

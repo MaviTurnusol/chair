@@ -3,7 +3,12 @@
 [ext_resource type="Script" uid="uid://tbna3m7qb3t6" path="res://Entities/Guy/NormalWalkingEnemy.gd" id="1_7dkby"]
 [ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/HP_Boxes/HealthComp.tscn" id="2_h8uud"]
 [ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="3_owu6q"]
+[ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="3_xbw7l"]
 [ext_resource type="PackedScene" uid="uid://dfk65q1y23ewq" path="res://Common/HP_Boxes/HurtBox.tscn" id="4_cq0ys"]
+[ext_resource type="PackedScene" uid="uid://bb4cp2umq0dex" path="res://Common/HP_Boxes/hitflash_player.tscn" id="6_xbw7l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5i1vp"]
+shader = ExtResource("3_xbw7l")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjvv"]
 radius = 19.35
@@ -23,6 +28,7 @@ MAX_HEALTH = 3.0
 father = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=292500123]
+material = SubResource("ShaderMaterial_5i1vp")
 scale = Vector2(0.08, 0.08)
 texture = ExtResource("3_owu6q")
 
@@ -45,3 +51,6 @@ shape = SubResource("CapsuleShape2D_7dkby")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="AggroZone" unique_id=624513867]
 position = Vector2(130, -93)
 shape = SubResource("CapsuleShape2D_7dkby")
+
+[node name="hitflashPlayer" parent="." unique_id=1371641710 node_paths=PackedStringArray("TargetNodes") instance=ExtResource("6_xbw7l")]
+TargetNodes = [NodePath("../Sprite2D")]
