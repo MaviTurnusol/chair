@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bb4cp2umq0dex" path="res://Common/HP_Boxes/hitflash_player.tscn" id="6_xbw7l"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5i1vp"]
+resource_local_to_scene = true
 shader = ExtResource("3_xbw7l")
+shader_parameter/FlashAmount = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjvv"]
 radius = 19.35

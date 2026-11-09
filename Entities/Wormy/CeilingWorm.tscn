@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://b64mtxsrtxvan" path="res://Entities/Wormy/CeilingWorm.gd" id="1_1wccn"]
 [ext_resource type="Texture2D" uid="uid://b8tspy085oc2c" path="res://Entities/Wormy/maggotstoleentexture.png" id="2_h4jfa"]
+[ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="3_d232c"]
+[ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/HP_Boxes/HealthComp.tscn" id="3_frkqe"]
+[ext_resource type="PackedScene" uid="uid://dfk65q1y23ewq" path="res://Common/HP_Boxes/HurtBox.tscn" id="4_2wipd"]
+[ext_resource type="PackedScene" uid="uid://bb4cp2umq0dex" path="res://Common/HP_Boxes/hitflash_player.tscn" id="5_yvo6v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gbuu4"]
 height = 200.0
@@ -9,13 +13,20 @@ height = 200.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_isyec"]
 radius = 32.1
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yvo6v"]
+radius = 30.4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_30ng5"]
+resource_local_to_scene = true
+shader = ExtResource("3_d232c")
+shader_parameter/FlashAmount = 0.0
+
 [sub_resource type="Curve" id="Curve_esouf"]
 _data = [Vector2(0, 0.17977536), 0.0, 0.0, 0, 0, Vector2(0.22500001, 1), 0.0, 0.0, 0, 0, Vector2(0.78999996, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.28089893), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [node name="CeilingWorm" type="Node2D" unique_id=908797744]
 script = ExtResource("1_1wccn")
-Health = 1
 LaunchSpeed = 250.0
 rearsitsuglylittleheadrange = Vector2(250, 250)
 RearSpeed = 12.0
@@ -33,6 +44,15 @@ shape = SubResource("CapsuleShape2D_gbuu4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=775610569]
 shape = SubResource("CircleShape2D_isyec")
 
+[node name="HurtBox" parent="Hitbox" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_2wipd")]
+collision_layer = 5
+collision_mask = 5
+father = NodePath("../..")
+healthComp = NodePath("../../HealthComp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox/HurtBox" unique_id=1547902732]
+shape = SubResource("CircleShape2D_yvo6v")
+
 [node name="FloorCheck" type="RayCast2D" parent="." unique_id=13161167]
 target_position = Vector2(0, 5)
 hit_from_inside = true
@@ -40,6 +60,7 @@ hit_from_inside = true
 [node name="WormGraphic" type="Line2D" parent="." unique_id=33849052]
 texture_filter = 1
 texture_repeat = 2
+material = SubResource("ShaderMaterial_30ng5")
 width = 12.0
 width_curve = SubResource("Curve_esouf")
 texture = ExtResource("2_h4jfa")
@@ -47,3 +68,10 @@ texture_mode = 1
 joint_mode = 1
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("3_frkqe")]
+MAX_HEALTH = 2.0
+father = NodePath("..")
+
+[node name="hitflashPlayer" parent="." unique_id=1371641710 node_paths=PackedStringArray("TargetNodes") instance=ExtResource("5_yvo6v")]
+TargetNodes = [NodePath("../WormGraphic")]

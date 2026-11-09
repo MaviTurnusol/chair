@@ -213,8 +213,7 @@ visible = false
 
 [node name="RealDoor2" parent="." unique_id=1587098128 instance=ExtResource("10_jii1a")]
 position = Vector2(827, 281)
-TargetSceneName = "Lab"
-DoorIdentifier = "Lab-HookLab-1"
+TargetSceneName = "Bus Travel"
 DoSetPositionAtNewScene = true
 
 [node name="InteractionPrompter" parent="RealDoor2" index="0" unique_id=1185201784]

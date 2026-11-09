@@ -15,11 +15,7 @@ enum States{
 
 @export_category("Stats")
 #Hitboxing
-@export var Health : int = 5:
-	set(value):
-		Health = value
-		if(Health<=0):
-			Die()
+
 @onready var hitbox: Area2D = $Hitbox
 
 #Behaviour
@@ -79,7 +75,7 @@ func Land():
 	CurrentState = States.Chasing
 func _ready() -> void:
 	aggro_zone.body_entered.connect(BodyEnteredAggroZone)
-	hitbox.body_entered.connect(HitboxBodyEntered)
+	#hitbox.body_entered.connect(HitboxBodyEntered)
 	wormseed = randi()
 	#ChasingWriggleSpeed = ChasingWriggleSpeed + randf_range(-1,1)
 	
@@ -149,10 +145,10 @@ func BodyEnteredAggroZone(body : Node2D):
 		AggroTarget = body
 		CurrentState = States.Charging
 
-func Die():
+func death():
 	queue_free()
 
-func HitboxBodyEntered(body : Node2D):
-	if(body.is_in_group("player")):
-		if(body.machine.get_state()=="fall"):
-			Health-=1
+#func HitboxBodyEntered(body : Node2D):
+	#if(body.is_in_group("player")):
+		#if(body.machine.get_state()=="fall"):
+			#Health-=1

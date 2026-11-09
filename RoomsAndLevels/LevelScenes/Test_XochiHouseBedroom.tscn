@@ -8,6 +8,9 @@
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/FX/Shaders/vignette.gdshader" id="5_2cql4"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="6_3njhu"]
 [ext_resource type="Resource" uid="uid://dchngvenktk3v" path="res://RoomsAndLevels/Transitions/FadeBlack1.tres" id="8_77bg7"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="9_crwsa"]
+[ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="10_hq4n6"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="10_vxrfr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
@@ -129,5 +132,16 @@ position = Vector2(0, -55)
 
 [node name="Sprite2D" parent="RealDoor2" index="1" unique_id=1212615574]
 visible = false
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=782763795]
+script = ExtResource("9_crwsa")
+Track = ExtResource("10_hq4n6")
+FadeTime = 1.0
+OnReady = true
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=2005706195 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("10_vxrfr")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
 
 [editable path="RealDoor2"]
