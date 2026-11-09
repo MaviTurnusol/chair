@@ -5,7 +5,7 @@ class_name Vent
 var IsVentVineActive : bool = false
 @onready var OwnVentVine : Line2D = $VentVine
 
-@onready var VentRoom = get_tree().get_first_node_in_group("ventroom")
+@onready var VentRoom = owner.get_node("VentRoom") #get_tree().get_first_node_in_group("ventroom")
 
 var DefaultZ
 var isescaping = false
@@ -28,7 +28,7 @@ func action():
 		StartVenting()
 		onCooldown = true
 		StartCoolDown()
-		print("YAY!")
+		#print("YAY!")
 		UnlimitedRulebook.player.velocity = Vector2.ZERO
 
 func _process(delta: float) -> void:
@@ -36,7 +36,6 @@ func _process(delta: float) -> void:
 		return
 	if(Input.is_action_pressed("attack")&&OwnVentVine.visible&&OwnVentVine.GrowthDirection!=OwnVentVine.GrowthStates.Recalling):
 		OwnVentVine.EMERGENCYRECALL()
-
 
 func StartCoolDown():
 	await get_tree().create_timer(1.2).timeout
@@ -77,7 +76,6 @@ func ExitVentAtNewPosition(AtWhatPosition : Vector2):
 		if(i.has_method("UnCamera")):
 			i.UnCamera(true)
 func ExitVent():
-	
 	#MakeVineInVisible
 	IsVentVineActive = false
 	OwnVentVine.GrowthDirection = OwnVentVine.GrowthStates.Stationary

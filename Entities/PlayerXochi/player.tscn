@@ -1236,6 +1236,7 @@ script = ExtResource("27_a038y")
 animName = ""
 endWithAnim = false
 cantTransitionFrom = PackedStringArray()
+canOnlyTransitionTo = PackedStringArray("vineExit")
 
 [node name="VineExit" parent="StateMachine" unique_id=689323256 instance=ExtResource("5_od3ui")]
 script = ExtResource("32_qs4pp")

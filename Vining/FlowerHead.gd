@@ -2,7 +2,7 @@ extends Sprite2D
 
 @onready var LineParent :Line2D = get_parent()
 @onready var CollisionDetector : Area2D = $Area2D
-@export var VentZoom : Vector2 = Vector2(5,5)
+@export var VentZoom : float = 1.5
 
 var CanGoForward : bool = true
 
@@ -33,24 +33,25 @@ func _process(delta):
 		LineParent.GrowthDirection = LineParent.GrowthStates.Stationary
 		pass
 
+var defzoom : float
+
 func TweenCameraToPosition():
 	##if($Camera2D.enabled == false):
 	#global_position = get_tree().get_first_node_in_group("player").global_position
 	#
 	#$Camera2D.enabled = true
 	#$Camera2D.make_current()
+	UnlimitedRulebook.cam.target = self
+	
+	defzoom = UnlimitedRulebook.cam.targetzoom
 	var TweenOut = get_tree().create_tween()
-	TweenOut.tween_property(get_tree().get_first_node_in_group("player").get_node("Camera2D"),"zoom",VentZoom,1)
+	TweenOut.tween_property(UnlimitedRulebook.cam,"targetzoom",VentZoom,1)
 
 func UnCamera(AtNewPos : bool):
+	UnlimitedRulebook.cam.target = UnlimitedRulebook.player.get_node("camTarget")
 	
-	return
 	var TweenOut = get_tree().create_tween()
-	TweenOut.set_parallel(true)
-	TweenOut.tween_property(get_tree().get_first_node_in_group("player").get_node("Camera2D"),"zoom",Vector2(3,3),1)
-	if(AtNewPos):
-		get_tree().get_first_node_in_group("player").get_node("Camera2D").position = Vector2(0,0)
-	else:
-		TweenOut.tween_property(get_tree().get_first_node_in_group("player").get_node("Camera2D"),"position",Vector2(0,0),1)
+	TweenOut.tween_property(UnlimitedRulebook.cam,"targetzoom",defzoom,1)
+	
 	#$Camera2D.enabled = false
 	#$Camera2D.zoom = Vector2(3,3)

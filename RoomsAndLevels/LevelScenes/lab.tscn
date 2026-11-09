@@ -32,6 +32,9 @@
 [ext_resource type="Script" uid="uid://c06bqhq0epivu" path="res://MADDIE/LeggyCrawler/BendyLeg.gd" id="28_rdico"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="29_3cjrj"]
 [ext_resource type="Texture2D" uid="uid://b8tspy085oc2c" path="res://Entities/Wormy/maggotstoleentexture.png" id="30_rdico"]
+[ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="33_xfawk"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="34_m5v3g"]
+[ext_resource type="PackedScene" uid="uid://crdxtwfpwcijh" path="res://Vining/VentryPoint.tscn" id="35_m5v3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6refc"]
 size = Vector2(1240.5, 115)
@@ -62,7 +65,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_rdico"]
+[sub_resource type="Resource" id="Resource_m5v3g"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ground_tex = ExtResource("12_rdico")
@@ -72,7 +75,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_4ma8g"]
+[sub_resource type="Resource" id="Resource_rixi8"]
 script = ExtResource("13_4ma8g")
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
@@ -141,6 +144,18 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_jgflt"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_yxfbn")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1pqm"]
+texture = ExtResource("34_m5v3g")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_r8l8j"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
+sources/0 = SubResource("TileSetAtlasSource_q1pqm")
 
 [node name="Lab" type="Node2D" unique_id=775964121]
 
@@ -267,7 +282,7 @@ TargetSceneName = "Bus Travel"
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_rdico")
+WhatItemAmI = SubResource("Resource_m5v3g")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -290,7 +305,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="." unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_4ma8g")
+WhatItemAmI = SubResource("Resource_rixi8")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -513,5 +528,33 @@ tile_set = SubResource("TileSet_jgflt")
 
 [node name="Bonfire" parent="Boss" unique_id=792746957 instance=ExtResource("29_3cjrj")]
 position = Vector2(699, 252)
+
+[node name="VentRoom" type="Node2D" parent="." unique_id=160348412 groups=["ventroom"]]
+script = ExtResource("33_xfawk")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VentRoom" unique_id=920061337]
+self_modulate = Color(0.57520974, 0.15684047, 0.22424221, 1)
+z_index = 2
+tile_map_data = PackedByteArray("AAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAAIAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAEAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAKAAQAAAAAAAAAAAAKAAMAAAAAAAAAAAAKAAIAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAQAAAAAAAAAAAAMAAQAAAAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAASAAQAAAAAAAAAAAATAAQAAAAAAAAAAAAUAAQAAAAAAAAAAAAVAAQAAAAAAAAAAAAWAAQAAAAAAAAAAAAXAAQAAAAAAAAAAAAYAAQAAAAAAAAAAAAZAAQAAAAAAAAAAAAaAAQAAAAAAAAAAAAaAAUAAAAAAAAAAAAaAAYAAAAAAAAAAAAaAAcAAAAAAAAAAAAaAAgAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_r8l8j")
+
+[node name="VENTBG" type="ColorRect" parent="VentRoom" unique_id=195235120]
+visible = false
+z_index = 1
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="VentryPoint" parent="." unique_id=1076141324 instance=ExtResource("35_m5v3g")]
+position = Vector2(144, 272)
+
+[node name="VentryPoint2" parent="." unique_id=1423138066 instance=ExtResource("35_m5v3g")]
+position = Vector2(334, 48)
+InitialRotation = 180.0
+
+[node name="VentryPoint3" parent="." unique_id=262484775 instance=ExtResource("35_m5v3g")]
+position = Vector2(848, 274)
 
 [editable path="Locker"]

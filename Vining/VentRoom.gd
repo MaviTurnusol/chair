@@ -8,8 +8,8 @@ func _ready() -> void:
 	$VENTBG.visible = false
 
 func TryShow():
-	#for i in get_tree().get_nodes_in_group("ventopening"):
-		#i.z_index = 10
+	for i in get_tree().get_nodes_in_group("Vent"):
+		i.z_index = 10
 	
 	$VENTBG.visible = true
 	VisiTween.kill()
@@ -18,8 +18,8 @@ func TryShow():
 	VisiTween.tween_property(self, "modulate", Color.WHITE, 1.0)
 
 func TryHide():
-	#for i in get_tree().get_nodes_in_group("ventopening"):
-		#i.z_index = i.DefaultZ
+	for i in get_tree().get_nodes_in_group("Vent"):
+		i.z_index = i.DefaultZ
 	
 	VisiTween.kill()
 	VisiTween = get_tree().create_tween()

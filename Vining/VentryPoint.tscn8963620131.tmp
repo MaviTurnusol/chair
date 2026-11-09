@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://crdxtwfpwcijh"]
+
+[ext_resource type="Script" uid="uid://bgpmvf8eoeu5o" path="res://Vining/Vent.gd" id="1_om8yf"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="2_5h74u"]
+[ext_resource type="PackedScene" uid="uid://03m157s1pacd" path="res://Systems/Inventory/Scenes/InteractionPrompter.tscn" id="3_bkx5p"]
+[ext_resource type="PackedScene" uid="uid://c8kjpl6is4n7a" path="res://Vining/VentVine.tscn" id="3_rdwdg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bkx5p"]
+radius = 20.0
+
+[node name="VentryPoint" type="Node2D" unique_id=1076141324 groups=["Vent"]]
+script = ExtResource("1_om8yf")
+
+[node name="InteractionPrompter" parent="." unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("3_bkx5p")]
+z_index = 1
+position = Vector2(0, -18)
+InteractObject = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1815180648]
+texture = ExtResource("2_5h74u")
+
+[node name="VentVine" parent="." unique_id=1021029691 instance=ExtResource("3_rdwdg")]
+
+[node name="VentCollisionPointForVining" type="Area2D" parent="." unique_id=1429999415]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VentCollisionPointForVining" unique_id=1318290302]
+shape = SubResource("CircleShape2D_bkx5p")

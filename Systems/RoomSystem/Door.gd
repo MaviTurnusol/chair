@@ -16,7 +16,7 @@ func action():
 	#print(UnlimitedRulebook.player.machine.get_state())
 	
 	if(transitionData==null):
-		if(UnlimitedRulebook.player.machine.get_state() not in ["meleeAttack"]):
+		if(UnlimitedRulebook.player.machine.get_state() not in ["meleeAttack","vineExit","vining"]):
 			GoThroughDoor()
 			return
 	else:
@@ -32,8 +32,6 @@ func players_on_the_point():
 			UnlimitedRulebook.cam.current_target = midpoint
 			UnlimitedRulebook.got_on_the_talking_point.disconnect(players_on_the_point)
 			GoThroughDoor()
-
-
 
 func GoThroughDoor():
 	if(transitionData == null):
