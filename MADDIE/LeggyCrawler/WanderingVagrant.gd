@@ -31,7 +31,7 @@ func knockback(attacker:Node2D):
 	#CurrentState = States.Stunned
 	var KBTween = get_tree().create_tween()
 	KBTween.set_ease(Tween.EASE_OUT)
-	KBTween.set_trans(Tween.TRANS_CUBIC)
+	KBTween.set_trans(Tween.TRANS_SPRING)
 	KBTween.tween_property(boss_core,"position",PointAtWhichWasKnockedBack+KnockbackTargetPoint,1)
 	#await get_tree().create_timer(StaggerDuration).timeout
 	#CurrentState = States.Chasing
