@@ -11,7 +11,7 @@ var Damage : float:
 func _ready() -> void:
 	hit_box.harmed.connect(DealtDamage)
 
-func DealtDamage():
+func DealtDamage(a : Variant=null):
 	hit_box.queue_free()
 
 func _physics_process(delta: float) -> void:
