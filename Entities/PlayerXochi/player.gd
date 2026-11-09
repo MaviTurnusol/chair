@@ -151,6 +151,7 @@ func StopVenting(WhereExit): #VECTOR2 in global
 		global_position = WhereExit - Vector2(0,-16) #Vector2(0,($Marker2D/anima.sprite_frames.get_frame_texture($Marker2D/anima.animation,$Marker2D/anima.frame).get_height()/6))
 		machine.change_state_to("vineExit")
 	else:
+		machine.change_state_to("vineExit")
 		machine.change_state_to("idle")
 	#state = STATES.LEAVEVENT
 	pass
