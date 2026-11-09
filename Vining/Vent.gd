@@ -22,14 +22,21 @@ func _ready():
 var onCooldown = false
 
 func action():
+	if(UnlimitedRulebook.player.machine.get_state() in ["vineExit","vining"]):
+		return
 	if !onCooldown && !IsVentVineActive:
 		StartVenting()
 		onCooldown = true
 		StartCoolDown()
 		print("YAY!")
 		UnlimitedRulebook.player.velocity = Vector2.ZERO
-	#if(event.is_action_pressed("return_to_body")&&OwnVentVine.visible&&OwnVentVine.GrowthDirection!=OwnVentVine.GrowthStates.Recalling):
-		#OwnVentVine.EMERGENCYRECALL()
+
+func _process(delta: float) -> void:
+	if(!IsVentVineActive):
+		return
+	if(Input.is_action_pressed("attack")&&OwnVentVine.visible&&OwnVentVine.GrowthDirection!=OwnVentVine.GrowthStates.Recalling):
+		OwnVentVine.EMERGENCYRECALL()
+
 
 func StartCoolDown():
 	await get_tree().create_timer(1.2).timeout

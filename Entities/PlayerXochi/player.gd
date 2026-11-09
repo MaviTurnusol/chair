@@ -87,7 +87,7 @@ func _physics_process(delta):
 	var dir_ = Input.get_axis("left", "right")
 	if machine.get_state() not in ["roll", "turn", "jump", 
 	"fall", "fallRecovery", "groundAttack", "talk", "cutscene", "gunWalk", "gunIdle","meleeAttack"
-	,"hook","parry"]:
+	,"hook","parry","vineExit","vining"]:
 		#Turning
 		if UnlimitedRulebook.lockedEnemyPosition == Vector2(0, 0):
 			if(dir_):
@@ -144,9 +144,13 @@ func set_collisions(foo) -> void:
 
 func StartVenting():
 	#state = STATES.VENTING
+	machine.change_state_to("vining")
 	pass
 func StopVenting(WhereExit): #VECTOR2 in global
 	if(WhereExit != null):
-		global_position = WhereExit - Vector2(0,-32) #Vector2(0,($Marker2D/anima.sprite_frames.get_frame_texture($Marker2D/anima.animation,$Marker2D/anima.frame).get_height()/6))
+		global_position = WhereExit - Vector2(0,-16) #Vector2(0,($Marker2D/anima.sprite_frames.get_frame_texture($Marker2D/anima.animation,$Marker2D/anima.frame).get_height()/6))
+		machine.change_state_to("vineExit")
+	else:
+		machine.change_state_to("idle")
 	#state = STATES.LEAVEVENT
 	pass

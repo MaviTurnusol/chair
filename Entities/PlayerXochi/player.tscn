@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://7hfytd1fedso" path="res://Entities/PlayerXochi/Animations/punch1.png" id="11_or6rf"]
 [ext_resource type="Texture2D" uid="uid://bj2qdmrqo7mdn" path="res://Entities/PlayerXochi/Animations/punch1extraFrame.png" id="12_ofh6p"]
 [ext_resource type="PackedScene" uid="uid://j31ghs8e1fqo" path="res://Entities/PlayerXochi/States/Run.tscn" id="12_p5o4e"]
+[ext_resource type="Texture2D" uid="uid://8ea2oc31b7s5" path="res://Player/Animations/knifeSlash2wipnotrealt.png" id="13_a2aop"]
 [ext_resource type="PackedScene" uid="uid://o4c52t0244wj" path="res://Entities/PlayerXochi/States/Turn.tscn" id="13_p5o4e"]
 [ext_resource type="Texture2D" uid="uid://c6rois5yqlpth" path="res://Entities/PlayerXochi/Animations/punch2.png" id="15_ofh6p"]
 [ext_resource type="Texture2D" uid="uid://dixyqh658b1jh" path="res://Entities/PlayerXochi/Animations/walkForwards.png" id="16_nefme"]
@@ -304,6 +305,26 @@ region = Rect2(640, 0, 128, 103)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ome0a"]
 atlas = ExtResource("12_ofh6p")
 region = Rect2(0, 0, 128, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib8y8"]
+atlas = ExtResource("13_a2aop")
+region = Rect2(0, 0, 128, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq4sn"]
+atlas = ExtResource("13_a2aop")
+region = Rect2(128, 0, 128, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w17gw"]
+atlas = ExtResource("13_a2aop")
+region = Rect2(256, 0, 128, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8nsr"]
+atlas = ExtResource("13_a2aop")
+region = Rect2(384, 0, 128, 109)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwlx7"]
+atlas = ExtResource("13_a2aop")
+region = Rect2(512, 0, 128, 109)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwrp6"]
 atlas = ExtResource("10_d30e8")
@@ -843,6 +864,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ib8y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq4sn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w17gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8nsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwlx7")
+}],
+"loop": false,
+"name": &"leavevent",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pwrp6")
 }, {
 "duration": 1.0,
@@ -1160,7 +1201,7 @@ position = Vector2(-11.636646, 10.980812)
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"stab1"
+animation = &"leavevent"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
@@ -1195,6 +1236,10 @@ script = ExtResource("27_a038y")
 animName = ""
 endWithAnim = false
 cantTransitionFrom = PackedStringArray()
+
+[node name="VineExit" parent="StateMachine" unique_id=689323256 instance=ExtResource("5_od3ui")]
+script = ExtResource("32_qs4pp")
+animName = "leavevent"
 
 [node name="Parry" parent="StateMachine" unique_id=1736450841 instance=ExtResource("5_od3ui")]
 script = ExtResource("20_iyprq")
