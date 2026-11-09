@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://djwmgm4514ch2"]
+
+[ext_resource type="Script" uid="uid://c704gharul8u8" path="res://Vining/Vine.gd" id="1_xpy8t"]
+[ext_resource type="Texture2D" uid="uid://bi14tg2tla1rh" path="res://Environments/ui/ChairUiTry2.png" id="2_ag822"]
+[ext_resource type="Script" uid="uid://8d0krm0kxjfr" path="res://Vining/FlowerHead.gd" id="3_0mfqa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xq2dc"]
+radius = 4.0
+
+[node name="Vinetestscene" type="Node2D" unique_id=289532160]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=840900053]
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1878742936]
+width = 25.0
+default_color = Color(5.34251e-06, 0.683324, 0.512861, 1)
+script = ExtResource("1_xpy8t")
+LengthInterval = 2
+RotationSpeed = 100.0
+
+[node name="FlowerHead" type="Sprite2D" parent="Line2D" unique_id=1768213947]
+texture = ExtResource("2_ag822")
+script = ExtResource("3_0mfqa")
+
+[node name="Area2D" type="Area2D" parent="Line2D/FlowerHead" unique_id=1893142404]
+collision_layer = 16
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/FlowerHead/Area2D" unique_id=1572988910]
+shape = SubResource("CircleShape2D_xq2dc")

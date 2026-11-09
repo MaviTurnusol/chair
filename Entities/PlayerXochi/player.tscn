@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://bmhref06rwauj" path="res://Entities/PlayerXochi/States/Cutscene.tscn" id="22_gpjlu"]
 [ext_resource type="PackedScene" uid="uid://cdhl38422h57f" path="res://Entities/PlayerXochi/States/GunWalk.tscn" id="24_qemgg"]
 [ext_resource type="PackedScene" uid="uid://dumxxtk7wv87d" path="res://Entities/PlayerXochi/States/GunIdle.tscn" id="25_8viyr"]
+[ext_resource type="Script" uid="uid://bosg5qvd8k2f7" path="res://Entities/PlayerXochi/States/Vining.gd" id="27_a038y"]
 [ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://Entities/PlayerXochi/States/MeleeAttack1.gd" id="27_efx54"]
 [ext_resource type="Script" uid="uid://cswibj42kh6rk" path="res://Common/StateMachine/state.gd" id="32_qs4pp"]
 [ext_resource type="Script" uid="uid://cj5jewgd12t6" path="res://Obsolete/debug_deletethiswithnocrucialeffectbossfightstart.gd" id="35_c6x0f"]
@@ -1188,6 +1189,12 @@ animName = ""
 [node name="Walk" parent="StateMachine" unique_id=294001506 instance=ExtResource("4_vtle1")]
 
 [node name="Roll" parent="StateMachine" unique_id=1304739926 instance=ExtResource("5_od3ui")]
+
+[node name="Vining" parent="StateMachine" unique_id=1561311894 instance=ExtResource("5_od3ui")]
+script = ExtResource("27_a038y")
+animName = ""
+endWithAnim = false
+cantTransitionFrom = PackedStringArray()
 
 [node name="Parry" parent="StateMachine" unique_id=1736450841 instance=ExtResource("5_od3ui")]
 script = ExtResource("20_iyprq")

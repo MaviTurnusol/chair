@@ -92,6 +92,7 @@ func action():
 		prompt.visible = false
 		return
 	if(InteractObject):
+		print(InteractObject.name)
 		if(InteractObject.has_method("action")):
 			InteractObject.action()
 			prompt.visible = false

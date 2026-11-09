@@ -22,9 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://Entities/Guy/NormalWalkingEnemy1.tscn" id="18_q1pqm"]
 [ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="19_dhn3p"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="19_r8l8j"]
-[ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/Imen Kheru.mp3" id="20_3uelr"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="21_pnd1w"]
 [ext_resource type="Texture2D" uid="uid://rmghv121cmw7" path="res://MADDIE/TlalocBad.png" id="23_ptpbc"]
+[ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="23_rdico"]
 [ext_resource type="Script" uid="uid://pu1u4iljhte8" path="res://MADDIE/LeggyCrawler/WanderingVagrant.gd" id="24_vfr4p"]
 [ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="25_3cjrj"]
 [ext_resource type="Texture2D" uid="uid://b2g6o46moy165" path="res://Entities/Nana/nana_silhouette_1.png" id="26_vfr4p"]
@@ -62,7 +62,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_4ma8g"]
+[sub_resource type="Resource" id="Resource_rdico"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ground_tex = ExtResource("12_rdico")
@@ -72,7 +72,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_xfawk"]
+[sub_resource type="Resource" id="Resource_4ma8g"]
 script = ExtResource("13_4ma8g")
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
@@ -267,7 +267,7 @@ TargetSceneName = "Bus Travel"
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_4ma8g")
+WhatItemAmI = SubResource("Resource_rdico")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -290,7 +290,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="." unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_xfawk")
+WhatItemAmI = SubResource("Resource_4ma8g")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -376,7 +376,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=1456549778]
 script = ExtResource("19_r8l8j")
-Track = ExtResource("20_3uelr")
+Track = ExtResource("23_rdico")
 OnReady = true
 
 [node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=534217810 node_paths=PackedStringArray("ObjectToCall")]

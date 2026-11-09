@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://de7vd21bnh3rn"]
+[gd_scene format=4 uid="uid://de7vd21bnh3rn"]
 
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="3_2k8j5"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="4_pofgw"]
@@ -7,12 +7,27 @@
 [ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Entities/PlayerXochi/Hooking/hookable_position.tscn" id="6_ajgnu"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="7_8o0jn"]
 [ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/CameraCursor/Cursor.tscn" id="7_e2aq0"]
+[ext_resource type="PackedScene" uid="uid://crdxtwfpwcijh" path="res://Vining/VentryPoint.tscn" id="8_4u38e"]
+[ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="9_hkqfb"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="10_g4ewm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrn0"]
 size = Vector2(2087, 89)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajgnu"]
 size = Vector2(64, 125)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrqcn"]
+texture = ExtResource("10_g4ewm")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_hck02"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
+sources/0 = SubResource("TileSetAtlasSource_mrqcn")
 
 [node name="HookLab" type="Node2D" unique_id=622899540]
 
@@ -79,3 +94,29 @@ FunctionName = "OnLoad"
 
 [node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("7_8o0jn")]
 position = Vector2(395, 250)
+
+[node name="VentRoom" type="Node2D" parent="." unique_id=864136678 groups=["ventroom"]]
+script = ExtResource("9_hkqfb")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VentRoom" unique_id=1485016729]
+self_modulate = Color(0.57520974, 0.15684047, 0.22424221, 1)
+z_index = 2
+tile_map_data = PackedByteArray("AAAJAAgAAAAAAAAAAAAJAAcAAAAAAAAAAAAJAAYAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAAAAAAAAAALAAUAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAAOAAUAAAAAAAAAAAAPAAUAAAAAAAAAAAAQAAUAAAAAAAAAAAARAAUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_hck02")
+
+[node name="VENTBG" type="ColorRect" parent="VentRoom" unique_id=2006635573]
+visible = false
+z_index = 1
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="VentryPoint" parent="." unique_id=1076141324 instance=ExtResource("8_4u38e")]
+z_index = 2
+position = Vector2(304, 265)
+
+[node name="VentryPoint2" parent="." unique_id=1268406575 instance=ExtResource("8_4u38e")]
+z_index = 2
+position = Vector2(587, 177)

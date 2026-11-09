@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cu6u5sq6jfwyc"
+path="res://.godot/imported/Nuance Fair.mp3-c0c801e7db0519595ceaf7c97af80645.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/Nuance Fair.mp3"
+dest_files=["res://.godot/imported/Nuance Fair.mp3-c0c801e7db0519595ceaf7c97af80645.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

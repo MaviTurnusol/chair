@@ -13,5 +13,6 @@ var LegPercent : float = 1
 @export var PathFindingLayer : TileMapLayer
 
 func _process(delta: float) -> void:
-	boss_core.global_position = boss_core.global_position.move_toward(UnlimitedRulebook.player.global_position+Vector2(0,-50),(triped_legs.GetPercentOfLegsAttached()*legboost)*speed*delta)
+	if(UnlimitedRulebook.player):
+		boss_core.global_position = boss_core.global_position.move_toward(UnlimitedRulebook.player.global_position+Vector2(0,-50),(triped_legs.GetPercentOfLegsAttached()*legboost)*speed*delta)
 	#move_and_slide()

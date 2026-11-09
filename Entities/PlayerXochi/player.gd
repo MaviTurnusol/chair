@@ -141,3 +141,12 @@ func set_collisions(foo) -> void:
 	else:
 		$Marker2D/HurtBox/CollisionShape2D.set_deferred("disabled", true)
 		$ActionableFinder/CollisionShape2D.set_deferred("disabled",true)
+
+func StartVenting():
+	#state = STATES.VENTING
+	pass
+func StopVenting(WhereExit): #VECTOR2 in global
+	if(WhereExit != null):
+		global_position = WhereExit - Vector2(0,-32) #Vector2(0,($Marker2D/anima.sprite_frames.get_frame_texture($Marker2D/anima.animation,$Marker2D/anima.frame).get_height()/6))
+	#state = STATES.LEAVEVENT
+	pass
