@@ -4,6 +4,7 @@ extends Camera2D
 @export var target: Node2D
 
 var current_target: Vector2
+
 @export var disabled = false
 
 var targetzoom : float = 1
@@ -17,6 +18,11 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	print(UnlimitedRulebook.currentScene.room.RoomCenter)
+	
+	if UnlimitedRulebook.currentScene.room.RoomCenter != Vector2(0, 0):
+		current_target = (UnlimitedRulebook.currentScene.room.RoomCenter*2 + target.global_position)/3
+		
 	if UnlimitedRulebook.lockedEnemyPosition != Vector2(0, 0):
 		current_target = (target.global_position*2 + UnlimitedRulebook.lockedEnemyPosition)/3
 	

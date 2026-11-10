@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://bqpejlwe017mq"]
+
+[ext_resource type="Texture2D" uid="uid://6qeqxipldjgp" path="res://Environments/Tecciz1BossRoom/tecciz_1_boss_room.png" id="1_2tx20"]
+[ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="2_cau51"]
+[ext_resource type="Texture2D" uid="uid://dhjto6k6qb1g4" path="res://Environments/Tecciz1BossRoom/teccizbosscanvas1.png" id="2_pxv66"]
+[ext_resource type="Texture2D" uid="uid://s63egv427rdp" path="res://Environments/Tecciz1BossRoom/teccizbosscanvas2.png" id="3_cau51"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jrbt2"]
+shader = ExtResource("2_cau51")
+shader_parameter/FlashAmount = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yihwo"]
+atlas = ExtResource("2_pxv66")
+region = Rect2(0, 0, 2688, 1080)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb8l6"]
+atlas = ExtResource("3_cau51")
+region = Rect2(0, 0, 2688, 1080)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gbivm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yihwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yb8l6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jrbt2"]
+size = Vector2(2087, 89)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxv66"]
+size = Vector2(156, 340)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cau51"]
+size = Vector2(583, 114)
+
+[node name="Tecciz1BossRoom" type="Node2D" unique_id=374487299]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=660167104]
+offset_left = -178.0
+offset_top = -90.0
+offset_right = 1057.0
+offset_bottom = 546.0
+color = Color(0, 0, 0, 1)
+
+[node name="Tecciz1BossRoom" type="Sprite2D" parent="." unique_id=1250750063]
+position = Vector2(448, 180)
+texture = ExtResource("1_2tx20")
+
+[node name="teccizBossRoomCanvas" type="AnimatedSprite2D" parent="." unique_id=722468264]
+z_index = 100
+material = SubResource("ShaderMaterial_jrbt2")
+position = Vector2(0, 36)
+scale = Vector2(0.33333334, 0.33333334)
+sprite_frames = SubResource("SpriteFrames_gbivm")
+autoplay = "default"
+frame_progress = 0.9199348
+centered = false
+
+[node name="Collisions" type="Node2D" parent="." unique_id=346303321]
+position = Vector2(135, -514)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=815955398]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=726646847]
+position = Vector2(909, 898.5)
+shape = SubResource("RectangleShape2D_jrbt2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=1011137950]
+position = Vector2(-57, 684)
+shape = SubResource("RectangleShape2D_pxv66")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=139247010]
+position = Vector2(683, 684)
+shape = SubResource("RectangleShape2D_pxv66")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=214563612]
+position = Vector2(312.5, 571)
+shape = SubResource("RectangleShape2D_cau51")

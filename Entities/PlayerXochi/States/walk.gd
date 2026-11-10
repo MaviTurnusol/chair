@@ -13,6 +13,8 @@ func PhysicsProcess(_delta):
 		if int(stateOwner.get_node("Marker2D").scale.x) != int(sign(stateOwner.velocity.x)):
 			stateOwner.anima.play("walkBackwards")
 		#print("WWAWA")
+		else:
+			stateOwner.anima.play("walk")
 	else:
 		stateOwner.anima.play("walk")
 		#print("direction: " + str(int(stateOwner.get_node("Marker2D").scale.x)))
