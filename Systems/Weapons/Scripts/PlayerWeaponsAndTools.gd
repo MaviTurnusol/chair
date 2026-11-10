@@ -48,8 +48,9 @@ func RemoveBulletFromInventory(WhatType:UnlimitedRulebook.AmmoTypes):
 	var AmmoItems = GetAmmoItemsInInventory()
 	for i in AmmoItems:
 		if(i.AmmoType==WhatType):
-			i.AmmoCount-=1
-			break
+			if(i.AmmoCount>0):
+				i.AmmoCount-=1
+				break
 	UpdateAmmo()
 
 func UpdateAmmo():

@@ -12,4 +12,4 @@ func UpdateDisplay(_nullvar : Variant=null):
 		text = str(UnlimitedRulebook.AmmoTypes.find_key(AmmoType)) +":"
 		return
 	text = str(UnlimitedRulebook.AmmoTypes.find_key(AmmoType))+": " + str(UnlimitedRulebook.AmmoCounts[AmmoType])
-	print("IDSADS")
+	#print("IDSADS")
