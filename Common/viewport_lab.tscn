@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dgmaeuy80dq2c" path="res://Environments/ui/HUD/rightdragon0000.png" id="11_yihwo"]
 [ext_resource type="Texture2D" uid="uid://cxas7q3nvpj6v" path="res://Environments/ui/HUD/rightdragon0001.png" id="12_yb8l6"]
 [ext_resource type="Texture2D" uid="uid://bwaxhe1eqr6up" path="res://Environments/ui/HUD/rightdragon0002.png" id="13_i25fj"]
+[ext_resource type="Script" uid="uid://dgfhr5513mehw" path="res://Common/PlayerAmmoCountDisplayer.gd" id="14_t3jq8"]
 
 [sub_resource type="Gradient" id="Gradient_pem85"]
 interpolation_mode = 1
@@ -202,3 +203,42 @@ sprite_frames = SubResource("SpriteFrames_4rsxg")
 animation = &"chomp"
 autoplay = "default"
 offset = Vector2(128, 0)
+
+[node name="AmmoCounts" type="Control" parent="PlayerHud" unique_id=1794685523]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 691.0
+offset_top = 112.0
+offset_right = 991.0
+offset_bottom = 312.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="PlayerHud/AmmoCounts" unique_id=246162831]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 66.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27314225, 0.27314225, 0.27314222, 1)
+
+[node name="smalltext" type="Label" parent="PlayerHud/AmmoCounts" unique_id=139757850]
+z_index = 1
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 60
+text = "asd"
+script = ExtResource("14_t3jq8")
+
+[node name="mediumtext" type="Label" parent="PlayerHud/AmmoCounts" unique_id=622261710]
+z_index = 1
+layout_mode = 0
+offset_top = 100.0
+offset_right = 300.0
+offset_bottom = 200.0
+theme_override_font_sizes/font_size = 60
+text = "asd"
+script = ExtResource("14_t3jq8")
+AmmoType = 1
