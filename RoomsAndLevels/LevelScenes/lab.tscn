@@ -73,7 +73,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_r58iw"]
+[sub_resource type="Resource" id="Resource_3l8j0"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ground_tex = ExtResource("12_rdico")
@@ -83,7 +83,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_3l8j0"]
+[sub_resource type="Resource" id="Resource_rdico"]
 script = ExtResource("13_4ma8g")
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
@@ -237,7 +237,7 @@ texture = ExtResource("7_b6emh")
 
 [node name="PickupableItem" parent="Interactables" unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_r58iw")
+WhatItemAmI = SubResource("Resource_3l8j0")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -260,7 +260,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="Interactables" unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_3l8j0")
+WhatItemAmI = SubResource("Resource_rdico")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -312,7 +312,7 @@ DoSetPositionAtNewScene = true
 
 [node name="RealDoor3" parent="Doors" unique_id=1260977748 instance=ExtResource("9_3cjrj")]
 position = Vector2(35, 228)
-TargetSceneName = "Bus Travel"
+TargetSceneName = "Enemy Lab"
 
 [node name="Enemies" type="Node" parent="." unique_id=1498710853]
 

@@ -36,10 +36,41 @@ func GetAllRangedWeapons()->Array[InventoryItem]:
 			rangedweapons.append(i)
 	return rangedweapons
 
+func GetAmmoItemsInInventory()->Array[InventoryItem]:
+	var invgrid : InventoryGrid = PlayerInventoryComponent.OwnInventoryGrid
+	var ammoItems : Array[InventoryItem]
+	for i in invgrid.ItemsInInv:
+		if(UnlimitedRulebook.ItemAttribute.Ammo in i.ItemAttributes):
+			ammoItems.append(i)
+	return ammoItems
+
+func RemoveBulletFromInventory(WhatType:UnlimitedRulebook.AmmoTypes):
+	var AmmoItems = GetAmmoItemsInInventory()
+	for i in AmmoItems:
+		if(i.AmmoType==WhatType):
+			i.AmmoCount-=1
+			break
+	UpdateAmmo()
+
+func UpdateAmmo():
+	var AmmoItems = GetAmmoItemsInInventory()
+	
+	var NewAmmoDict : Dictionary[UnlimitedRulebook.AmmoTypes,int]
+	
+	for i in AmmoItems:
+		if(!NewAmmoDict.has(i.AmmoType)):
+			NewAmmoDict[i.AmmoType] = i.AmmoCount
+			continue
+		NewAmmoDict[i.AmmoType] += i.AmmoType
+	UnlimitedRulebook.AmmoCounts = NewAmmoDict
+	print("Bullets:")
+	print(UnlimitedRulebook.AmmoCounts)
+
 func _ready() -> void:
 	PlayerStateMachine.StateChanged.connect(CheckIfCanAttack)
 	PlayerInventoryComponent.ItemAddedToInventory.connect(CheckIfCanAttack)
-
+	PlayerInventoryComponent.ItemAddedToInventory.connect(UpdateAmmo)
+	UnlimitedRulebook.BulletDiscard.connect(RemoveBulletFromInventory)
 func CheckIfCanAttack():
 	if(PlayerStateMachine.currentState in MeleeableStates):
 		if(!MeleeWeaponNode):
@@ -65,7 +96,7 @@ func ShowMelee():
 		MeleeHoldParent.add_child(MeleeWeaponNode)
 func HideMelee():
 	if(MeleeWeaponNode):
-		print("DESTROYED")
+		#print("DESTROYED")
 		MeleeWeaponNode.queue_free()
 		MeleeWeaponNode = null
 

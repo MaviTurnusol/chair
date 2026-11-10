@@ -31,7 +31,7 @@ BulletCasingShootDirection = Vector2(0.1, -1)
 FirePointHelperGizmo = NodePath("Fire Point")
 PivotPointHelperGizmo = NodePath("Pivot Point")
 GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
-GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@20949")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@20249")
 metadata/_custom_type_script = "uid://y10s2jb0y8n1"
 
 [node name="Fire Point" type="Marker2D" parent="." unique_id=2096501808]

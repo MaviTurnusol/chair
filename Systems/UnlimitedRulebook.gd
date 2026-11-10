@@ -27,10 +27,22 @@ var char_archive = {
 	"nana": ["Nanāhuātzin","FF0000"],
 }
 
+var AmmoCounts : Dictionary[AmmoTypes,int]
+enum AmmoTypes{
+	Small,
+	Medium,
+	Large,
+}
+signal BulletDiscard(WhatType:AmmoTypes)
+func DiscardBullet(WhatType : AmmoTypes,howmany:int=1):
+	for i in range(0,howmany):
+		BulletDiscard.emit(WhatType)
+
 enum ItemAttribute{
 	Null,
 	MeleeWeapon,
 	RangedWeapon,
+	Ammo,
 	Quest,
 }
 

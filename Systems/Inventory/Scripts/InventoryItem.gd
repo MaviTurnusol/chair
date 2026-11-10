@@ -1,3 +1,4 @@
+@tool
 class_name InventoryItem
 extends Resource
 
@@ -14,7 +15,12 @@ extends Resource
 @export_subgroup("Functional")
 @export var ShapePoints : Array[Vector2i] ##The shape in inventory
 @export var ItemAttributes : Array[UnlimitedRulebook.ItemAttribute]
-@export var AssociatedScene : PackedScene = null ##For Example, A gun or melee scene.
+
+
+@export_subgroup("Functional/Attribute-specific-properties")
+var AssociatedScene : PackedScene = null ##For Example, A gun or melee scene.
+var AmmoType : UnlimitedRulebook.AmmoTypes
+var AmmoCount : int
 
 var Position : Vector2i
 var BaseShapePoints = null
@@ -86,3 +92,22 @@ func RotateItem():
 			RotateTo270()
 		Rotations.TWOSEVENTY:
 			RotateTo0()
+
+func _validate_property(property: Dictionary) -> void:
+	if(property.name == "AssociatedScene"):
+		if(UnlimitedRulebook.ItemAttribute.MeleeWeapon in ItemAttributes&&UnlimitedRulebook.ItemAttribute.RangedWeapon in ItemAttributes):
+			property.usage |= PROPERTY_USAGE_NONE
+		if(UnlimitedRulebook.ItemAttribute.MeleeWeapon in ItemAttributes||UnlimitedRulebook.ItemAttribute.RangedWeapon in ItemAttributes):
+			property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
+	
+	if(property.name in ["AmmoCount","AmmoType"]):
+		#"hint": PROPERTY_HINT_ENUM,
+		#"hint_string": ",".join(values)
+		if(property.name == "AmmoType"):
+			property.hint = PROPERTY_HINT_ENUM
+			property.hint_string = ",".join(UnlimitedRulebook.AmmoTypes.keys())
+		if(!UnlimitedRulebook.ItemAttribute.Ammo in ItemAttributes):
+			property.usage |= PROPERTY_USAGE_NONE
+		if(UnlimitedRulebook.ItemAttribute.Ammo in ItemAttributes):
+			property.usage |= PROPERTY_USAGE_EDITOR + PROPERTY_USAGE_STORAGE
+	property_list_changed.emit()

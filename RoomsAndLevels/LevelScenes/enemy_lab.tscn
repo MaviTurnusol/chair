@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://Entities/Nana/nana1.png" id="18_scnhh"]
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="19_0ipvf"]
 [ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="19_gmoma"]
+[ext_resource type="Texture2D" uid="uid://vcj75wysmexp" path="res://Environments/BusOutSprites/icon.svg" id="20_21iup"]
 [ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="20_xqul6"]
 [ext_resource type="PackedScene" uid="uid://c3wm4v4rx7sv6" path="res://Systems/Weapons/RangedWeapons/player_gun_test.tscn" id="21_1bhf7"]
 [ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="21_gt5fq"]
@@ -54,7 +55,7 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_mrqcn")
 
-[sub_resource type="Resource" id="Resource_bolhi"]
+[sub_resource type="Resource" id="Resource_21iup"]
 script = ExtResource("19_0ipvf")
 ItemName = "example"
 ground_tex = ExtResource("18_scnhh")
@@ -64,7 +65,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("17_21iup")
 
-[sub_resource type="Resource" id="Resource_21iup"]
+[sub_resource type="Resource" id="Resource_scnhh"]
 script = ExtResource("19_0ipvf")
 ground_tex = ExtResource("22_yf8yh")
 inventory_tex = ExtResource("22_yf8yh")
@@ -73,6 +74,18 @@ inv_scalemulti = 1.5
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
 ItemAttributes = Array[int]([2])
 AssociatedScene = ExtResource("21_1bhf7")
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_bolhi"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 0
+AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [node name="EnemyLab" type="Node2D" unique_id=622899540]
@@ -151,11 +164,9 @@ offset_right = 2500.0
 offset_bottom = 2500.0
 color = Color(0, 0, 0, 0.61960787)
 
-[node name="Spiderrr" parent="." unique_id=532131844 instance=ExtResource("10_rdp63")]
-
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_bolhi")]
 position = Vector2(556, 212)
-WhatItemAmI = SubResource("Resource_bolhi")
+WhatItemAmI = SubResource("Resource_21iup")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -167,7 +178,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="." unique_id=611595821 instance=ExtResource("16_bolhi")]
 position = Vector2(644, 212)
-WhatItemAmI = SubResource("Resource_21iup")
+WhatItemAmI = SubResource("Resource_scnhh")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=863504184 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -176,9 +187,6 @@ PropertiesToSave = Dictionary[String, String]({
 "pickedup": "Gun2PickUp"
 })
 metadata/_custom_type_script = "uid://da5lprft6mb74"
-
-[node name="JustANormalGuy" parent="." unique_id=1552983653 instance=ExtResource("23_21iup")]
-position = Vector2(792, 225)
 
 [node name="MusicPlayOnSceneLoad2" type="Node" parent="." unique_id=1048006974]
 script = ExtResource("4_qdili")
@@ -191,32 +199,51 @@ script = ExtResource("6_5jlu8")
 ObjectToCall = NodePath("..")
 FunctionName = "OnLoad"
 
-[node name="CeilingWorm" parent="." unique_id=908797744 instance=ExtResource("22_bolhi")]
+[node name="PickupableItem3" parent="." unique_id=625144479 instance=ExtResource("16_bolhi")]
+position = Vector2(270, 230)
+WhatItemAmI = SubResource("Resource_bolhi")
+
+[node name="SaveLoad" type="Node" parent="PickupableItem3" unique_id=994757030 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("20_xqul6")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="Enemies" type="Node2D" parent="." unique_id=674820180]
+
+[node name="Spiderrr" parent="Enemies" unique_id=532131844 instance=ExtResource("10_rdp63")]
+
+[node name="CeilingWorm" parent="Enemies" unique_id=908797744 instance=ExtResource("22_bolhi")]
 position = Vector2(524, 80)
 
-[node name="CeilingWorm2" parent="." unique_id=1063119453 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm2" parent="Enemies" unique_id=1063119453 instance=ExtResource("22_bolhi")]
 position = Vector2(581, 80)
 
-[node name="CeilingWorm3" parent="." unique_id=2078678675 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm3" parent="Enemies" unique_id=2078678675 instance=ExtResource("22_bolhi")]
 position = Vector2(636, 82)
 
-[node name="CeilingWorm4" parent="." unique_id=11565657 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm4" parent="Enemies" unique_id=11565657 instance=ExtResource("22_bolhi")]
 position = Vector2(692, 82)
 
-[node name="CeilingWorm5" parent="." unique_id=1229842548 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm5" parent="Enemies" unique_id=1229842548 instance=ExtResource("22_bolhi")]
 position = Vector2(755, 82)
 
-[node name="CeilingWorm6" parent="." unique_id=367104710 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm6" parent="Enemies" unique_id=367104710 instance=ExtResource("22_bolhi")]
 position = Vector2(818, 82)
 
-[node name="CeilingWorm7" parent="." unique_id=542928290 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm7" parent="Enemies" unique_id=542928290 instance=ExtResource("22_bolhi")]
 position = Vector2(879, 82)
 
-[node name="CeilingWorm8" parent="." unique_id=1814298700 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm8" parent="Enemies" unique_id=1814298700 instance=ExtResource("22_bolhi")]
 position = Vector2(936, 82)
 
-[node name="CeilingWorm9" parent="." unique_id=34570780 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm9" parent="Enemies" unique_id=34570780 instance=ExtResource("22_bolhi")]
 position = Vector2(986, 80)
 
-[node name="CeilingWorm10" parent="." unique_id=839438107 instance=ExtResource("22_bolhi")]
+[node name="CeilingWorm10" parent="Enemies" unique_id=839438107 instance=ExtResource("22_bolhi")]
 position = Vector2(986, 80)
+
+[node name="JustANormalGuy" parent="Enemies" unique_id=1552983653 instance=ExtResource("23_21iup")]
+position = Vector2(792, 225)

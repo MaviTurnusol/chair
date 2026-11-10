@@ -6,7 +6,7 @@ var Sprite : Sprite2D
 var TimeSinceShot : float = 0
 
 const WhichLayerBlocksBullets : int = 3
-
+@export var AmmoType : UnlimitedRulebook.AmmoTypes
 @export_category("Data")
 @export var GunTexture : Texture2D:
 	set(NewText):
@@ -201,9 +201,15 @@ func Use():
 	if(CheckIfCanShoot()):
 		Shoot()
 	else:
-		print("Wait More Time Before Shooting Again")
+		print("cant shoot")
+		#print("Wait More Time Before Shooting Again")
 
 func CheckIfCanShoot():
+	if(UnlimitedRulebook.AmmoCounts.has(AmmoType)):
+		if(UnlimitedRulebook.AmmoCounts[AmmoType]<=0):
+			return false
+	else:
+		return false
 	if(TimeSinceShot>=TimeBetweenShots):
 		return true
 	else:
@@ -220,6 +226,11 @@ func ShootBullet():
 	for wave in range(0,BulletWaveAmount):
 		var hasfiredonce : bool = false
 		for i in range(0,BulletAmount):
+			
+			#ammo
+			if(UnlimitedRulebook.AmmoCounts[AmmoType]<=0):
+				continue
+			UnlimitedRulebook.DiscardBullet(AmmoType)
 			
 			FireBullet()
 			
@@ -260,8 +271,15 @@ func FireBullet():
 
 func ShootHitscan():
 	for wave in range(0,HitscanBulletWaveAmount):
+		
+		
 		var hasfiredonce : bool = false
 		for i in range(0,HitscanBulletAmount):
+			
+			#ammo
+			if(UnlimitedRulebook.AmmoCounts[AmmoType]<=0):
+				continue
+			UnlimitedRulebook.DiscardBullet(AmmoType)
 			
 			FireHitscan()
 			
