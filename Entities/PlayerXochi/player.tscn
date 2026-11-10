@@ -1317,7 +1317,6 @@ script = ExtResource("35_c6x0f")
 script = ExtResource("40_6pogt")
 
 [node name="PlayerInventoryDisplayer" type="CanvasLayer" parent="PlayerInventory" unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent")]
-visible = false
 script = ExtResource("36_qs4pp")
 _InventoryComponent = NodePath("../PlayerInventoryComponent")
 
@@ -1333,8 +1332,9 @@ mouse_filter = 2
 [node name="Inventory" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer/Control" unique_id=621423805]
 z_index = 1
 anchors_preset = 0
+offset_top = 100.0
 offset_right = 650.0
-offset_bottom = 650.0
+offset_bottom = 750.0
 pivot_offset = Vector2(325, 325)
 
 [node name="GridContainer" type="GridContainer" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=1012758651]

@@ -276,7 +276,7 @@ WhatItemAmI = SubResource("Resource_edfr6")
 script = ExtResource("20_xqul6")
 ObjToSave = NodePath("..")
 PropertiesToSave = Dictionary[String, String]({
-"pickedup": "Gun2PickUp"
+"pickedup": "MediumGun1PickedUp"
 })
 metadata/_custom_type_script = "uid://da5lprft6mb74"
 
