@@ -16,13 +16,18 @@
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://Entities/Nana/nana1.png" id="18_scnhh"]
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="19_0ipvf"]
 [ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="19_gmoma"]
+[ext_resource type="Texture2D" uid="uid://b0ascue8igesb" path="res://Systems/Weapons/Sprites/Held_SmallGun2-export.png" id="19_scnhh"]
+[ext_resource type="Script" uid="uid://y10s2jb0y8n1" path="res://Systems/Weapons/Scripts/PlayerGun.gd" id="19_yf8yh"]
 [ext_resource type="Texture2D" uid="uid://vcj75wysmexp" path="res://Environments/BusOutSprites/icon.svg" id="20_21iup"]
 [ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="20_xqul6"]
 [ext_resource type="PackedScene" uid="uid://c3wm4v4rx7sv6" path="res://Systems/Weapons/RangedWeapons/player_gun_test.tscn" id="21_1bhf7"]
+[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://Systems/Weapons/GunsVFX/crossAir.tscn" id="21_gfc1x"]
 [ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="21_gt5fq"]
 [ext_resource type="PackedScene" uid="uid://c1c5xoms8xmjr" path="res://Entities/Wormy/CeilingWorm.tscn" id="22_bolhi"]
+[ext_resource type="PackedScene" uid="uid://bu2p6l1xrf5ud" path="res://Systems/Weapons/GunsVFX/BulletCasing1.tscn" id="22_edfr6"]
 [ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://Entities/Wormy/Worm1.png" id="22_yf8yh"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://Entities/Guy/NormalWalkingEnemy1.tscn" id="23_21iup"]
+[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://Systems/Weapons/Scripts/HelperGizmo.gd" id="23_28c4c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
 texture = ExtResource("11_bkbvh")
@@ -74,6 +79,33 @@ inv_scalemulti = 1.5
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1)])
 ItemAttributes = Array[int]([2])
 AssociatedScene = ExtResource("21_1bhf7")
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="PackedScene" id="PackedScene_2ogsr"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"id_paths": [PackedInt32Array(), PackedInt32Array(), PackedInt32Array()],
+"names": PackedStringArray("PlayerGun2", "Node2D", "script", "AmmoType", "GunTexture", "TimeBetweenShots", "Crosshair", "DoShootHitscan", "HitscanBullet", "HitscanBulletSpread", "HitscanBulletAmount", "HitscanBulletDamage", "HitscanBulletTime", "HitscanTimeBetweenBullets", "HitscanBulletWaveAmount", "HitscanAesthetic", "HitscanLineWidth", "HitscanLineColour", "BulletCasing", "DoThrowBulletCasing", "BulletCasing", "BulletCasingShootStrength", "BulletCasingShootDirection", "FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo", "GunPreviewSprite", "metadata/_custom_type_script", "Fire Point", "Marker2D", "position", "script", "Pos", "Pivot Point", "Marker2D", "position", "script", "Pos", "Gun Preview", "Marker2D", "position", "script", "Pos"),
+"node_count": 4,
+"node_ids": PackedInt32Array(811895720, 2096501808, 607079071, 2014610722),
+"node_paths": [NodePath("."), NodePath("."), NodePath("./Pivot Point")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 26, 2, 0, 3, 1, 4, 2, 5, 3, 6, 4, 7, 5, 8, 6, 9, 7, 10, 8, 11, 9, 12, 10, 13, 11, 14, 12, 15, 13, 16, 14, 17, 15, 18, 16, 19, 17, 20, 18, 21, 19, 22, 20, 1073741847, 21, 1073741848, 22, 1073741849, 23, 1073741850, 24, 27, 25, 0, 1073741824, 0, 29, 28, -1, 3, 30, 26, 31, 27, 32, 28, 0, 1073741825, 0, 34, 33, -1, 3, 35, 29, 36, 30, 37, 31, 0, 1073741826, 0, 39, 38, -1, 3, 40, 32, 41, 33, 42, 34, 0),
+"variants": [ExtResource("19_yf8yh"), 1, ExtResource("19_scnhh"), 0.5, ExtResource("21_gfc1x"), true, ExtResource("21_gfc1x"), Vector2(8, 8), 1, 1.0, 0.25, 0.025, 1, null, 2.5, Color(1, 1, 1, 1), ExtResource("22_edfr6"), true, ExtResource("22_edfr6"), Vector2(100, 150), Vector2(0.1, -1), NodePath("Fire Point"), NodePath("Pivot Point"), NodePath("Pivot Point/Gun Preview"), NodePath("Pivot Point/Gun Preview/@Sprite2D@203539"), "uid://y10s2jb0y8n1", Vector2(21.89089, -7.129158), ExtResource("23_28c4c"), Vector2(21.89089, -7.129158), Vector2(-3.5762787e-06, -1.4305115e-06), ExtResource("23_28c4c"), Vector2(-3.5762787e-06, -1.4305115e-06), Vector2(9.634333, -2.68075), ExtResource("23_28c4c"), Vector2(9.634329, -2.6807513)],
+"version": 3
+}
+
+[sub_resource type="Resource" id="Resource_edfr6"]
+script = ExtResource("19_0ipvf")
+ItemName = "Gun 2"
+ground_tex = ExtResource("19_scnhh")
+inventory_tex = ExtResource("19_scnhh")
+ground_scalemulti = 2.0
+inv_scalemulti = 9.0
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1)])
+ItemAttributes = Array[int]([2])
+AssociatedScene = SubResource("PackedScene_2ogsr")
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="Resource" id="Resource_0ipvf"]
@@ -225,10 +257,22 @@ PropertiesToSave = Dictionary[String, String]({
 metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="." unique_id=611595821 instance=ExtResource("16_bolhi")]
-position = Vector2(644, 212)
+position = Vector2(915, 200)
 WhatItemAmI = SubResource("Resource_scnhh")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=863504184 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("20_xqul6")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun2PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="Gun2" parent="." unique_id=788137768 instance=ExtResource("16_bolhi")]
+position = Vector2(644, 212)
+WhatItemAmI = SubResource("Resource_edfr6")
+
+[node name="SaveLoad" type="Node" parent="Gun2" unique_id=1006746121 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
 ObjToSave = NodePath("..")
 PropertiesToSave = Dictionary[String, String]({

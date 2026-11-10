@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dslntq8g4s3yt"]
+
+[ext_resource type="Script" uid="uid://y10s2jb0y8n1" path="res://Systems/Weapons/Scripts/PlayerGun.gd" id="1_u1wbk"]
+[ext_resource type="Texture2D" uid="uid://b0ascue8igesb" path="res://Systems/Weapons/Sprites/Held_SmallGun2-export.png" id="2_u1wbk"]
+[ext_resource type="PackedScene" uid="uid://djqbkcmgwsraw" path="res://Systems/Weapons/GunsVFX/crossAir.tscn" id="3_pe87n"]
+[ext_resource type="PackedScene" uid="uid://bu2p6l1xrf5ud" path="res://Systems/Weapons/GunsVFX/BulletCasing1.tscn" id="4_6fyy0"]
+[ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://Systems/Weapons/Scripts/HelperGizmo.gd" id="5_3bg2e"]
+
+[node name="PlayerGun2" type="Node2D" unique_id=811895720 node_paths=PackedStringArray("FirePointHelperGizmo", "PivotPointHelperGizmo", "GunPreviewHelperGizmo", "GunPreviewSprite")]
+script = ExtResource("1_u1wbk")
+AmmoType = 1
+GunTexture = ExtResource("2_u1wbk")
+TimeBetweenShots = 0.5
+Crosshair = ExtResource("3_pe87n")
+DoShootHitscan = true
+HitscanBullet = ExtResource("3_pe87n")
+HitscanBulletSpread = Vector2(8, 8)
+HitscanBulletAmount = 1
+HitscanBulletDamage = 1.0
+HitscanBulletTime = 0.25
+HitscanTimeBetweenBullets = 0.025
+HitscanBulletWaveAmount = 1
+HitscanAesthetic = null
+HitscanLineWidth = 2.5
+HitscanLineColour = Color(1, 1, 1, 1)
+BulletCasing = ExtResource("4_6fyy0")
+DoThrowBulletCasing = true
+BulletCasing = ExtResource("4_6fyy0")
+BulletCasingShootStrength = Vector2(100, 150)
+BulletCasingShootDirection = Vector2(0.1, -1)
+FirePointHelperGizmo = NodePath("Fire Point")
+PivotPointHelperGizmo = NodePath("Pivot Point")
+GunPreviewHelperGizmo = NodePath("Pivot Point/Gun Preview")
+GunPreviewSprite = NodePath("Pivot Point/Gun Preview/@Sprite2D@203539")
+metadata/_custom_type_script = "uid://y10s2jb0y8n1"
+
+[node name="Fire Point" type="Marker2D" parent="." unique_id=2096501808]
+position = Vector2(21.89089, -7.129158)
+script = ExtResource("5_3bg2e")
+Pos = Vector2(21.89089, -7.129158)
+
+[node name="Pivot Point" type="Marker2D" parent="." unique_id=607079071]
+position = Vector2(-3.5762787e-06, -1.4305115e-06)
+script = ExtResource("5_3bg2e")
+Pos = Vector2(-3.5762787e-06, -1.4305115e-06)
+
+[node name="Gun Preview" type="Marker2D" parent="Pivot Point" unique_id=2014610722]
+position = Vector2(9.634333, -2.68075)
+script = ExtResource("5_3bg2e")
+Pos = Vector2(9.634329, -2.6807513)
