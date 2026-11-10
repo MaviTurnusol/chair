@@ -76,7 +76,7 @@ ItemAttributes = Array[int]([2])
 AssociatedScene = ExtResource("21_1bhf7")
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
-[sub_resource type="Resource" id="Resource_bolhi"]
+[sub_resource type="Resource" id="Resource_0ipvf"]
 script = ExtResource("19_0ipvf")
 ItemName = "Ammo Small"
 ground_tex = ExtResource("20_21iup")
@@ -85,6 +85,54 @@ ground_scalemulti = 0.4
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
 ItemAttributes = Array[int]([3])
 AmmoType = 0
+AmmoCount = 23
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_xqul6"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 0
+AmmoCount = 23
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_1bhf7"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 0
+AmmoCount = 23
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_yf8yh"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 0
+AmmoCount = 23
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_gfc1x"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 1
 AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
@@ -199,11 +247,59 @@ script = ExtResource("6_5jlu8")
 ObjectToCall = NodePath("..")
 FunctionName = "OnLoad"
 
-[node name="PickupableItem3" parent="." unique_id=625144479 instance=ExtResource("16_bolhi")]
+[node name="AmmoItem" parent="." unique_id=625144479 instance=ExtResource("16_bolhi")]
 position = Vector2(270, 230)
-WhatItemAmI = SubResource("Resource_bolhi")
+WhatItemAmI = SubResource("Resource_0ipvf")
 
-[node name="SaveLoad" type="Node" parent="PickupableItem3" unique_id=994757030 node_paths=PackedStringArray("ObjToSave")]
+[node name="SaveLoad" type="Node" parent="AmmoItem" unique_id=994757030 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("20_xqul6")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="AmmoItem2" parent="." unique_id=1897291009 instance=ExtResource("16_bolhi")]
+position = Vector2(1061, 246)
+WhatItemAmI = SubResource("Resource_xqul6")
+
+[node name="SaveLoad" type="Node" parent="AmmoItem2" unique_id=1213417140 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("20_xqul6")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="AmmoItem3" parent="." unique_id=1577489028 instance=ExtResource("16_bolhi")]
+position = Vector2(1182, 250)
+WhatItemAmI = SubResource("Resource_1bhf7")
+
+[node name="SaveLoad" type="Node" parent="AmmoItem3" unique_id=378527000 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("20_xqul6")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="AmmoItem4" parent="." unique_id=123239139 instance=ExtResource("16_bolhi")]
+position = Vector2(1310, 256)
+WhatItemAmI = SubResource("Resource_yf8yh")
+
+[node name="SaveLoad" type="Node" parent="AmmoItem4" unique_id=2038474076 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("20_xqul6")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="AmmoItem5" parent="." unique_id=200625649 instance=ExtResource("16_bolhi")]
+position = Vector2(1405, 250)
+WhatItemAmI = SubResource("Resource_gfc1x")
+
+[node name="SaveLoad" type="Node" parent="AmmoItem5" unique_id=1158565589 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
 ObjToSave = NodePath("..")
 PropertiesToSave = Dictionary[String, String]({

@@ -61,7 +61,7 @@ func UpdateAmmo():
 		if(!NewAmmoDict.has(i.AmmoType)):
 			NewAmmoDict[i.AmmoType] = i.AmmoCount
 			continue
-		NewAmmoDict[i.AmmoType] += i.AmmoType
+		NewAmmoDict[i.AmmoType] += i.AmmoCount
 	UnlimitedRulebook.AmmoCounts = NewAmmoDict
 	print("Bullets:")
 	print(UnlimitedRulebook.AmmoCounts)
