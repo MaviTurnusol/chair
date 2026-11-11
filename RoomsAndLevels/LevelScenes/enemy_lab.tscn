@@ -60,7 +60,7 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_mrqcn")
 
-[sub_resource type="Resource" id="Resource_21iup"]
+[sub_resource type="Resource" id="Resource_yf8yh"]
 script = ExtResource("19_0ipvf")
 ItemName = "example"
 ground_tex = ExtResource("18_scnhh")
@@ -70,7 +70,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("17_21iup")
 
-[sub_resource type="Resource" id="Resource_scnhh"]
+[sub_resource type="Resource" id="Resource_gfc1x"]
 script = ExtResource("19_0ipvf")
 ground_tex = ExtResource("22_yf8yh")
 inventory_tex = ExtResource("22_yf8yh")
@@ -108,7 +108,7 @@ ItemAttributes = Array[int]([2])
 AssociatedScene = SubResource("PackedScene_2ogsr")
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
-[sub_resource type="Resource" id="Resource_0ipvf"]
+[sub_resource type="Resource" id="Resource_28c4c"]
 script = ExtResource("19_0ipvf")
 ItemName = "Ammo Small"
 ground_tex = ExtResource("20_21iup")
@@ -120,7 +120,7 @@ AmmoType = 0
 AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
-[sub_resource type="Resource" id="Resource_xqul6"]
+[sub_resource type="Resource" id="Resource_2ogsr"]
 script = ExtResource("19_0ipvf")
 ItemName = "Ammo Small"
 ground_tex = ExtResource("20_21iup")
@@ -132,7 +132,7 @@ AmmoType = 0
 AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
-[sub_resource type="Resource" id="Resource_1bhf7"]
+[sub_resource type="Resource" id="Resource_gojle"]
 script = ExtResource("19_0ipvf")
 ItemName = "Ammo Small"
 ground_tex = ExtResource("20_21iup")
@@ -144,7 +144,7 @@ AmmoType = 0
 AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
-[sub_resource type="Resource" id="Resource_yf8yh"]
+[sub_resource type="Resource" id="Resource_5gwlk"]
 script = ExtResource("19_0ipvf")
 ItemName = "Ammo Small"
 ground_tex = ExtResource("20_21iup")
@@ -156,7 +156,7 @@ AmmoType = 0
 AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
-[sub_resource type="Resource" id="Resource_gfc1x"]
+[sub_resource type="Resource" id="Resource_auo4j"]
 script = ExtResource("19_0ipvf")
 ItemName = "Ammo Small"
 ground_tex = ExtResource("20_21iup")
@@ -245,8 +245,8 @@ offset_bottom = 2500.0
 color = Color(0, 0, 0, 0.61960787)
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_bolhi")]
-position = Vector2(556, 212)
-WhatItemAmI = SubResource("Resource_21iup")
+position = Vector2(118, 224)
+WhatItemAmI = SubResource("Resource_yf8yh")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -258,7 +258,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="." unique_id=611595821 instance=ExtResource("16_bolhi")]
 position = Vector2(915, 200)
-WhatItemAmI = SubResource("Resource_scnhh")
+WhatItemAmI = SubResource("Resource_gfc1x")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem2" unique_id=863504184 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -293,7 +293,7 @@ FunctionName = "OnLoad"
 
 [node name="AmmoItem" parent="." unique_id=625144479 instance=ExtResource("16_bolhi")]
 position = Vector2(270, 230)
-WhatItemAmI = SubResource("Resource_0ipvf")
+WhatItemAmI = SubResource("Resource_28c4c")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem" unique_id=994757030 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -305,7 +305,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem2" parent="." unique_id=1897291009 instance=ExtResource("16_bolhi")]
 position = Vector2(1061, 246)
-WhatItemAmI = SubResource("Resource_xqul6")
+WhatItemAmI = SubResource("Resource_2ogsr")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem2" unique_id=1213417140 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -317,7 +317,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem3" parent="." unique_id=1577489028 instance=ExtResource("16_bolhi")]
 position = Vector2(1182, 250)
-WhatItemAmI = SubResource("Resource_1bhf7")
+WhatItemAmI = SubResource("Resource_gojle")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem3" unique_id=378527000 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -329,7 +329,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem4" parent="." unique_id=123239139 instance=ExtResource("16_bolhi")]
 position = Vector2(1310, 256)
-WhatItemAmI = SubResource("Resource_yf8yh")
+WhatItemAmI = SubResource("Resource_5gwlk")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem4" unique_id=2038474076 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -341,7 +341,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem5" parent="." unique_id=200625649 instance=ExtResource("16_bolhi")]
 position = Vector2(1405, 250)
-WhatItemAmI = SubResource("Resource_gfc1x")
+WhatItemAmI = SubResource("Resource_auo4j")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem5" unique_id=1158565589 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")

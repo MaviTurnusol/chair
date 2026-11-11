@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b37wc8wu6gj1s"]
+
+[node name="InteractionListEntry" type="Control" unique_id=111680703]
+custom_minimum_size = Vector2(100, 35)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1571009242]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PromptText" type="Label" parent="." unique_id=1263429929]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "DFGSD"

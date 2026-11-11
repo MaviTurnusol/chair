@@ -21,4 +21,5 @@ scale = Vector2(0.15, 0.15)
 texture = SubResource("GradientTexture2D_xoo0n")
 
 [node name="InteractionPrompter" parent="." unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("3_xoo0n")]
+Prompt_Text = "Pickup Item"
 InteractObject = NodePath("..")

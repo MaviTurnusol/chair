@@ -1,6 +1,8 @@
 extends Area2D
 class_name InteractionPrompt
 
+@export var Prompt_Text : String
+
 @onready var PromptArea : Area2D = self
 @export var InteractRange : float
 @export var InteractEvent : String = "Interact"

@@ -49,6 +49,8 @@
 [ext_resource type="Script" uid="uid://dsr4lse0y86k0" path="res://Entities/PlayerXochi/PlayerInventory.gd" id="40_6pogt"]
 [ext_resource type="Script" uid="uid://hwruf5cnd1xn" path="res://Systems/Weapons/Scripts/PlayerWeaponsAndTools.gd" id="40_8ynux"]
 [ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="43_33gln"]
+[ext_resource type="PackedScene" uid="uid://b37wc8wu6gj1s" path="res://Entities/PlayerXochi/interaction_list_entry.tscn" id="44_pkk0n"]
+[ext_resource type="Texture2D" uid="uid://bn4btssyys82q" path="res://Environments/TestSprites/bigRedArrow.png" id="45_do4aa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_get7g"]
 atlas = ExtResource("4_8ynux")
@@ -1293,12 +1295,49 @@ offset_right = 29.0
 offset_bottom = -61.0
 text = "debug"
 
-[node name="ActionableFinder" parent="." unique_id=1761829163 node_paths=PackedStringArray("cutscene_state") instance=ExtResource("21_hshwv")]
+[node name="ActionableFinder" parent="." unique_id=1761829163 node_paths=PackedStringArray("cutscene_state", "ActionListControl", "SelectArrow") instance=ExtResource("21_hshwv")]
 cutscene_state = NodePath("../StateMachine/Cutscene")
+ActionListControl = NodePath("ScrollContainer/VBoxContainer")
+ActionListEntry = ExtResource("44_pkk0n")
+SelectArrow = NodePath("SelectArrow")
+ArrowOffset = Vector2(96, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableFinder" unique_id=553359887]
 position = Vector2(0, -34.5)
 shape = SubResource("RectangleShape2D_gpjlu")
+
+[node name="ScrollContainer" type="Control" parent="ActionableFinder" unique_id=1747672979]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 29.0
+offset_top = -96.0
+offset_right = 179.0
+offset_bottom = -22.480003
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ActionableFinder/ScrollContainer" unique_id=1843040107]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SelectArrow" type="Control" parent="ActionableFinder" unique_id=388110522]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="ActionableFinder/SelectArrow" unique_id=1465521642]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("45_do4aa")
+expand_mode = 1
+flip_h = true
 
 [node name="PlayerWeaponsAndTools" type="Node" parent="." unique_id=781864843 node_paths=PackedStringArray("MeleeHoldParent", "RangedHoldParent", "PlayerInventoryComponent", "PlayerStateMachine", "MeleeableStates", "RangeeableStates")]
 script = ExtResource("40_8ynux")

@@ -14,6 +14,7 @@ script = ExtResource("1_mpbii")
 
 [node name="InteractionPrompter" parent="." unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("2_tnu0i")]
 z_index = 1
+Prompt_Text = "Enter Door"
 InteractObject = NodePath("..")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1212615574]
