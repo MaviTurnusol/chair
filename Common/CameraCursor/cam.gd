@@ -17,15 +17,18 @@ func _ready() -> void:
 	reset_smoothing.call_deferred()
 
 
-func _process(_delta: float) -> void:
-	print(UnlimitedRulebook.currentScene.room.RoomCenter)
-	
+func _process(_delta: float) -> void:	
 	if UnlimitedRulebook.currentScene.room.RoomCenter != Vector2(0, 0):
 		current_target = (UnlimitedRulebook.currentScene.room.RoomCenter*2 + target.global_position)/3
 		
 	if UnlimitedRulebook.lockedEnemyPosition != Vector2(0, 0):
 		current_target = (target.global_position*2 + UnlimitedRulebook.lockedEnemyPosition)/3
 	
+	if UnlimitedRulebook.player:
+		if is_instance_valid(UnlimitedRulebook.player):
+			if UnlimitedRulebook.player.get_node("PlayerInventory").IsActive:
+				current_target = target.global_position
+				
 	if !disabled:
 		if current_target != Vector2(0, 0):
 			global_position = current_target

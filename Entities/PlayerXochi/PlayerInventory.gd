@@ -22,6 +22,7 @@ func HideInventory():
 	IsActive = false
 
 var IsActive : bool
+
 func ToggleInventory():
 	if(IsActive):
 		HideInventory()

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ch7prlm8q0nv0"]
+
+[ext_resource type="Script" uid="uid://bwibcs47lwvio" path="res://Entities/Teccizlabcoat/tecciz_walk.gd" id="1_tk065"]
+
+[node name="TeccizWalk" type="Node" unique_id=936417360]
+script = ExtResource("1_tk065")
+animName = "walk"
+metadata/_custom_type_script = "uid://cswibj42kh6rk"

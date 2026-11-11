@@ -4,6 +4,7 @@
 [ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="2_cau51"]
 [ext_resource type="Texture2D" uid="uid://dhjto6k6qb1g4" path="res://Environments/Tecciz1BossRoom/teccizbosscanvas1.png" id="2_pxv66"]
 [ext_resource type="Texture2D" uid="uid://s63egv427rdp" path="res://Environments/Tecciz1BossRoom/teccizbosscanvas2.png" id="3_cau51"]
+[ext_resource type="PackedScene" uid="uid://e51hxa7bdr7g" path="res://Entities/Teccizlabcoat/tutorial_tecciz.tscn" id="5_cau51"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jrbt2"]
 shader = ExtResource("2_cau51")
@@ -63,11 +64,17 @@ autoplay = "default"
 frame_progress = 0.9199348
 centered = false
 
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=327338766]
+offset_right = 896.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 1)
+
 [node name="Collisions" type="Node2D" parent="." unique_id=346303321]
 position = Vector2(135, -514)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=815955398]
-collision_layer = 5
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=726646847]
 position = Vector2(909, 898.5)
@@ -84,3 +91,6 @@ shape = SubResource("RectangleShape2D_pxv66")
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=214563612]
 position = Vector2(312.5, 571)
 shape = SubResource("RectangleShape2D_cau51")
+
+[node name="TutorialTecciz" parent="." unique_id=214809299 instance=ExtResource("5_cau51")]
+position = Vector2(206, 340)

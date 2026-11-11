@@ -1201,7 +1201,7 @@ position = Vector2(-11.636646, 10.980812)
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"leavevent"
+animation = &"roll"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 father = NodePath("../..")
@@ -1330,10 +1330,18 @@ mouse_filter = 2
 
 [node name="Inventory" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer/Control" unique_id=621423805]
 z_index = 1
-anchors_preset = 0
-offset_top = 100.0
-offset_right = 650.0
-offset_bottom = 750.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -908.0
+offset_top = -325.0
+offset_right = -258.0
+offset_bottom = 325.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(325, 325)
 
 [node name="GridContainer" type="GridContainer" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=1012758651]
