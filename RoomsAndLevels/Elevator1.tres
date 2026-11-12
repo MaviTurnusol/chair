@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Room" format=3 uid="uid://pcdch30b6dr2"]
+
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://Systems/RoomSystem/Room.gd" id="1_o8qao"]
+
+[resource]
+script = ExtResource("1_o8qao")
+Name = "Elevator1"
+RoomCenter = Vector2(285, 136.87)
+SceneFilePath = "res://RoomsAndLevels/LevelScenes/elevator_lab.tscn"
+metadata/_custom_type_script = "uid://dtoaby0j0tekp"

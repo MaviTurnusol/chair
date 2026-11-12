@@ -1,0 +1,163 @@
+[gd_scene format=4 uid="uid://bnpcaxil7566b"]
+
+[ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="1_nnaud"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="2_sqoxt"]
+[ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/CameraCursor/Cursor.tscn" id="3_w33mg"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="4_5jdj4"]
+[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="5_ddmp6"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="6_0dp0t"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="7_tp8et"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="8_ellj6"]
+[ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="9_44vg3"]
+[ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="10_nigw2"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="11_2ej5p"]
+[ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="24_fq6s6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
+texture = ExtResource("2_sqoxt")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_scnhh"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_21iup")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qasg"]
+size = Vector2(1000, 50)
+
+[sub_resource type="Resource" id="Resource_yc0wm"]
+script = ExtResource("5_ddmp6")
+metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrqcn"]
+texture = ExtResource("11_2ej5p")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_hck02"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
+sources/0 = SubResource("TileSetAtlasSource_mrqcn")
+
+[node name="ElevatorLab" type="Node2D" unique_id=622899540]
+
+[node name="EnemyPreps" type="Node2D" parent="." unique_id=2035388690]
+script = ExtResource("1_nnaud")
+
+[node name="SpiderPaths" type="TileMapLayer" parent="EnemyPreps" unique_id=2078516604]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAQAAQAAAAAAAAAYAAQAAQAAAAAAAAAZAAQAAQAAAAAAAAAaAAQAAQAAAAAAAAAbAAQAAQAAAAAAAAAcAAQAAQAAAAAAAAAdAAQAAQAAAAAAAAAeAAQAAQAAAAAAAAAfAAQAAQAAAAAAAAAgAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_scnhh")
+
+[node name="Cursor" parent="." unique_id=354788821 instance=ExtResource("3_w33mg")]
+position = Vector2(132, -573)
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1658677967]
+position = Vector2(659, -274)
+
+[node name="ColorRect2" type="ColorRect" parent="Sprites" unique_id=458774420]
+offset_left = -633.0
+offset_top = 271.0
+offset_right = -81.315
+offset_bottom = 321.0
+
+[node name="ColorRect5" type="ColorRect" parent="Sprites" unique_id=1567419405]
+offset_left = -633.0
+offset_top = 540.0
+offset_right = -81.315
+offset_bottom = 590.0
+
+[node name="ColorRect3" type="ColorRect" parent="Sprites" unique_id=1755735392]
+offset_left = -80.0
+offset_top = 271.0
+offset_right = 240.32999
+offset_bottom = 321.0
+rotation = 1.5811108
+
+[node name="ColorRect4" type="ColorRect" parent="Sprites" unique_id=1657621634]
+offset_left = -604.00006
+offset_top = 271.0
+offset_right = -283.67007
+offset_bottom = 321.0
+rotation = 1.5811108
+
+[node name="Collisions" type="Node2D" parent="." unique_id=1583388602]
+position = Vector2(527, 299)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=1891834209]
+collision_layer = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=2076735749]
+shape = SubResource("RectangleShape2D_6qasg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=959595042]
+position = Vector2(28, -4)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_6qasg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=561506819]
+position = Vector2(-214, -276)
+rotation = -3.1415927
+shape = SubResource("RectangleShape2D_6qasg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=1681925863]
+position = Vector2(-501, -120)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_6qasg")
+
+[node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("4_5jdj4")]
+position = Vector2(87, 217)
+TargetSceneName = "Lab"
+DoorIdentifier = "Lab-EnemyLab-1"
+transitionData = SubResource("Resource_yc0wm")
+DoSetPositionAtNewScene = true
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
+script = ExtResource("6_0dp0t")
+Track = ExtResource("7_tp8et")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("8_ellj6")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
+
+[node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("9_44vg3")]
+position = Vector2(460, 237)
+
+[node name="VentRoom" type="Node2D" parent="." unique_id=864136678]
+script = ExtResource("10_nigw2")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VentRoom" unique_id=1485016729]
+self_modulate = Color(0.57520974, 0.15684047, 0.22424221, 1)
+z_index = 2
+tile_set = SubResource("TileSet_hck02")
+
+[node name="VENTBG" type="ColorRect" parent="VentRoom" unique_id=2006635573]
+visible = false
+z_index = 1
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="MusicPlayOnSceneLoad2" type="Node" parent="." unique_id=1048006974]
+script = ExtResource("6_0dp0t")
+Track = ExtResource("24_fq6s6")
+FadeTime = 1.0
+OnReady = true
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad2" unique_id=1182187072 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("8_ellj6")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1971173871]
+position = Vector2(285, 162)
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1582145328]

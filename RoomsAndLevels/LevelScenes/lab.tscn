@@ -57,6 +57,9 @@ specular_shininess = 0.1
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3l8j0"]
 load_path = "res://.godot/imported/light.png-d8e4f75f1d88c113b2e6f921995f6a64.ctex"
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3l8j0"]
+polygon = PackedVector2Array(-121, -23, 127, -20, 0, -12)
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6lpvl"]
 polygon = PackedVector2Array(-43, 2, -43, -3, -43, -3, 43, -3, 43, 2, 45, 1, 45, -4, -45, -4, -45, 0)
 
@@ -76,6 +79,8 @@ size = Vector2(1308.5815, 1102.5062)
 [sub_resource type="Resource" id="Resource_3l8j0"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
+ItemDescription = "Nanahuatizin tiem item imte
+"
 ground_tex = ExtResource("12_rdico")
 inventory_tex = ExtResource("12_rdico")
 inv_scalemulti = 1.5
@@ -100,6 +105,17 @@ height = 109.65
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
 size = Vector2(40, 96)
+
+[sub_resource type="Gradient" id="Gradient_4ma8g"]
+offsets = PackedFloat32Array(0.528754, 1)
+colors = PackedColorArray(0.42745098, 0.42745098, 0.42745098, 0, 0.36862746, 0.36862746, 0.36862746, 0.69803923)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xfawk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m5v3g"]
+noise = SubResource("FastNoiseLite_xfawk")
+color_ramp = SubResource("Gradient_4ma8g")
+seamless = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1pqm"]
 texture = ExtResource("34_m5v3g")
@@ -174,9 +190,29 @@ color = Color(0.9411765, 1, 1, 1)
 texture = ExtResource("4_rdico")
 texture_scale = 2.0
 
+[node name="foglight" type="PointLight2D" parent="Environment/LedLight" unique_id=1169410237]
+position = Vector2(256, 34)
+color = Color(0.9411765, 1, 1, 1)
+energy = 15.67
+blend_mode = 2
+range_item_cull_mask = 4
+shadow_enabled = true
+shadow_item_cull_mask = 4
+texture = ExtResource("4_rdico")
+texture_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Environment/LedLight/foglight" unique_id=54013227]
+occluder = SubResource("OccluderPolygon2D_3l8j0")
+occluder_light_mask = 4
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="Environment/LedLight/foglight" unique_id=328490728]
+position = Vector2(4, 165)
+occluder = SubResource("OccluderPolygon2D_3l8j0")
+occluder_light_mask = 4
+
 [node name="LightOccluder2D" type="LightOccluder2D" parent="Environment/LedLight" unique_id=1555525962]
 occluder = SubResource("OccluderPolygon2D_6lpvl")
-occluder_light_mask = 3
+occluder_light_mask = 7
 
 [node name="TlalocBad" type="Sprite2D" parent="Environment" unique_id=396651307]
 position = Vector2(180, 229)
@@ -386,6 +422,18 @@ ObjectToCall = NodePath("..")
 FunctionName = "OnLoad"
 
 [node name="Fogger" type="Node" parent="." unique_id=1448403586]
+
+[node name="Parallax2D" type="Parallax2D" parent="Fogger" unique_id=268354534]
+z_index = 10
+repeat_size = Vector2(512, 512)
+autoscroll = Vector2(-5, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Fogger/Parallax2D" unique_id=722960675]
+self_modulate = Color(0.09009846, 0.09009849, 0.09009848, 1)
+light_mask = 4
+visibility_layer = 4
+texture = SubResource("NoiseTexture2D_m5v3g")
 
 [node name="VentRoom" type="Node2D" parent="." unique_id=160348412]
 script = ExtResource("33_xfawk")

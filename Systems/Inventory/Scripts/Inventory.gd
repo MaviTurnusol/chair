@@ -9,7 +9,7 @@ var InventorySlotsDict : Dictionary[Vector2i,InventorySlot]
 var gridslotsize : Vector2
 #Sconst PixelsPerSlot : Vector2 = Vector2(86,86)
 var InventoryItemSprites : Array
-
+@export var iteminfoshower : ItemInfoShower
 @onready var inventory_control : Control = $Control/Inventory
 
 func _ready() -> void:
@@ -170,7 +170,11 @@ func DisplayGrabbed(HoveredWhere : Vector2i,GridToDisplay : InventoryGrid):
 			if(GrabbedItemInstance):
 				GrabbedItemInstance.SetTargetPos(InventorySlotsDict[HoveredWhere].global_position + targ)
 
-
+##this bit is for item names and descriptions
+signal newitemhovered(whatItem)
+func sethovered(hovitem : InventoryItem):
+	newitemhovered.emit(hovitem)
+##
 
 func exitedGrid():
 	if(GrabbedItemInstance):

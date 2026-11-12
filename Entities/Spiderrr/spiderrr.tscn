@@ -49,39 +49,14 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0a1k"]
 radius = 30.4
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6n1jo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2gv4"]
+resource_local_to_scene = true
 shader = ExtResource("7_w5dic")
-shader_parameter/FlashAmount = 0.0
-
-[sub_resource type="Shader" id="Shader_u2gv4"]
-code = "shader_type canvas_item;
-
-uniform float FlashAmount = 0;
-
-void fragment() {
-	COLOR = COLOR + vec4(FlashAmount,FlashAmount,FlashAmount,FlashAmount);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dpsy"]
-shader = SubResource("Shader_u2gv4")
 shader_parameter/FlashAmount = 0.0
 
 [sub_resource type="Curve" id="Curve_bolhi"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.53478265, 0.22471917), 0.0, 0.0, 0, 0, Vector2(0.8434783, 0.13483155), 0.0, 0.0, 0, 0]
 point_count = 3
-
-[sub_resource type="Shader" id="Shader_w5dic"]
-code = "shader_type canvas_item;
-
-uniform float FlashAmount = 0;
-
-void fragment() {
-	COLOR = COLOR + vec4(FlashAmount,FlashAmount,FlashAmount,FlashAmount);
-}"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_u2gv4"]
-shader = SubResource("Shader_w5dic")
-shader_parameter/FlashAmount = 0.0
 
 [node name="Spiderr" type="Node2D" unique_id=815336775]
 script = ExtResource("1_n4j4j")
@@ -134,42 +109,42 @@ z_index = 1
 [node name="Leg4" type="Line2D" parent="TripedLegs" unique_id=1069015410]
 z_index = 1
 texture_repeat = 2
-material = SubResource("ShaderMaterial_6n1jo")
+material = SubResource("ShaderMaterial_u2gv4")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="Leg5" type="Line2D" parent="TripedLegs" unique_id=1627044629]
 z_index = 1
 texture_repeat = 2
-material = SubResource("ShaderMaterial_6n1jo")
+material = SubResource("ShaderMaterial_u2gv4")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="Leg6" type="Line2D" parent="TripedLegs" unique_id=5374643]
 z_index = 1
 texture_repeat = 2
-material = SubResource("ShaderMaterial_6n1jo")
+material = SubResource("ShaderMaterial_u2gv4")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="Leg7" type="Line2D" parent="TripedLegs" unique_id=742100919]
 z_index = 1
 texture_repeat = 2
-material = SubResource("ShaderMaterial_6n1jo")
+material = SubResource("ShaderMaterial_u2gv4")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="Leg8" type="Line2D" parent="TripedLegs" unique_id=1551957337]
 z_index = 1
 texture_repeat = 2
-material = SubResource("ShaderMaterial_6n1jo")
+material = SubResource("ShaderMaterial_u2gv4")
 texture = ExtResource("5_6dpsy")
 texture_mode = 1
 
 [node name="BendyLeg" type="Line2D" parent="." unique_id=718315932 node_paths=PackedStringArray("BossRef")]
 z_index = 1
 texture_repeat = 2
-material = SubResource("ShaderMaterial_6dpsy")
+material = SubResource("ShaderMaterial_u2gv4")
 width = 32.0
 width_curve = SubResource("Curve_bolhi")
 texture = ExtResource("5_6dpsy")

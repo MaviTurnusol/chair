@@ -51,6 +51,7 @@
 [ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="43_33gln"]
 [ext_resource type="PackedScene" uid="uid://b37wc8wu6gj1s" path="res://Entities/PlayerXochi/interaction_list_entry.tscn" id="44_pkk0n"]
 [ext_resource type="Texture2D" uid="uid://bn4btssyys82q" path="res://Environments/TestSprites/bigRedArrow.png" id="45_do4aa"]
+[ext_resource type="Script" uid="uid://csmdjwkm6wjr6" path="res://Entities/PlayerXochi/ItemInfo.gd" id="50_0ov8f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_get7g"]
 atlas = ExtResource("4_8ynux")
@@ -1354,9 +1355,10 @@ script = ExtResource("35_c6x0f")
 [node name="PlayerInventory" type="Node" parent="." unique_id=818656536]
 script = ExtResource("40_6pogt")
 
-[node name="PlayerInventoryDisplayer" type="CanvasLayer" parent="PlayerInventory" unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent")]
+[node name="PlayerInventoryDisplayer" type="CanvasLayer" parent="PlayerInventory" unique_id=51025741 node_paths=PackedStringArray("_InventoryComponent", "iteminfoshower")]
 script = ExtResource("36_qs4pp")
 _InventoryComponent = NodePath("../PlayerInventoryComponent")
+iteminfoshower = NodePath("Control/Inventory/ItemInfo")
 
 [node name="Control" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer" unique_id=634247233]
 layout_mode = 3
@@ -1393,6 +1395,36 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
+
+[node name="ItemInfo" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=736850284 node_paths=PackedStringArray("invHud")]
+anchors_preset = 0
+offset_left = 650.0
+offset_right = 900.0
+offset_bottom = 650.0
+script = ExtResource("50_0ov8f")
+invHud = NodePath("../../..")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/ItemInfo" unique_id=536056341]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.51007515, 0.51007515, 0.51007515, 1)
+
+[node name="NameLabel" type="RichTextLabel" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/ItemInfo" unique_id=489955481]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 100.0
+theme_override_font_sizes/normal_font_size = 30
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/ItemInfo" unique_id=246008745]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 250.0
+offset_bottom = 650.0
+theme_override_font_sizes/normal_font_size = 30
 
 [node name="PlayerInventoryComponent" type="Node" parent="PlayerInventory" unique_id=652975170 node_paths=PackedStringArray("inventory_hud", "OwnerBody")]
 script = ExtResource("36_jp1hh")

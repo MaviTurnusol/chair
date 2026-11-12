@@ -26,6 +26,7 @@ func _ready() -> void:
 func MouseEntered():
 	IsHovered = true
 	_inventoryHud.DisplayGrabbed(_inventoryHud.InventorySlotsDict.find_key(self),_inventorycomponent.OwnInventoryGrid)
+	_inventoryHud.sethovered(whatItemAmI)
 
 func MouseExited():
 	IsHovered = false
