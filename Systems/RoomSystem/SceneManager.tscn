@@ -8,11 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://cjv8tbcvt0dd6" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0000.png" id="6_8vtix"]
 [ext_resource type="Texture2D" uid="uid://d4lo5ora78w2s" path="res://Entities/PlayerXochi/blankpixel.png" id="6_720wa"]
 [ext_resource type="Texture2D" uid="uid://co3h1ve7opos0" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0001.png" id="7_dv8c1"]
+[ext_resource type="Texture2D" uid="uid://48lgrtgvfer1" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0013.png" id="7_e5jsa"]
+[ext_resource type="Texture2D" uid="uid://cfabtj2rdpytw" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0017.png" id="8_phraj"]
 [ext_resource type="Texture2D" uid="uid://sencrw5rej1s" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0002.png" id="8_vo3vw"]
+[ext_resource type="Texture2D" uid="uid://c284yxlabj75s" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0021.png" id="9_2w0tb"]
 [ext_resource type="Texture2D" uid="uid://dhprpyjkv5kal" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0003.png" id="9_e5jsa"]
+[ext_resource type="Texture2D" uid="uid://bg6nqk0j6ct26" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0025.png" id="10_5l4c6"]
 [ext_resource type="Texture2D" uid="uid://f8ovarqduj13" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0004.png" id="10_phraj"]
 [ext_resource type="Texture2D" uid="uid://bu25h7c1v8rn7" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0005.png" id="11_2w0tb"]
+[ext_resource type="Texture2D" uid="uid://bf8rw01gflamg" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0029.png" id="11_d1noo"]
 [ext_resource type="Texture2D" uid="uid://bcbggbvx5sabl" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0006.png" id="12_5l4c6"]
+[ext_resource type="Texture2D" uid="uid://by7a80bnrf118" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0033.png" id="12_xgg16"]
+[ext_resource type="Texture2D" uid="uid://btaa22bk2k418" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0037.png" id="13_uwlmb"]
+[ext_resource type="Texture2D" uid="uid://dtvrmwro0qat1" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0041.png" id="14_d4uo4"]
+[ext_resource type="Texture2D" uid="uid://tdtrxr4nbm5o" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0045.png" id="15_j1emw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7lojv"]
 shader = ExtResource("2_qx1r8")
@@ -85,6 +94,38 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("7_e5jsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_phraj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2w0tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_5l4c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_d1noo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xgg16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_uwlmb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_d4uo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j1emw")
+}],
+"loop": false,
+"name": &"teeth",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_8vtix")
 }, {
 "duration": 1.0,
@@ -142,9 +183,10 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("4_lu16e")
 curAnim = "null"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationLayer/AnimationColourRect" unique_id=1621305783]
+[node name="MaskAnimations" type="AnimatedSprite2D" parent="AnimationLayer/AnimationColourRect" unique_id=1621305783]
 visible = false
 sprite_frames = SubResource("SpriteFrames_buxam")
-animation = &"null"
+animation = &"teeth"
 autoplay = "punch"
-frame_progress = 0.66336447
+frame = 6
+frame_progress = 1.0

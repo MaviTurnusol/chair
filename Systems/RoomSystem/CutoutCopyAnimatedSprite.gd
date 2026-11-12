@@ -1,5 +1,5 @@
 extends ColorRect
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $MaskAnimations
 
 @export var curAnim : String
 

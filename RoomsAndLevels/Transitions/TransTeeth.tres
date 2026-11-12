@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TransitionData" format=3 uid="uid://kmlnh2rvyv15"]
+
+[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="1_0ijd8"]
+
+[resource]
+script = ExtResource("1_0ijd8")
+MaskAnimationName = "teeth"
+maskoutDestinationScale = Vector2(4, 3)
+DoFadeOut = false
+EntryTime = 0.5
+SustainTime = 1.0
+ExitTime = 0.7
+ExitTweenTransition = 4
+AnimExitDelay = 0.5
+metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
