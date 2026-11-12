@@ -3,7 +3,7 @@ class_name WanderingVagrant
 
 var States
 #var CurrentState : State
-@onready var Anim : AnimatedSprite2D = $Anim
+#@onready var Anim : AnimatedSprite2D = $Anim
 @onready var boss_core: Node2D = $BossCore
 @onready var triped_legs: Legger = $TripedLegs
 @export var speed : float = 100

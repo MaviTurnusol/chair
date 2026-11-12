@@ -11,7 +11,13 @@ func _ready() -> void:
 func ShowItem(whatitem : InventoryItem):
 	if(whatitem):
 		name_label.text = whatitem.ItemName
-		description_label.text = whatitem.ItemDescription
+		description_label.text = ProcText(whatitem.ItemDescription,whatitem)
 	else:
 		name_label.text = ""
 		description_label.text = ""
+
+func ProcText(desc_text : String,whatItem : InventoryItem=null):
+	var newtext = desc_text
+	if(whatItem):
+		newtext = newtext.format({"BulletCount":str(whatItem.AmmoCount)})
+	return newtext

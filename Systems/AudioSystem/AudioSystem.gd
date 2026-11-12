@@ -72,3 +72,5 @@ func _ready() -> void:
 	DeckBVolume = -48
 	add_child(DeckAPlayer)
 	add_child(DeckBPlayer)
+
+pass
