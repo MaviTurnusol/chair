@@ -1,6 +1,114 @@
 [gd_scene format=3 uid="uid://ddfrwiuyknepf"]
 
 [ext_resource type="Script" uid="uid://dvcf7in08wd6m" path="res://Systems/RoomSystem/SceneManager.gd" id="1_u8xi2"]
+[ext_resource type="Texture2D" uid="uid://7hfytd1fedso" path="res://Entities/PlayerXochi/Animations/punch1.png" id="2_51q6a"]
+[ext_resource type="Shader" uid="uid://b1ncrah62p1aa" path="res://Common/FX/Shaders/CutOutShader.gdshader" id="2_qx1r8"]
+[ext_resource type="Texture2D" uid="uid://vcj75wysmexp" path="res://Environments/BusOutSprites/icon.svg" id="3_lu16e"]
+[ext_resource type="Script" uid="uid://bcaf7h672w7dt" path="res://Systems/RoomSystem/CutoutCopyAnimatedSprite.gd" id="4_lu16e"]
+[ext_resource type="Texture2D" uid="uid://cjv8tbcvt0dd6" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0000.png" id="6_8vtix"]
+[ext_resource type="Texture2D" uid="uid://d4lo5ora78w2s" path="res://Entities/PlayerXochi/blankpixel.png" id="6_720wa"]
+[ext_resource type="Texture2D" uid="uid://co3h1ve7opos0" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0001.png" id="7_dv8c1"]
+[ext_resource type="Texture2D" uid="uid://sencrw5rej1s" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0002.png" id="8_vo3vw"]
+[ext_resource type="Texture2D" uid="uid://dhprpyjkv5kal" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0003.png" id="9_e5jsa"]
+[ext_resource type="Texture2D" uid="uid://f8ovarqduj13" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0004.png" id="10_phraj"]
+[ext_resource type="Texture2D" uid="uid://bu25h7c1v8rn7" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0005.png" id="11_2w0tb"]
+[ext_resource type="Texture2D" uid="uid://bcbggbvx5sabl" path="res://RoomsAndLevels/Transitions/Animations/TestTree1/frame0006.png" id="12_5l4c6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7lojv"]
+shader = ExtResource("2_qx1r8")
+shader_parameter/fill_amount = 0.0
+shader_parameter/mask_rotation = 0.0
+shader_parameter/mask_offset = Vector2(0, 0)
+shader_parameter/mask_size = Vector2(1, 1)
+shader_parameter/mask_rotation_pivot = Vector2(0.5, 0.5)
+shader_parameter/mask_scale_pivot = Vector2(0.5, 0.5)
+shader_parameter/invert_mask = false
+shader_parameter/use_different_texture = true
+shader_parameter/mask_texture = ExtResource("3_lu16e")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5e36"]
+atlas = ExtResource("2_51q6a")
+region = Rect2(0, 0, 128, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx1r8"]
+atlas = ExtResource("2_51q6a")
+region = Rect2(128, 0, 128, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lu16e"]
+atlas = ExtResource("2_51q6a")
+region = Rect2(256, 0, 128, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lojv"]
+atlas = ExtResource("2_51q6a")
+region = Rect2(384, 0, 128, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jking"]
+atlas = ExtResource("2_51q6a")
+region = Rect2(512, 0, 128, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_523ow"]
+atlas = ExtResource("2_51q6a")
+region = Rect2(640, 0, 128, 103)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_buxam"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_720wa")
+}],
+"loop": true,
+"name": &"null",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5e36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx1r8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lu16e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7lojv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jking")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_523ow")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8vtix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dv8c1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vo3vw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_e5jsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_phraj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_2w0tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5l4c6")
+}],
+"loop": false,
+"name": &"tree",
+"speed": 5.0
+}]
 
 [node name="SceneManager" type="Node" unique_id=2065925467]
 script = ExtResource("1_u8xi2")
@@ -9,6 +117,7 @@ script = ExtResource("1_u8xi2")
 layer = 10
 
 [node name="FaderColorRect" type="ColorRect" parent="FaderLayer" unique_id=1682645329]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,3 +126,25 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationLayer" type="CanvasLayer" parent="." unique_id=365153824]
+
+[node name="AnimationColourRect" type="ColorRect" parent="AnimationLayer" unique_id=1224798167]
+material = SubResource("ShaderMaterial_7lojv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(960, 540)
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+script = ExtResource("4_lu16e")
+curAnim = "null"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AnimationLayer/AnimationColourRect" unique_id=1621305783]
+visible = false
+sprite_frames = SubResource("SpriteFrames_buxam")
+animation = &"null"
+autoplay = "punch"
+frame_progress = 0.66336447

@@ -1,7 +1,16 @@
 extends Resource
 class_name TransitionData
 
-@export_category("Mask Animation")
+@export_subgroup("Mask Animation")
+## Leave Blank for no animation
+@export var MaskAnimationName : String = ""
+@export_range(0,100) var AnimationScale : float = 100
+@export var WaitUntilSustain : bool = true
+@export var tweenMaskOut : bool = false
+@export var maskoutDestinationScale : Vector2 = Vector2(2,2)
+@export var DoFadeOut : bool = true
+
+@export_category("Fade Colours")
 @export var MaskColour : Color = Color.BLACK
 @export var TransparentMaskColour : Color = Color(0,0,0,0)
 

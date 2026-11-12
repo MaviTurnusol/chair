@@ -55,14 +55,22 @@ func UnloadAllButCurrentScene():
 #region Transition Specifics
 var ActiveTransitionData : TransitionData
 @onready var fader_color_rect: ColorRect = $FaderLayer/FaderColorRect
+@onready var animation_colour_rect: ColorRect = $AnimationLayer/AnimationColourRect
 
 func PassTransition(transitionData : TransitionData,WhatScene : String,WhatID:String):
 	ActiveTransitionData = transitionData
 	await get_tree().process_frame
 	UnlimitedRulebook.player.machine.change_state_to("dooring")
-	
+	if(!transitionData.MaskAnimationName):
+		FadeTransition(transitionData,WhatScene,WhatID)
+	else:
+		AnimationTransition(transitionData,WhatScene,WhatID)
+
+func FadeTransition(transitionData : TransitionData,WhatScene : String,WhatID:String):
 	await get_tree().create_timer(transitionData.Delay).timeout
 	fader_color_rect.color = transitionData.TransparentMaskColour
+	
+	fader_color_rect.visible = true
 	
 	var FadeTween : Tween = get_tree().create_tween()
 	FadeTween.set_ease(transitionData.EntryTweenEase)
@@ -77,8 +85,52 @@ func PassTransition(transitionData : TransitionData,WhatScene : String,WhatID:St
 	
 	FadeTween.set_ease(transitionData.ExitTTweenEase)
 	FadeTween.set_trans(transitionData.ExitTweenTransition)
-	FadeTween.tween_property(fader_color_rect,"color",transitionData.TransparentMaskColour,transitionData.ExitTime)
+	
+	if(transitionData.DoFadeOut):
+		FadeTween.tween_property(fader_color_rect,"color",transitionData.TransparentMaskColour,transitionData.ExitTime)
+	else:
+		FadeTween.tween_interval(transitionData.ExitTime)
 	
 	await FadeTween.finished
-	
+	fader_color_rect.visible = false
 	ActiveTransitionData = null
+
+func AnimationTransition(transitionData : TransitionData,WhatScene : String,WhatID:String):
+	await get_tree().create_timer(transitionData.Delay).timeout
+	animation_colour_rect.color = transitionData.TransparentMaskColour
+	animation_colour_rect.visible = true
+	animation_colour_rect.scale = Vector2.ONE
+	
+	animation_colour_rect.SetScale(transitionData.AnimationScale)
+	
+	var FadeTween : Tween = get_tree().create_tween()
+	FadeTween.set_ease(transitionData.EntryTweenEase)
+	FadeTween.set_trans(transitionData.EntryTweenTransition)
+	FadeTween.tween_property(animation_colour_rect,"color",transitionData.MaskColour,transitionData.EntryTime)
+	
+	if(!transitionData.WaitUntilSustain):
+		animation_colour_rect.PlayMaskAnim(transitionData.MaskAnimationName)
+	else:
+		var cal : Callable = Callable(animation_colour_rect,"PlayMaskAnim").bind(transitionData.MaskAnimationName)
+		animation_colour_rect.PlayMaskAnim("null")
+		FadeTween.tween_callback(cal)
+	if(transitionData.DoSetPosition):
+		FadeTween.tween_callback(SwitchSceneAndPosition.bind(WhatScene,WhatID))
+	else:
+		FadeTween.tween_callback(SwitchScene.bind(WhatScene))
+	FadeTween.tween_interval(transitionData.SustainTime)
+	if(transitionData.tweenMaskOut):
+		FadeTween.tween_callback(ScaleMaskOut)
+	FadeTween.set_ease(transitionData.ExitTTweenEase)
+	FadeTween.set_trans(transitionData.ExitTweenTransition)
+	if(transitionData.DoFadeOut):
+		FadeTween.tween_property(animation_colour_rect,"color",transitionData.TransparentMaskColour,transitionData.ExitTime)
+	else:
+		FadeTween.tween_interval(transitionData.ExitTime)
+	await FadeTween.finished
+	animation_colour_rect.visible = false
+	ActiveTransitionData = null
+
+func ScaleMaskOut():
+		var maskouttween : Tween = get_tree().create_tween()
+		maskouttween.tween_property(animation_colour_rect,"scale",ActiveTransitionData.maskoutDestinationScale,ActiveTransitionData.ExitTime)
