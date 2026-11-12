@@ -1269,11 +1269,11 @@ canOnlyTransitionTo = PackedStringArray("idle", "dooring")
 
 [node name="GunWalk" parent="StateMachine" unique_id=1017199643 instance=ExtResource("24_qemgg")]
 cantTransitionFrom = PackedStringArray("MeleeAttack1")
-canOnlyTransitionTo = PackedStringArray("gunIdle", "idle", "roll", "jump", "MeleeAttack1")
+canOnlyTransitionTo = PackedStringArray("gunIdle", "idle", "roll", "jump", "MeleeAttack1", "vining")
 
 [node name="GunIdle" parent="StateMachine" unique_id=460317679 instance=ExtResource("25_8viyr")]
 cantTransitionFrom = PackedStringArray("MeleeAttack1")
-canOnlyTransitionTo = PackedStringArray("idle", "gunWalk", "roll", "jump", "MeleeAttack1")
+canOnlyTransitionTo = PackedStringArray("idle", "gunWalk", "roll", "jump", "MeleeAttack1", "vining")
 
 [node name="MeleeAttack" parent="StateMachine" unique_id=1923569428 instance=ExtResource("25_8viyr")]
 script = ExtResource("27_efx54")

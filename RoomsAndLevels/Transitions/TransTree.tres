@@ -11,5 +11,4 @@ DoFadeOut = false
 EntryTime = 0.5
 SustainTime = 1.0
 ExitTweenTransition = 4
-AnimExitDelay = 1.0
 metadata/_custom_type_script = "uid://b4o6b7xr5ybel"

@@ -92,6 +92,8 @@ AssociatedScene = ExtResource("11_3l8j0")
 
 [sub_resource type="Resource" id="Resource_rixi8"]
 script = ExtResource("13_4ma8g")
+ItemName = "Gun1"
+ItemDescription = "Beautiful OP Gun Worm"
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
 ground_scalemulti = 2.0
