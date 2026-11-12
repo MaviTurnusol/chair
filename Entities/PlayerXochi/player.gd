@@ -11,6 +11,7 @@ var jumpVelocity = -440.0
 
 @onready var inventory_component: InventoryComponent = $PlayerInventory/PlayerInventoryComponent
 @onready var player_inventory: Node = $PlayerInventory
+@onready var inventory_mator := $PlayerInventory/PlayerInventoryDisplayer/AnimationPlayer
 
 var dir = 1.0
 
@@ -64,7 +65,7 @@ func _physics_process(delta):
 		machine.change_state_to("parry")
 
 	#Inventory Toggle
-	if(Input.is_action_just_pressed("InventoryToggle")):
+	if(Input.is_action_just_pressed("InventoryToggle")) && !inventory_mator.is_playing():
 		player_inventory.ToggleInventory()
 	
 	#Gun

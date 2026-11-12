@@ -11,11 +11,15 @@ var targetzoom : float = 1
 
 func _ready() -> void:
 	UnlimitedRulebook.cam = self
+	UnlimitedRulebook.inventory_activated.connect(inventory_status)
 	if(target==null):
 		target = UnlimitedRulebook.player.get_node("camTarget")
 	global_position = target.global_position
 	reset_smoothing.call_deferred()
 
+func inventory_status(foo):
+	if !foo:
+		current_target = Vector2(0, 0)
 
 func _process(_delta: float) -> void:	
 	if UnlimitedRulebook.currentScene.room.RoomCenter != Vector2(0, 0):
@@ -27,7 +31,7 @@ func _process(_delta: float) -> void:
 	if UnlimitedRulebook.player:
 		if is_instance_valid(UnlimitedRulebook.player):
 			if UnlimitedRulebook.player.get_node("PlayerInventory").IsActive:
-				current_target = target.global_position
+				current_target = target.global_position + Vector2(16, 0)
 				
 	if !disabled:
 		if current_target != Vector2(0, 0):

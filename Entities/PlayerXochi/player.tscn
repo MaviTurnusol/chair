@@ -1181,6 +1181,115 @@ height = 66.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpjlu"]
 size = Vector2(42, 69)
 
+[sub_resource type="Animation" id="Animation_0ov8f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../borders/bottomRect:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../borders/bottomRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(325, 317)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../borders/topRect:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../borders/topRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(325, 317)]
+}
+
+[sub_resource type="Animation" id="Animation_yqumt"]
+resource_name = "appear"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../borders/bottomRect:size")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 16), Vector2(650, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../borders/bottomRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(325, 317), Vector2(0, 317), Vector2(0, 650)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../borders/topRect:size")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 16), Vector2(650, 16)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../borders/topRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(325, 317), Vector2(0, 317), Vector2(0, -16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkaby"]
+_data = {
+&"RESET": SubResource("Animation_0ov8f"),
+&"appear": SubResource("Animation_yqumt")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=779898413 groups=["player"]]
 script = ExtResource("1_l8h54")
 
@@ -1386,6 +1495,7 @@ grow_vertical = 2
 pivot_offset = Vector2(325, 325)
 
 [node name="GridContainer" type="GridContainer" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=1012758651]
+modulate = Color(1, 1, 1, 0.627451)
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -1397,6 +1507,7 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
 [node name="ItemInfo" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=736850284 node_paths=PackedStringArray("invHud")]
+visible = false
 anchors_preset = 0
 offset_left = 650.0
 offset_right = 900.0
@@ -1425,6 +1536,51 @@ offset_top = 100.0
 offset_right = 250.0
 offset_bottom = 650.0
 theme_override_font_sizes/normal_font_size = 30
+
+[node name="borders" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer" unique_id=1743030423]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 52.0
+offset_top = 215.0
+offset_right = -1218.0
+offset_bottom = -215.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="bottomRect" type="ColorRect" parent="PlayerInventory/PlayerInventoryDisplayer/borders" unique_id=902763815]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 8)
+mouse_filter = 2
+
+[node name="topRect" type="ColorRect" parent="PlayerInventory/PlayerInventoryDisplayer/borders" unique_id=108630761]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(0, 8)
+mouse_filter = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerInventory/PlayerInventoryDisplayer" unique_id=1503608825]
+root_node = NodePath("../Control/Inventory")
+libraries/ = SubResource("AnimationLibrary_bkaby")
 
 [node name="PlayerInventoryComponent" type="Node" parent="PlayerInventory" unique_id=652975170 node_paths=PackedStringArray("inventory_hud", "OwnerBody")]
 script = ExtResource("36_jp1hh")

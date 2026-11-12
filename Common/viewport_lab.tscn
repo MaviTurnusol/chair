@@ -53,7 +53,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"chomp",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -97,9 +97,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_i25fj")
 }],
-"loop": false,
+"loop": true,
 "name": &"chomp",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -123,7 +123,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_68xj2")
 plyr = NodePath("../Player")
 camer = NodePath("../Camera2D2")
-StartingLoadedRoom = "Elevator1"
+StartingLoadedRoom = "Tutorial Lab"
 
 [node name="UI" type="Node" parent="." unique_id=118202750]
 script = ExtResource("2_fqrem")
@@ -193,15 +193,15 @@ texture_progress = SubResource("GradientTexture2D_p0653")
 position = Vector2(70, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_5qju8")
-animation = &"chomp"
 autoplay = "default"
+frame_progress = 0.44268107
 
 [node name="RightDragon" type="AnimatedSprite2D" parent="PlayerHud/HPBar/Node2D" unique_id=1543412312]
 position = Vector2(605, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_4rsxg")
-animation = &"chomp"
 autoplay = "default"
+frame_progress = 0.546913
 offset = Vector2(128, 0)
 
 [node name="AmmoCounts" type="Control" parent="PlayerHud" unique_id=1794685523]
