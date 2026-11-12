@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="TransitionData" format=3 uid="uid://cuvp1uirbquo0"]
+
+[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="1_ik5ac"]
+
+[resource]
+script = ExtResource("1_ik5ac")
+MaskAnimationName = "tree"
+tweenMaskOut = true
+maskoutDestinationScale = Vector2(4, 3)
+DoFadeOut = false
+EntryTime = 0.5
+SustainTime = 1.0
+ExitTweenTransition = 4
+AnimExitDelay = 1.0
+metadata/_custom_type_script = "uid://b4o6b7xr5ybel"

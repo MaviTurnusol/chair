@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="2_sqoxt"]
 [ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/CameraCursor/Cursor.tscn" id="3_w33mg"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="4_5jdj4"]
-[ext_resource type="Resource" uid="uid://c8by80sijjj2l" path="res://RoomsAndLevels/Transitions/TreeAnimation1.tres" id="5_6qasg"]
+[ext_resource type="Resource" uid="uid://c8by80sijjj2l" path="res://RoomsAndLevels/Transitions/TransPunch.tres" id="5_6qasg"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="6_0dp0t"]
 [ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="7_tp8et"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="8_ellj6"]

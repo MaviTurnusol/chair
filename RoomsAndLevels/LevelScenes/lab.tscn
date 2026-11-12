@@ -24,7 +24,9 @@
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="19_r8l8j"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="21_pnd1w"]
 [ext_resource type="Texture2D" uid="uid://rmghv121cmw7" path="res://MADDIE/TlalocBad.png" id="23_ptpbc"]
+[ext_resource type="Resource" uid="uid://cuvp1uirbquo0" path="res://RoomsAndLevels/Transitions/TransTree.tres" id="24_4ma8g"]
 [ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="25_3cjrj"]
+[ext_resource type="Resource" uid="uid://c8by80sijjj2l" path="res://RoomsAndLevels/Transitions/TransPunch.tres" id="25_xfawk"]
 [ext_resource type="PackedScene" uid="uid://c2y7ig1b6veyl" path="res://Entities/Spiderrr/spiderrr.tscn" id="26_3l8j0"]
 [ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/Imen Kheru.mp3" id="28_3l8j0"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="33_xfawk"]
@@ -76,7 +78,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_3l8j0"]
+[sub_resource type="Resource" id="Resource_m5v3g"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ItemDescription = "Nanahuatizin tiem item imte
@@ -88,7 +90,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_rdico"]
+[sub_resource type="Resource" id="Resource_rixi8"]
 script = ExtResource("13_4ma8g")
 ground_tex = ExtResource("15_m5v3g")
 inventory_tex = ExtResource("15_m5v3g")
@@ -273,7 +275,7 @@ texture = ExtResource("7_b6emh")
 
 [node name="PickupableItem" parent="Interactables" unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_3l8j0")
+WhatItemAmI = SubResource("Resource_m5v3g")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -296,7 +298,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="Interactables" unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_rdico")
+WhatItemAmI = SubResource("Resource_rixi8")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -338,6 +340,7 @@ BOX"
 position = Vector2(251, 223)
 TargetSceneName = "Hook Lab"
 DoorIdentifier = "Lab-HookLab-1"
+transitionData = ExtResource("24_4ma8g")
 DoSetPositionAtNewScene = true
 
 [node name="RealDoor2" parent="Doors" unique_id=1318754282 instance=ExtResource("9_3cjrj")]
@@ -349,6 +352,7 @@ DoSetPositionAtNewScene = true
 [node name="RealDoor3" parent="Doors" unique_id=1260977748 instance=ExtResource("9_3cjrj")]
 position = Vector2(35, 228)
 TargetSceneName = "Enemy Lab"
+transitionData = ExtResource("25_xfawk")
 
 [node name="Enemies" type="Node" parent="." unique_id=1498710853]
 
