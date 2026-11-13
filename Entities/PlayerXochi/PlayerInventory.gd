@@ -31,7 +31,7 @@ func HideInventory():
 	IsActive = false
 	UnlimitedRulebook.inventory_activated.emit(false)
 	
-	AudioSystem.ClearMusicAudioFX()
+	AudioSystem.TweenOutPauseAudioFX()
 	
 	Cursor.cursor_mode = Cursor.MODES.ATTACK_DEF
 
