@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dapkbqak2tg5t" path="res://MADDIE/LeggyCrawler/BossLegger.gd" id="4_u2gv4"]
 [ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/HP_Boxes/HealthComp.tscn" id="4_w5dic"]
 [ext_resource type="Texture2D" uid="uid://b8tspy085oc2c" path="res://Entities/Wormy/maggotstoleentexture.png" id="5_6dpsy"]
+[ext_resource type="PackedScene" uid="uid://d2j5ijui3nfpg" path="res://Common/HP_Boxes/HitBox.tscn" id="5_6n1jo"]
 [ext_resource type="Script" uid="uid://c06bqhq0epivu" path="res://MADDIE/LeggyCrawler/BendyLeg.gd" id="6_6n1jo"]
 [ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="7_w5dic"]
 [ext_resource type="Script" uid="uid://dgnv0o7of087s" path="res://Common/FX/hitflash_player.gd" id="9_u2gv4"]
@@ -49,6 +50,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_f0a1k"]
 radius = 30.4
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_b3108"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u2gv4"]
 resource_local_to_scene = true
 shader = ExtResource("7_w5dic")
@@ -89,6 +92,14 @@ shape = SubResource("CircleShape2D_f0a1k")
 [node name="HealthComp" parent="BossCore" unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("4_w5dic")]
 MAX_HEALTH = 15.0
 father = NodePath("../..")
+
+[node name="HitBox" parent="BossCore" unique_id=187917931 instance=ExtResource("5_6n1jo")]
+collision_layer = 2
+collision_mask = 2
+atk = 100
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossCore/HitBox" unique_id=1624453937]
+shape = SubResource("CircleShape2D_b3108")
 
 [node name="TripedLegs" type="Node2D" parent="." unique_id=1211255569 node_paths=PackedStringArray("BossCore")]
 script = ExtResource("4_u2gv4")

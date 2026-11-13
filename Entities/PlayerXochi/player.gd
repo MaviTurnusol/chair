@@ -162,3 +162,6 @@ func StopVenting(WhereExit): #VECTOR2 in global
 		machine.change_state_to("idle")
 	#state = STATES.LEAVEVENT
 	pass
+
+func death():
+	queue_free()

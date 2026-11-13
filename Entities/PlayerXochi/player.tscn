@@ -1319,6 +1319,8 @@ sprite_frames = SubResource("SpriteFrames_o28un")
 animation = &"roll"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
+collision_layer = 2
+collision_mask = 2
 father = NodePath("../..")
 healthComp = NodePath("../../HealthComp")
 
