@@ -89,7 +89,7 @@ func Use():
 			CycleAttack(AttackIndex)
 			Shoot()
 			return true
-		if(IsAttacking):
+		if(IsAttacking && CurrentAttack.TimeUntilAttackCanBeQueued<AttackSigmaDelta):
 			AttackQueued = true
 			return false
 		if(!IsAttacking):

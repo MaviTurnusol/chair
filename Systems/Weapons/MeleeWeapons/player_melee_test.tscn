@@ -70,6 +70,7 @@ Hit_Box = NodePath("HitBox")
 WindUpTime = 0.15
 AttackTime = 0.8
 RecoveryTime = 0.0
+TimeUntilAttackCanBeQueued = 0.5
 AttackChainTime = 0.0
 AttackAnimation = 4
 AttackShouldLastAnimationDurationOverride = true
