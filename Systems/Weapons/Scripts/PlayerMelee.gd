@@ -164,6 +164,7 @@ func RecoveryFinished():
 				CanChain = false
 	else:
 		CanChain = false
+		AttackQueued = false
 		AttackIndex = 0
 
 func AttackChainTimeout(Whatattackchainindex : int):
