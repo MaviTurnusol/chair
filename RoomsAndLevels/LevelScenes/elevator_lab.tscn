@@ -10,6 +10,15 @@
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="9_44vg3"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="10_nigw2"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="11_2ej5p"]
+[ext_resource type="Script" uid="uid://cervbnj6oymgc" path="res://MADDIE/ElevatorButton.gd" id="12_6qasg"]
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://Systems/RoomSystem/Room.gd" id="13_l27wa"]
+[ext_resource type="Resource" uid="uid://wo8ob84fd6no" path="res://RoomsAndLevels/Lab1.tres" id="14_edlch"]
+[ext_resource type="Resource" uid="uid://cqgs242egffgr" path="res://RoomsAndLevels/NanaBossFight.tres" id="15_r67do"]
+[ext_resource type="Resource" uid="uid://dogvlh504coqi" path="res://RoomsAndLevels/TutorialLab1.tres" id="16_nbdyg"]
+[ext_resource type="Resource" uid="uid://3tcjp0b8les4" path="res://RoomsAndLevels/HookLab1.tres" id="17_2i1v8"]
+[ext_resource type="Resource" uid="uid://fxig1iuyjybt" path="res://RoomsAndLevels/EnemyLab1.tres" id="18_kpgtg"]
+[ext_resource type="PackedScene" uid="uid://03m157s1pacd" path="res://Systems/Inventory/Scenes/InteractionPrompter.tscn" id="19_edlch"]
+[ext_resource type="Texture2D" uid="uid://4uvvr76misin" path="res://Icons/Icon_Angel.png" id="20_r67do"]
 [ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="24_fq6s6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
@@ -105,7 +114,6 @@ shape = SubResource("RectangleShape2D_6qasg")
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("4_5jdj4")]
 position = Vector2(87, 217)
 TargetSceneName = "Lab"
-DoorIdentifier = "Lab-EnemyLab-1"
 transitionData = ExtResource("5_6qasg")
 DoSetPositionAtNewScene = true
 
@@ -153,3 +161,51 @@ FunctionName = "OnLoad"
 position = Vector2(285, 162)
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1582145328]
+
+[node name="ElevatorButton" type="Node2D" parent="." unique_id=46094225 node_paths=PackedStringArray("ElevatorDoor")]
+position = Vector2(285, 219)
+script = ExtResource("12_6qasg")
+ElevatorableRooms = Array[ExtResource("13_l27wa")]([ExtResource("14_edlch"), ExtResource("15_r67do"), ExtResource("16_nbdyg"), ExtResource("17_2i1v8"), ExtResource("18_kpgtg")])
+ElevatorDoor = NodePath("../RealDoor")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="ElevatorButton" unique_id=983152624]
+visible = false
+
+[node name="Control" type="Control" parent="ElevatorButton/CanvasLayer" unique_id=359632969]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 80.0
+offset_top = 74.0
+offset_right = 280.0
+offset_bottom = 274.0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="ElevatorButton/CanvasLayer/Control" unique_id=1640279687]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -65.925
+offset_bottom = -28.199997
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2760652, 0.27606523, 0.27606523, 1)
+
+[node name="GridContainer" type="GridContainer" parent="ElevatorButton/CanvasLayer/Control" unique_id=878301891]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractionPrompter" parent="ElevatorButton" unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("19_edlch")]
+z_index = 1
+position = Vector2(0, -18)
+Prompt_Text = "Elevator"
+InteractObject = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="ElevatorButton" unique_id=1557681990]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("20_r67do")
