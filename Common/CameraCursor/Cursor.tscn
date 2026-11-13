@@ -82,11 +82,12 @@ script = ExtResource("1_kc6ch")
 [node name="mouser" type="Marker2D" parent="." unique_id=1527742927]
 
 [node name="Area2D" type="Area2D" parent="mouser" unique_id=832748693]
-collision_layer = 2147483648
-collision_mask = 2147483648
+collision_layer = 2147483776
+collision_mask = 2147483776
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="mouser/Area2D" unique_id=1628419196]
 shape = SubResource("CircleShape2D_5acej")
+disabled = true
 
 [node name="sprite" type="AnimatedSprite2D" parent="mouser" unique_id=543680357]
 texture_filter = 1

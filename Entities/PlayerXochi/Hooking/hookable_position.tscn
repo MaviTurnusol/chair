@@ -7,8 +7,8 @@
 size = Vector2(64, 64)
 
 [node name="hookablePosition" type="Area2D" unique_id=649971908 node_paths=PackedStringArray("cShape")]
-collision_layer = 2147483648
-collision_mask = 2147483648
+collision_layer = 2147483904
+collision_mask = 2147483904
 script = ExtResource("1_7b1rl")
 cShape = NodePath("CollisionShape2D")
 

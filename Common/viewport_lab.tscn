@@ -184,6 +184,7 @@ offset_top = -14.045
 offset_right = 666.0
 offset_bottom = 15.955
 grow_vertical = 0
+mouse_filter = 2
 value = 100.0
 nine_patch_stretch = true
 texture_under = SubResource("GradientTexture2D_xodrj")
@@ -221,6 +222,7 @@ anchor_bottom = 1.0
 offset_right = 66.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.27314225, 0.27314225, 0.27314222, 1)
 
 [node name="smalltext" type="Label" parent="PlayerHud/AmmoCounts" unique_id=139757850]

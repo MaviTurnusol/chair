@@ -52,6 +52,7 @@
 [ext_resource type="PackedScene" uid="uid://b37wc8wu6gj1s" path="res://Entities/PlayerXochi/interaction_list_entry.tscn" id="44_pkk0n"]
 [ext_resource type="Texture2D" uid="uid://bn4btssyys82q" path="res://Environments/TestSprites/bigRedArrow.png" id="45_do4aa"]
 [ext_resource type="Script" uid="uid://csmdjwkm6wjr6" path="res://Entities/PlayerXochi/ItemInfo.gd" id="50_0ov8f"]
+[ext_resource type="Script" uid="uid://b48vxeeac8evm" path="res://Common/CameraCursor/TrackMouse.gd" id="53_yqumt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_get7g"]
 atlas = ExtResource("4_8ynux")
@@ -1290,6 +1291,8 @@ _data = {
 &"appear": SubResource("Animation_yqumt")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0ov8f"]
+
 [node name="Player" type="CharacterBody2D" unique_id=779898413 groups=["player"]]
 script = ExtResource("1_l8h54")
 
@@ -1601,5 +1604,15 @@ ObjToSave = NodePath("..")
 PropertiesToSave = Dictionary[String, String]({
 "global_position": "PlayerPosition"
 })
+
+[node name="InvisCursor" type="Node" parent="." unique_id=1768695400]
+
+[node name="CursorInvisArea" type="Area2D" parent="InvisCursor" unique_id=133276687]
+collision_layer = 256
+collision_mask = 256
+script = ExtResource("53_yqumt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InvisCursor/CursorInvisArea" unique_id=1980323066]
+shape = SubResource("CircleShape2D_0ov8f")
 
 [editable path="IKArmPlayer"]
