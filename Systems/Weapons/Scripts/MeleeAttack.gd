@@ -19,6 +19,7 @@ class_name MeleeAttack
 
 @export var AttackAnimation : UnlimitedRulebook.MeleeAnimation
 @export var AttackShouldLastAnimationDurationOverride : bool = false
+
 @export_category("Curves")
 @export var PositionInPathOverAttackTime : Curve
 @export var ScaleOverAttackTime : Curve
