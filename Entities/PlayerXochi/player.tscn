@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://1oxjy6fnluo5" path="res://Entities/PlayerXochi/Animations/runRecovery.png" id="4_8ynux"]
 [ext_resource type="Texture2D" uid="uid://c2sd5801w4stn" path="res://Entities/PlayerXochi/Animations/roll-Sheet.png" id="4_apopc"]
 [ext_resource type="Texture2D" uid="uid://0rybfwdex73u" path="res://Entities/PlayerXochi/Animations/fallRecovery.png" id="4_b1ygp"]
+[ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="4_dexac"]
 [ext_resource type="Texture2D" uid="uid://d4lo5ora78w2s" path="res://Entities/PlayerXochi/blankpixel.png" id="4_iyprq"]
 [ext_resource type="PackedScene" uid="uid://drjyjbj4ap1pl" path="res://Entities/PlayerXochi/States/Walk.tscn" id="4_vtle1"]
 [ext_resource type="Texture2D" uid="uid://rsho58ftjj6r" path="res://Entities/PlayerXochi/Animations/run-Sheet.png" id="5_5htga"]
@@ -17,8 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://i4icnxv6vniq" path="res://Entities/PlayerXochi/States/Roll.tscn" id="5_od3ui"]
 [ext_resource type="Texture2D" uid="uid://csy7e8k6i4j1r" path="res://Entities/PlayerXochi/Animations/XochiVineGuts1.png" id="10_d30e8"]
 [ext_resource type="Texture2D" uid="uid://s576r45bok74" path="res://Entities/PlayerXochi/Animations/idleNew-Sheet.png" id="10_i680d"]
+[ext_resource type="Texture2D" uid="uid://dc2equihckg2b" path="res://Entities/PlayerXochi/Animations/hurtFromBehind.png" id="10_pem85"]
 [ext_resource type="Texture2D" uid="uid://dv03h810ova7e" path="res://Entities/PlayerXochi/Animations/xocherstab-Sheet.png" id="11_j2n6q"]
 [ext_resource type="Texture2D" uid="uid://7hfytd1fedso" path="res://Entities/PlayerXochi/Animations/punch1.png" id="11_or6rf"]
+[ext_resource type="Texture2D" uid="uid://by2gf211y18ju" path="res://Entities/PlayerXochi/Animations/hurtFromFront.png" id="11_wkvpm"]
 [ext_resource type="Texture2D" uid="uid://bj2qdmrqo7mdn" path="res://Entities/PlayerXochi/Animations/punch1extraFrame.png" id="12_ofh6p"]
 [ext_resource type="PackedScene" uid="uid://j31ghs8e1fqo" path="res://Entities/PlayerXochi/States/Run.tscn" id="12_p5o4e"]
 [ext_resource type="Texture2D" uid="uid://8ea2oc31b7s5" path="res://Player/Animations/knifeSlash2wipnotrealt.png" id="13_a2aop"]
@@ -41,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://dumxxtk7wv87d" path="res://Entities/PlayerXochi/States/GunIdle.tscn" id="25_8viyr"]
 [ext_resource type="Script" uid="uid://bosg5qvd8k2f7" path="res://Entities/PlayerXochi/States/Vining.gd" id="27_a038y"]
 [ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://Entities/PlayerXochi/States/MeleeAttack1.gd" id="27_efx54"]
+[ext_resource type="Script" uid="uid://c7o4y8mpif3tv" path="res://Entities/PlayerXochi/States/Hurt.gd" id="28_bkaby"]
 [ext_resource type="Script" uid="uid://cswibj42kh6rk" path="res://Common/StateMachine/state.gd" id="32_qs4pp"]
 [ext_resource type="Script" uid="uid://cj5jewgd12t6" path="res://Obsolete/debug_deletethiswithnocrucialeffectbossfightstart.gd" id="35_c6x0f"]
 [ext_resource type="PackedScene" uid="uid://mu6favus5m8y" path="res://Entities/PlayerXochi/States/Hook.tscn" id="36_f4lon"]
@@ -53,6 +57,11 @@
 [ext_resource type="Texture2D" uid="uid://bn4btssyys82q" path="res://Environments/TestSprites/bigRedArrow.png" id="45_do4aa"]
 [ext_resource type="Script" uid="uid://csmdjwkm6wjr6" path="res://Entities/PlayerXochi/ItemInfo.gd" id="50_0ov8f"]
 [ext_resource type="Script" uid="uid://b48vxeeac8evm" path="res://Common/CameraCursor/TrackMouse.gd" id="53_yqumt"]
+[ext_resource type="Script" uid="uid://dgnv0o7of087s" path="res://Common/FX/hitflash_player.gd" id="58_haqj0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3foey"]
+shader = ExtResource("4_dexac")
+shader_parameter/FlashAmount = 0.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_get7g"]
 atlas = ExtResource("4_8ynux")
@@ -209,6 +218,14 @@ region = Rect2(660, 0, 66, 103)
 [sub_resource type="AtlasTexture" id="AtlasTexture_32uw3"]
 atlas = ExtResource("5_8mwp6")
 region = Rect2(726, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jekjq"]
+atlas = ExtResource("10_pem85")
+region = Rect2(0, 0, 64, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw3er"]
+atlas = ExtResource("11_wkvpm")
+region = Rect2(0, 0, 72, 103)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sr7wn"]
 atlas = ExtResource("10_i680d")
@@ -778,6 +795,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_jekjq")
+}],
+"loop": true,
+"name": &"hurtback",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw3er")
+}],
+"loop": true,
+"name": &"hurtfront",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_sr7wn")
 }, {
 "duration": 1.0,
@@ -884,6 +917,11 @@ animations = [{
 }],
 "loop": false,
 "name": &"leavevent",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
 "speed": 5.0
 }, {
 "frames": [{
@@ -1295,6 +1333,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=779898413 groups=["player"]]
 script = ExtResource("1_l8h54")
+KnockedbackAmount = 150.0
 
 [node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("2_od3ui")]
 MAX_HEALTH = 100.0
@@ -1314,9 +1353,10 @@ position = Vector2(-11.636646, 10.980812)
 [node name="Marker2D" type="Marker2D" parent="." unique_id=416441746]
 
 [node name="anima" type="AnimatedSprite2D" parent="Marker2D" unique_id=999568084]
+material = SubResource("ShaderMaterial_3foey")
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"roll"
+animation = &"hurtfront"
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 collision_layer = 2
@@ -1347,6 +1387,11 @@ animName = ""
 [node name="Walk" parent="StateMachine" unique_id=294001506 instance=ExtResource("4_vtle1")]
 
 [node name="Roll" parent="StateMachine" unique_id=1304739926 instance=ExtResource("5_od3ui")]
+
+[node name="Hurt" parent="StateMachine" unique_id=392211264 instance=ExtResource("5_od3ui")]
+script = ExtResource("28_bkaby")
+animName = "hurt"
+cantTransitionFrom = PackedStringArray()
 
 [node name="Vining" parent="StateMachine" unique_id=1561311894 instance=ExtResource("5_od3ui")]
 script = ExtResource("27_a038y")
@@ -1615,5 +1660,9 @@ script = ExtResource("53_yqumt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InvisCursor/CursorInvisArea" unique_id=1980323066]
 shape = SubResource("CircleShape2D_0ov8f")
+
+[node name="hitflashPlayer" type="Node" parent="." unique_id=306442731 node_paths=PackedStringArray("TargetNodes")]
+script = ExtResource("58_haqj0")
+TargetNodes = [NodePath("../Marker2D/anima")]
 
 [editable path="IKArmPlayer"]

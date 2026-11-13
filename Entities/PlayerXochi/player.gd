@@ -37,6 +37,8 @@ func CheckIfMovingNearWall()->bool:
 func _physics_process(delta):
 	$debugState.text = str(machine.get_state())
 	
+	if(machine.get_state()=="hurt"):
+		return
 	##Attacking
 	#if Input.is_action_just_pressed("attack"):
 		#if weaponHolder.get_children().size() > 0:
@@ -162,6 +164,23 @@ func StopVenting(WhereExit): #VECTOR2 in global
 		machine.change_state_to("idle")
 	#state = STATES.LEAVEVENT
 	pass
+
+@export var KnockedbackAmount : float = 5
+var KnockbackTargetPoint : Vector2
+var PointAtWhichWasKnockedBack : Vector2
+var attackerDir : int = 0
+@export var StaggerDuration : float = 1
+var KBTween : Tween
+func knockback(attacker : Node2D):
+	attackerDir = sign(global_position.x - attacker.global_position.x)
+	PointAtWhichWasKnockedBack = position
+	KnockbackTargetPoint = Vector2(global_position.x - attacker.global_position.x,0).normalized()
+	KnockbackTargetPoint *= KnockedbackAmount
+	KBTween = get_tree().create_tween()
+	KBTween.set_ease(Tween.EASE_OUT)
+	KBTween.set_trans(Tween.TRANS_CUBIC)
+	KBTween.tween_property(self,"position",PointAtWhichWasKnockedBack+KnockbackTargetPoint,StaggerDuration)
+	machine.change_state_to("hurt")
 
 func death():
 	queue_free()

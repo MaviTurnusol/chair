@@ -96,7 +96,7 @@ father = NodePath("../..")
 [node name="HitBox" parent="BossCore" unique_id=187917931 instance=ExtResource("5_6n1jo")]
 collision_layer = 2
 collision_mask = 2
-atk = 100
+atk = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BossCore/HitBox" unique_id=1624453937]
 shape = SubResource("CircleShape2D_b3108")

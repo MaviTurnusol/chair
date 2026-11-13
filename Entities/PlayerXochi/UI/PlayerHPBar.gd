@@ -5,6 +5,8 @@ extends Control
 
 var rightmaxpos : float
 
+func _ready() -> void:
+	progress_bar.max_value = UnlimitedRulebook.player.get_node("HealthComp").MAX_HEALTH
 func _process(delta: float) -> void:
 	var lastrdp = right_dragon.position.x
 	right_dragon.position.x = (progress_bar.value / progress_bar.max_value) * progress_bar.size.x 
@@ -14,3 +16,4 @@ func _process(delta: float) -> void:
 		pass
 	if(!right_dragon.is_playing()):
 		right_dragon.play("default")
+	progress_bar.value = UnlimitedRulebook.player.get_node("HealthComp").health
