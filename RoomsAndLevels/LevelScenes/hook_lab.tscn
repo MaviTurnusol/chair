@@ -6,7 +6,6 @@
 [ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="5_e2aq0"]
 [ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Entities/PlayerXochi/Hooking/hookable_position.tscn" id="6_ajgnu"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="7_8o0jn"]
-[ext_resource type="PackedScene" uid="uid://rvsw7x1a420u" path="res://Common/CameraCursor/Cursor.tscn" id="7_e2aq0"]
 [ext_resource type="PackedScene" uid="uid://crdxtwfpwcijh" path="res://Vining/VentryPoint.tscn" id="8_4u38e"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="9_hkqfb"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="10_g4ewm"]
@@ -67,9 +66,6 @@ position = Vector2(717, 124)
 
 [node name="hookablePosition2" parent="." unique_id=1109479604 instance=ExtResource("6_ajgnu")]
 position = Vector2(1068, 124)
-
-[node name="Cursor" parent="." unique_id=354788821 instance=ExtResource("7_e2aq0")]
-position = Vector2(132, -573)
 
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("3_2k8j5")]
 position = Vector2(548, 229)
