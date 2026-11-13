@@ -16,6 +16,8 @@ func ShowInventory():
 	ToggleTween.tween_property(inventorycontrol,"scale",Vector2(1.0, 0.0),0.3)
 	ToggleTween.tween_property(inventorycontrol,"scale",Vector2.ONE,0.3)
 	
+	AudioSystem.AddPauseAudioFX()
+	
 	Cursor.cursor_mode = Cursor.MODES.DEFAULT
 
 func HideInventory():
@@ -28,6 +30,8 @@ func HideInventory():
 	ToggleTween.tween_property(player_inventory_displayer,"visible",false,0)
 	IsActive = false
 	UnlimitedRulebook.inventory_activated.emit(false)
+	
+	AudioSystem.ClearMusicAudioFX()
 	
 	Cursor.cursor_mode = Cursor.MODES.ATTACK_DEF
 

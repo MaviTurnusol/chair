@@ -123,7 +123,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_68xj2")
 plyr = NodePath("../Player")
 camer = NodePath("../Camera2D2")
-StartingLoadedRoom = "Tutorial Lab"
+StartingLoadedRoom = "Elevator1"
 
 [node name="UI" type="Node" parent="." unique_id=118202750]
 script = ExtResource("2_fqrem")

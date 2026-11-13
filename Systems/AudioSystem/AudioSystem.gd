@@ -73,4 +73,31 @@ func _ready() -> void:
 	add_child(DeckAPlayer)
 	add_child(DeckBPlayer)
 
-pass
+var MusicFXTracer : Dictionary[int,AudioEffect]
+func AddPauseAudioFX():
+	var neweff : AudioEffectBandPassFilter = AudioEffectBandPassFilter.new()
+	var neweff2 : AudioEffectDistortion = AudioEffectDistortion.new()
+	neweff2.mode = AudioEffectDistortion.MODE_LOFI
+	var neweff3 : AudioEffectPitchShift = AudioEffectPitchShift.new()
+	neweff3.pitch_scale = 0.5
+	
+	var musmasteridx = AudioServer.get_bus_index("MusicMaster")
+	
+	AudioServer.add_bus_effect(musmasteridx,neweff)
+	MusicFXTracer[AudioServer.get_bus_effect_count(musmasteridx)] = neweff
+	
+	AudioServer.add_bus_effect(musmasteridx,neweff2)
+	MusicFXTracer[AudioServer.get_bus_effect_count(musmasteridx)] = neweff2
+	
+	AudioServer.add_bus_effect(musmasteridx,neweff3)
+	MusicFXTracer[AudioServer.get_bus_effect_count(musmasteridx)] = neweff3
+	
+	neweff.cutoff_hz = 1000
+	MusicFXTracer[3].pitch_scale = 0.5
+	
+
+func ClearMusicAudioFX():
+	var musmasteridx = AudioServer.get_bus_index("MusicMaster")
+	for i in range(0,AudioServer.get_bus_effect_count(musmasteridx)):
+		AudioServer.remove_bus_effect(musmasteridx,0)
+	pass
