@@ -20,6 +20,7 @@ func _ready() -> void:
 	if(WhatItemAmI.ground_tex):
 		sprite.texture = WhatItemAmI.ground_tex
 		sprite.scale = Vector2.ONE * WhatItemAmI.ground_scalemulti
+	interaction_prompt.Prompt_Text = ProcText(interaction_prompt.Prompt_Text,WhatItemAmI)
 
 func action():
 	if(pickedup):
@@ -28,3 +29,12 @@ func action():
 	interaction_prompt.DestroyAndAnimate()
 	UnlimitedRulebook.player.inventory_component.AddItemToInventory(WhatItemAmI)
 	queue_free()
+
+func ProcText(desc_text : String,whatItem : InventoryItem=null):
+	var newtext = desc_text
+	if(whatItem):
+		newtext = newtext.format({"BulletCount":str(whatItem.AmmoCount)})
+		newtext = newtext.format({"ItemName":str(whatItem.ItemName)})
+		print(newtext)
+		print("IDID")
+	return newtext
