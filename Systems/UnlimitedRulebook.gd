@@ -75,6 +75,10 @@ func GivePlayerItem(whatItemName : String,doDuplicate = true):
 		itemload = itemload.duplicate(true)
 	player.inventory_component.AddItemToInventory(itemload)
 
+func _ready() -> void:
+	#Input.set_custom_mouse_cursor(load("res://Common/CameraCursor/cursor.png"))
+	pass
+
 func LockOnEnemy(enemy):
 	if !enemy:
 		return

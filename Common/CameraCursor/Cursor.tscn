@@ -1,16 +1,101 @@
 [gd_scene format=3 uid="uid://rvsw7x1a420u"]
 
 [ext_resource type="Script" uid="uid://ctrdu8j6ih8v1" path="res://Common/CameraCursor/cursor.gd" id="1_kc6ch"]
+[ext_resource type="Texture2D" uid="uid://hsar38a1r03s" path="res://Common/CameraCursor/cursor_attack_transition_sheet.png" id="2_n5iwe"]
+[ext_resource type="Texture2D" uid="uid://cmcid1d3i32gs" path="res://Common/CameraCursor/cursor.png" id="2_o745x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5acej"]
 radius = 1.0
 
-[node name="Cursor" type="Node2D" unique_id=354788821]
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyamw"]
+atlas = ExtResource("2_n5iwe")
+region = Rect2(0, 0, 44, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quxj0"]
+atlas = ExtResource("2_n5iwe")
+region = Rect2(44, 0, 44, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23waf"]
+atlas = ExtResource("2_n5iwe")
+region = Rect2(88, 0, 44, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epxf1"]
+atlas = ExtResource("2_n5iwe")
+region = Rect2(132, 0, 44, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hejei"]
+atlas = ExtResource("2_n5iwe")
+region = Rect2(176, 0, 44, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nj31"]
+atlas = ExtResource("2_n5iwe")
+region = Rect2(220, 0, 44, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpfwk"]
+atlas = ExtResource("2_n5iwe")
+region = Rect2(264, 0, 44, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1fcq"]
+atlas = ExtResource("2_o745x")
+region = Rect2(0, 0, 36, 42)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pco32"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyamw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quxj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23waf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epxf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hejei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7nj31")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpfwk")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1fcq")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="Cursor" type="CanvasLayer" unique_id=1113554543]
 script = ExtResource("1_kc6ch")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=832748693]
+[node name="mouser" type="Marker2D" parent="." unique_id=1527742927]
+
+[node name="Area2D" type="Area2D" parent="mouser" unique_id=832748693]
 collision_layer = 2147483648
 collision_mask = 2147483648
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1628419196]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mouser/Area2D" unique_id=1628419196]
 shape = SubResource("CircleShape2D_5acej")
+
+[node name="sprite" type="AnimatedSprite2D" parent="mouser" unique_id=543680357]
+position = Vector2(12, 15)
+sprite_frames = SubResource("SpriteFrames_pco32")
+animation = &"attack"
+
+[node name="RestTimer" type="Timer" parent="." unique_id=48585525]
+wait_time = 3.0
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="RestTimer" to="." method="_on_rest_timer_timeout"]
