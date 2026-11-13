@@ -1510,7 +1510,6 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 
 [node name="ItemInfo" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=736850284 node_paths=PackedStringArray("invHud")]
-visible = false
 anchors_preset = 0
 offset_left = 650.0
 offset_right = 900.0

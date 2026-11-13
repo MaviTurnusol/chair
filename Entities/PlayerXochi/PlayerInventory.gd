@@ -7,6 +7,13 @@ var ToggleTween : Tween
 func ShowInventory():
 	if(ToggleTween):
 		ToggleTween.kill()
+	
+	if(TimeTween):
+		TimeTween.kill()
+	TimeTween = get_tree().create_tween()
+	TimeTween.tween_interval(0.75)
+	TimeTween.tween_property(Engine,"time_scale",0.15,0.5)
+	
 	ToggleTween = get_tree().create_tween()
 	player_inventory_displayer.visible = true
 	IsActive = true
@@ -20,9 +27,19 @@ func ShowInventory():
 	
 	Cursor.cursor_mode = Cursor.MODES.DEFAULT
 
+var TimeTween : Tween
+
 func HideInventory():
 	if(ToggleTween):
 		ToggleTween.kill()
+	
+	if(TimeTween):
+		TimeTween.kill()
+	TimeTween = get_tree().create_tween()
+	TimeTween.tween_property(Engine,"time_scale",1,0.25)
+	
+	Engine.time_scale = 1
+	
 	ToggleTween = get_tree().create_tween()
 	anim_player.play_backwards("appear")
 	ToggleTween.tween_property(inventorycontrol,"scale",Vector2(1.0, 0.0),0.3)
@@ -46,3 +63,6 @@ func ToggleInventory():
 func _ready() -> void:
 	IsActive = player_inventory_displayer.visible
 	HideInventory()
+
+func _exit_tree() -> void:
+	Engine.time_scale = 1
