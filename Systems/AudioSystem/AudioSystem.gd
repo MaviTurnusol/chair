@@ -74,6 +74,7 @@ func _ready() -> void:
 	add_child(DeckBPlayer)
 
 var MusicFXTracer : Dictionary[int,AudioEffect]
+var PauseAudioTween : Tween
 func AddPauseAudioFX():
 	var neweff : AudioEffectBandPassFilter = AudioEffectBandPassFilter.new()
 	var neweff2 : AudioEffectDistortion = AudioEffectDistortion.new()
@@ -91,27 +92,32 @@ func AddPauseAudioFX():
 	AudioServer.add_bus_effect(musmasteridx,neweff3)
 	MusicFXTracer[AudioServer.get_bus_effect_count(musmasteridx)] = neweff3
 	
+	if(PauseAudioTween):
+		PauseAudioTween.kill()
+	PauseAudioTween = get_tree().create_tween()
+	PauseAudioTween.set_parallel()
 	neweff.resonance = 0
 	neweff.cutoff_hz = 500
-	var TweenInBandPass : Tween = get_tree().create_tween()
-	TweenInBandPass.tween_property(neweff,"resonance",1,1)
 	
-	var TweenInPitchShift : Tween = get_tree().create_tween()
-	TweenInPitchShift.tween_property(neweff3,"pitch_scale",0.5,1)
+	PauseAudioTween.tween_property(neweff,"resonance",1,1)
+	PauseAudioTween.tween_property(neweff3,"pitch_scale",0.5,1)
 	#MusicFXTracer[3].pitch_scale = 0.5
 
 func TweenOutPauseAudioFX():
 	if(!MusicFXTracer.has(1)):
 		return
 	var bandfilt = MusicFXTracer[1]
-	var TweenOutBandPass : Tween = get_tree().create_tween()
-	TweenOutBandPass.tween_property(bandfilt,"resonance",0,1)
-	TweenOutBandPass.finished.connect(ClearMusicAudioFX)
+	
+	if(PauseAudioTween):
+		PauseAudioTween.kill()
+	PauseAudioTween = get_tree().create_tween()
+	PauseAudioTween.set_parallel()
+	PauseAudioTween.tween_property(bandfilt,"resonance",0,1)
+	PauseAudioTween.finished.connect(ClearMusicAudioFX)
 	if(!MusicFXTracer.has(3)):
 		return
 	var pitchfilt = MusicFXTracer[3]
-	var TweenOutPitchshift : Tween = get_tree().create_tween()
-	TweenOutPitchshift.tween_property(pitchfilt,"pitch_scale",1,1)
+	PauseAudioTween.tween_property(pitchfilt,"pitch_scale",1,1)
 	#TweenOutBandPass.finished.connect(ClearMusicAudioFX)
 
 func ClearMusicAudioFX():

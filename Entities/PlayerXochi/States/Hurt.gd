@@ -3,7 +3,7 @@ extends State
 var attacker : Node2D
 var duration : float = 1
 func Start():
-	duration = stateOwner.StaggerDuration
+	duration = stateOwner.KnockbackDuration
 	if(stateOwner.dir != stateOwner.attackerDir):
 		stateOwner.anima.play("hurtfront")
 	else:

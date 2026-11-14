@@ -36,5 +36,5 @@ func ProcText(desc_text : String,whatItem : InventoryItem=null):
 		newtext = newtext.format({"BulletCount":str(whatItem.AmmoCount)})
 		newtext = newtext.format({"ItemName":str(whatItem.ItemName)})
 		print(newtext)
-		print("IDID")
+		#print("IDID")
 	return newtext

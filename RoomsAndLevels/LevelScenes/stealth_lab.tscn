@@ -1,0 +1,238 @@
+[gd_scene format=4 uid="uid://m1xlaqo2b30b"]
+
+[ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="1_w3oti"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="2_aiqpu"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="3_660jx"]
+[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="4_gofof"]
+[ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Entities/PlayerXochi/Hooking/hookable_position.tscn" id="5_2le0c"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="5_88nqa"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="6_y6ulc"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="7_uf8cm"]
+[ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="8_fgnj6"]
+[ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="9_l3ibf"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="10_mj0bg"]
+[ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://Systems/Inventory/Scenes/PickupableItem.tscn" id="11_vj0xn"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/player_melee_test.tscn" id="12_0lcct"]
+[ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://Entities/Nana/nana1.png" id="13_6d0mp"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="14_cbljo"]
+[ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="15_u81ot"]
+[ext_resource type="PackedScene" uid="uid://bxoxxvjxh70fj" path="res://Entities/Flayer/Flayer.tscn" id="16_j8js2"]
+[ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/HP_Boxes/HealthComp.tscn" id="16_kcwh5"]
+[ext_resource type="PackedScene" uid="uid://dfk65q1y23ewq" path="res://Common/HP_Boxes/HurtBox.tscn" id="17_j8js2"]
+[ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="18_2le0c"]
+[ext_resource type="Script" uid="uid://tbna3m7qb3t6" path="res://Entities/Guy/NormalWalkingEnemy.gd" id="19_i3fnl"]
+[ext_resource type="PackedScene" uid="uid://bb4cp2umq0dex" path="res://Common/HP_Boxes/hitflash_player.tscn" id="20_4utf8"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
+texture = ExtResource("2_aiqpu")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_scnhh"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_21iup")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrqcn"]
+texture = ExtResource("10_mj0bg")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_hck02"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
+sources/0 = SubResource("TileSetAtlasSource_mrqcn")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrn0"]
+size = Vector2(2087, 89)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8js2"]
+size = Vector2(45.13, 142.505)
+
+[sub_resource type="Resource" id="Resource_yc0wm"]
+script = ExtResource("4_gofof")
+metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
+
+[sub_resource type="Resource" id="Resource_2le0c"]
+script = ExtResource("14_cbljo")
+ItemName = "example"
+ground_tex = ExtResource("13_6d0mp")
+inventory_tex = ExtResource("13_6d0mp")
+inv_scalemulti = 1.5
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
+ItemAttributes = Array[int]([1])
+AssociatedScene = ExtResource("12_0lcct")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_agxrd"]
+resource_local_to_scene = true
+shader = ExtResource("18_2le0c")
+shader_parameter/FlashAmount = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjvv"]
+radius = 19.35
+height = 113.45
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7dkby"]
+radius = 110.7
+height = 221.4
+
+[node name="StealthLab" type="Node2D" unique_id=622899540]
+
+[node name="EnemyPreps" type="Node2D" parent="." unique_id=2035388690]
+script = ExtResource("1_w3oti")
+
+[node name="SpiderPaths" type="TileMapLayer" parent="EnemyPreps" unique_id=2078516604]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAQAAQAAAAAAAAAYAAQAAQAAAAAAAAAZAAQAAQAAAAAAAAAaAAQAAQAAAAAAAAAbAAQAAQAAAAAAAAAcAAQAAQAAAAAAAAAdAAQAAQAAAAAAAAAeAAQAAQAAAAAAAAAfAAQAAQAAAAAAAAAgAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_scnhh")
+
+[node name="VentRoom" type="Node2D" parent="." unique_id=864136678]
+script = ExtResource("9_l3ibf")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VentRoom" unique_id=1485016729]
+self_modulate = Color(0.57520974, 0.15684047, 0.22424221, 1)
+z_index = 2
+tile_set = SubResource("TileSet_hck02")
+
+[node name="VENTBG" type="ColorRect" parent="VentRoom" unique_id=2006635573]
+visible = false
+z_index = 1
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="Sprites" type="Node2D" parent="." unique_id=1658677967]
+position = Vector2(132, -573)
+
+[node name="ColorRect" type="ColorRect" parent="Sprites" unique_id=402564116]
+offset_left = -132.0
+offset_top = 853.0
+offset_right = 1952.0
+offset_bottom = 943.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Sprites" unique_id=2002809254]
+offset_left = -125.0
+offset_top = 557.0
+offset_right = 1959.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Sprites" unique_id=1397855426]
+offset_left = 757.0
+offset_top = 738.0
+offset_right = 879.61
+offset_bottom = 783.035
+rotation = 1.5707964
+color = Color(0, 0, 0, 1)
+
+[node name="hookablePosition" parent="." unique_id=649971908 instance=ExtResource("5_2le0c")]
+position = Vector2(869, 137)
+
+[node name="Collisions" type="Node2D" parent="." unique_id=1583388602]
+position = Vector2(132, -573)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collisions" unique_id=1891834209]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=2076735749]
+position = Vector2(909, 898.5)
+shape = SubResource("RectangleShape2D_pjrn0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=1616811200]
+position = Vector2(917, 605)
+shape = SubResource("RectangleShape2D_pjrn0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=315933699]
+position = Vector2(737, 806)
+shape = SubResource("RectangleShape2D_j8js2")
+
+[node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("3_660jx")]
+position = Vector2(106, 225)
+TargetSceneName = "Lab"
+DoorIdentifier = "Lab-EnemyLab-1"
+transitionData = SubResource("Resource_yc0wm")
+DoSetPositionAtNewScene = true
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
+script = ExtResource("5_88nqa")
+Track = ExtResource("6_y6ulc")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("7_uf8cm")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
+
+[node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("8_fgnj6")]
+position = Vector2(182, 248)
+
+[node name="MeleeWeaponItem" parent="." unique_id=1324268814 instance=ExtResource("11_vj0xn")]
+position = Vector2(243, 237)
+WhatItemAmI = SubResource("Resource_2le0c")
+
+[node name="SaveLoad" type="Node" parent="MeleeWeaponItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("15_u81ot")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="MusicPlayOnSceneLoad2" type="Node" parent="." unique_id=1048006974]
+script = ExtResource("5_88nqa")
+FadeTime = 1.0
+OnReady = true
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad2" unique_id=1182187072 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("7_uf8cm")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
+
+[node name="Enemies" type="Node2D" parent="." unique_id=674820180]
+
+[node name="Flayer" parent="Enemies" unique_id=1280128185 instance=ExtResource("16_j8js2")]
+position = Vector2(542, 221)
+
+[node name="JustANormalGuy" type="Node2D" parent="Enemies" unique_id=1552983653]
+script = ExtResource("19_i3fnl")
+ChaseSpeed = 30.0
+KnockedbackAmount = 50.0
+
+[node name="HealthComp" parent="Enemies/JustANormalGuy" unique_id=1189723816 node_paths=PackedStringArray("father") instance=ExtResource("16_kcwh5")]
+MAX_HEALTH = 3.0
+father = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemies/JustANormalGuy" unique_id=292500123]
+material = SubResource("ShaderMaterial_agxrd")
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("2_aiqpu")
+
+[node name="HurtBox" parent="Enemies/JustANormalGuy" unique_id=1255456564 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("17_j8js2")]
+collision_layer = 5
+collision_mask = 5
+father = NodePath("..")
+healthComp = NodePath("../HealthComp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/JustANormalGuy/HurtBox" unique_id=1389275089]
+shape = SubResource("CapsuleShape2D_ktjvv")
+
+[node name="AggroZone" type="Area2D" parent="Enemies/JustANormalGuy" unique_id=1021337193]
+position = Vector2(0, 93)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/JustANormalGuy/AggroZone" unique_id=1911541175]
+position = Vector2(-130, -93)
+shape = SubResource("CapsuleShape2D_7dkby")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemies/JustANormalGuy/AggroZone" unique_id=624513867]
+position = Vector2(130, -93)
+shape = SubResource("CapsuleShape2D_7dkby")
+
+[node name="hitflashPlayer" parent="Enemies/JustANormalGuy" unique_id=1677423380 node_paths=PackedStringArray("TargetNodes") instance=ExtResource("20_4utf8")]
+TargetNodes = [NodePath("../Sprite2D")]

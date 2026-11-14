@@ -166,20 +166,38 @@ func StopVenting(WhereExit): #VECTOR2 in global
 	pass
 
 @export var KnockedbackAmount : float = 5
-var KnockbackTargetPoint : Vector2
-var PointAtWhichWasKnockedBack : Vector2
-var attackerDir : int = 0
-@export var StaggerDuration : float = 1
+@export var KnockbackDuration : float = 1
+const kb_check_offset = Vector2(0,-25)
+var attackerDir
 var KBTween : Tween
-func knockback(attacker : Node2D):
+func knockback(attacker:Node2D):
 	attackerDir = sign(global_position.x - attacker.global_position.x)
-	PointAtWhichWasKnockedBack = position
-	KnockbackTargetPoint = Vector2(global_position.x - attacker.global_position.x,0).normalized()
-	KnockbackTargetPoint *= KnockedbackAmount
+	
+	var TargetPointRay : RayCast2D = RayCast2D.new()
+	UnlimitedRulebook.currentScene.add_child(TargetPointRay)
+	TargetPointRay.global_position = global_position + kb_check_offset
+	TargetPointRay.collision_mask = 4
+	TargetPointRay.target_position = Vector2.ZERO
+	TargetPointRay.target_position.x = sign(global_position.x-attacker.global_position.x)
+	
+	if(TargetPointRay.target_position == Vector2(0,0)):
+		TargetPointRay.target_position.x += 1
+	
+	TargetPointRay.target_position *= KnockedbackAmount
+	
+	TargetPointRay.force_raycast_update()
+	
+	var TargetPoint : Vector2
+	if(TargetPointRay.is_colliding()):
+		TargetPoint = TargetPointRay.get_collision_point()
+	else:
+		TargetPoint = TargetPointRay.global_position + TargetPointRay.target_position
+	TargetPoint -= kb_check_offset
 	KBTween = get_tree().create_tween()
 	KBTween.set_ease(Tween.EASE_OUT)
 	KBTween.set_trans(Tween.TRANS_CUBIC)
-	KBTween.tween_property(self,"position",PointAtWhichWasKnockedBack+KnockbackTargetPoint,StaggerDuration)
+	KBTween.tween_property(self,"global_position",TargetPoint,KnockbackDuration)
+	
 	machine.change_state_to("hurt")
 
 func death():

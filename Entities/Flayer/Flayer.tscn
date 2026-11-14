@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://bxoxxvjxh70fj"]
+
+[ext_resource type="Script" uid="uid://bamtrureyhe7f" path="res://Entities/Flayer/Flayer.gd" id="1_argb7"]
+[ext_resource type="PackedScene" uid="uid://4x76wtrlcugi" path="res://Common/HP_Boxes/HealthComp.tscn" id="2_lkyqb"]
+[ext_resource type="PackedScene" uid="uid://bb4cp2umq0dex" path="res://Common/HP_Boxes/hitflash_player.tscn" id="3_3xqnv"]
+[ext_resource type="PackedScene" uid="uid://dfk65q1y23ewq" path="res://Common/HP_Boxes/HurtBox.tscn" id="4_iay18"]
+[ext_resource type="Shader" uid="uid://db7k3gjrpr280" path="res://Common/FX/Shaders/HitFlash.gdshader" id="5_akemw"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="6_4k37m"]
+[ext_resource type="PackedScene" uid="uid://dkbwnyyvb06ff" path="res://Common/StateMachine/StateMachine.tscn" id="7_iay18"]
+[ext_resource type="PackedScene" uid="uid://dxe2xunoeds0f" path="res://Entities/PlayerXochi/States/Idle.tscn" id="8_akemw"]
+[ext_resource type="PackedScene" uid="uid://drjyjbj4ap1pl" path="res://Entities/PlayerXochi/States/Walk.tscn" id="9_4k37m"]
+[ext_resource type="Script" uid="uid://bu4ajqfwda0u7" path="res://Entities/Flayer/States/Flayer_Idle.gd" id="9_hdf0p"]
+[ext_resource type="Script" uid="uid://bao2r5o1kjm3x" path="res://Entities/Flayer/States/Flayer_Chase.gd" id="11_b1sf1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s3ler"]
+resource_local_to_scene = true
+shader = ExtResource("5_akemw")
+shader_parameter/FlashAmount = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ktjvv"]
+radius = 19.35
+height = 113.45
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4k37m"]
+height = 110.0
+
+[node name="Flayer" type="CharacterBody2D" unique_id=1753637316 node_paths=PackedStringArray("machine")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_argb7")
+machine = NodePath("StateMachine")
+KnockedbackAmount = 250.0
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=48582622]
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D" unique_id=2123008232]
+material = SubResource("ShaderMaterial_s3ler")
+position = Vector2(0, -61)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("6_4k37m")
+
+[node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_iay18")]
+position = Vector2(0, -56)
+collision_layer = 5
+collision_mask = 5
+father = NodePath("../..")
+healthComp = NodePath("../../HealthComp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/HurtBox" unique_id=1889640213]
+shape = SubResource("CapsuleShape2D_ktjvv")
+
+[node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("2_lkyqb")]
+MAX_HEALTH = 8.0
+father = NodePath("..")
+
+[node name="hitflashPlayer" parent="." unique_id=1371641710 node_paths=PackedStringArray("TargetNodes") instance=ExtResource("3_3xqnv")]
+TargetNodes = [NodePath("../Marker2D/Sprite2D")]
+
+[node name="StateMachine" parent="." unique_id=29357077 node_paths=PackedStringArray("initialState") instance=ExtResource("7_iay18")]
+initialState = NodePath("Chase")
+
+[node name="Idle" parent="StateMachine" unique_id=831325213 instance=ExtResource("8_akemw")]
+script = ExtResource("9_hdf0p")
+animName = ""
+
+[node name="Chase" parent="StateMachine" unique_id=294001506 instance=ExtResource("9_4k37m")]
+script = ExtResource("11_b1sf1")
+MoveSpeed = 100.0
+animName = ""
+cantTransitionFrom = PackedStringArray()
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=873974040]
+position = Vector2(0, -56)
+shape = SubResource("CapsuleShape2D_4k37m")
+
+[node name="debugState" type="Label" parent="." unique_id=217481354]
+offset_left = -20.0
+offset_top = -84.0
+offset_right = 29.0
+offset_bottom = -61.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "debug"
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2104094986]
