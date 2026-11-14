@@ -1333,7 +1333,8 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" unique_id=779898413 groups=["player"]]
 script = ExtResource("1_l8h54")
-KnockedbackAmount = 150.0
+KnockedbackAmount = 125.0
+StaggerDuration = 0.7
 
 [node name="HealthComp" parent="." unique_id=408356925 node_paths=PackedStringArray("father") instance=ExtResource("2_od3ui")]
 MAX_HEALTH = 100.0
