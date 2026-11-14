@@ -23,11 +23,12 @@ func SetTargetPos(where : Vector2):
 	isPosSet = true
 
 func _process(delta: float) -> void:
+	var TimeScaleMulti = 1/Engine.time_scale
 	global_position = get_global_mouse_position()
 	if(isPosSet):
-		sprite.global_position = sprite.global_position.move_toward(targetpos,100*delta) 
+		sprite.global_position = sprite.global_position.move_toward(targetpos,100*delta*TimeScaleMulti) 
 	else:
-		sprite.position = sprite.position.move_toward(Vector2.ZERO,100*delta)
+		sprite.position = sprite.position.move_toward(Vector2.ZERO,100*delta*TimeScaleMulti)
 	
 	targetrotation = deg_to_rad(WhatItemAmI.RotationState)
 	#match WhatItemAmI.RotationState:
@@ -39,4 +40,4 @@ func _process(delta: float) -> void:
 			#targetrotationdegrees = 180
 		#WhatItemAmI.Rotations.TWOSEVENTY:
 			#targetrotationdegrees = 270
-	rotation = move_toward(rotation,targetrotation,15*delta)
+	rotation = move_toward(rotation,targetrotation,15*delta*TimeScaleMulti)

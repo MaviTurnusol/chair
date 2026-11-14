@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://fxig1iuyjybt" path="res://RoomsAndLevels/EnemyLab1.tres" id="18_kpgtg"]
 [ext_resource type="PackedScene" uid="uid://03m157s1pacd" path="res://Systems/Inventory/Scenes/InteractionPrompter.tscn" id="19_edlch"]
 [ext_resource type="Resource" uid="uid://b1yy8w8ngpo6s" path="res://RoomsAndLevels/XochiHouse_Bedroom.tres" id="19_nbdyg"]
+[ext_resource type="Resource" uid="uid://8a6sccpld8ft" path="res://RoomsAndLevels/StealthLab.tres" id="20_2i1v8"]
 [ext_resource type="Texture2D" uid="uid://4uvvr76misin" path="res://Icons/Icon_Angel.png" id="20_r67do"]
 [ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="24_fq6s6"]
 
@@ -166,7 +167,7 @@ position = Vector2(285, 162)
 [node name="ElevatorButton" type="Node2D" parent="." unique_id=46094225 node_paths=PackedStringArray("ElevatorDoor")]
 position = Vector2(285, 219)
 script = ExtResource("12_6qasg")
-ElevatorableRooms = Array[ExtResource("13_l27wa")]([ExtResource("14_edlch"), ExtResource("15_r67do"), ExtResource("16_nbdyg"), ExtResource("17_2i1v8"), ExtResource("18_kpgtg"), ExtResource("19_nbdyg")])
+ElevatorableRooms = Array[ExtResource("13_l27wa")]([ExtResource("14_edlch"), ExtResource("15_r67do"), ExtResource("16_nbdyg"), ExtResource("17_2i1v8"), ExtResource("18_kpgtg"), ExtResource("19_nbdyg"), ExtResource("20_2i1v8")])
 ElevatorDoor = NodePath("../RealDoor")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="ElevatorButton" unique_id=983152624]
