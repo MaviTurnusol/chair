@@ -181,11 +181,15 @@ shape = SubResource("RectangleShape2D_pjrn0")
 position = Vector2(917, 605)
 shape = SubResource("RectangleShape2D_pjrn0")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=315933699]
+[node name="SightCollisions" type="StaticBody2D" parent="Collisions" unique_id=94013056]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/SightCollisions" unique_id=1823786167]
 position = Vector2(737, 806)
 shape = SubResource("RectangleShape2D_j8js2")
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=1367050401]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/SightCollisions" unique_id=281573416]
 position = Vector2(390, 806)
 shape = SubResource("RectangleShape2D_j8js2")
 

@@ -238,7 +238,7 @@ material = SubResource("ShaderMaterial_s3ler")
 position = Vector2(0, -84)
 sprite_frames = SubResource("SpriteFrames_x10ht")
 animation = &"idle"
-frame_progress = 0.40980056
+frame_progress = 0.72939134
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_iay18")]
 position = Vector2(0, -56)
@@ -300,7 +300,7 @@ text = "debug"
 
 [node name="EyeComp" parent="." unique_id=408761570 node_paths=PackedStringArray("father") instance=ExtResource("14_x10ht")]
 father = NodePath("..")
-SightRange = 125.0
+SightRange = 250.0
 HideRange = 150.0
 
 [node name="EarComp" parent="." unique_id=1192759519 node_paths=PackedStringArray("father") instance=ExtResource("15_mru82")]

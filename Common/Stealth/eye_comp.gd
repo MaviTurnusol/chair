@@ -11,7 +11,7 @@ var CanSeeEvil : bool = true
 
 func _ready() -> void:
 	EyeRay = RayCast2D.new()
-	EyeRay.collision_mask = 5
+	EyeRay.collision_mask = 32+1
 	EyeRay.hit_from_inside = true
 	HideShape = ShapeCast2D.new()
 	HideShape.target_position = Vector2.ONE
@@ -21,17 +21,17 @@ func _ready() -> void:
 	add_child(HideShape)
 
 func _process(delta: float) -> void:
-	EyeRay.global_position = father.global_position
-	EyeRay.target_position = father.global_position.direction_to(UnlimitedRulebook.player.global_position)
+	EyeRay.global_position = father.global_position - Vector2(16,16)
+	EyeRay.target_position = father.global_position.direction_to(UnlimitedRulebook.player.global_position-Vector2(16,16))
 	EyeRay.target_position *= SightRange
 	if(sign(EyeRay.target_position.x)!=sign(father.dir)):
-		EyeRay.target_position.x *= -1
+		EyeRay.target_position *= -1
 	HideShape.global_position = father.global_position
 	HideShape.force_shapecast_update()
 	if(HideShape.is_colliding()):
 		#print(HideShape.collision_result)
 		CanSeeEvil = true
-		for i in range(0,HideShape.get_collision_count()-1):
+		for i in range(0,HideShape.get_collision_count()):
 			if(UnlimitedRulebook.player == HideShape.get_collider(i)):
 				CanSeeEvil = false
 				#print("HIDDEN")

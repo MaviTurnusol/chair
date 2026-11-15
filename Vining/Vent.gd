@@ -25,7 +25,11 @@ func action():
 	if(UnlimitedRulebook.player.machine.get_state() in ["vineExit","vining"]):
 		return
 	if !onCooldown && !IsVentVineActive:
-		StartVenting()
+		#StartVenting() timer
+		get_tree().create_timer(1).timeout.connect(StartVenting)
+		#Call Function In Player
+		UnlimitedRulebook.player.StartVenting()
+		
 		onCooldown = true
 		StartCoolDown()
 		#print("YAY!")
@@ -44,8 +48,6 @@ func StartCoolDown():
 	onCooldown = false
 
 func StartVenting():
-	#Call Function In Player
-	UnlimitedRulebook.player.StartVenting()
 	
 	#MakeVineVisible
 	IsVentVineActive = true
