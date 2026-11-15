@@ -1316,6 +1316,20 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_od3ui"]
 height = 86.0
 
+[sub_resource type="Curve" id="Curve_dexac"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28490028, 1), 0.0, 0.0, 0, 0, Vector2(0.3276353, 0.3272962), 0.0, 0.0, 0, 0, Vector2(0.35897434, 1), 0.0, 0.0, 0, 0, Vector2(0.4301994, 0.23760235), 0.0, 0.0, 0, 0, Vector2(0.45584044, 1), 0.0, 0.0, 0, 0, Vector2(0.51566947, 0.2151789), 0.0, 0.0, 0, 0, Vector2(0.56410253, 1), 0.0, 0.0, 0, 0, Vector2(0.58119655, 0.19836128), 0.0, 0.0, 0, 0, Vector2(0.66096854, 0.8262181), 0.0, 0.0, 0, 0, Vector2(0.66097856, 0.64122456), 0.0, 0.0, 0, 0, Vector2(0.72079766, 0.5291073), 0.0, 0.0, 0, 0, Vector2(0.7321937, 0.7365243), 0.0, 0.0, 0, 0, Vector2(0.8319087, 0.61319524), 0.0, 0.0, 0, 0, Vector2(0.8774928, 0.42259586), 0.0, 0.0, 0, 0, Vector2(1, 0.29926687), 0.0, 0.0, 0, 0]
+point_count = 16
+
+[sub_resource type="Gradient" id="Gradient_dexac"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_haqj0"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3foey"]
+width = 64
+height = 64
+noise = SubResource("FastNoiseLite_haqj0")
+color_ramp = SubResource("Gradient_dexac")
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fhl08"]
 height = 66.0
 
@@ -1459,6 +1473,8 @@ material = SubResource("ShaderMaterial_3foey")
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
 animation = &"suicide"
+frame = 13
+frame_progress = 1.0
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 collision_layer = 2
@@ -1476,6 +1492,13 @@ position = Vector2(0, -45)
 [node name="WallCheck" type="RayCast2D" parent="Marker2D" unique_id=605265196]
 target_position = Vector2(35, 0)
 collision_mask = 4
+
+[node name="tummyvine" type="Line2D" parent="Marker2D" unique_id=1837382796]
+position = Vector2(0, -45)
+width_curve = SubResource("Curve_dexac")
+default_color = Color(0.5005284, 0, 0.2146233, 1)
+texture = SubResource("NoiseTexture2D_3foey")
+texture_mode = 1
 
 [node name="StateMachine" parent="." unique_id=29357077 node_paths=PackedStringArray("initialState") instance=ExtResource("2_k53q1")]
 initialState = NodePath("Idle")

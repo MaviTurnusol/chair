@@ -19,7 +19,7 @@ var weapon_equipped = false
 var weapon : Node2D
 
 var locked_in = false
-
+@onready var tvine : Line2D = marker_2d.get_node("tummyvine")
 func _ready() -> void:
 	UnlimitedRulebook.player = self
 	SceneManager.setplayerposition.connect(SetGlobalPosition)
@@ -33,9 +33,10 @@ func CheckIfMovingNearWall()->bool:
 	else:
 		return false
 	
-
+var timeelapsed : float = 0
 func _physics_process(delta):
 	$debugState.text = str(machine.get_state())
+	timeelapsed += delta
 	
 	if(machine.get_state()=="hurt"):
 		return
@@ -44,6 +45,10 @@ func _physics_process(delta):
 		#if weaponHolder.get_children().size() > 0:
 			#if is_on_floor():
 				#machine.change_state_to("groundAttack")
+	
+	for i in range(0,tvine.points.size()):
+		tvine.points[i] += (Vector2.UP * 0.5 * sin(timeelapsed+(i/5))*delta*2)
+		tvine.points[i] += (Vector2.RIGHT * 0.5 * cos(timeelapsed+(i/5))*delta*2)
 	
 	#Jumping
 	if Input.is_action_just_pressed("jump"):
@@ -151,10 +156,16 @@ func set_collisions(foo) -> void:
 	set_collision_layer_value(3, !foo)
 	set_collision_mask_value(3, !foo)
 
-func StartVenting():
+func StartVenting(targetvent : Vent):
 	#state = STATES.VENTING
 	machine.change_state_to("vining")
-	pass
+	tvine.visible = true
+	tvine.clear_points()
+	await get_tree().create_timer(0.35).timeout
+	for i in range(0,round(tvine.global_position.distance_to(targetvent.global_position)/1)):
+		tvine.add_point(Vector2(dir,1)*tvine.global_position.direction_to(targetvent.global_position)*i*1)
+		await get_tree().create_timer(0.01).timeout
+
 func StopVenting(WhereExit): #VECTOR2 in global
 	if(WhereExit != null):
 		global_position = WhereExit - Vector2(0,-16) #Vector2(0,($Marker2D/anima.sprite_frames.get_frame_texture($Marker2D/anima.animation,$Marker2D/anima.frame).get_height()/6))
@@ -162,6 +173,8 @@ func StopVenting(WhereExit): #VECTOR2 in global
 	else:
 		machine.change_state_to("vineExit")
 		machine.change_state_to("idle")
+	tvine.visible = false
+	tvine.clear_points()
 	#state = STATES.LEAVEVENT
 	pass
 

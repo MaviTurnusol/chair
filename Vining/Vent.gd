@@ -28,7 +28,7 @@ func action():
 		#StartVenting() timer
 		get_tree().create_timer(1).timeout.connect(StartVenting)
 		#Call Function In Player
-		UnlimitedRulebook.player.StartVenting()
+		UnlimitedRulebook.player.StartVenting(self)
 		
 		onCooldown = true
 		StartCoolDown()
@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 		return
 	if(Input.is_action_pressed("attack")&&OwnVentVine.visible&&OwnVentVine.GrowthDirection!=OwnVentVine.GrowthStates.Recalling):
 		OwnVentVine.EMERGENCYRECALL()
-	if(UnlimitedRulebook.player.global_position.distance_to(global_position)>50):
+	if(UnlimitedRulebook.player.global_position.distance_to(global_position)>75):
 		OwnVentVine.EMERGENCYRECALL()
 
 func StartCoolDown():
