@@ -4,11 +4,15 @@ extends CharacterBody2D
 @onready var marker_2d: Marker2D = $Marker2D
 @export var anima : AnimatedSprite2D
 
+@onready var enemyPreps : EnemyPreps = owner.get_node("EnemyPreps")
+var dir : float = 1
 func _ready() -> void:
 	UnlimitedRulebook.livestock.append(self)
+	print(enemyPreps)
 
 func _process(delta: float) -> void:
 	$debugState.text = str(machine.get_state())
+	marker_2d.scale.x = dir
 
 func death():
 	if UnlimitedRulebook.livestock.has(self):

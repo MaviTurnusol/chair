@@ -17,7 +17,9 @@ func _input(event: InputEvent) -> void:
 func ShowSettings():
 	settings_canvas_layer.visible = true
 	IsSettingsActive = true
+	get_tree().paused = true
 
 func HideSettings():
 	settings_canvas_layer.visible = false
 	IsSettingsActive = false
+	get_tree().paused = false
