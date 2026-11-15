@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://7yo7k04hjfge"]
+
+[ext_resource type="Script" uid="uid://fn3d7feu04xf" path="res://Common/Stealth/eye_comp.gd" id="1_axhtx"]
+
+[node name="EyeComp" type="Node" unique_id=408761570 node_paths=PackedStringArray("father")]
+script = ExtResource("1_axhtx")
+father = NodePath("")

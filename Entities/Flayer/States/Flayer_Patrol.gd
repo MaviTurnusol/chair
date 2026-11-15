@@ -21,7 +21,12 @@ func Process(delta):
 	
 	if(isOnChosenPath):
 		var closestOffset = ChosenPath.curve.get_closest_offset(stateOwner.global_position)
-		var nextOffset = ChosenPath.curve.sample_baked(closestOffset + 5)
+		var nextOffset 
+		if(ChosenPath.curve.get_baked_length() < closestOffset + 5):
+			nextOffset = ChosenPath.curve.sample_baked(0)
+		else:
+			nextOffset = ChosenPath.curve.sample_baked(closestOffset + 5)
+		
 		targetPoint = nextOffset
 		#if()okakjsfjnasjfnas
 	

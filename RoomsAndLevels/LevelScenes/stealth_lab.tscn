@@ -152,8 +152,19 @@ offset_bottom = 783.035
 rotation = 1.5707964
 color = Color(0, 0, 0, 1)
 
+[node name="ColorRect4" type="ColorRect" parent="Sprites" unique_id=1371122867]
+offset_left = 410.0
+offset_top = 738.0
+offset_right = 532.61
+offset_bottom = 783.035
+rotation = 1.5707964
+color = Color(0, 0, 0, 1)
+
 [node name="hookablePosition" parent="." unique_id=649971908 instance=ExtResource("5_2le0c")]
 position = Vector2(869, 137)
+
+[node name="hookablePosition2" parent="." unique_id=2043324864 instance=ExtResource("5_2le0c")]
+position = Vector2(522, 137)
 
 [node name="Collisions" type="Node2D" parent="." unique_id=1583388602]
 position = Vector2(132, -573)
@@ -172,6 +183,10 @@ shape = SubResource("RectangleShape2D_pjrn0")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=315933699]
 position = Vector2(737, 806)
+shape = SubResource("RectangleShape2D_j8js2")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Collisions/StaticBody2D" unique_id=1367050401]
+position = Vector2(390, 806)
 shape = SubResource("RectangleShape2D_j8js2")
 
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("3_660jx")]

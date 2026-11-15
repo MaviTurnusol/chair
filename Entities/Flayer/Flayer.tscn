@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://khh0ujcnlafr" path="res://Entities/Flayer/States/Flayer_Patrol.gd" id="10_hdf0p"]
 [ext_resource type="Script" uid="uid://bao2r5o1kjm3x" path="res://Entities/Flayer/States/Flayer_Chase.gd" id="11_b1sf1"]
 [ext_resource type="Script" uid="uid://3de6v5ppx7mo" path="res://Entities/Flayer/States/Flayer_Attack.gd" id="13_b1sf1"]
+[ext_resource type="PackedScene" uid="uid://7yo7k04hjfge" path="res://Common/Stealth/eye_comp.tscn" id="14_x10ht"]
+[ext_resource type="PackedScene" uid="uid://bh71dpkape3xo" path="res://Common/Stealth/ear_comp.tscn" id="15_mru82"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s3ler"]
 resource_local_to_scene = true
@@ -236,7 +238,7 @@ material = SubResource("ShaderMaterial_s3ler")
 position = Vector2(0, -84)
 sprite_frames = SubResource("SpriteFrames_x10ht")
 animation = &"idle"
-frame_progress = 0.86075467
+frame_progress = 0.40980056
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_iay18")]
 position = Vector2(0, -56)
@@ -282,6 +284,8 @@ animOnStart = true
 endWithAnim = true
 cantTransitionFrom = PackedStringArray()
 
+[node name="InvestigateSound" type="Node" parent="StateMachine" unique_id=1335340243]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=873974040]
 position = Vector2(0, -56)
 shape = SubResource("CapsuleShape2D_4k37m")
@@ -294,4 +298,10 @@ offset_bottom = -61.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "debug"
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2104094986]
+[node name="EyeComp" parent="." unique_id=408761570 node_paths=PackedStringArray("father") instance=ExtResource("14_x10ht")]
+father = NodePath("..")
+SightRange = 125.0
+HideRange = 150.0
+
+[node name="EarComp" parent="." unique_id=1192759519 node_paths=PackedStringArray("father") instance=ExtResource("15_mru82")]
+father = NodePath("..")

@@ -8,4 +8,5 @@ func Process(delta):
 		stateOwner.velocity = stateOwner.global_position.direction_to(Target.global_position) * MoveSpeed
 	else:
 		Target = UnlimitedRulebook.player
+	stateOwner.dir = sign(stateOwner.velocity.x)
 	stateOwner.move_and_slide()

@@ -3,9 +3,17 @@ extends CharacterBody2D
 @export var machine : StateMachine
 @onready var marker_2d: Marker2D = $Marker2D
 @export var anima : AnimatedSprite2D
-
 @onready var enemyPreps : EnemyPreps = owner.get_node("EnemyPreps")
 var dir : float = 1
+
+var AwarenessOfPlayer : float = 0
+
+func SpotTarget():
+	machine.change_state_to("chase")
+
+func HearSound():
+	pass
+
 func _ready() -> void:
 	UnlimitedRulebook.livestock.append(self)
 	print(enemyPreps)
@@ -23,7 +31,7 @@ func death():
 			UnlimitedRulebook.lockedEnemyPosition = Vector2(0, 0)
 	queue_free()
 
-#Knockback
+#region Knockback
 @export var KnockedbackAmount : float = 5
 @export var KnockbackDuration : float = 1
 const kb_check_offset = Vector2(0,-25)
@@ -53,4 +61,4 @@ func knockback(attacker:Node2D):
 	KBTween.set_ease(Tween.EASE_OUT)
 	KBTween.set_trans(Tween.TRANS_CUBIC)
 	KBTween.tween_property(self,"global_position",TargetPoint,KnockbackDuration)
-	
+#endregion

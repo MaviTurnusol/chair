@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bh71dpkape3xo"]
+
+[ext_resource type="Script" uid="uid://jw0gaw66d4ai" path="res://Common/Stealth/ear_comp.gd" id="1_6khpd"]
+
+[node name="EarComp" type="Node" unique_id=1192759519 node_paths=PackedStringArray("father")]
+script = ExtResource("1_6khpd")
+father = NodePath("")
