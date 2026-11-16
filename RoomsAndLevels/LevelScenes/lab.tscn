@@ -70,7 +70,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_csb2s"]
+[sub_resource type="Resource" id="Resource_xfawk"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ItemDescription = "Nanahuatizin tiem item imte
@@ -82,7 +82,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_q1pqm"]
+[sub_resource type="Resource" id="Resource_m5v3g"]
 script = ExtResource("13_4ma8g")
 ItemName = "Gun1"
 ItemDescription = "Beautiful OP Gun Worm"
@@ -226,6 +226,7 @@ position = Vector2(848, 274)
 [node name="Dialoguable" parent="Interactables" unique_id=559728107 instance=ExtResource("5_lfb30")]
 position = Vector2(417.66666, 227.66667)
 scale = Vector2(0.09705162, 0.097051635)
+Prompt_Text = "Miku"
 dialogue_resource = ExtResource("6_nmeps")
 talking_point = Vector2(354, 282)
 
@@ -242,7 +243,7 @@ texture = ExtResource("7_b6emh")
 
 [node name="PickupableItem" parent="Interactables" unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_csb2s")
+WhatItemAmI = SubResource("Resource_xfawk")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -265,7 +266,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="Interactables" unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_q1pqm")
+WhatItemAmI = SubResource("Resource_m5v3g")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")

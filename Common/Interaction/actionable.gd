@@ -1,6 +1,7 @@
 @icon("uid://d3lr2uas6ax8v")
 extends Area2D
 
+@export var Prompt_Text : String
 @export var dialogue_resource: DialogueResource
 @export var dialogue_start: String = "start"
 @export var talking_point: Vector2

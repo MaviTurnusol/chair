@@ -44,7 +44,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func ShowAllOptions(ActionableList : Array):
 	actionlist.clear()
-	for i : InteractionPrompt in ActionableList:
+	for i in ActionableList:
 		var newnode = ActionListEntry.instantiate() 
 		ActionListControl.add_child(newnode)
 		newnode.get_node("PromptText").text = i.Prompt_Text
