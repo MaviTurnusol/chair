@@ -9,8 +9,8 @@ _data = [Vector2(0, 1.5), 0.0, 0.0, 0, 0, Vector2(0.543147, 1.18681), 0.0, 0.0, 
 point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_lwrtp"]
-offsets = PackedFloat32Array(0.025477707, 1)
-colors = PackedColorArray(0.25454566, 0.4550392, 0.17258507, 1, 0.39607844, 0.1764706, 0.12156863, 1)
+offsets = PackedFloat32Array(0, 0.9745223)
+colors = PackedColorArray(0.39607844, 0.1764706, 0.12156863, 1, 0.25454566, 0.4550392, 0.17258507, 1)
 
 [sub_resource type="Gradient" id="Gradient_814tn"]
 

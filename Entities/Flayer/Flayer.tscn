@@ -238,7 +238,7 @@ material = SubResource("ShaderMaterial_s3ler")
 position = Vector2(0, -84)
 sprite_frames = SubResource("SpriteFrames_x10ht")
 animation = &"idle"
-frame_progress = 0.4289341
+frame_progress = 0.46191543
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_iay18")]
 position = Vector2(0, -56)

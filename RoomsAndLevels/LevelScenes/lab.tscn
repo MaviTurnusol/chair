@@ -2,10 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://Environments/LabSprites/koridor5w1.png" id="1_s0a5h"]
 [ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/LabSprites/koridor5w1_n.png" id="2_dhn3p"]
-[ext_resource type="Texture2D" uid="uid://4rnlvtfq0ut3" path="res://Environments/LabSprites/ledOn.png" id="3_3l8j0"]
-[ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Common/Objects/LedLight.tscn" id="3_ptpbc"]
-[ext_resource type="Texture2D" uid="uid://bvbe30duk14nh" path="res://Environments/TestSprites/light.png" id="4_rdico"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/FX/Shaders/vignette.gdshader" id="4_u3lwi"]
+[ext_resource type="PackedScene" uid="uid://c5s6jhrimvm2f" path="res://Common/Objects/LedLight_New.tscn" id="5_4ma8g"]
 [ext_resource type="PackedScene" uid="uid://bdiv1dfw0nrg0" path="res://Common/Objects/Actionable.tscn" id="5_lfb30"]
 [ext_resource type="Resource" uid="uid://s140yh7sr7ie" path="res://Dialogues/Dialogue/testDialogue.dialogue" id="6_nmeps"]
 [ext_resource type="Texture2D" uid="uid://d2wi5tl1myxoo" path="res://Dialogues/Characters/hatsunemiku.png" id="7_b6emh"]
@@ -29,8 +27,11 @@
 [ext_resource type="Resource" uid="uid://c8by80sijjj2l" path="res://RoomsAndLevels/Transitions/TransPunch.tres" id="25_xfawk"]
 [ext_resource type="PackedScene" uid="uid://c2y7ig1b6veyl" path="res://Entities/Spiderrr/spiderrr.tscn" id="26_3l8j0"]
 [ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/Imen Kheru.mp3" id="28_3l8j0"]
+[ext_resource type="Script" uid="uid://dsghxbqbrel5v" path="res://Common/FX/FogAnimate.gd" id="32_xfawk"]
+[ext_resource type="Script" uid="uid://cb3xd73dt72ra" path="res://Common/Objects/Hidable.gd" id="33_m5v3g"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="33_xfawk"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="34_m5v3g"]
+[ext_resource type="Script" uid="uid://cqfs2qx80kwvm" path="res://Common/Objects/HidePoint.gd" id="34_rixi8"]
 [ext_resource type="PackedScene" uid="uid://crdxtwfpwcijh" path="res://Vining/VentryPoint.tscn" id="35_m5v3g"]
 [ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="36_rixi8"]
 
@@ -56,15 +57,6 @@ specular_texture = ExtResource("1_s0a5h")
 specular_color = Color(0.88235295, 1, 1, 1)
 specular_shininess = 0.1
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3l8j0"]
-load_path = "res://.godot/imported/light.png-d8e4f75f1d88c113b2e6f921995f6a64.ctex"
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3l8j0"]
-polygon = PackedVector2Array(-121, -23, 127, -20, 0, -12)
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6lpvl"]
-polygon = PackedVector2Array(-43, 2, -43, -3, -43, -3, 43, -3, 43, 2, 45, 1, 45, -4, -45, -4, -45, 0)
-
 [sub_resource type="Environment" id="Environment_3cjrj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gbuu4"]
@@ -78,7 +70,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_m5v3g"]
+[sub_resource type="Resource" id="Resource_csb2s"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ItemDescription = "Nanahuatizin tiem item imte
@@ -90,7 +82,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_rixi8"]
+[sub_resource type="Resource" id="Resource_q1pqm"]
 script = ExtResource("13_4ma8g")
 ItemName = "Gun1"
 ItemDescription = "Beautiful OP Gun Worm"
@@ -121,6 +113,20 @@ noise = SubResource("FastNoiseLite_xfawk")
 color_ramp = SubResource("Gradient_4ma8g")
 seamless = true
 
+[sub_resource type="Gradient" id="Gradient_m5v3g"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.073051944, 0.108766235, 0.5698052, 0.6801948, 0.7288961)
+colors = PackedColorArray(0, 0, 0, 0.40392157, 0.29803923, 0.29803923, 0.29803923, 0.41568628, 0.47843137, 0.47843137, 0.47843137, 0.6, 0.6419342, 0.6419339, 0.64193386, 0.6, 0.7019608, 0.7019608, 0.7019608, 0.5529412)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rixi8"]
+noise_type = 3
+fractal_lacunarity = 1.825
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_csb2s"]
+noise = SubResource("FastNoiseLite_rixi8")
+color_ramp = SubResource("Gradient_m5v3g")
+seamless = true
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1pqm"]
 texture = ExtResource("34_m5v3g")
 texture_region_size = Vector2i(32, 32)
@@ -132,6 +138,9 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_q1pqm")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8l8j"]
+size = Vector2(15, 116.64)
 
 [node name="Lab" type="Node2D" unique_id=775964121]
 
@@ -174,56 +183,12 @@ light_mask = 2
 texture = SubResource("CanvasTexture_gbuu4")
 centered = false
 
-[node name="LedLight" type="Node2D" parent="Environment" unique_id=2003837725]
+[node name="LedLight" parent="Environment" unique_id=1127602263 instance=ExtResource("5_4ma8g")]
 position = Vector2(261, 113)
-
-[node name="Sprite2D" type="Sprite2D" parent="Environment/LedLight" unique_id=432987047]
-texture = ExtResource("3_3l8j0")
-
-[node name="PointLight2D" type="PointLight2D" parent="Environment/LedLight" unique_id=1162527589]
-color = Color(2.7626126, 2.9289904, 2.8180718, 1)
-range_item_cull_mask = 2
-shadow_enabled = true
-shadow_item_cull_mask = 3
-texture = SubResource("CompressedTexture2D_3l8j0")
-texture_scale = 2.0
-height = 100.0
-
-[node name="PointLight2D2" type="PointLight2D" parent="Environment/LedLight" unique_id=1125407185]
-color = Color(0.9411765, 1, 1, 1)
-texture = ExtResource("4_rdico")
-texture_scale = 2.0
-
-[node name="foglight" type="PointLight2D" parent="Environment/LedLight" unique_id=1169410237]
-position = Vector2(256, 34)
-color = Color(0.9411765, 1, 1, 1)
-energy = 15.67
-blend_mode = 2
-range_item_cull_mask = 4
-shadow_enabled = true
-shadow_item_cull_mask = 4
-texture = ExtResource("4_rdico")
-texture_scale = 2.0
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Environment/LedLight/foglight" unique_id=54013227]
-occluder = SubResource("OccluderPolygon2D_3l8j0")
-occluder_light_mask = 4
-
-[node name="LightOccluder2D2" type="LightOccluder2D" parent="Environment/LedLight/foglight" unique_id=328490728]
-position = Vector2(4, 165)
-occluder = SubResource("OccluderPolygon2D_3l8j0")
-occluder_light_mask = 4
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Environment/LedLight" unique_id=1555525962]
-occluder = SubResource("OccluderPolygon2D_6lpvl")
-occluder_light_mask = 7
 
 [node name="TlalocBad" type="Sprite2D" parent="Environment" unique_id=396651307]
 position = Vector2(180, 229)
 texture = ExtResource("23_ptpbc")
-
-[node name="LedLight2" parent="Environment" unique_id=1385647229 instance=ExtResource("3_ptpbc")]
-position = Vector2(816, 112)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1280648369]
 environment = SubResource("Environment_3cjrj")
@@ -277,7 +242,7 @@ texture = ExtResource("7_b6emh")
 
 [node name="PickupableItem" parent="Interactables" unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_m5v3g")
+WhatItemAmI = SubResource("Resource_csb2s")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -300,7 +265,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="Interactables" unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_rixi8")
+WhatItemAmI = SubResource("Resource_q1pqm")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -436,10 +401,18 @@ autoscroll = Vector2(-5, 0)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="Fogger/Parallax2D" unique_id=722960675]
+visible = false
 self_modulate = Color(0.09009846, 0.09009849, 0.09009848, 1)
 light_mask = 4
 visibility_layer = 4
 texture = SubResource("NoiseTexture2D_m5v3g")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Fogger/Parallax2D" unique_id=1266619389]
+self_modulate = Color(0.09019608, 0.09019608, 0.09019608, 0.6666667)
+light_mask = 4
+visibility_layer = 4
+texture = SubResource("NoiseTexture2D_csb2s")
+script = ExtResource("32_xfawk")
 
 [node name="VentRoom" type="Node2D" parent="." unique_id=160348412]
 script = ExtResource("33_xfawk")
@@ -458,5 +431,36 @@ offset_top = -2500.0
 offset_right = 2500.0
 offset_bottom = 2500.0
 color = Color(0, 0, 0, 0.61960787)
+
+[node name="LedLight" parent="." unique_id=1020858632 instance=ExtResource("5_4ma8g")]
+position = Vector2(728, 112)
+
+[node name="Hidable" type="StaticBody2D" parent="." unique_id=888144626]
+position = Vector2(530, 221)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("33_m5v3g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable" unique_id=154421311]
+shape = SubResource("RectangleShape2D_r8l8j")
+
+[node name="HidePoint" type="Area2D" parent="Hidable" unique_id=1800651828]
+position = Vector2(-30, 0)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("34_rixi8")
+BackAgainst = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable/HidePoint" unique_id=334419423]
+shape = SubResource("RectangleShape2D_r8l8j")
+
+[node name="HidePoint2" type="Area2D" parent="Hidable" unique_id=382919032]
+position = Vector2(30, -1)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("34_rixi8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable/HidePoint2" unique_id=423332258]
+shape = SubResource("RectangleShape2D_r8l8j")
 
 [editable path="Interactables/Locker"]

@@ -13,6 +13,7 @@ class_name TransitionData
 @export_category("Fade Colours")
 @export var MaskColour : Color = Color.BLACK
 @export var TransparentMaskColour : Color = Color(0,0,0,0)
+@export var DoPosterize : bool = false
 
 @export_category("Entry")
 @export var Delay : float = 0

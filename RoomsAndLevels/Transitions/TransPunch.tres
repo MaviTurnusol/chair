@@ -8,6 +8,7 @@ MaskAnimationName = "punch"
 AnimationScale = 29.459
 tweenMaskOut = true
 maskoutDestinationScale = Vector2(1.2, 1.2)
+DoPosterize = true
 EntryTime = 0.5
 SustainTime = 1.0
 ExitTweenTransition = 4

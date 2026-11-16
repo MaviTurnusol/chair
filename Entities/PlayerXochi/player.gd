@@ -4,7 +4,7 @@ class_name Player
 var speed = 100.0
 var jumpVelocity = -440.0
 @onready var anima = $Marker2D/anima
-@onready var machine = $StateMachine
+@onready var machine : StateMachine = $StateMachine
 #@onready var weaponHolder = $Marker2D/weaponHolder
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var wall_check: RayCast2D = $Marker2D/WallCheck
@@ -38,7 +38,7 @@ func _physics_process(delta):
 	$debugState.text = str(machine.get_state())
 	timeelapsed += delta
 	
-	if(machine.get_state()=="hurt"):
+	if(machine.get_state() in ["hurt","hide"]):
 		return
 	##Attacking
 	#if Input.is_action_just_pressed("attack"):

@@ -7,6 +7,7 @@ script = ExtResource("1_0ijd8")
 MaskAnimationName = "teeth"
 maskoutDestinationScale = Vector2(4, 3)
 DoFadeOut = false
+DoPosterize = true
 EntryTime = 0.5
 SustainTime = 1.0
 ExitTime = 0.7

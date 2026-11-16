@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://btaa22bk2k418" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0037.png" id="13_uwlmb"]
 [ext_resource type="Texture2D" uid="uid://dtvrmwro0qat1" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0041.png" id="14_d4uo4"]
 [ext_resource type="Texture2D" uid="uid://tdtrxr4nbm5o" path="res://RoomsAndLevels/Transitions/Animations/Teeth/0045.png" id="15_j1emw"]
+[ext_resource type="Shader" uid="uid://cy1sbc26lcbgq" path="res://Common/FX/Shaders/Posterize.gdshader" id="23_phraj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7lojv"]
 shader = ExtResource("2_qx1r8")
@@ -151,6 +152,11 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2w0tb"]
+shader = ExtResource("23_phraj")
+shader_parameter/bits = 8
+shader_parameter/dithering = false
+
 [node name="SceneManager" type="Node" unique_id=2065925467]
 script = ExtResource("1_u8xi2")
 
@@ -190,3 +196,15 @@ animation = &"teeth"
 autoplay = "punch"
 frame = 6
 frame_progress = 1.0
+
+[node name="PosterizeLayer" type="CanvasLayer" parent="." unique_id=1918426496]
+
+[node name="PosterizeColourRect" type="ColorRect" parent="PosterizeLayer" unique_id=775201567]
+visible = false
+material = SubResource("ShaderMaterial_2w0tb")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

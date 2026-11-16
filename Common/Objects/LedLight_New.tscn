@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c5s6jhrimvm2f"]
+
+[ext_resource type="Texture2D" uid="uid://4rnlvtfq0ut3" path="res://Environments/LabSprites/ledOn.png" id="1_hcv20"]
+[ext_resource type="Texture2D" uid="uid://bvbe30duk14nh" path="res://Environments/TestSprites/light.png" id="2_f4bo6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3l8j0"]
+load_path = "res://.godot/imported/light.png-d8e4f75f1d88c113b2e6f921995f6a64.ctex"
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3l8j0"]
+polygon = PackedVector2Array(-121, -23, 127, -20, 0, -12)
+
+[sub_resource type="Gradient" id="Gradient_xfawk"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.375, 0.4431818, 0.65746754)
+colors = PackedColorArray(1, 1, 1, 0.6039216, 0.64705884, 0.64705884, 0.64705884, 0.3529412, 0.22352941, 0.22352941, 0.22352941, 0.47843137, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m5v3g"]
+gradient = SubResource("Gradient_xfawk")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6lpvl"]
+polygon = PackedVector2Array(-43, 2, -43, -3, -43, -3, 43, -3, 43, 2, 45, 1, 45, -4, -45, -4, -45, 0)
+
+[node name="LedLight" type="Node2D" unique_id=1127602263]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=525539401]
+texture = ExtResource("1_hcv20")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=103207698]
+color = Color(2.7626126, 2.9289904, 2.8180718, 1)
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = SubResource("CompressedTexture2D_3l8j0")
+texture_scale = 2.0
+height = 100.0
+
+[node name="PointLight2D2" type="PointLight2D" parent="." unique_id=678767095]
+color = Color(0.9411765, 1, 1, 1)
+texture = ExtResource("2_f4bo6")
+texture_scale = 2.0
+
+[node name="foglight" type="PointLight2D" parent="." unique_id=469547793]
+visible = false
+position = Vector2(-2, 20)
+energy = 15.67
+blend_mode = 2
+range_item_cull_mask = 4
+shadow_enabled = true
+shadow_item_cull_mask = 4
+texture = ExtResource("2_f4bo6")
+texture_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="foglight" unique_id=2089867871]
+occluder = SubResource("OccluderPolygon2D_3l8j0")
+occluder_light_mask = 4
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="foglight" unique_id=2129217087]
+position = Vector2(4, 165)
+occluder = SubResource("OccluderPolygon2D_3l8j0")
+occluder_light_mask = 4
+
+[node name="foglight2" type="PointLight2D" parent="." unique_id=1630989305]
+position = Vector2(-2, 5)
+color = Color(0.9411765, 1, 1, 1)
+range_item_cull_mask = 4
+shadow_enabled = true
+shadow_item_cull_mask = 4
+texture = SubResource("GradientTexture2D_m5v3g")
+texture_scale = 2.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="foglight2" unique_id=1439327192]
+occluder = SubResource("OccluderPolygon2D_3l8j0")
+occluder_light_mask = 4
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="foglight2" unique_id=785319491]
+position = Vector2(4, 165)
+occluder = SubResource("OccluderPolygon2D_3l8j0")
+occluder_light_mask = 4
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=792206394]
+occluder = SubResource("OccluderPolygon2D_6lpvl")
+occluder_light_mask = 7

@@ -56,6 +56,7 @@ func UnloadAllButCurrentScene():
 var ActiveTransitionData : TransitionData
 @onready var fader_color_rect: ColorRect = $FaderLayer/FaderColorRect
 @onready var animation_colour_rect: ColorRect = $AnimationLayer/AnimationColourRect
+@onready var posterize_colour_rect: ColorRect = $PosterizeLayer/PosterizeColourRect
 
 func PassTransition(transitionData : TransitionData,WhatScene : String,WhatID:String):
 	ActiveTransitionData = transitionData
@@ -71,6 +72,9 @@ func FadeTransition(transitionData : TransitionData,WhatScene : String,WhatID:St
 	fader_color_rect.color = transitionData.TransparentMaskColour
 	
 	fader_color_rect.visible = true
+	
+	if(transitionData.DoPosterize):
+		PosterizeTransition(transitionData)
 	
 	var FadeTween : Tween = get_tree().create_tween()
 	FadeTween.set_ease(transitionData.EntryTweenEase)
@@ -101,11 +105,15 @@ func AnimationTransition(transitionData : TransitionData,WhatScene : String,What
 	animation_colour_rect.visible = true
 	animation_colour_rect.scale = Vector2.ONE
 	
+	if(transitionData.DoPosterize):
+		PosterizeTransition(transitionData)
+	
 	animation_colour_rect.SetScale(transitionData.AnimationScale)
 	
 	var FadeTween : Tween = get_tree().create_tween()
 	FadeTween.set_ease(transitionData.EntryTweenEase)
 	FadeTween.set_trans(transitionData.EntryTweenTransition)
+	
 	FadeTween.tween_property(animation_colour_rect,"color",transitionData.MaskColour,transitionData.EntryTime)
 	
 	if(!transitionData.WaitUntilSustain):
@@ -134,3 +142,22 @@ func AnimationTransition(transitionData : TransitionData,WhatScene : String,What
 func ScaleMaskOut():
 		var maskouttween : Tween = get_tree().create_tween()
 		maskouttween.tween_property(animation_colour_rect,"scale",ActiveTransitionData.maskoutDestinationScale,ActiveTransitionData.ExitTime)
+
+var poster : int = 8:
+	set(value):
+		posterize_colour_rect.material.set_shader_parameter("bits",value)
+		poster = value
+func PosterizeTransition(transitionData : TransitionData):
+	await get_tree().create_timer(transitionData.Delay).timeout
+	posterize_colour_rect.visible = true
+	#posterize_colour_rect.material.set_shader_parameter("bits",2)
+	var PosterizeTween : Tween = get_tree().create_tween()
+	PosterizeTween.set_trans(Tween.TRANS_SINE)
+	PosterizeTween.set_ease(Tween.EASE_OUT)
+	PosterizeTween.tween_property(self,"poster",2,transitionData.EntryTime)
+	
+	PosterizeTween.tween_interval(transitionData.SustainTime)
+	PosterizeTween.set_ease(Tween.EASE_IN)
+	PosterizeTween.tween_property(self,"poster",8,transitionData.ExitTime)
+	await PosterizeTween.finished
+	posterize_colour_rect.visible = false

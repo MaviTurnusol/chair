@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://cxas7q3nvpj6v" path="res://Environments/ui/HUD/rightdragon0001.png" id="12_yb8l6"]
 [ext_resource type="Texture2D" uid="uid://bwaxhe1eqr6up" path="res://Environments/ui/HUD/rightdragon0002.png" id="13_i25fj"]
 [ext_resource type="Script" uid="uid://dgfhr5513mehw" path="res://Common/PlayerAmmoCountDisplayer.gd" id="14_t3jq8"]
+[ext_resource type="Shader" uid="uid://cy1sbc26lcbgq" path="res://Common/FX/Shaders/Posterize.gdshader" id="15_cgfrk"]
 
 [sub_resource type="Gradient" id="Gradient_pem85"]
 interpolation_mode = 1
@@ -112,6 +113,11 @@ animations = [{
 "name": &"default",
 "speed": 1.0
 }]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cgfrk"]
+shader = ExtResource("15_cgfrk")
+shader_parameter/bits = 4
+shader_parameter/dithering = false
 
 [node name="ViewportLab" type="Node2D" unique_id=1582361756]
 
@@ -244,3 +250,15 @@ theme_override_font_sizes/font_size = 60
 text = "asd"
 script = ExtResource("14_t3jq8")
 AmmoType = 1
+
+[node name="FullScreenFX" type="CanvasLayer" parent="." unique_id=1447701788]
+
+[node name="PosterizeColourRect" type="ColorRect" parent="FullScreenFX" unique_id=937225691]
+visible = false
+material = SubResource("ShaderMaterial_cgfrk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

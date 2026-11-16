@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://csy7e8k6i4j1r" path="res://Entities/PlayerXochi/Animations/XochiVineGuts1.png" id="10_d30e8"]
 [ext_resource type="Texture2D" uid="uid://s576r45bok74" path="res://Entities/PlayerXochi/Animations/idleNew-Sheet.png" id="10_i680d"]
 [ext_resource type="Texture2D" uid="uid://dc2equihckg2b" path="res://Entities/PlayerXochi/Animations/hurtFromBehind.png" id="10_pem85"]
+[ext_resource type="Texture2D" uid="uid://cs08tjy05frcn" path="res://Entities/PlayerXochi/Animations/hiding.png" id="11_3foey"]
 [ext_resource type="Texture2D" uid="uid://dv03h810ova7e" path="res://Entities/PlayerXochi/Animations/xocherstab-Sheet.png" id="11_j2n6q"]
 [ext_resource type="Texture2D" uid="uid://7hfytd1fedso" path="res://Entities/PlayerXochi/Animations/punch1.png" id="11_or6rf"]
 [ext_resource type="Texture2D" uid="uid://by2gf211y18ju" path="res://Entities/PlayerXochi/Animations/hurtFromFront.png" id="11_wkvpm"]
@@ -45,6 +46,7 @@
 [ext_resource type="Script" uid="uid://bosg5qvd8k2f7" path="res://Entities/PlayerXochi/States/Vining.gd" id="27_a038y"]
 [ext_resource type="Script" uid="uid://p7v7fedepuji" path="res://Entities/PlayerXochi/States/MeleeAttack1.gd" id="27_efx54"]
 [ext_resource type="Script" uid="uid://c7o4y8mpif3tv" path="res://Entities/PlayerXochi/States/Hurt.gd" id="28_bkaby"]
+[ext_resource type="Script" uid="uid://vpyes2l8c0s6" path="res://Entities/PlayerXochi/States/Hide.gd" id="30_haqj0"]
 [ext_resource type="Script" uid="uid://cswibj42kh6rk" path="res://Common/StateMachine/state.gd" id="32_qs4pp"]
 [ext_resource type="Script" uid="uid://cj5jewgd12t6" path="res://Obsolete/debug_deletethiswithnocrucialeffectbossfightstart.gd" id="35_c6x0f"]
 [ext_resource type="PackedScene" uid="uid://mu6favus5m8y" path="res://Entities/PlayerXochi/States/Hook.tscn" id="36_f4lon"]
@@ -218,6 +220,30 @@ region = Rect2(660, 0, 66, 103)
 [sub_resource type="AtlasTexture" id="AtlasTexture_32uw3"]
 atlas = ExtResource("5_8mwp6")
 region = Rect2(726, 0, 66, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ib8y8"]
+atlas = ExtResource("11_3foey")
+region = Rect2(0, 0, 112, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq4sn"]
+atlas = ExtResource("11_3foey")
+region = Rect2(112, 0, 112, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w17gw"]
+atlas = ExtResource("11_3foey")
+region = Rect2(224, 0, 112, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8nsr"]
+atlas = ExtResource("11_3foey")
+region = Rect2(336, 0, 112, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwlx7"]
+atlas = ExtResource("11_3foey")
+region = Rect2(448, 0, 112, 103)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjftq"]
+atlas = ExtResource("11_3foey")
+region = Rect2(560, 0, 112, 103)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jekjq"]
 atlas = ExtResource("10_pem85")
@@ -847,6 +873,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ib8y8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vq4sn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w17gw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8nsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwlx7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjftq")
+}],
+"loop": true,
+"name": &"hide",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_jekjq")
 }],
 "loop": true,
@@ -950,11 +999,6 @@ animations = [{
 "loop": false,
 "name": &"knifeslash1",
 "speed": 12.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation_1",
-"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1317,7 +1361,7 @@ animations = [{
 height = 86.0
 
 [sub_resource type="Curve" id="Curve_dexac"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.28490028, 1), 0.0, 0.0, 0, 0, Vector2(0.3276353, 0.3272962), 0.0, 0.0, 0, 0, Vector2(0.35897434, 1), 0.0, 0.0, 0, 0, Vector2(0.4301994, 0.23760235), 0.0, 0.0, 0, 0, Vector2(0.45584044, 1), 0.0, 0.0, 0, 0, Vector2(0.51566947, 0.2151789), 0.0, 0.0, 0, 0, Vector2(0.56410253, 1), 0.0, 0.0, 0, 0, Vector2(0.58119655, 0.19836128), 0.0, 0.0, 0, 0, Vector2(0.66096854, 0.8262181), 0.0, 0.0, 0, 0, Vector2(0.66097856, 0.64122456), 0.0, 0.0, 0, 0, Vector2(0.72079766, 0.5291073), 0.0, 0.0, 0, 0, Vector2(0.7321937, 0.7365243), 0.0, 0.0, 0, 0, Vector2(0.8319087, 0.61319524), 0.0, 0.0, 0, 0, Vector2(0.8774928, 0.42259586), 0.0, 0.0, 0, 0, Vector2(1, 0.29926687), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.13669682), 0.0, 0.0, 0, 0, Vector2(0.28490028, 1), 0.0, 0.0, 0, 0, Vector2(0.3276353, 0.3272962), 0.0, 0.0, 0, 0, Vector2(0.35897434, 1), 0.0, 0.0, 0, 0, Vector2(0.4301994, 0.23760235), 0.0, 0.0, 0, 0, Vector2(0.45584044, 1), 0.0, 0.0, 0, 0, Vector2(0.51566947, 0.2151789), 0.0, 0.0, 0, 0, Vector2(0.56410253, 1), 0.0, 0.0, 0, 0, Vector2(0.58119655, 0.19836128), 0.0, 0.0, 0, 0, Vector2(0.66096854, 0.8262181), 0.0, 0.0, 0, 0, Vector2(0.66097856, 0.64122456), 0.0, 0.0, 0, 0, Vector2(0.72079766, 0.5291073), 0.0, 0.0, 0, 0, Vector2(0.7321937, 0.7365243), 0.0, 0.0, 0, 0, Vector2(0.8319087, 0.61319524), 0.0, 0.0, 0, 0, Vector2(0.8774928, 0.42259586), 0.0, 0.0, 0, 0, Vector2(1, 0.29926687), 0.0, 0.0, 0, 0]
 point_count = 16
 
 [sub_resource type="Gradient" id="Gradient_dexac"]
@@ -1472,9 +1516,8 @@ position = Vector2(-11.636646, 10.980812)
 material = SubResource("ShaderMaterial_3foey")
 position = Vector2(0, -45)
 sprite_frames = SubResource("SpriteFrames_o28un")
-animation = &"suicide"
-frame = 13
-frame_progress = 1.0
+animation = &"hide"
+frame_progress = 0.3643641
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_00tjw")]
 collision_layer = 2
@@ -1511,11 +1554,17 @@ animName = ""
 
 [node name="Walk" parent="StateMachine" unique_id=294001506 instance=ExtResource("4_vtle1")]
 
+[node name="Hide" parent="StateMachine" unique_id=502472228 instance=ExtResource("4_vtle1")]
+script = ExtResource("30_haqj0")
+animName = "hide"
+animOnStart = true
+cantTransitionFrom = PackedStringArray()
+
 [node name="Roll" parent="StateMachine" unique_id=1304739926 instance=ExtResource("5_od3ui")]
 
 [node name="Hurt" parent="StateMachine" unique_id=392211264 instance=ExtResource("5_od3ui")]
 script = ExtResource("28_bkaby")
-animName = "hurt"
+animName = ""
 cantTransitionFrom = PackedStringArray()
 
 [node name="Vining" parent="StateMachine" unique_id=1561311894 instance=ExtResource("5_od3ui")]

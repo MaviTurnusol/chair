@@ -14,12 +14,20 @@ var IsSelectingFromPrompts : bool = false
 var CanAction : bool = true
 func _unhandled_input(event: InputEvent) -> void:
 	
+	
 	if event.is_action_pressed(&"interact"):
 		get_tree().root.get_viewport().set_input_as_handled()
 		if(!IsSelectingFromPrompts):
 			selectidx = 0
-		var actionables = get_overlapping_areas()
+		
+		var actionables : Array#= get_overlapping_areas()
+		var foundactionables = get_overlapping_areas()
+		for i in foundactionables:
+			if(i.has_method("action")):
+				actionables.append(i)
+		
 		print(actionables)
+		
 		if actionables.size() > 0:
 			if(actionables.size()==1||IsSelectingFromPrompts):
 				#IsSelectingFromPrompts = false
@@ -34,9 +42,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				for i in actionables:
 					i.area_exited.connect(exitedAnInteractionPrompter)
 
-func ShowAllOptions(ActionableList : Array[Area2D]):
+func ShowAllOptions(ActionableList : Array):
 	actionlist.clear()
-	for i in ActionableList:
+	for i : InteractionPrompt in ActionableList:
 		var newnode = ActionListEntry.instantiate() 
 		ActionListControl.add_child(newnode)
 		newnode.get_node("PromptText").text = i.Prompt_Text

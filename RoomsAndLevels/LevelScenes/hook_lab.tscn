@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://crdxtwfpwcijh" path="res://Vining/VentryPoint.tscn" id="8_4u38e"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="9_hkqfb"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="10_g4ewm"]
+[ext_resource type="Script" uid="uid://cb3xd73dt72ra" path="res://Common/Objects/Hidable.gd" id="10_hkqfb"]
+[ext_resource type="Script" uid="uid://cqfs2qx80kwvm" path="res://Common/Objects/HidePoint.gd" id="11_g4ewm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrn0"]
 size = Vector2(2087, 89)
@@ -27,6 +29,9 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_mrqcn")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mrqcn"]
+size = Vector2(15, 116.64)
 
 [node name="HookLab" type="Node2D" unique_id=622899540]
 
@@ -117,3 +122,31 @@ position = Vector2(587, 177)
 
 [node name="VentryPoint3" parent="." unique_id=1340490186 instance=ExtResource("8_4u38e")]
 position = Vector2(199, 265)
+
+[node name="Hidable" type="StaticBody2D" parent="." unique_id=468019754]
+position = Vector2(717, 221)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("10_hkqfb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable" unique_id=111132321]
+shape = SubResource("RectangleShape2D_mrqcn")
+
+[node name="HidePoint" type="Area2D" parent="Hidable" unique_id=658264771]
+position = Vector2(-30, 0)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("11_g4ewm")
+BackAgainst = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable/HidePoint" unique_id=1486051033]
+shape = SubResource("RectangleShape2D_mrqcn")
+
+[node name="HidePoint2" type="Area2D" parent="Hidable" unique_id=705524820]
+position = Vector2(30, -1)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("11_g4ewm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable/HidePoint2" unique_id=70509607]
+shape = SubResource("RectangleShape2D_mrqcn")
