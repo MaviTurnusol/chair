@@ -29,4 +29,5 @@ func _input(event: InputEvent) -> void:
 		if(event.is_action_pressed("down")):
 			get_parent().Activate()
 			UnlimitedRulebook.player.marker_2d.scale.x = BackAgainst
+			UnlimitedRulebook.player.dir = BackAgainst
 			UnlimitedRulebook.player.global_position.x = global_position.x

@@ -300,8 +300,8 @@ text = "debug"
 
 [node name="EyeComp" parent="." unique_id=408761570 node_paths=PackedStringArray("father") instance=ExtResource("14_x10ht")]
 father = NodePath("..")
-SightRange = 250.0
-HideRange = 150.0
+SightRange = 150.0
+HideRange = 100.0
 
 [node name="EarComp" parent="." unique_id=1192759519 node_paths=PackedStringArray("father") instance=ExtResource("15_mru82")]
 father = NodePath("..")
