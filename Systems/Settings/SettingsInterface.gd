@@ -23,3 +23,6 @@ func HideSettings():
 	settings_canvas_layer.visible = false
 	IsSettingsActive = false
 	get_tree().paused = false
+
+func _exit_tree() -> void:
+	get_tree().paused = false

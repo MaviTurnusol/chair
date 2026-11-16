@@ -2,6 +2,7 @@ extends StaticBody2D
 
 var isActive : bool = false
 func _ready() -> void:
+	await get_tree().process_frame
 	UnlimitedRulebook.player.machine.StateChanged.connect(Deactivate)
 
 func Activate():

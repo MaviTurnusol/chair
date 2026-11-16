@@ -305,8 +305,7 @@ BOX"
 
 [node name="RealDoor" parent="Doors" unique_id=696739252 instance=ExtResource("9_3cjrj")]
 position = Vector2(251, 223)
-TargetSceneName = "Hook Lab"
-DoorIdentifier = "Lab-HookLab-1"
+TargetSceneName = "Elevator1"
 transitionData = ExtResource("24_4ma8g")
 DoSetPositionAtNewScene = true
 

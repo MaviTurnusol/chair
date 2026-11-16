@@ -87,6 +87,7 @@ DoSetPositionAtNewScene = true
 [node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
 script = ExtResource("5_ajgnu")
 Track = ExtResource("5_e2aq0")
+OnReady = true
 
 [node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
 script = ExtResource("4_pofgw")

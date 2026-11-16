@@ -17,9 +17,11 @@ func _ready() -> void:
 
 func QuitGamePressed():
 	#ADD SAVED PROGRESS WARNING
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	ClearConfirmationDialogue.popup()
 	await ClearConfirmDialogueChosen
 	if(ClearCode == 1):
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		if(WhatQuitType==ButtonType.QuitGame):
 			get_tree().quit()
 			pass
@@ -28,6 +30,8 @@ func QuitGamePressed():
 			get_tree().unload_current_scene()
 			pass
 		print("SAVE CLEARED")
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func ClearConfirmationDialogueChoice(Code : int):
 	match Code:

@@ -8,4 +8,3 @@ func _ready() -> void:
 
 func StartGame():
 	get_tree().change_scene_to_packed(NextScene.Scene)
-	

@@ -314,3 +314,31 @@ script = ExtResource("24_4utf8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable/HidePoint2" unique_id=245302169]
 shape = SubResource("RectangleShape2D_4utf8")
+
+[node name="Hidable2" type="StaticBody2D" parent="." unique_id=1137685079]
+position = Vector2(869, 225)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("23_i3fnl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable2" unique_id=1740491761]
+shape = SubResource("RectangleShape2D_4utf8")
+
+[node name="HidePoint" type="Area2D" parent="Hidable2" unique_id=1909641936]
+position = Vector2(-30, 0)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("24_4utf8")
+BackAgainst = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable2/HidePoint" unique_id=1058106473]
+shape = SubResource("RectangleShape2D_4utf8")
+
+[node name="HidePoint2" type="Area2D" parent="Hidable2" unique_id=1075327319]
+position = Vector2(30, -1)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("24_4utf8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable2/HidePoint2" unique_id=1649966151]
+shape = SubResource("RectangleShape2D_4utf8")
