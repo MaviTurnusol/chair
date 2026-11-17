@@ -1,9 +1,17 @@
 @tool
 extends Node
 
-@export var tile_map_layer: TileMapLayer
+@export var tile_map_layer: TileMapLayer:
+	set(value):
+		tile_map_layer.self_modulate = Color.WHITE
+		tile_map_layer = value
+		tile_map_layer.self_modulate = Color8(Value,Value,Value)
 @export var Name : String = "Export"
-@export_range(0,255,1,"prefer_slider") var Value : int = 255
+@export_range(0,255,1,"prefer_slider") var Value : int = 255:
+	set(value):
+		Value = value
+		if(tile_map_layer):
+			tile_map_layer.self_modulate = Color8(Value,Value,Value)
 const ExportPath = "res://TilemapExporter/ExportDir/"
 @export var ExportButton : bool = false:
 	set(value):
