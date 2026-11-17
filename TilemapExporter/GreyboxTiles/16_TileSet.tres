@@ -1,0 +1,10 @@
+[gd_resource type="TileSet" format=3 uid="uid://dpldenhucxdlq"]
+
+[ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="1_4hqsv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_so8iq"]
+texture = ExtResource("1_4hqsv")
+2:0/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_so8iq")

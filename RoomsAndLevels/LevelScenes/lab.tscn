@@ -324,17 +324,21 @@ transitionData = ExtResource("25_xfawk")
 [node name="Enemies" type="Node" parent="." unique_id=1498710853]
 
 [node name="CeilingWorm2" parent="Enemies" unique_id=908797744 instance=ExtResource("17_csb2s")]
+visible = false
 position = Vector2(745, 110)
 
 [node name="CeilingWorm3" parent="Enemies" unique_id=1121628834 instance=ExtResource("17_csb2s")]
+visible = false
 position = Vector2(560, 116)
 
 [node name="CeilingWorm4" parent="Enemies" unique_id=2141160138 instance=ExtResource("17_csb2s")]
+visible = false
 position = Vector2(645, 116)
 
 [node name="JustANormalGuy" parent="Enemies" unique_id=1552983653 instance=ExtResource("18_q1pqm")]
+visible = false
 modulate = Color(0.77038866, 3.85046e-07, 0.39466476, 1)
-position = Vector2(927, 225)
+position = Vector2(908, 231)
 KnockedbackAmount = 75.0
 StaggerDuration = 0.5
 
@@ -354,7 +358,8 @@ PropertiesToSave = Dictionary[String, String]({
 metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="JustANormalGuy2" parent="Enemies" unique_id=521501233 instance=ExtResource("18_q1pqm")]
-position = Vector2(816, 227)
+visible = false
+position = Vector2(797, 233)
 KnockedbackAmount = 75.0
 StaggerDuration = 0.25
 
@@ -367,7 +372,8 @@ PropertiesToSave = Dictionary[String, String]({
 metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="JustANormalGuy3" parent="Enemies" unique_id=753228336 instance=ExtResource("18_q1pqm")]
-position = Vector2(1030, 223)
+visible = false
+position = Vector2(1011, 229)
 KnockedbackAmount = 75.0
 StaggerDuration = 0.25
 

@@ -1,0 +1,20 @@
+[gd_scene format=4 uid="uid://b7nk1g2n1kdom"]
+
+[ext_resource type="Script" uid="uid://ep6ylm21owbt" path="res://Environments/TilemapTextureSaver.gd" id="1_t8fr6"]
+[ext_resource type="Texture2D" uid="uid://bq0j64m8a0ocr" path="res://Icons/Icon_Xochi.png" id="2_djy86"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t3141"]
+texture = ExtResource("2_djy86")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_t8fr6"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_t3141")
+
+[node name="Node2D" type="Node" unique_id=22268388]
+script = ExtResource("1_t8fr6")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1540744181]
+tile_map_data = PackedByteArray("AAD3//7/AAAAAAAAAAD4//7/AAAAAAAAAAD5//7/AAAAAAAAAAD6//7/AAAAAAAAAAD7//7/AAAAAAAAAAD8//7/AAAAAAAAAAD9//7/AAAAAAAAAAD+//7/AAAAAAAAAAD///7/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_t8fr6")
