@@ -200,7 +200,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dp0qn")
 }],
-"loop": false,
+"loop": true,
 "name": &"attack",
 "speed": 20.0
 }, {
@@ -237,8 +237,8 @@ KnockedbackAmount = 250.0
 material = SubResource("ShaderMaterial_s3ler")
 position = Vector2(0, -84)
 sprite_frames = SubResource("SpriteFrames_x10ht")
-animation = &"idle"
-frame_progress = 0.46191543
+animation = &"attack"
+frame_progress = 0.8906862
 
 [node name="HurtBox" parent="Marker2D" unique_id=491231326 node_paths=PackedStringArray("father", "healthComp") instance=ExtResource("4_iay18")]
 position = Vector2(0, -56)

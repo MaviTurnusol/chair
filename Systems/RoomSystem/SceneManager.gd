@@ -6,6 +6,9 @@ signal setplayerposition(Vector2)
 signal screamtodoors(String)
 signal unloadallbutcurrentscene(String)
 
+signal entityswitchscene(String,Node2D)
+signal entityscreamtodoors(String,Node2D)
+
 func _ready() -> void:
 	var Rooms
 	#if(DirAccess.dir_exists_absolute("res://RoomsAndLevels/")):
@@ -69,6 +72,12 @@ func SwitchSceneAndPosition(WhatScene : String,WhatID:String):
 
 func UnloadAllButCurrentScene():
 	unloadallbutcurrentscene.emit()
+
+func EntitySwitchScene(Entity : Node2D,WhatScene : String,WhatID:String = ""):
+	entityswitchscene.emit(WhatScene,Entity)
+	await get_tree().process_frame
+	if(WhatID!=""):
+		entityscreamtodoors.emit(WhatID,Entity)
 
 #region Transition Specifics
 var ActiveTransitionData : TransitionData

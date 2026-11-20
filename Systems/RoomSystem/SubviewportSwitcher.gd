@@ -13,6 +13,8 @@ func GetActiveScene():
 	return LoadedScenes[0]
 
 func _ready() -> void:
+	SceneManager.entityswitchscene.connect(EntitySwitchScene)
+	
 	SceneManager.switchscene.connect(SwitchToScene)
 	SceneManager.unloadallbutcurrentscene.connect(UnloadAllButCurrent)
 	SaveManager.SetValueFromSave("StartingLoadedRoom","CurrentRoom",self)
@@ -91,8 +93,6 @@ func LoadScene(SceneName : String):
 	add_child(NewRoom)
 	RegetAllChildren()
 
-
-
 func UnloadAllButCurrent():
 	for sce in LoadedScenes.duplicate():
 		if(sce!=UnlimitedRulebook.currentScene):
@@ -100,3 +100,24 @@ func UnloadAllButCurrent():
 			LoadedScenes.erase(sce)
 			keepref.queue_free()
 	pass
+
+func EntitySwitchScene(whatscene : String,entity : Node2D):
+	var isLoaded:bool=false
+	var sceneref : RoomParent
+	#check if its loaded
+	for sce in LoadedScenes:
+		if(sce.room.Name==whatscene):
+			isLoaded = true
+			sceneref = sce
+			break
+	#if its not loaded then load it
+	if(!isLoaded):
+		LoadScene(whatscene)
+		isLoaded = true
+		for sce in LoadedScenes:
+			if(sce.room.Name==whatscene):
+				sceneref = sce
+				break
+	entity.reparent(sceneref.get_child(0))
+	entity.CurrentScene = sceneref.room.Name
+	entity.owner = sceneref.get_child(0)

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var anima : AnimatedSprite2D
 @onready var enemyPreps : EnemyPreps = owner.get_node("EnemyPreps")
 var dir : float = 1
+var CurrentScene : String
 
 var AwarenessOfPlayer : float = 0
 
@@ -17,6 +18,7 @@ func HearSound():
 func _ready() -> void:
 	UnlimitedRulebook.livestock.append(self)
 	print(enemyPreps)
+	CurrentScene = owner.get_parent().room.Name
 
 func _process(delta: float) -> void:
 	$debugState.text = str(machine.get_state())

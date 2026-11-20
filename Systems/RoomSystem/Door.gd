@@ -1,5 +1,6 @@
 @icon("uid://dh4y12fn6jv5x")
 extends Node2D
+class_name Door
 
 @export var TargetSceneName : String
 @export var DoorIdentifier : String 
@@ -42,9 +43,14 @@ func GoThroughDoor():
 	else:
 		SceneManager.PassTransition(transitionData,TargetSceneName,DoorIdentifier)
 
+func EntitySwitchScene(who : Node2D):
+	SceneManager.EntitySwitchScene(who,TargetSceneName,DoorIdentifier)
+
 func _ready() -> void:
 	SceneManager.screamtodoors.connect(CheckIfImCurrentScene)
-	$InteractionPrompter.talking_point = global_position + talking_point_offset
+	SceneManager.entityscreamtodoors.connect(EntityCheckIfImCurrentScene)
+	if(has_node("InteractionPrompter")):
+		$InteractionPrompter.talking_point = global_position + talking_point_offset
 	
 	if(transitionData):
 		transitionData = transitionData.duplicate()
@@ -54,3 +60,9 @@ func CheckIfImCurrentScene(seekedid:String):
 	if(DoorIdentifier == seekedid):
 		if(owner.get_parent()==UnlimitedRulebook.currentScene):
 			SceneManager.SetPlayerPosition(global_position)
+
+func EntityCheckIfImCurrentScene(seekedid:String,entity : Node2D):
+	if(DoorIdentifier == seekedid):
+		if(owner.get_parent().room.Name==entity.CurrentScene):
+			entity.global_position = global_position
+			#SceneManager.SetPlayerPosition(global_position)
