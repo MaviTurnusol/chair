@@ -225,7 +225,7 @@ height = 110.0
 
 [node name="Flayer" type="CharacterBody2D" unique_id=1753637316 node_paths=PackedStringArray("machine", "anima")]
 collision_layer = 2
-collision_mask = 2
+collision_mask = 0
 script = ExtResource("1_argb7")
 machine = NodePath("StateMachine")
 anima = NodePath("Marker2D/anima")

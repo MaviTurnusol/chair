@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://cfww5mjnido6b"]
 
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="3_0b5d4"]
+[ext_resource type="PackedScene" uid="uid://bxoxxvjxh70fj" path="res://Entities/Flayer/Flayer.tscn" id="3_yf8yh"]
 [ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="4_iw2fn"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="4_qdili"]
 [ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="5_bswr5"]
@@ -27,6 +28,8 @@
 [ext_resource type="Texture2D" uid="uid://jubyc1ti04pw" path="res://Entities/Wormy/Worm1.png" id="22_yf8yh"]
 [ext_resource type="PackedScene" uid="uid://bjoxfrt8d45e1" path="res://Entities/Guy/NormalWalkingEnemy1.tscn" id="23_21iup"]
 [ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://Systems/Weapons/Scripts/HelperGizmo.gd" id="23_28c4c"]
+[ext_resource type="Script" uid="uid://cb3xd73dt72ra" path="res://Common/Objects/Hidable.gd" id="29_edfr6"]
+[ext_resource type="Script" uid="uid://cqfs2qx80kwvm" path="res://Common/Objects/HidePoint.gd" id="30_28c4c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
 texture = ExtResource("11_bkbvh")
@@ -39,6 +42,12 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_scnhh"]
 tile_size = Vector2i(64, 64)
 sources/1 = SubResource("TileSetAtlasSource_21iup")
+
+[sub_resource type="Curve2D" id="Curve2D_yf8yh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 871, 275, 0, 0, 0, 0, 1686, 285, 0, 0, 0, 0, 870, 285)
+}
+point_count = 3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjrn0"]
 size = Vector2(2087, 89)
@@ -59,7 +68,7 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_mrqcn")
 
-[sub_resource type="Resource" id="Resource_1bhf7"]
+[sub_resource type="Resource" id="Resource_gfc1x"]
 script = ExtResource("19_0ipvf")
 ItemName = "example"
 ground_tex = ExtResource("18_scnhh")
@@ -84,7 +93,7 @@ _bundled = {
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_yf8yh"]
+[sub_resource type="Resource" id="Resource_edfr6"]
 script = ExtResource("19_0ipvf")
 ItemName = "Gun 2"
 ground_tex = ExtResource("19_scnhh")
@@ -94,32 +103,6 @@ inv_scalemulti = 9.0
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1)])
 ItemAttributes = Array[int]([2])
 AssociatedScene = SubResource("PackedScene_2ogsr")
-metadata/_custom_type_script = "uid://oa7fh5t141yt"
-
-[sub_resource type="Resource" id="Resource_gfc1x"]
-script = ExtResource("19_0ipvf")
-ItemName = "Ammo Small"
-ItemDescription = "{BulletCount} bullets left in magazine"
-ground_tex = ExtResource("20_21iup")
-inventory_tex = ExtResource("20_21iup")
-ground_scalemulti = 0.4
-ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
-ItemAttributes = Array[int]([3])
-AmmoType = 0
-AmmoCount = 23
-metadata/_custom_type_script = "uid://oa7fh5t141yt"
-
-[sub_resource type="Resource" id="Resource_edfr6"]
-script = ExtResource("19_0ipvf")
-ItemName = "Ammo Small"
-ItemDescription = "{BulletCount} bullets left in magazine"
-ground_tex = ExtResource("20_21iup")
-inventory_tex = ExtResource("20_21iup")
-ground_scalemulti = 0.4
-ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
-ItemAttributes = Array[int]([3])
-AmmoType = 0
-AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="Resource" id="Resource_28c4c"]
@@ -157,11 +140,37 @@ inventory_tex = ExtResource("20_21iup")
 ground_scalemulti = 0.4
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
 ItemAttributes = Array[int]([3])
-AmmoType = 1
+AmmoType = 0
 AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="Resource" id="Resource_5gwlk"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ItemDescription = "{BulletCount} bullets left in magazine"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 0
+AmmoCount = 23
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_auo4j"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ItemDescription = "{BulletCount} bullets left in magazine"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 1
+AmmoCount = 23
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_t23h2"]
 script = ExtResource("19_0ipvf")
 ItemName = "Gun1"
 ItemDescription = "Beautiful OP Gun Worm"
@@ -174,6 +183,9 @@ ItemAttributes = Array[int]([2])
 AssociatedScene = ExtResource("21_1bhf7")
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ogsr"]
+size = Vector2(15, 116.64)
+
 [node name="EnemyLab" type="Node2D" unique_id=622899540]
 
 [node name="EnemyPreps" type="Node2D" parent="." unique_id=2035388690]
@@ -183,6 +195,11 @@ script = ExtResource("19_gmoma")
 visible = false
 tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAQAAQAAAAAAAAAYAAQAAQAAAAAAAAAZAAQAAQAAAAAAAAAaAAQAAQAAAAAAAAAbAAQAAQAAAAAAAAAcAAQAAQAAAAAAAAAdAAQAAQAAAAAAAAAeAAQAAQAAAAAAAAAfAAQAAQAAAAAAAAAgAAQAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_scnhh")
+
+[node name="FlayerPaths" type="Node2D" parent="EnemyPreps" unique_id=1179491745]
+
+[node name="Path2D" type="Path2D" parent="EnemyPreps/FlayerPaths" unique_id=1719565277]
+curve = SubResource("Curve2D_yf8yh")
 
 [node name="Sprites" type="Node2D" parent="." unique_id=1658677967]
 position = Vector2(132, -573)
@@ -249,7 +266,7 @@ color = Color(0, 0, 0, 0.61960787)
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_bolhi")]
 position = Vector2(162, 228)
-WhatItemAmI = SubResource("Resource_1bhf7")
+WhatItemAmI = SubResource("Resource_gfc1x")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -261,7 +278,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="Gun2" parent="." unique_id=788137768 instance=ExtResource("16_bolhi")]
 position = Vector2(644, 212)
-WhatItemAmI = SubResource("Resource_yf8yh")
+WhatItemAmI = SubResource("Resource_edfr6")
 
 [node name="SaveLoad" type="Node" parent="Gun2" unique_id=1006746121 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -284,7 +301,7 @@ FunctionName = "OnLoad"
 
 [node name="AmmoItem" parent="." unique_id=625144479 instance=ExtResource("16_bolhi")]
 position = Vector2(270, 230)
-WhatItemAmI = SubResource("Resource_gfc1x")
+WhatItemAmI = SubResource("Resource_28c4c")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem" unique_id=994757030 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -296,7 +313,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem2" parent="." unique_id=1897291009 instance=ExtResource("16_bolhi")]
 position = Vector2(1061, 246)
-WhatItemAmI = SubResource("Resource_edfr6")
+WhatItemAmI = SubResource("Resource_2ogsr")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem2" unique_id=1213417140 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -308,7 +325,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem3" parent="." unique_id=1577489028 instance=ExtResource("16_bolhi")]
 position = Vector2(1182, 250)
-WhatItemAmI = SubResource("Resource_28c4c")
+WhatItemAmI = SubResource("Resource_gojle")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem3" unique_id=378527000 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -320,7 +337,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem4" parent="." unique_id=123239139 instance=ExtResource("16_bolhi")]
 position = Vector2(1310, 256)
-WhatItemAmI = SubResource("Resource_2ogsr")
+WhatItemAmI = SubResource("Resource_5gwlk")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem4" unique_id=2038474076 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -332,7 +349,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem5" parent="." unique_id=200625649 instance=ExtResource("16_bolhi")]
 position = Vector2(1405, 250)
-WhatItemAmI = SubResource("Resource_gojle")
+WhatItemAmI = SubResource("Resource_auo4j")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem5" unique_id=1158565589 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -344,44 +361,64 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="Enemies" type="Node2D" parent="." unique_id=674820180]
 
+[node name="Flayer" parent="Enemies" unique_id=1753637316 instance=ExtResource("3_yf8yh")]
+position = Vector2(1549, 270)
+
+[node name="Flayer2" parent="Enemies" unique_id=496542158 instance=ExtResource("3_yf8yh")]
+position = Vector2(1268, 266)
+
+[node name="Flayer3" parent="Enemies" unique_id=1835031915 instance=ExtResource("3_yf8yh")]
+position = Vector2(948, 273)
+
 [node name="Spiderrr" parent="Enemies" unique_id=532131844 instance=ExtResource("10_rdp63")]
 
 [node name="CeilingWorm" parent="Enemies" unique_id=908797744 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(524, 80)
 
 [node name="CeilingWorm2" parent="Enemies" unique_id=1063119453 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(581, 80)
 
 [node name="CeilingWorm3" parent="Enemies" unique_id=2078678675 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(636, 82)
 
 [node name="CeilingWorm4" parent="Enemies" unique_id=11565657 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(692, 82)
 
 [node name="CeilingWorm5" parent="Enemies" unique_id=1229842548 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(755, 82)
 
 [node name="CeilingWorm6" parent="Enemies" unique_id=367104710 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(818, 82)
 
 [node name="CeilingWorm7" parent="Enemies" unique_id=542928290 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(879, 82)
 
 [node name="CeilingWorm8" parent="Enemies" unique_id=1814298700 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(936, 82)
 
 [node name="CeilingWorm9" parent="Enemies" unique_id=34570780 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(986, 80)
 
 [node name="CeilingWorm10" parent="Enemies" unique_id=839438107 instance=ExtResource("22_bolhi")]
+visible = false
 position = Vector2(986, 80)
 
 [node name="JustANormalGuy" parent="Enemies" unique_id=1552983653 instance=ExtResource("23_21iup")]
+visible = false
 position = Vector2(792, 225)
 
 [node name="Gun1" parent="." unique_id=2058667254 instance=ExtResource("16_bolhi")]
 position = Vector2(494, 226)
-WhatItemAmI = SubResource("Resource_5gwlk")
+WhatItemAmI = SubResource("Resource_t23h2")
 
 [node name="SaveLoad" type="Node" parent="Gun1" unique_id=1703763022 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -390,3 +427,39 @@ PropertiesToSave = Dictionary[String, String]({
 "pickedup": "Gun2PickUp"
 })
 metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="Hidable" type="StaticBody2D" parent="." unique_id=1397545930]
+position = Vector2(811, 228)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("29_edfr6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable" unique_id=1280162229]
+shape = SubResource("RectangleShape2D_2ogsr")
+
+[node name="HidePoint" type="Area2D" parent="Hidable" unique_id=2132277080]
+position = Vector2(-30, 0)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("30_28c4c")
+BackAgainst = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable/HidePoint" unique_id=1167539117]
+shape = SubResource("RectangleShape2D_2ogsr")
+
+[node name="HidePoint2" type="Area2D" parent="Hidable" unique_id=1644574527]
+position = Vector2(30, -1)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("30_28c4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable/HidePoint2" unique_id=2006979220]
+shape = SubResource("RectangleShape2D_2ogsr")
+
+[node name="ColorRect3" type="ColorRect" parent="Hidable" unique_id=1031526582]
+offset_left = 21.0
+offset_top = -64.0
+offset_right = 143.60999
+offset_bottom = -18.965027
+rotation = 1.5707964
+color = Color(0, 0, 0, 1)
