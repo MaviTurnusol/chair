@@ -20,8 +20,9 @@ func Process(delta):
 
 func EnterDoor():
 	var tdoor : Door = Target
-	tdoor.EntitySwitchScene(owner)
-	print("TRY ENTERED")
+	tdoor.EntitySwitchScene(stateOwner)
+	print("flayerrrr")
+	Target = null
 	pass
 
 func FindDoorToPlayer():

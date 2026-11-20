@@ -45,6 +45,7 @@ func GoThroughDoor():
 
 func EntitySwitchScene(who : Node2D):
 	SceneManager.EntitySwitchScene(who,TargetSceneName,DoorIdentifier)
+	
 
 func _ready() -> void:
 	SceneManager.screamtodoors.connect(CheckIfImCurrentScene)
