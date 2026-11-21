@@ -21,6 +21,8 @@
 [ext_resource type="Resource" uid="uid://b1yy8w8ngpo6s" path="res://RoomsAndLevels/XochiHouse_Bedroom.tres" id="19_nbdyg"]
 [ext_resource type="Resource" uid="uid://8a6sccpld8ft" path="res://RoomsAndLevels/StealthLab.tres" id="20_2i1v8"]
 [ext_resource type="Texture2D" uid="uid://4uvvr76misin" path="res://Icons/Icon_Angel.png" id="20_r67do"]
+[ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="23_fiwwv"]
+[ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="24_cvfa2"]
 [ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="24_fq6s6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
@@ -49,6 +51,18 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_mrqcn")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5iq5j"]
+texture = ExtResource("23_fiwwv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_6tdv8"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_5iq5j")
 
 [node name="ElevatorLab" type="Node2D" unique_id=622899540]
 
@@ -114,7 +128,7 @@ rotation = -1.5707964
 shape = SubResource("RectangleShape2D_6qasg")
 
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("4_5jdj4")]
-position = Vector2(87, 217)
+position = Vector2(93, 260)
 TargetSceneName = "Lab"
 transitionData = ExtResource("5_6qasg")
 DoSetPositionAtNewScene = true
@@ -211,3 +225,10 @@ InteractObject = NodePath("..")
 [node name="Sprite2D" type="Sprite2D" parent="ElevatorButton" unique_id=1557681990]
 scale = Vector2(0.125, 0.125)
 texture = ExtResource("20_r67do")
+
+[node name="RoomTiles" type="TileMapLayer" parent="." unique_id=1811260646 groups=["RoomTiles"]]
+visible = false
+tile_map_data = PackedByteArray("AAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAQAAAAAAAAAAAABAAUAAAAAAAAAAAABAAYAAAAAAAAAAAABAAcAAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAAQAAIAAAAAAAAAAAAQAAMAAAAAAAAAAAAQAAQAAAAAAAAAAAAQAAUAAAAAAAAAAAAQAAYAAAAAAAAAAAAQAAcAAAAAAAAAAAAQAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_6tdv8")
+navigation_enabled = false
+script = ExtResource("24_cvfa2")

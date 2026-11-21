@@ -33,6 +33,8 @@
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="34_m5v3g"]
 [ext_resource type="Script" uid="uid://cqfs2qx80kwvm" path="res://Common/Objects/HidePoint.gd" id="34_rixi8"]
 [ext_resource type="PackedScene" uid="uid://crdxtwfpwcijh" path="res://Vining/VentryPoint.tscn" id="35_m5v3g"]
+[ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="35_rixi8"]
+[ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="36_csb2s"]
 [ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="36_rixi8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rixi8"]
@@ -70,7 +72,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_xfawk"]
+[sub_resource type="Resource" id="Resource_q1pqm"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ItemDescription = "Nanahuatizin tiem item imte
@@ -82,7 +84,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_m5v3g"]
+[sub_resource type="Resource" id="Resource_r8l8j"]
 script = ExtResource("13_4ma8g")
 ItemName = "Gun1"
 ItemDescription = "Beautiful OP Gun Worm"
@@ -141,6 +143,18 @@ sources/0 = SubResource("TileSetAtlasSource_q1pqm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8l8j"]
 size = Vector2(15, 116.64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3uelr"]
+texture = ExtResource("35_rixi8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_pnd1w"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_3uelr")
 
 [node name="Lab" type="Node2D" unique_id=775964121]
 
@@ -243,7 +257,7 @@ texture = ExtResource("7_b6emh")
 
 [node name="PickupableItem" parent="Interactables" unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_xfawk")
+WhatItemAmI = SubResource("Resource_q1pqm")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -266,7 +280,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="Interactables" unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_m5v3g")
+WhatItemAmI = SubResource("Resource_r8l8j")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -305,19 +319,19 @@ BOX"
 [node name="Doors" type="Node" parent="." unique_id=414622323]
 
 [node name="RealDoor" parent="Doors" unique_id=696739252 instance=ExtResource("9_3cjrj")]
-position = Vector2(251, 223)
+position = Vector2(249, 278)
 TargetSceneName = "Elevator1"
 transitionData = ExtResource("24_4ma8g")
 DoSetPositionAtNewScene = true
 
 [node name="RealDoor2" parent="Doors" unique_id=1318754282 instance=ExtResource("9_3cjrj")]
-position = Vector2(1089, 221)
+position = Vector2(1087, 276)
 TargetSceneName = "Nana Boss Fight"
 DoorIdentifier = "nana1"
 DoSetPositionAtNewScene = true
 
 [node name="RealDoor3" parent="Doors" unique_id=1260977748 instance=ExtResource("9_3cjrj")]
-position = Vector2(35, 228)
+position = Vector2(33, 283)
 TargetSceneName = "Enemy Lab"
 transitionData = ExtResource("25_xfawk")
 
@@ -468,5 +482,12 @@ script = ExtResource("34_rixi8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hidable/HidePoint2" unique_id=423332258]
 shape = SubResource("RectangleShape2D_r8l8j")
+
+[node name="RoomTiles" type="TileMapLayer" parent="." unique_id=675056012 groups=["RoomTiles"]]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAkAAAAAAAAAAAABAAkAAAAAAAAAAAACAAkAAAAAAAAAAAADAAkAAAAAAAAAAAAEAAkAAAAAAAAAAAAFAAkAAAAAAAAAAAAGAAkAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAAAAAAAAAALAAkAAAAAAAAAAAAMAAkAAAAAAAAAAAANAAkAAAAAAAAAAAAOAAkAAAAAAAAAAAAPAAkAAAAAAAAAAAAQAAkAAAAAAAAAAAARAAkAAAAAAAAAAAASAAkAAAAAAAAAAAATAAkAAAAAAAAAAAAUAAkAAAAAAAAAAAAVAAkAAAAAAAAAAAAWAAkAAAAAAAAAAAAXAAkAAAAAAAAAAAAYAAkAAAAAAAAAAAAZAAkAAAAAAAAAAAAaAAkAAAAAAAAAAAAbAAkAAAAAAAAAAAAcAAkAAAAAAAAAAAAdAAkAAAAAAAAAAAAeAAkAAAAAAAAAAAAfAAkAAAAAAAAAAAAgAAkAAAAAAAAAAAAhAAkAAAAAAAAAAAAiAAkAAAAAAAAAAAAjAAkAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAAMAAEAAAAAAAAAAAANAAEAAAAAAAAAAAAOAAEAAAAAAAAAAAAPAAEAAAAAAAAAAAAQAAEAAAAAAAAAAAARAAEAAAAAAAAAAAASAAEAAAAAAAAAAAATAAEAAAAAAAAAAAAUAAEAAAAAAAAAAAAVAAEAAAAAAAAAAAAWAAEAAAAAAAAAAAAXAAEAAAAAAAAAAAAYAAEAAAAAAAAAAAAZAAEAAAAAAAAAAAAaAAEAAAAAAAAAAAAbAAEAAAAAAAAAAAAcAAEAAAAAAAAAAAAdAAEAAAAAAAAAAAAeAAEAAAAAAAAAAAAfAAEAAAAAAAAAAAAgAAEAAAAAAAAAAAAhAAEAAAAAAAAAAAAiAAEAAAAAAAAAAAAjAAEAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAAAAAAAAAAGAAoAAAAAAAAAAAAHAAoAAAAAAAAAAAAIAAoAAAAAAAAAAAAJAAoAAAAAAAAAAAAKAAoAAAAAAAAAAAALAAoAAAAAAAAAAAAMAAoAAAAAAAAAAAANAAoAAAAAAAAAAAAOAAoAAAAAAAAAAAAPAAoAAAAAAAAAAAAQAAoAAAAAAAAAAAARAAoAAAAAAAAAAAASAAoAAAAAAAAAAAATAAoAAAAAAAAAAAAUAAoAAAAAAAAAAAAVAAoAAAAAAAAAAAAWAAoAAAAAAAAAAAAXAAoAAAAAAAAAAAAYAAoAAAAAAAAAAAAZAAoAAAAAAAAAAAAaAAoAAAAAAAAAAAAbAAoAAAAAAAAAAAAcAAoAAAAAAAAAAAAdAAoAAAAAAAAAAAAeAAoAAAAAAAAAAAAfAAoAAAAAAAAAAAAgAAoAAAAAAAAAAAAhAAoAAAAAAAAAAAAiAAoAAAAAAAAAAAAjAAoAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_pnd1w")
+navigation_enabled = false
+script = ExtResource("36_csb2s")
 
 [editable path="Interactables/Locker"]
