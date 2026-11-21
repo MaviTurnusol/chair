@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var marker_2d: Marker2D = $Marker2D
 @export var anima : AnimatedSprite2D
 @onready var enemyPreps : EnemyPreps = owner.get_node("EnemyPreps")
+@export var PathFindingSet : TileMapLayer
 var dir : float = 1
 var CurrentScene : String
 

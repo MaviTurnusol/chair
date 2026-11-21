@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Room" format=3 uid="uid://d3th5tlhg8nsq"]
+
+[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://Systems/RoomSystem/Room.gd" id="1_1klip"]
+
+[resource]
+script = ExtResource("1_1klip")
+Name = "Audio Lab"
+SceneFilePath = "res://RoomsAndLevels/LevelScenes/ears_lab.tscn"
+metadata/_custom_type_script = "uid://dtoaby0j0tekp"

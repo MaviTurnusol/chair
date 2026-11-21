@@ -7,7 +7,7 @@ var current_target: Vector2
 
 @export var disabled = false
 
-var targetzoom : float = 1
+@export var targetzoom : float = 1
 
 func _ready() -> void:
 	UnlimitedRulebook.cam = self

@@ -118,6 +118,7 @@ func EntitySwitchScene(whatscene : String,entity : Node2D):
 			if(sce.room.Name==whatscene):
 				sceneref = sce
 				break
+		move_child(get_child(-1),0)
 	entity.reparent(sceneref.get_child(0))
 	entity.CurrentScene = sceneref.room.Name
 	entity.owner = sceneref.get_child(0)

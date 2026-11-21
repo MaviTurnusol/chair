@@ -1,0 +1,236 @@
+[gd_scene format=4 uid="uid://dyuvwxl31ag02"]
+
+[ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="1_1pa3u"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="2_wkshq"]
+[ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="3_afg3s"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="4_ugjbv"]
+[ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="5_riokt"]
+[ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="6_7lv5r"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="6_xv4jq"]
+[ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="7_48g3a"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="8_66b8k"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="9_dfgig"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="10_0kegb"]
+[ext_resource type="PackedScene" uid="uid://dow072x2k6c8m" path="res://Entities/FlayStar/FlayStar.tscn" id="10_7lv5r"]
+[ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="11_qf2dk"]
+[ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://Systems/Inventory/Scenes/PickupableItem.tscn" id="12_o3417"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/player_melee_test.tscn" id="13_08tes"]
+[ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://Entities/Nana/nana1.png" id="14_l0am4"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="15_6jcm6"]
+[ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="16_ds7fx"]
+[ext_resource type="Script" uid="uid://cb3xd73dt72ra" path="res://Common/Objects/Hidable.gd" id="23_13w2t"]
+[ext_resource type="Script" uid="uid://cqfs2qx80kwvm" path="res://Common/Objects/HidePoint.gd" id="24_j01cv"]
+
+[sub_resource type="Resource" id="Resource_yc0wm"]
+script = ExtResource("7_48g3a")
+metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
+
+[sub_resource type="Resource" id="Resource_7lv5r"]
+script = ExtResource("15_6jcm6")
+ItemName = "example"
+ground_tex = ExtResource("14_l0am4")
+inventory_tex = ExtResource("14_l0am4")
+inv_scalemulti = 1.5
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
+ItemAttributes = Array[int]([1])
+AssociatedScene = ExtResource("13_08tes")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4utf8"]
+size = Vector2(15, 116.64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mrqcn"]
+texture = ExtResource("4_ugjbv")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_hck02"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
+sources/0 = SubResource("TileSetAtlasSource_mrqcn")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7lv5r"]
+texture = ExtResource("5_riokt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_tumsd"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_7lv5r")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
+texture = ExtResource("2_wkshq")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_scnhh"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_21iup")
+
+[sub_resource type="Curve2D" id="Curve2D_i3fnl"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 242, 276, 0, 0, 0, 0, 1162, 282, 0, 0, 0, 0, 243, 276)
+}
+point_count = 3
+
+[node name="ears_lab" type="Node2D" unique_id=622899540]
+
+[node name="Objects" type="Node2D" parent="." unique_id=918284373]
+
+[node name="RealDoor" parent="Objects" unique_id=696739252 instance=ExtResource("6_xv4jq")]
+position = Vector2(314, 233)
+TargetSceneName = "Audio Lab"
+DoorIdentifier = "AudioLab1"
+transitionData = SubResource("Resource_yc0wm")
+SameSceneDoors = 1
+DoSetPositionAtNewScene = true
+
+[node name="RealDoor2" parent="Objects" unique_id=1680713491 instance=ExtResource("6_xv4jq")]
+position = Vector2(1127, 225)
+TargetSceneName = "Audio Lab"
+DoorIdentifier = "AudioLab1"
+transitionData = SubResource("Resource_yc0wm")
+SameSceneDoors = 2
+DoSetPositionAtNewScene = true
+
+[node name="MeleeWeaponItem" parent="Objects" unique_id=1324268814 instance=ExtResource("12_o3417")]
+position = Vector2(243, 237)
+WhatItemAmI = SubResource("Resource_7lv5r")
+
+[node name="SaveLoad" type="Node" parent="Objects/MeleeWeaponItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
+script = ExtResource("16_ds7fx")
+ObjToSave = NodePath("..")
+PropertiesToSave = Dictionary[String, String]({
+"pickedup": "Gun1PickUp"
+})
+metadata/_custom_type_script = "uid://da5lprft6mb74"
+
+[node name="Hidable" type="StaticBody2D" parent="Objects" unique_id=213681894]
+position = Vector2(518, 222)
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("23_13w2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Hidable" unique_id=1220268797]
+shape = SubResource("RectangleShape2D_4utf8")
+
+[node name="HidePoint" type="Area2D" parent="Objects/Hidable" unique_id=1799375232]
+position = Vector2(-30, 0)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("24_j01cv")
+BackAgainst = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Hidable/HidePoint" unique_id=735754425]
+shape = SubResource("RectangleShape2D_4utf8")
+
+[node name="HidePoint2" type="Area2D" parent="Objects/Hidable" unique_id=1022954021]
+position = Vector2(30, -1)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("24_j01cv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Hidable/HidePoint2" unique_id=245302169]
+shape = SubResource("RectangleShape2D_4utf8")
+
+[node name="Bonfire" parent="Objects" unique_id=792746957 instance=ExtResource("11_qf2dk")]
+position = Vector2(182, 248)
+
+[node name="Sprites" type="Node2D" parent="Objects" unique_id=1658677967]
+position = Vector2(132, -573)
+
+[node name="ColorRect" type="ColorRect" parent="Objects/Sprites" unique_id=402564116]
+offset_left = -132.0
+offset_top = 853.0
+offset_right = 1952.0
+offset_bottom = 943.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="Objects/Sprites" unique_id=89286567]
+offset_left = 877.0
+offset_top = -380.0
+offset_right = 2961.0
+offset_bottom = -290.0
+rotation = 1.5707964
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Objects/Sprites" unique_id=2002809254]
+offset_left = -125.0
+offset_top = 557.0
+offset_right = 1959.0
+offset_bottom = 647.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="Objects/Sprites" unique_id=1397855426]
+offset_left = 757.0
+offset_top = 738.0
+offset_right = 879.61
+offset_bottom = 783.035
+rotation = 1.5707964
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="Objects/Sprites" unique_id=1371122867]
+offset_left = 410.0
+offset_top = 738.0
+offset_right = 532.61
+offset_bottom = 783.035
+rotation = 1.5707964
+color = Color(0, 0, 0, 1)
+
+[node name="VentRoom" type="Node2D" parent="Objects" unique_id=864136678]
+script = ExtResource("3_afg3s")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Objects/VentRoom" unique_id=1485016729]
+self_modulate = Color(0.57520974, 0.15684047, 0.22424221, 1)
+z_index = 2
+tile_set = SubResource("TileSet_hck02")
+
+[node name="VENTBG" type="ColorRect" parent="Objects/VentRoom" unique_id=2006635573]
+visible = false
+z_index = 1
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="RoomTiles" type="TileMapLayer" parent="." unique_id=1204021623]
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_tumsd")
+script = ExtResource("6_7lv5r")
+
+[node name="EnemyPreps" type="Node2D" parent="." unique_id=2035388690]
+script = ExtResource("1_1pa3u")
+
+[node name="SpiderPaths" type="TileMapLayer" parent="EnemyPreps" unique_id=2078516604]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAQAAQAAAAAAAAAYAAQAAQAAAAAAAAAZAAQAAQAAAAAAAAAaAAQAAQAAAAAAAAAbAAQAAQAAAAAAAAAcAAQAAQAAAAAAAAAdAAQAAQAAAAAAAAAeAAQAAQAAAAAAAAAfAAQAAQAAAAAAAAAgAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_scnhh")
+
+[node name="FlayerPaths" type="Node2D" parent="EnemyPreps" unique_id=1830796258]
+
+[node name="Path2D2" type="Path2D" parent="EnemyPreps/FlayerPaths" unique_id=1402676014]
+position = Vector2(500, 0)
+curve = SubResource("Curve2D_i3fnl")
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
+script = ExtResource("8_66b8k")
+Track = ExtResource("9_dfgig")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("10_0kegb")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
+
+[node name="Enemies" type="Node2D" parent="." unique_id=674820180]
+
+[node name="FlayerAStar" parent="Enemies" unique_id=1753637316 node_paths=PackedStringArray("PathFindingSet") instance=ExtResource("10_7lv5r")]
+position = Vector2(659, 263)
+PathFindingSet = NodePath("../../RoomTiles")

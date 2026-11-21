@@ -5,6 +5,13 @@ class_name Door
 @export var TargetSceneName : String
 @export var DoorIdentifier : String 
 @export var transitionData : TransitionData
+@export var SameSceneDoors : DoorPair
+
+enum DoorPair{
+	TargetScene,
+	BluePortal,
+	OrangePortal
+}
 
 @export_category("PositionAtNewScene")
 @export var DoSetPositionAtNewScene : bool
@@ -37,14 +44,29 @@ func players_on_the_point():
 func GoThroughDoor():
 	if(transitionData == null):
 		if(DoSetPositionAtNewScene):
-			SceneManager.SwitchSceneAndPosition(TargetSceneName,DoorIdentifier)
+			var appendSameDoors : String = ""
+			if(SameSceneDoors == DoorPair.BluePortal):
+				appendSameDoors = "Blue"
+			elif(SameSceneDoors == DoorPair.OrangePortal):
+				appendSameDoors = "Orange"
+			SceneManager.SwitchSceneAndPosition(TargetSceneName,DoorIdentifier+appendSameDoors)
 		else:
 			SceneManager.SwitchScene(TargetSceneName)
 	else:
-		SceneManager.PassTransition(transitionData,TargetSceneName,DoorIdentifier)
+		var appendSameDoors : String = ""
+		if(SameSceneDoors == DoorPair.BluePortal):
+			appendSameDoors = "Blue"
+		elif(SameSceneDoors == DoorPair.OrangePortal):
+			appendSameDoors = "Orange"
+		SceneManager.PassTransition(transitionData,TargetSceneName,DoorIdentifier+appendSameDoors)
 
 func EntitySwitchScene(who : Node2D):
-	SceneManager.EntitySwitchScene(who,TargetSceneName,DoorIdentifier)
+	var appendSameDoors : String = ""
+	if(SameSceneDoors == DoorPair.BluePortal):
+		appendSameDoors = "Blue"
+	elif(SameSceneDoors == DoorPair.OrangePortal):
+		appendSameDoors = "Orange"
+	SceneManager.EntitySwitchScene(who,TargetSceneName,DoorIdentifier+appendSameDoors)
 	
 
 func _ready() -> void:
@@ -58,12 +80,22 @@ func _ready() -> void:
 		transitionData.DoSetPosition = DoSetPositionAtNewScene
 
 func CheckIfImCurrentScene(seekedid:String):
-	if(DoorIdentifier == seekedid):
+	var appendSameDoors : String = ""
+	if(SameSceneDoors == DoorPair.BluePortal):
+		appendSameDoors = "Orange"
+	elif(SameSceneDoors == DoorPair.OrangePortal):
+		appendSameDoors = "Blue"
+	if(DoorIdentifier+appendSameDoors == seekedid):
 		if(owner.get_parent()==UnlimitedRulebook.currentScene):
 			SceneManager.SetPlayerPosition(global_position)
 
 func EntityCheckIfImCurrentScene(seekedid:String,entity : Node2D):
-	if(DoorIdentifier == seekedid):
+	var appendSameDoors : String = ""
+	if(SameSceneDoors == DoorPair.BluePortal):
+		appendSameDoors = "Orange"
+	elif(SameSceneDoors == DoorPair.OrangePortal):
+		appendSameDoors = "Blue"
+	if(DoorIdentifier+appendSameDoors == seekedid):
 		if(owner.get_parent().room.Name==entity.CurrentScene):
 			entity.global_position = global_position
 			#SceneManager.SetPlayerPosition(global_position)
