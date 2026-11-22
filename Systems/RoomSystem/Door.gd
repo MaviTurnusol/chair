@@ -37,7 +37,7 @@ func players_on_the_point():
 	if UnlimitedRulebook.player:
 		if is_instance_valid(UnlimitedRulebook.player):
 			var midpoint = (UnlimitedRulebook.player.global_position + global_position)/2 + Vector2(0, 0)
-			UnlimitedRulebook.cam.current_target = midpoint
+			UnlimitedRulebook.cam.current_target = midpoint - Vector2(0,64)
 			UnlimitedRulebook.got_on_the_talking_point.disconnect(players_on_the_point)
 			GoThroughDoor()
 

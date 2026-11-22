@@ -72,7 +72,7 @@ shader_parameter/vignette_color = Color(0, 0, 0, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ynjs4"]
 size = Vector2(1308.5815, 1102.5062)
 
-[sub_resource type="Resource" id="Resource_q1pqm"]
+[sub_resource type="Resource" id="Resource_yu4ig"]
 script = ExtResource("13_4ma8g")
 ItemName = "example"
 ItemDescription = "Nanahuatizin tiem item imte
@@ -84,7 +84,7 @@ ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 0)])
 ItemAttributes = Array[int]([1])
 AssociatedScene = ExtResource("11_3l8j0")
 
-[sub_resource type="Resource" id="Resource_r8l8j"]
+[sub_resource type="Resource" id="Resource_s6eeh"]
 script = ExtResource("13_4ma8g")
 ItemName = "Gun1"
 ItemDescription = "Beautiful OP Gun Worm"
@@ -104,29 +104,29 @@ height = 109.65
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8mn"]
 size = Vector2(40, 96)
 
-[sub_resource type="Gradient" id="Gradient_4ma8g"]
+[sub_resource type="Gradient" id="Gradient_kfhuh"]
 offsets = PackedFloat32Array(0.528754, 1)
 colors = PackedColorArray(0.42745098, 0.42745098, 0.42745098, 0, 0.36862746, 0.36862746, 0.36862746, 0.69803923)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xfawk"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o6u25"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m5v3g"]
-noise = SubResource("FastNoiseLite_xfawk")
-color_ramp = SubResource("Gradient_4ma8g")
+noise = SubResource("FastNoiseLite_o6u25")
+color_ramp = SubResource("Gradient_kfhuh")
 seamless = true
 
-[sub_resource type="Gradient" id="Gradient_m5v3g"]
+[sub_resource type="Gradient" id="Gradient_pyyom"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0.073051944, 0.108766235, 0.5698052, 0.6801948, 0.7288961)
 colors = PackedColorArray(0, 0, 0, 0.40392157, 0.29803923, 0.29803923, 0.29803923, 0.41568628, 0.47843137, 0.47843137, 0.47843137, 0.6, 0.6419342, 0.6419339, 0.64193386, 0.6, 0.7019608, 0.7019608, 0.7019608, 0.5529412)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_rixi8"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_y54uo"]
 noise_type = 3
 fractal_lacunarity = 1.825
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_csb2s"]
-noise = SubResource("FastNoiseLite_rixi8")
-color_ramp = SubResource("Gradient_m5v3g")
+noise = SubResource("FastNoiseLite_y54uo")
+color_ramp = SubResource("Gradient_pyyom")
 seamless = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q1pqm"]
@@ -257,7 +257,7 @@ texture = ExtResource("7_b6emh")
 
 [node name="PickupableItem" parent="Interactables" unique_id=1324268814 instance=ExtResource("10_r58iw")]
 position = Vector2(113, 229)
-WhatItemAmI = SubResource("Resource_q1pqm")
+WhatItemAmI = SubResource("Resource_yu4ig")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem" unique_id=1426517932 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")
@@ -280,7 +280,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="PickupableItem2" parent="Interactables" unique_id=1100030553 instance=ExtResource("10_r58iw")]
 position = Vector2(645, 225)
-WhatItemAmI = SubResource("Resource_r8l8j")
+WhatItemAmI = SubResource("Resource_s6eeh")
 
 [node name="SaveLoad" type="Node" parent="Interactables/PickupableItem2" unique_id=1457399991 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("19_dhn3p")

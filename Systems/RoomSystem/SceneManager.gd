@@ -9,12 +9,13 @@ signal unloadallbutcurrentscene(String)
 signal entityswitchscene(String,Node2D)
 signal entityscreamtodoors(String,Node2D)
 
+const RoomsDir = "res://RoomsAndLevels/Rooms/"
 func _ready() -> void:
 	var Rooms
 	#if(DirAccess.dir_exists_absolute("res://RoomsAndLevels/")):
 		#Rooms = dir_contents_resource_loader("res://RoomsAndLevels/")
 	#else:
-	Rooms = dir_contents_resource_loader("res://RoomsAndLevels/")
+	Rooms = dir_contents_resource_loader(RoomsDir)
 	for r : Room in Rooms:
 		if(r):
 			if(r.SceneFilePath):
@@ -50,7 +51,7 @@ func _ready() -> void:
 	#return res_loads
 
 func dir_contents_resource_loader(path : String):
-	var res_load_strings = ResourceLoader.list_directory("res://RoomsAndLevels/")
+	var res_load_strings = ResourceLoader.list_directory(RoomsDir)
 	var res_loads : Array[Room]
 	for string in res_load_strings:
 		#print(string)
@@ -69,7 +70,10 @@ func SwitchSceneAndPosition(WhatScene : String,WhatID:String):
 	SwitchScene(WhatScene)
 	await get_tree().process_frame
 	screamtodoors.emit(WhatID)
-
+	await get_tree().process_frame
+	if(UnlimitedRulebook.cam):
+		UnlimitedRulebook.cam.current_target = UnlimitedRulebook.player.global_position-Vector2(0,64)
+		UnlimitedRulebook.cam.reset_smoothing.call_deferred()
 func UnloadAllButCurrentScene():
 	unloadallbutcurrentscene.emit()
 

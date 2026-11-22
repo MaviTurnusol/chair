@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm0tyuvvw5ohs"
-path="res://.godot/imported/BalconyDoorFrame.png-32b75d969778e9aa26b3c7132ed3cce8.ctex"
+uid="uid://30ipmj2djpk7"
+path="res://.godot/imported/SofaAndTV.png-53f7972b1e510ce661fd3be6b0dff5ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Environments/Xochi_HouseSprites/BalconyDoorFrame.png"
-dest_files=["res://.godot/imported/BalconyDoorFrame.png-32b75d969778e9aa26b3c7132ed3cce8.ctex"]
+source_file="res://Environments/Xochi_HouseSprites/XochiRoom/SofaAndTV.png"
+dest_files=["res://.godot/imported/SofaAndTV.png-53f7972b1e510ce661fd3be6b0dff5ff.ctex"]
 
 [params]
 

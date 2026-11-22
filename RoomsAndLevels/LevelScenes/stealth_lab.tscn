@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://cb3xd73dt72ra" path="res://Common/Objects/Hidable.gd" id="23_i3fnl"]
 [ext_resource type="Script" uid="uid://cqfs2qx80kwvm" path="res://Common/Objects/HidePoint.gd" id="24_4utf8"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aiqpu"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ok85o"]
 texture = ExtResource("1_agxrd")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -37,7 +37,7 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 5
 physics_layer_0/collision_mask = 5
-sources/0 = SubResource("TileSetAtlasSource_aiqpu")
+sources/0 = SubResource("TileSetAtlasSource_ok85o")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
 texture = ExtResource("2_aiqpu")
@@ -85,7 +85,7 @@ size = Vector2(45.13, 142.505)
 script = ExtResource("4_gofof")
 metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
 
-[sub_resource type="Resource" id="Resource_gofof"]
+[sub_resource type="Resource" id="Resource_d03df"]
 script = ExtResource("14_cbljo")
 ItemName = "example"
 ground_tex = ExtResource("13_6d0mp")
@@ -246,7 +246,7 @@ position = Vector2(182, 248)
 
 [node name="MeleeWeaponItem" parent="." unique_id=1324268814 instance=ExtResource("11_vj0xn")]
 position = Vector2(243, 237)
-WhatItemAmI = SubResource("Resource_gofof")
+WhatItemAmI = SubResource("Resource_d03df")
 
 [node name="SaveLoad" type="Node" parent="MeleeWeaponItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("15_u81ot")

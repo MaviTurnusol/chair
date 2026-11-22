@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://brjjnf7jehiaq" path="res://Environments/LabSprites/koridor5w1.png" id="1_kdx4g"]
 [ext_resource type="Texture2D" uid="uid://ceuvqnhcwpdle" path="res://Environments/LabSprites/koridor5w1_n.png" id="2_87div"]
-[ext_resource type="Texture2D" uid="uid://ccfwutklqva2e" path="res://Environments/Xochi_HouseSprites/LivingRoomUnLayered.png" id="3_dbbp8"]
-[ext_resource type="Texture2D" uid="uid://30ipmj2djpk7" path="res://Environments/Xochi_HouseSprites/SofaAndTV.png" id="4_h163x"]
+[ext_resource type="Texture2D" uid="uid://ccfwutklqva2e" path="res://Environments/Xochi_HouseSprites/XochiRoom/LivingRoomUnLayered.png" id="3_dbbp8"]
+[ext_resource type="Texture2D" uid="uid://30ipmj2djpk7" path="res://Environments/Xochi_HouseSprites/XochiRoom/SofaAndTV.png" id="4_h163x"]
 [ext_resource type="PackedScene" uid="uid://bl2deb8kc0o7k" path="res://Common/Objects/LedLight.tscn" id="4_r6kp1"]
 [ext_resource type="Shader" uid="uid://b7facq7ao82rl" path="res://Common/FX/Shaders/vignette.gdshader" id="5_6su8s"]
-[ext_resource type="Texture2D" uid="uid://bm0tyuvvw5ohs" path="res://Environments/Xochi_HouseSprites/BalconyDoorFrame.png" id="5_ecdmf"]
+[ext_resource type="Texture2D" uid="uid://bm0tyuvvw5ohs" path="res://Environments/Xochi_HouseSprites/XochiRoom/BalconyDoorFrame.png" id="5_ecdmf"]
 [ext_resource type="Resource" uid="uid://dchngvenktk3v" path="res://RoomsAndLevels/Transitions/FadeBlack1.tres" id="9_17jth"]
 [ext_resource type="Script" uid="uid://cx3xyxhm3ekod" path="res://Common/CameraCursor/CameraOverrideTargetArea.gd" id="9_url1c"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="10_jii1a"]
@@ -213,7 +213,9 @@ visible = false
 
 [node name="RealDoor2" parent="." unique_id=1587098128 instance=ExtResource("10_jii1a")]
 position = Vector2(827, 281)
-TargetSceneName = "Bus Travel"
+TargetSceneName = "Xochi Elevator Corridor"
+DoorIdentifier = "Room To Corridor"
+transitionData = ExtResource("9_17jth")
 DoSetPositionAtNewScene = true
 
 [node name="InteractionPrompter" parent="RealDoor2" index="0" unique_id=1185201784]
@@ -226,6 +228,7 @@ visible = false
 position = Vector2(130, 266)
 script = ExtResource("9_url1c")
 NewTarget = NodePath("NewTarget")
+Smooth = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=382672451]
 position = Vector2(-1, -7)

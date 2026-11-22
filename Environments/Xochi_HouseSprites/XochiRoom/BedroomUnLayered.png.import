@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw4t2px6qmu8w"
-path="res://.godot/imported/JustFlower.png-08348cec583ca29a6a996f0affc7db8e.ctex"
+uid="uid://760vqqhnam7t"
+path="res://.godot/imported/BedroomUnLayered.png-2bb8d916643e52a7ce451d1c287c5c69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Environments/Xochi_HouseSprites/JustFlower.png"
-dest_files=["res://.godot/imported/JustFlower.png-08348cec583ca29a6a996f0affc7db8e.ctex"]
+source_file="res://Environments/Xochi_HouseSprites/XochiRoom/BedroomUnLayered.png"
+dest_files=["res://.godot/imported/BedroomUnLayered.png-2bb8d916643e52a7ce451d1c287c5c69.ctex"]
 
 [params]
 

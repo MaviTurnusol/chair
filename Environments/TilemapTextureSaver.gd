@@ -3,6 +3,7 @@ extends Node
 
 @export var tile_map_layer: TileMapLayer:
 	set(value):
+		tile_map_layer = value
 		tile_map_layer.self_modulate = Color.WHITE
 		tile_map_layer = value
 		tile_map_layer.self_modulate = Color8(Value,Value,Value)

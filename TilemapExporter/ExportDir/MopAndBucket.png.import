@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://30ipmj2djpk7"
-path="res://.godot/imported/SofaAndTV.png-2241ead786f18fbf4cfe85b90e42515d.ctex"
+uid="uid://bb7vsw7dww5os"
+path="res://.godot/imported/MopAndBucket.png-8f9e6bab01a54e6e696dcc64035ff88f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Environments/Xochi_HouseSprites/SofaAndTV.png"
-dest_files=["res://.godot/imported/SofaAndTV.png-2241ead786f18fbf4cfe85b90e42515d.ctex"]
+source_file="res://TilemapExporter/ExportDir/MopAndBucket.png"
+dest_files=["res://.godot/imported/MopAndBucket.png-8f9e6bab01a54e6e696dcc64035ff88f.ctex"]
 
 [params]
 

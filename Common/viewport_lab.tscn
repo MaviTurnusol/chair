@@ -129,7 +129,7 @@ scale = Vector2(3, 3)
 script = ExtResource("1_68xj2")
 plyr = NodePath("../Player")
 camer = NodePath("../Camera2D2")
-StartingLoadedRoom = "Audio Lab"
+StartingLoadedRoom = "Elevator1"
 
 [node name="UI" type="Node" parent="." unique_id=118202750]
 script = ExtResource("2_fqrem")
@@ -152,6 +152,7 @@ offset_bottom = 23.0
 text = "Maybe we make  the ui reparent to this instead of the scene root"
 
 [node name="Camera2D2" type="Camera2D" parent="." unique_id=414067892 node_paths=PackedStringArray("target")]
+position = Vector2(0, 7.365)
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("3_s2d3w")
@@ -211,6 +212,7 @@ frame_progress = 0.546913
 offset = Vector2(128, 0)
 
 [node name="AmmoCounts" type="Control" parent="PlayerHud" unique_id=1794685523]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1572.0

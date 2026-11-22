@@ -1,0 +1,103 @@
+[gd_scene format=4 uid="uid://c0nw0r2bigs16"]
+
+[ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="1_lc20e"]
+[ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="2_0j5md"]
+[ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="3_wwy53"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="4_u0ye4"]
+[ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="5_8dtb2"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="6_bc2eb"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="7_mjvyq"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="8_xccni"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="9_whtdo"]
+[ext_resource type="Texture2D" uid="uid://s576r45bok74" path="res://Entities/PlayerXochi/Animations/idleNew-Sheet.png" id="10_xccni"]
+[ext_resource type="Script" uid="uid://ck2swh1t3dvvm" path="res://Systems/RoomSystem/DoorScreamer.gd" id="11_whtdo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wwy53"]
+texture = ExtResource("1_lc20e")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_u0ye4"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_wwy53")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dtb2"]
+texture = ExtResource("4_u0ye4")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bc2eb"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_8dtb2")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ntc5g"]
+texture = ExtResource("6_bc2eb")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_mjvyq"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
+sources/0 = SubResource("TileSetAtlasSource_ntc5g")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whtdo"]
+atlas = ExtResource("10_xccni")
+region = Rect2(0, 0, 64, 0)
+
+[node name="DependencyPackage" type="Node2D" unique_id=682659036]
+
+[node name="RoomTiles" type="TileMapLayer" parent="." unique_id=1602586222 groups=["RoomTiles"]]
+z_index = 5
+tile_set = SubResource("TileSet_u0ye4")
+navigation_enabled = false
+script = ExtResource("2_0j5md")
+
+[node name="EnemyPreps" type="Node2D" parent="." unique_id=1098581864]
+script = ExtResource("3_wwy53")
+
+[node name="SpiderPaths" type="TileMapLayer" parent="EnemyPreps" unique_id=81889713]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAQAAQAAAAAAAAAYAAQAAQAAAAAAAAAZAAQAAQAAAAAAAAAaAAQAAQAAAAAAAAAbAAQAAQAAAAAAAAAcAAQAAQAAAAAAAAAdAAQAAQAAAAAAAAAeAAQAAQAAAAAAAAAfAAQAAQAAAAAAAAAgAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_bc2eb")
+
+[node name="VentRoom" type="Node2D" parent="." unique_id=844886697]
+script = ExtResource("5_8dtb2")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="VentRoom" unique_id=1545638911]
+self_modulate = Color(0.57520974, 0.15684047, 0.22424221, 1)
+z_index = 2
+tile_set = SubResource("TileSet_mjvyq")
+
+[node name="VENTBG" type="ColorRect" parent="VentRoom" unique_id=670717802]
+visible = false
+z_index = 1
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=1228818782]
+script = ExtResource("7_mjvyq")
+Track = ExtResource("8_xccni")
+
+[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=1273893092 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("9_whtdo")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
+
+[node name="XochiForScale" type="Sprite2D" parent="." unique_id=1081578333]
+texture = SubResource("AtlasTexture_whtdo")
+
+[node name="DoorScreamer" type="Node2D" parent="." unique_id=1134595638]
+position = Vector2(-195, 58)
+script = ExtResource("11_whtdo")
+DoorIdentifier = "Debug Entrance"

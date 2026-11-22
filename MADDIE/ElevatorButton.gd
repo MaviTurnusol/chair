@@ -1,20 +1,22 @@
 extends Node2D
 
-@export var ElevatorableRooms : Array[Room]
+var ElevatorableRooms : Array[Room]
 @onready var grid_container: GridContainer = $CanvasLayer/Control/GridContainer
 @onready var ElevatorCanvasLayer: CanvasLayer = $CanvasLayer
 @export var ElevatorDoor : Node2D
 func _ready() -> void:
-	var idx = 0
-	for i in ElevatorableRooms:
+	#var idx = 0
+	for i in SceneManager.RoomDict.values():
 		var newelevatorbutton : Button = Button.new()
 		grid_container.add_child(newelevatorbutton)
+		ElevatorableRooms.append(i)
 		newelevatorbutton.text = i.Name
-		newelevatorbutton.pressed.connect(ButtonPressed.bind(idx))
-		idx+=1
+		newelevatorbutton.pressed.connect(ButtonPressed.bind(i.Name))
+		#idx+=1
+		print(i.Name)
 
-func ButtonPressed(whichbuttonindxex : int):
-	ElevatorDoor.TargetSceneName = ElevatorableRooms[whichbuttonindxex].Name
+func ButtonPressed(whichbuttonName : String):
+	ElevatorDoor.TargetSceneName = whichbuttonName
 	ElevatorCanvasLayer.visible = false
 
 func action():

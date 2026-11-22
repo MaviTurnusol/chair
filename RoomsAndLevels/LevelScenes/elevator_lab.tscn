@@ -11,15 +11,7 @@
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="10_nigw2"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="11_2ej5p"]
 [ext_resource type="Script" uid="uid://cervbnj6oymgc" path="res://MADDIE/ElevatorButton.gd" id="12_6qasg"]
-[ext_resource type="Script" uid="uid://dtoaby0j0tekp" path="res://Systems/RoomSystem/Room.gd" id="13_l27wa"]
-[ext_resource type="Resource" uid="uid://wo8ob84fd6no" path="res://RoomsAndLevels/Lab1.tres" id="14_edlch"]
-[ext_resource type="Resource" uid="uid://cqgs242egffgr" path="res://RoomsAndLevels/NanaBossFight.tres" id="15_r67do"]
-[ext_resource type="Resource" uid="uid://dogvlh504coqi" path="res://RoomsAndLevels/TutorialLab1.tres" id="16_nbdyg"]
-[ext_resource type="Resource" uid="uid://3tcjp0b8les4" path="res://RoomsAndLevels/HookLab1.tres" id="17_2i1v8"]
-[ext_resource type="Resource" uid="uid://fxig1iuyjybt" path="res://RoomsAndLevels/EnemyLab1.tres" id="18_kpgtg"]
 [ext_resource type="PackedScene" uid="uid://03m157s1pacd" path="res://Systems/Inventory/Scenes/InteractionPrompter.tscn" id="19_edlch"]
-[ext_resource type="Resource" uid="uid://b1yy8w8ngpo6s" path="res://RoomsAndLevels/XochiHouse_Bedroom.tres" id="19_nbdyg"]
-[ext_resource type="Resource" uid="uid://8a6sccpld8ft" path="res://RoomsAndLevels/StealthLab.tres" id="20_2i1v8"]
 [ext_resource type="Texture2D" uid="uid://4uvvr76misin" path="res://Icons/Icon_Angel.png" id="20_r67do"]
 [ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="23_fiwwv"]
 [ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="24_cvfa2"]
@@ -129,7 +121,7 @@ shape = SubResource("RectangleShape2D_6qasg")
 
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("4_5jdj4")]
 position = Vector2(93, 260)
-TargetSceneName = "Lab"
+DoorIdentifier = "Debug Entrance"
 transitionData = ExtResource("5_6qasg")
 DoSetPositionAtNewScene = true
 
@@ -181,7 +173,6 @@ position = Vector2(285, 162)
 [node name="ElevatorButton" type="Node2D" parent="." unique_id=46094225 node_paths=PackedStringArray("ElevatorDoor")]
 position = Vector2(285, 219)
 script = ExtResource("12_6qasg")
-ElevatorableRooms = Array[ExtResource("13_l27wa")]([ExtResource("14_edlch"), ExtResource("15_r67do"), ExtResource("16_nbdyg"), ExtResource("17_2i1v8"), ExtResource("18_kpgtg"), ExtResource("19_nbdyg"), ExtResource("20_2i1v8")])
 ElevatorDoor = NodePath("../RealDoor")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="ElevatorButton" unique_id=983152624]

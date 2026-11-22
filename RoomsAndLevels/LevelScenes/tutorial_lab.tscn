@@ -5,6 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dhjto6k6qb1g4" path="res://Environments/Tecciz1BossRoom/teccizbosscanvas1.png" id="2_pxv66"]
 [ext_resource type="Texture2D" uid="uid://s63egv427rdp" path="res://Environments/Tecciz1BossRoom/teccizbosscanvas2.png" id="3_cau51"]
 [ext_resource type="PackedScene" uid="uid://e51hxa7bdr7g" path="res://Entities/Teccizlabcoat/tutorial_tecciz.tscn" id="5_cau51"]
+[ext_resource type="Script" uid="uid://ck2swh1t3dvvm" path="res://Systems/RoomSystem/DoorScreamer.gd" id="6_jrbt2"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="7_w4k5v"]
+[ext_resource type="Resource" uid="uid://cuvp1uirbquo0" path="res://RoomsAndLevels/Transitions/TransTree.tres" id="8_s3d30"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jrbt2"]
 shader = ExtResource("2_cau51")
@@ -94,3 +97,14 @@ shape = SubResource("RectangleShape2D_cau51")
 
 [node name="TutorialTecciz" parent="." unique_id=214809299 instance=ExtResource("5_cau51")]
 position = Vector2(206, 340)
+
+[node name="DoorScreamer" type="Node2D" parent="." unique_id=1214249375]
+position = Vector2(206, 340)
+script = ExtResource("6_jrbt2")
+DoorIdentifier = "Debug Entrance"
+
+[node name="RealDoor3" parent="." unique_id=696739252 instance=ExtResource("7_w4k5v")]
+position = Vector2(344, 340)
+TargetSceneName = "Lab"
+transitionData = ExtResource("8_s3d30")
+DoSetPositionAtNewScene = true

@@ -1,0 +1,380 @@
+[gd_scene format=4 uid="uid://bpi1umi8h4lec"]
+
+[ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="1_fecnr"]
+[ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="2_0g1g2"]
+[ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="3_1pwdv"]
+[ext_resource type="TileSet" uid="uid://dpldenhucxdlq" path="res://TilemapExporter/GreyboxTiles/16_TileSet.tres" id="3_nv25m"]
+[ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="4_nv25m"]
+[ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="5_pyvp0"]
+[ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="6_3ne6q"]
+[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="7_flu8p"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="8_8r05j"]
+[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="9_mesf0"]
+[ext_resource type="Texture2D" uid="uid://s576r45bok74" path="res://Entities/PlayerXochi/Animations/idleNew-Sheet.png" id="10_0g1g2"]
+[ext_resource type="Script" uid="uid://ck2swh1t3dvvm" path="res://Systems/RoomSystem/DoorScreamer.gd" id="11_1pwdv"]
+[ext_resource type="Texture2D" uid="uid://ct5x4jiarmp4i" path="res://Environments/Xochi_HouseSprites/XochiHausCorridtor.png" id="13_pyvp0"]
+[ext_resource type="Texture2D" uid="uid://bb7vsw7dww5os" path="res://TilemapExporter/ExportDir/MopAndBucket.png" id="14_3ne6q"]
+[ext_resource type="Script" uid="uid://dsghxbqbrel5v" path="res://Common/FX/FogAnimate.gd" id="15_flu8p"]
+[ext_resource type="Texture2D" uid="uid://4rnlvtfq0ut3" path="res://Environments/LabSprites/ledOn.png" id="16_mesf0"]
+[ext_resource type="Texture2D" uid="uid://bvbe30duk14nh" path="res://Environments/TestSprites/light.png" id="17_liglp"]
+[ext_resource type="Texture2D" uid="uid://dufdfwymsq853" path="res://Environments/Xochi_HouseSprites/Door1.png" id="18_liglp"]
+[ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="19_5ru6t"]
+[ext_resource type="Resource" uid="uid://cuvp1uirbquo0" path="res://RoomsAndLevels/Transitions/TransTree.tres" id="20_ery4f"]
+[ext_resource type="Resource" uid="uid://dchngvenktk3v" path="res://RoomsAndLevels/Transitions/FadeBlack1.tres" id="20_glbpw"]
+[ext_resource type="Script" uid="uid://cx3xyxhm3ekod" path="res://Common/CameraCursor/CameraOverrideTargetArea.gd" id="20_wvfp6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3ne6q"]
+texture = ExtResource("1_fecnr")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_u0ye4"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_3ne6q")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_flu8p"]
+texture = ExtResource("1_fecnr")
+texture_region_size = Vector2i(4, 4)
+10:4/0 = 0
+9:5/0 = 0
+9:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_nv25m"]
+tile_size = Vector2i(4, 4)
+sources/0 = SubResource("TileSetAtlasSource_flu8p")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8dtb2"]
+texture = ExtResource("4_nv25m")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_bc2eb"]
+tile_size = Vector2i(64, 64)
+sources/1 = SubResource("TileSetAtlasSource_8dtb2")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ntc5g"]
+texture = ExtResource("6_3ne6q")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_mjvyq"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 16
+sources/0 = SubResource("TileSetAtlasSource_ntc5g")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1pwdv"]
+atlas = ExtResource("10_0g1g2")
+region = Rect2(0, 0, 64, 0)
+
+[sub_resource type="Gradient" id="Gradient_4ma8g"]
+offsets = PackedFloat32Array(0.528754, 1)
+colors = PackedColorArray(0.42745098, 0.42745098, 0.42745098, 0, 0.36862746, 0.36862746, 0.36862746, 0.69803923)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xfawk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8r05j"]
+noise = SubResource("FastNoiseLite_xfawk")
+color_ramp = SubResource("Gradient_4ma8g")
+seamless = true
+
+[sub_resource type="Gradient" id="Gradient_m5v3g"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.073051944, 0.108766235, 0.5698052, 0.6801948, 0.7288961)
+colors = PackedColorArray(0, 0, 0, 0.40392157, 0.29803923, 0.29803923, 0.29803923, 0.41568628, 0.47843137, 0.47843137, 0.47843137, 0.6, 0.6419342, 0.6419339, 0.64193386, 0.6, 0.7019608, 0.7019608, 0.7019608, 0.5529412)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_rixi8"]
+noise_type = 3
+fractal_lacunarity = 1.825
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mesf0"]
+noise = SubResource("FastNoiseLite_rixi8")
+color_ramp = SubResource("Gradient_m5v3g")
+seamless = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wvfp6"]
+size = Vector2(1000, 300)
+
+[sub_resource type="Animation" id="Animation_17jth"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NewTarget:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-199, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NewTarget:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(72, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_srjmy"]
+resource_name = "wobble"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NewTarget:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(-199, -0.25, 0, 0.25, 0, -221, -0.095, 1.3299999, 0.07166667, -1.0033334, -213, -0.16666667, 2.3333335, 0, 0, -199, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.57, 1, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("NewTarget:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2, 2, 0),
+"points": PackedFloat32Array(72, -0.25, 0, 0.25, 0, 93.999985, -0.095, 1.52, 0.07166667, -1.1466668, 56, -0.16666667, 2.6666667, 0, 0, 72, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.57, 1, 1.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_glbpw"]
+_data = {
+&"RESET": SubResource("Animation_17jth"),
+&"wobble": SubResource("Animation_srjmy")
+}
+
+[node name="XochiHausCorridor1" type="Node2D" unique_id=1709373385]
+editor_description = "Tutorial for elevator
+Used when player leaves apartment
+"
+
+[node name="DependencyPackage" type="Node2D" parent="." unique_id=682659036]
+
+[node name="RoomTiles" type="TileMapLayer" parent="DependencyPackage" unique_id=1602586222 groups=["RoomTiles"]]
+visible = false
+z_index = 5
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAACAAAAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAANAAAAAAAAAAAAAAAOAAAAAAAAAAAAAAAPAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAARAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD///r/AAAAAAAAAAAAAPr/AAAAAAAAAAABAPr/AAAAAAAAAAACAPr/AAAAAAAAAAADAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAGAPr/AAAAAAAAAAAHAPr/AAAAAAAAAAAIAPr/AAAAAAAAAAAJAPr/AAAAAAAAAAAKAPr/AAAAAAAAAAALAPr/AAAAAAAAAAAMAPr/AAAAAAAAAAANAPr/AAAAAAAAAAAOAPr/AAAAAAAAAAAPAPr/AAAAAAAAAAAQAPr/AAAAAAAAAAARAPr/AAAAAAAAAAARAPv/AAAAAAAAAAASAPr/AAAAAAAAAAATAPr/AAAAAAAAAAAUAPr/AAAAAAAAAAAVAPr/AAAAAAAAAAAWAPr/AAAAAAAAAAASAAAAAAAAAAAAAAATAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAVAAAAAAAAAAAAAAAWAAAAAAAAAAAAAAAXAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAYAPr/AAAAAAAAAAAYAPv/AAAAAAAAAAAYAPz/AAAAAAAAAAAYAP3/AAAAAAAAAAAYAP7/AAAAAAAAAAAYAP//AAAAAAAAAAAXAPr/AAAAAAAAAAANAPv/AAAAAAAAAAAJAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD9//v/AAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD3/wAAAAAAAAAAAAD2/wAAAAAAAAAAAAD1/wAAAAAAAAAAAAD0/wAAAAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD3//r/AAAAAAAAAAD2//r/AAAAAAAAAAD1//r/AAAAAAAAAAD0//r/AAAAAAAAAAD5//v/AAAAAAAAAAD1//v/AAAAAAAAAAD0//v/AAAAAAAAAAD0//z/AAAAAAAAAAD0//3/AAAAAAAAAAD0//7/AAAAAAAAAAD0////AAAAAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAABAPv/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_u0ye4")
+navigation_enabled = false
+script = ExtResource("2_0g1g2")
+
+[node name="RoomTiles" type="TileMapLayer" parent="DependencyPackage/RoomTiles" unique_id=400565775 groups=["RoomTiles"]]
+z_index = 5
+tile_map_data = PackedByteArray("AADv////AAAKAAQAAADv//7/AAAKAAQAAADu//3/AAAKAAQAAADu//z/AAAKAAQAAADu//v/AAAKAAQAAADu//r/AAAKAAQAAADt//n/AAAKAAQAAADt//j/AAAKAAQAAADt//f/AAAKAAQAAADt//b/AAAKAAQAAADs//X/AAAKAAQAAADs//T/AAAKAAQAAADr//T/AAAKAAQAAADr//X/AAAKAAQAAADq//b/AAAKAAQAAADq//f/AAAKAAQAAADq//j/AAAKAAQAAADq//n/AAAKAAQAAADp//r/AAAKAAQAAADp//v/AAAKAAQAAADp//z/AAAKAAQAAADp//3/AAAKAAQAAADo//7/AAAKAAQAAADo////AAAKAAQAAADq//z/AAAKAAQAAADr//z/AAAKAAQAAADs//z/AAAKAAQAAADt//z/AAAKAAQAAADl//v/AAAKAAQAAADl//z/AAAKAAQAAADl//3/AAAKAAQAAADl//7/AAAKAAQAAADk////AAAKAAQAAADj////AAAKAAQAAADi////AAAKAAQAAADh//7/AAAKAAQAAADh//3/AAAKAAQAAADh//z/AAAKAAQAAADh//v/AAAKAAQAAADi//r/AAAKAAQAAADi//n/AAAKAAQAAADi//j/AAAKAAQAAADj//j/AAAKAAQAAADk//j/AAAKAAQAAADk//n/AAAKAAQAAADk//r/AAAKAAQAAADi//z/AAAKAAQAAADj//z/AAAKAAQAAADk//z/AAAKAAQAAADQ//7/AAAKAAQAAADR//7/AAAKAAQAAADS//7/AAAKAAQAAADT//7/AAAKAAQAAADU//7/AAAKAAQAAADV//7/AAAKAAQAAADW//7/AAAKAAQAAADX//7/AAAKAAQAAADY//7/AAAKAAQAAADZ//7/AAAKAAQAAADa//7/AAAKAAQAAADb//7/AAAKAAQAAADb////AAAKAAQAAADc////AAAKAAQAAADd////AAAKAAQAAADc//3/AAAKAAQAAADb//3/AAAKAAQAAADc//7/AAAKAAQAAADd//7/AAAKAAQAAADd//3/AAAKAAQAAADe////AAAKAAQAAADe//3/AAAKAAQAAAA=")
+tile_set = SubResource("TileSet_nv25m")
+navigation_enabled = false
+script = ExtResource("2_0g1g2")
+
+[node name="RoomTiles" type="TileMapLayer" parent="DependencyPackage/RoomTiles/RoomTiles" unique_id=877576132 groups=["RoomTiles"]]
+z_index = 5
+tile_map_data = PackedByteArray("AAAGAPr/AAACAAAAAAAHAPr/AAACAAAAAAAGAPv/AAACAAAAAAAGAPz/AAACAAAAAAAGAP3/AAACAAAAAAAGAP7/AAACAAAAAAAGAP//AAACAAAAAAAHAPv/AAACAAAAAAAHAPz/AAACAAAAAAAHAP3/AAACAAAAAAAHAP7/AAACAAAAAAAHAP//AAACAAAAAAAFAPr/AAACAAAAAAAFAPv/AAACAAAAAAAFAPz/AAACAAAAAAAFAP3/AAACAAAAAAAFAP7/AAACAAAAAAAFAP//AAACAAAAAAAIAPr/AAACAAAAAAAIAPv/AAACAAAAAAAIAPz/AAACAAAAAAAIAP3/AAACAAAAAAAIAP7/AAACAAAAAAAIAP//AAACAAAAAAAoAPr/AAACAAAAAAApAPr/AAACAAAAAAAqAPr/AAACAAAAAAArAPr/AAACAAAAAAAoAPv/AAACAAAAAAAoAPz/AAACAAAAAAAoAP3/AAACAAAAAAAoAP7/AAACAAAAAAAoAP//AAACAAAAAAApAPv/AAACAAAAAAApAPz/AAACAAAAAAApAP3/AAACAAAAAAApAP7/AAACAAAAAAApAP//AAACAAAAAAAqAPv/AAACAAAAAAAqAPz/AAACAAAAAAAqAP3/AAACAAAAAAAqAP7/AAACAAAAAAAqAP//AAACAAAAAAArAPv/AAACAAAAAAArAPz/AAACAAAAAAArAP3/AAACAAAAAAArAP7/AAACAAAAAAArAP//AAACAAAAAAAmAPr/AAACAAAAAAAmAPv/AAACAAAAAAAmAPz/AAACAAAAAAAmAP3/AAACAAAAAAAmAP7/AAACAAAAAAAmAP//AAACAAAAAAAnAPr/AAACAAAAAAAnAPv/AAACAAAAAAAnAPz/AAACAAAAAAAnAP3/AAACAAAAAAAnAP7/AAACAAAAAAAnAP//AAACAAAAAAAsAPr/AAACAAAAAAAsAPv/AAACAAAAAAAsAPz/AAACAAAAAAAsAP3/AAACAAAAAAAsAP7/AAACAAAAAAAsAP//AAACAAAAAAAtAPr/AAACAAAAAAAtAPv/AAACAAAAAAAtAPz/AAACAAAAAAAtAP3/AAACAAAAAAAtAP7/AAACAAAAAAAtAP//AAACAAAAAAAmAPj/AAACAAAAAAAnAPj/AAACAAAAAAAoAPj/AAACAAAAAAApAPj/AAACAAAAAAAqAPj/AAACAAAAAAArAPj/AAACAAAAAAAsAPj/AAACAAAAAAAtAPj/AAACAAAAAAAmAPf/AAACAAAAAAAnAPf/AAACAAAAAAAoAPf/AAACAAAAAAApAPf/AAACAAAAAAAqAPf/AAACAAAAAAArAPf/AAACAAAAAAAsAPf/AAACAAAAAAAtAPf/AAACAAAAAAAkAPz/AAACAAAAAAAkAP3/AAACAAAAAAA=")
+tile_set = ExtResource("3_nv25m")
+navigation_enabled = false
+script = ExtResource("2_0g1g2")
+
+[node name="EnemyPreps" type="Node2D" parent="DependencyPackage" unique_id=1098581864]
+script = ExtResource("3_1pwdv")
+
+[node name="SpiderPaths" type="TileMapLayer" parent="DependencyPackage/EnemyPreps" unique_id=81889713]
+visible = false
+tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAQAAQAAAAAAAAAYAAQAAQAAAAAAAAAZAAQAAQAAAAAAAAAaAAQAAQAAAAAAAAAbAAQAAQAAAAAAAAAcAAQAAQAAAAAAAAAdAAQAAQAAAAAAAAAeAAQAAQAAAAAAAAAfAAQAAQAAAAAAAAAgAAQAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_bc2eb")
+
+[node name="VentRoom" type="Node2D" parent="DependencyPackage" unique_id=844886697]
+script = ExtResource("5_pyvp0")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="DependencyPackage/VentRoom" unique_id=1545638911]
+self_modulate = Color(0.57520974, 0.15684047, 0.22424221, 1)
+z_index = 2
+tile_set = SubResource("TileSet_mjvyq")
+
+[node name="VENTBG" type="ColorRect" parent="DependencyPackage/VentRoom" unique_id=670717802]
+visible = false
+z_index = 1
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0, 0, 0.61960787)
+
+[node name="MusicPlayOnSceneLoad" type="Node" parent="DependencyPackage" unique_id=1228818782]
+script = ExtResource("7_flu8p")
+Track = ExtResource("8_8r05j")
+
+[node name="SceneLoadCall" type="Node" parent="DependencyPackage/MusicPlayOnSceneLoad" unique_id=1273893092 node_paths=PackedStringArray("ObjectToCall")]
+script = ExtResource("9_mesf0")
+ObjectToCall = NodePath("..")
+FunctionName = "OnLoad"
+
+[node name="XochiForScale" type="Sprite2D" parent="DependencyPackage" unique_id=450294994]
+visible = false
+position = Vector2(37, -53)
+texture = SubResource("AtlasTexture_1pwdv")
+
+[node name="DoorScreamer" type="Node2D" parent="." unique_id=46356380]
+position = Vector2(30, -18)
+script = ExtResource("11_1pwdv")
+DoorIdentifier = "Debug Entrance"
+
+[node name="Fogger" type="Node" parent="." unique_id=901959066]
+
+[node name="Parallax2D" type="Parallax2D" parent="Fogger" unique_id=864096106]
+z_index = 10
+repeat_size = Vector2(512, 512)
+autoscroll = Vector2(-5, 0)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="Fogger/Parallax2D" unique_id=2087241599]
+visible = false
+self_modulate = Color(0.09009846, 0.09009849, 0.09009848, 1)
+light_mask = 4
+visibility_layer = 4
+texture = SubResource("NoiseTexture2D_8r05j")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Fogger/Parallax2D" unique_id=683919517]
+self_modulate = Color(0.09019608, 0.09019608, 0.09019608, 0.6666667)
+light_mask = 4
+visibility_layer = 4
+texture = SubResource("NoiseTexture2D_mesf0")
+script = ExtResource("15_flu8p")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=949215847]
+color = Color(0.067982785, 0.06798272, 0.067982756, 1)
+
+[node name="Environment" type="Node2D" parent="." unique_id=575970886]
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment" unique_id=793609351]
+z_index = -1
+position = Vector2(213, -91.335)
+texture = ExtResource("13_pyvp0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Environment" unique_id=2060784585]
+position = Vector2(-122, -29)
+texture = ExtResource("14_3ne6q")
+
+[node name="LedLight" type="Node2D" parent="Environment" unique_id=1127602263]
+position = Vector2(41, -166)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/LedLight" unique_id=525539401]
+texture = ExtResource("16_mesf0")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Environment/LedLight" unique_id=678767095]
+color = Color(0.9411765, 1, 1, 1)
+range_item_cull_mask = 3
+texture = ExtResource("17_liglp")
+texture_scale = 2.5
+
+[node name="LedLight5" type="Node2D" parent="Environment" unique_id=933791976]
+position = Vector2(563, -160)
+
+[node name="Sprite2D" type="Sprite2D" parent="Environment/LedLight5" unique_id=1938269317]
+texture = ExtResource("16_mesf0")
+
+[node name="PointLight2D2" type="PointLight2D" parent="Environment/LedLight5" unique_id=1082203803]
+color = Color(0.9411765, 1, 1, 1)
+range_item_cull_mask = 3
+texture = ExtResource("17_liglp")
+texture_scale = 2.5
+
+[node name="bg" type="CanvasLayer" parent="Environment" unique_id=1864380772]
+layer = -10
+
+[node name="ColorRect" type="ColorRect" parent="Environment/bg" unique_id=122368950]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.078431375, 0.08235294, 0.08235294, 1)
+
+[node name="Doors" type="Node2D" parent="Environment" unique_id=294814399]
+
+[node name="Sprite2D3" type="Sprite2D" parent="Environment/Doors" unique_id=1420922898]
+self_modulate = Color(0.6858214, 0.9173267, 0.64427257, 1)
+position = Vector2(109, -58.225)
+texture = ExtResource("18_liglp")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Environment/Doors" unique_id=1255853445]
+self_modulate = Color(0.6858214, 0.9173267, 0.64427257, 1)
+position = Vector2(244, -58.225)
+texture = ExtResource("18_liglp")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Environment/Doors" unique_id=1721462069]
+self_modulate = Color(0.6858214, 0.9173267, 0.64427257, 1)
+position = Vector2(373, -58.225)
+texture = ExtResource("18_liglp")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Environment/Doors" unique_id=439584268]
+self_modulate = Color(0.6858214, 0.9173267, 0.64427257, 1)
+position = Vector2(495, -58.225)
+texture = ExtResource("18_liglp")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Environment/Doors" unique_id=1459418011]
+self_modulate = Color(0.6858214, 0.9173267, 0.64427257, 1)
+position = Vector2(-21, -58.225)
+texture = ExtResource("18_liglp")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Environment/Doors" unique_id=1261329515]
+self_modulate = Color(0.6858214, 0.9173267, 0.64427257, 1)
+position = Vector2(-149, -58.225)
+texture = ExtResource("18_liglp")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Environment/Doors" unique_id=1854340349]
+self_modulate = Color(0.6858214, 0.9173267, 0.64427257, 1)
+position = Vector2(-289, -58.225)
+texture = ExtResource("18_liglp")
+
+[node name="Label" type="Label" parent="Environment" unique_id=1786405781]
+offset_left = 641.0
+offset_top = -106.0
+offset_right = 718.0
+offset_bottom = -83.0
+text = "Elevator"
+
+[node name="RealDoor2" parent="." unique_id=696739252 instance=ExtResource("19_5ru6t")]
+position = Vector2(107, -10)
+TargetSceneName = "Xochi_LivingRoom"
+DoorIdentifier = "Room To Corridor"
+transitionData = ExtResource("20_glbpw")
+DoSetPositionAtNewScene = true
+
+[node name="RealDoor3" parent="." unique_id=142294761 instance=ExtResource("19_5ru6t")]
+position = Vector2(675, -10)
+TargetSceneName = "Bus Travel"
+transitionData = ExtResource("20_ery4f")
+DoSetPositionAtNewScene = true
+
+[node name="CamZoomZone" type="Area2D" parent="." unique_id=1673699550]
+position = Vector2(344, -73)
+script = ExtResource("20_wvfp6")
+CamZoomOverride = 1.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CamZoomZone" unique_id=1843262293]
+position = Vector2(-1, -7)
+shape = SubResource("RectangleShape2D_wvfp6")
+
+[node name="NewTarget" type="Node2D" parent="CamZoomZone" unique_id=2117729163]
+position = Vector2(-199, 72)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CamZoomZone" unique_id=1072943507]
+libraries/ = SubResource("AnimationLibrary_glbpw")
+autoplay = &"wobble"
+speed_scale = 0.2

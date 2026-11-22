@@ -150,11 +150,11 @@ func set_collisions(foo) -> void:
 		$Marker2D/HurtBox/CollisionShape2D.set_deferred("disabled", true)
 		$ActionableFinder/CollisionShape2D.set_deferred("disabled",true)
 	
-	#actual collisions???
-	set_collision_layer_value(1, foo)
-	set_collision_mask_value(1, foo)
-	set_collision_layer_value(3, !foo)
-	set_collision_mask_value(3, !foo)
+	##actual collisions???
+	#set_collision_layer_value(1, foo)
+	#set_collision_mask_value(1, foo)
+	#set_collision_layer_value(3, !foo)
+	#set_collision_mask_value(3, !foo)
 
 func StartVenting(targetvent : Vent):
 	#state = STATES.VENTING

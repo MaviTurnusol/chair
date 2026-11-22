@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://760vqqhnam7t"
-path="res://.godot/imported/BedroomUnLayered.png-deaf92c6bd62f2cea4df3b3bb8fa4097.ctex"
+uid="uid://dufdfwymsq853"
+path="res://.godot/imported/Door1.png-9ab09f800a69d8d127ea00ac9c5e4cb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Environments/Xochi_HouseSprites/BedroomUnLayered.png"
-dest_files=["res://.godot/imported/BedroomUnLayered.png-deaf92c6bd62f2cea4df3b3bb8fa4097.ctex"]
+source_file="res://Environments/Xochi_HouseSprites/Door1.png"
+dest_files=["res://.godot/imported/Door1.png-9ab09f800a69d8d127ea00ac9c5e4cb3.ctex"]
 
 [params]
 
