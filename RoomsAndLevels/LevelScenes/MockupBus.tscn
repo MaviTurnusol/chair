@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://chylvsc88ajmv" path="res://Common/Helpers/CutsceneSwitcher.gd" id="14_iwej2"]
 [ext_resource type="Resource" uid="uid://c3efbeh1jkkdo" path="res://RoomsAndLevels/Transitions/CrashBlack1.tres" id="15_xi46a"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="16_0ldpy"]
-[ext_resource type="AudioStream" uid="uid://bexsf6lorsp50" path="res://Audio/Music/They Fade Away.mp3" id="17_7n365"]
+[ext_resource type="AudioStream" uid="uid://bexsf6lorsp50" path="res://Audio/Music/MusicFiles/They Fade Away.mp3" id="17_7n365"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="18_qcqds"]
 
 [sub_resource type="Gradient" id="Gradient_vr7ih"]

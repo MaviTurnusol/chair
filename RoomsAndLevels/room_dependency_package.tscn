@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="5_8dtb2"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="6_bc2eb"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="7_mjvyq"]
-[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="8_xccni"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="8_xccni"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="9_whtdo"]
 [ext_resource type="Texture2D" uid="uid://s576r45bok74" path="res://Entities/PlayerXochi/Animations/idleNew-Sheet.png" id="10_xccni"]
 [ext_resource type="Script" uid="uid://ck2swh1t3dvvm" path="res://Systems/RoomSystem/DoorScreamer.gd" id="11_whtdo"]

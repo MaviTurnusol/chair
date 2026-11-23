@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwky1v3jqqnyg"
+path="res://.godot/imported/Dependent Tension -2.mp3-2a3642161ab0c1177146d1df18aba93a.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/MusicFiles/AmbienceLayered1/Dependent Tension -2.mp3"
+dest_files=["res://.godot/imported/Dependent Tension -2.mp3-2a3642161ab0c1177146d1df18aba93a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

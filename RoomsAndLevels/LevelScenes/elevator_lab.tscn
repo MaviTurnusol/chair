@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="4_5jdj4"]
 [ext_resource type="Resource" uid="uid://kmlnh2rvyv15" path="res://RoomsAndLevels/Transitions/TransTeeth.tres" id="5_6qasg"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="6_0dp0t"]
-[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="7_tp8et"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="7_tp8et"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="8_ellj6"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="9_44vg3"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="10_nigw2"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://4uvvr76misin" path="res://Icons/Icon_Angel.png" id="20_r67do"]
 [ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="23_fiwwv"]
 [ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="24_cvfa2"]
-[ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/Nuance Fair.mp3" id="24_fq6s6"]
+[ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/MusicFiles/Nuance Fair.mp3" id="24_fq6s6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
 texture = ExtResource("2_sqoxt")

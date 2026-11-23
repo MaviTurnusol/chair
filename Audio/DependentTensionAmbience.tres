@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AudioTrack" format=3 uid="uid://c7iprfkghpbk3"]
+
+[ext_resource type="AudioStream" uid="uid://n1d4psjhcm74" path="res://Audio/Music/MusicFiles/AmbienceLayered1/Dependent Tension -1.mp3" id="1_2j2mm"]
+[ext_resource type="Script" uid="uid://u18nsylfik2c" path="res://AudioTrack.gd" id="1_tx500"]
+[ext_resource type="AudioStream" uid="uid://cwky1v3jqqnyg" path="res://Audio/Music/MusicFiles/AmbienceLayered1/Dependent Tension -2.mp3" id="2_dba1n"]
+[ext_resource type="AudioStream" uid="uid://by3rrwpjyb0vu" path="res://Audio/Music/MusicFiles/AmbienceLayered1/Dependent Tension -3.mp3" id="3_54f1a"]
+[ext_resource type="AudioStream" uid="uid://d4euqfob7o6cj" path="res://Audio/Music/MusicFiles/AmbienceLayered1/Dependent Tension -4.mp3" id="4_aguct"]
+[ext_resource type="AudioStream" uid="uid://camkvlq5qeydw" path="res://Audio/Music/MusicFiles/AmbienceLayered1/Dependent Tension -5.mp3" id="5_tvtch"]
+[ext_resource type="AudioStream" uid="uid://bjh7sjagn4sp8" path="res://Audio/Music/MusicFiles/AmbienceLayered1/Dependent Tension -6.mp3" id="6_qos7j"]
+
+[resource]
+script = ExtResource("1_tx500")
+Layers = Array[AudioStream]([ExtResource("1_2j2mm"), ExtResource("2_dba1n"), ExtResource("3_54f1a"), ExtResource("4_aguct"), ExtResource("5_tvtch"), ExtResource("6_qos7j")])
+metadata/_custom_type_script = "uid://u18nsylfik2c"

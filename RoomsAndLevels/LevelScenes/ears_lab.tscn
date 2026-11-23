@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="6_xv4jq"]
 [ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="7_48g3a"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="8_66b8k"]
-[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/Reverie Talks.mp3" id="9_dfgig"]
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="9_dfgig"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="10_0kegb"]
 [ext_resource type="PackedScene" uid="uid://dow072x2k6c8m" path="res://Entities/FlayStar/FlayStar.tscn" id="10_7lv5r"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="11_qf2dk"]

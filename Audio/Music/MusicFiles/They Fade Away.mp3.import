@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bexsf6lorsp50"
+path="res://.godot/imported/They Fade Away.mp3-9f6fa2188352080aa8ab0a36c33d0604.mp3str"
+
+[deps]
+
+source_file="res://Audio/Music/MusicFiles/They Fade Away.mp3"
+dest_files=["res://.godot/imported/They Fade Away.mp3-9f6fa2188352080aa8ab0a36c33d0604.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

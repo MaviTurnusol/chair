@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="25_3cjrj"]
 [ext_resource type="Resource" uid="uid://c8by80sijjj2l" path="res://RoomsAndLevels/Transitions/TransPunch.tres" id="25_xfawk"]
 [ext_resource type="PackedScene" uid="uid://c2y7ig1b6veyl" path="res://Entities/Spiderrr/spiderrr.tscn" id="26_3l8j0"]
-[ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/Imen Kheru.mp3" id="28_3l8j0"]
+[ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/MusicFiles/Imen Kheru.mp3" id="28_3l8j0"]
 [ext_resource type="Script" uid="uid://dsghxbqbrel5v" path="res://Common/FX/FogAnimate.gd" id="32_xfawk"]
 [ext_resource type="Script" uid="uid://cb3xd73dt72ra" path="res://Common/Objects/Hidable.gd" id="33_m5v3g"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="33_xfawk"]

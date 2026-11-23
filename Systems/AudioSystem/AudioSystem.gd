@@ -6,9 +6,21 @@ enum Deck{
 	DeckB,
 }
 
-var DeckAPlayer : AudioStreamPlayer
-var DeckBPlayer : AudioStreamPlayer
+var DeckATrack : AudioTrack:
+	set(newTrack):
+		if(DeckATrack):
+			DeckATrack.Destroy()
+		DeckATrack = newTrack
+var DeckBTrack : AudioTrack:
+	set(newTrack):
+		if(DeckBTrack):
+			DeckBTrack.Destroy()
+		DeckBTrack = newTrack
 
+@onready var DeckAIndex : int = AudioServer.get_bus_index("MusicDeckA")
+@onready var DeckBIndex : int = AudioServer.get_bus_index("MusicDeckB")
+
+### Mixer
 #DB so 0 is normal, -6 is 50% quieter etc
 var DeckAVolume : float:
 	set(value):
@@ -42,10 +54,11 @@ func CrossfadeDeck(timeToFade : float = 1):
 func LoadTrackIntoDeck(WhichTrack : AudioStream,WhichDeck : Deck):
 	match WhichDeck:
 		Deck.DeckA:
-			DeckAPlayer.stream = WhichTrack
+			#DeckAPlayer.stream = WhichTrack
+			pass
 		Deck.DeckB:
-			DeckBPlayer.stream = WhichTrack
-
+			#DeckBPlayer.stream = WhichTrack
+			pass
 func GetInactiveDeck():
 	match CurrentDeck:
 		Deck.DeckA:
@@ -53,25 +66,31 @@ func GetInactiveDeck():
 		Deck.DeckB:
 			return Deck.DeckA
 
-func PlayDeck(WhichDeck : Deck,FromPosition : float = 0):
-	match WhichDeck:
-		Deck.DeckA:
-			DeckAPlayer.play(FromPosition)
-		Deck.DeckB:
-			DeckBPlayer.play(FromPosition)
+#func PlayDeck(WhichDeck : Deck,FromPosition : float = 0):
+	#match WhichDeck:
+		#Deck.DeckA:
+			#DeckAPlayer.play(FromPosition)
+		#Deck.DeckB:
+			#DeckBPlayer.play(FromPosition)
 
 var TempTrack1 : AudioStream = preload("uid://ul4lirqhf58o")
 var TempTrack2 : AudioStream = preload("uid://bexsf6lorsp50")
 
 func _ready() -> void:
-	DeckAPlayer = AudioStreamPlayer.new()
-	DeckAPlayer.bus = "MusicDeckA"
-	DeckBPlayer = AudioStreamPlayer.new()
-	DeckBPlayer.bus = "MusicDeckB"
 	DeckAVolume = 0
 	DeckBVolume = -48
-	add_child(DeckAPlayer)
-	add_child(DeckBPlayer)
+
+
+
+
+
+
+
+
+
+### FX
+### 
+### 
 
 var MusicFXTracer : Dictionary[int,AudioEffect]
 var PauseAudioTween : Tween
