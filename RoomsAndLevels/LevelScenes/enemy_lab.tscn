@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://bxoxxvjxh70fj" path="res://Entities/Flayer/Flayer.tscn" id="3_yf8yh"]
 [ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="4_iw2fn"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="4_qdili"]
-[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="5_bswr5"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="6_5jlu8"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="7_bkbvh"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="8_k7rv1"]
@@ -234,15 +233,6 @@ TargetSceneName = "Lab"
 DoorIdentifier = "Lab-EnemyLab-1"
 transitionData = SubResource("Resource_yc0wm")
 DoSetPositionAtNewScene = true
-
-[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
-script = ExtResource("4_qdili")
-Track = ExtResource("5_bswr5")
-
-[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
-script = ExtResource("6_5jlu8")
-ObjectToCall = NodePath("..")
-FunctionName = "OnLoad"
 
 [node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("7_bkbvh")]
 position = Vector2(395, 250)

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioTrack" format=3 uid="uid://butwegm7u7u0s"]
+
+[ext_resource type="Script" uid="uid://u18nsylfik2c" path="res://AudioTrack.gd" id="1_0qvjl"]
+[ext_resource type="AudioStream" uid="uid://bexsf6lorsp50" path="res://Audio/Music/MusicFiles/They Fade Away.mp3" id="1_2ph7a"]
+
+[resource]
+script = ExtResource("1_0qvjl")
+Layers = Array[AudioStream]([ExtResource("1_2ph7a")])
+metadata/_custom_type_script = "uid://u18nsylfik2c"

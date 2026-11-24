@@ -8,9 +8,6 @@
 [ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="6_7lv5r"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="6_xv4jq"]
 [ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="7_48g3a"]
-[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="8_66b8k"]
-[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="9_dfgig"]
-[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="10_0kegb"]
 [ext_resource type="PackedScene" uid="uid://dow072x2k6c8m" path="res://Entities/FlayStar/FlayStar.tscn" id="10_7lv5r"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="11_qf2dk"]
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://Systems/Inventory/Scenes/PickupableItem.tscn" id="12_o3417"]
@@ -25,7 +22,7 @@
 script = ExtResource("7_48g3a")
 metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
 
-[sub_resource type="Resource" id="Resource_7lv5r"]
+[sub_resource type="Resource" id="Resource_rs8h5"]
 script = ExtResource("15_6jcm6")
 ItemName = "example"
 ground_tex = ExtResource("14_l0am4")
@@ -109,7 +106,7 @@ DoSetPositionAtNewScene = true
 
 [node name="MeleeWeaponItem" parent="Objects" unique_id=1324268814 instance=ExtResource("12_o3417")]
 position = Vector2(243, 237)
-WhatItemAmI = SubResource("Resource_7lv5r")
+WhatItemAmI = SubResource("Resource_rs8h5")
 
 [node name="SaveLoad" type="Node" parent="Objects/MeleeWeaponItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("16_ds7fx")
@@ -228,15 +225,6 @@ tile_set = SubResource("TileSet_scnhh")
 [node name="Path2D2" type="Path2D" parent="EnemyPreps/FlayerPaths" unique_id=1402676014]
 position = Vector2(500, 0)
 curve = SubResource("Curve2D_i3fnl")
-
-[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
-script = ExtResource("8_66b8k")
-Track = ExtResource("9_dfgig")
-
-[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
-script = ExtResource("10_0kegb")
-ObjectToCall = NodePath("..")
-FunctionName = "OnLoad"
 
 [node name="Enemies" type="Node2D" parent="." unique_id=674820180]
 

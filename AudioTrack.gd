@@ -14,8 +14,8 @@ var AudioFX : Array[AudioEffect]
 var MyDeck : AudioSystem.Deck
 var MyDeckIndex : int
 
-func _init(_layers : Array[AudioStream]) -> void:
-	for AS in _layers:
+func Create() -> void:
+	for AS in Layers:
 		var newAudioPlayer : AudioStreamPlayer = AudioStreamPlayer.new()
 		AudioPlayers.append(newAudioPlayer)
 		newAudioPlayer.stream = AS
@@ -31,12 +31,40 @@ func SetDeck(whichDeck : AudioSystem.Deck):
 			AudioSystem.Deck.DeckB:
 				MyDeckIndex = AudioSystem.DeckBIndex
 		AP.bus = AudioServer.get_bus_name(MyDeckIndex)
+	print(MyDeck)
 
-func PlayTrack(FromWhere : float=0,WhichLayers : Array[int]=[]):
-	
-	
-	
-	pass
+func PlayTrack(FromWhere : float=0,WhichLayers : Array[int]=[-1]):
+	if(WhichLayers == [-1]):
+		for idx in range(0,AudioPlayers.size()-1):
+			WhichLayers.append(idx)
+	for layer in WhichLayers:
+		AudioPlayers[layer].play(FromWhere)
+
+func AddLayerToPlaying(_layer : int,DoFade:bool = true):
+	AudioPlayers[_layer].play(InferPlaybackPosition())
+	print("Track " + str(_layer) + " Added")
+	if(DoFade):
+		var ref = AudioPlayers[_layer]
+		ref.volume_db = -48
+		var FadeIn : Tween = AudioSystem.create_tween()
+		FadeIn.tween_property(ref,"volume_db",0,1)
+
+func RemoveLayerFromPlaying(_layer : int,DoFade:bool = true):
+	print("Track " + str(_layer) + " Removed")
+	if(DoFade):
+		var ref = AudioPlayers[_layer]
+		ref.volume_db = 0
+		var FadeIn : Tween = AudioSystem.create_tween()
+		FadeIn.tween_property(ref,"volume_db",-48,1)
+		FadeIn.finished.connect(ref.stop)
+	else:
+		AudioPlayers[_layer].stop()
+
+func InferPlaybackPosition() -> float:
+	for AP in AudioPlayers:
+		if(AP.playing):
+			return AP.get_playback_position()
+	return 0
 
 func AddEffect(NewEffect : AudioEffect):
 	AudioFX.append(NewEffect)

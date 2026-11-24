@@ -5,17 +5,18 @@ enum Deck{
 	DeckA,
 	DeckB,
 }
-
 var DeckATrack : AudioTrack:
 	set(newTrack):
-		if(DeckATrack):
+		if(DeckATrack!=null):
 			DeckATrack.Destroy()
 		DeckATrack = newTrack
+		newTrack.Create()
 var DeckBTrack : AudioTrack:
 	set(newTrack):
-		if(DeckBTrack):
+		if(DeckBTrack!=null):
 			DeckBTrack.Destroy()
 		DeckBTrack = newTrack
+		newTrack.Create()
 
 @onready var DeckAIndex : int = AudioServer.get_bus_index("MusicDeckA")
 @onready var DeckBIndex : int = AudioServer.get_bus_index("MusicDeckB")
@@ -31,6 +32,14 @@ var DeckBVolume : float:
 		DeckBVolume = value
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("MusicDeckB"),value)
 var FaderTween : Tween
+
+func GetActiveTrack()->AudioTrack:
+	match CurrentDeck:
+		Deck.DeckA:
+			return DeckATrack
+		Deck.DeckB:
+			return DeckBTrack
+	return
 
 func CrossfadeDeck(timeToFade : float = 1):
 	match CurrentDeck:
@@ -51,14 +60,15 @@ func CrossfadeDeck(timeToFade : float = 1):
 			FaderTween.tween_property(self,"DeckAVolume",0,timeToFade)
 			FaderTween.tween_property(self,"DeckBVolume",-48,timeToFade)
 
-func LoadTrackIntoDeck(WhichTrack : AudioStream,WhichDeck : Deck):
+func LoadTrackIntoDeck(WhichTrack : AudioTrack,WhichDeck : Deck):
 	match WhichDeck:
 		Deck.DeckA:
-			#DeckAPlayer.stream = WhichTrack
-			pass
+			DeckATrack = WhichTrack
+			WhichTrack.SetDeck(Deck.DeckA)
 		Deck.DeckB:
-			#DeckBPlayer.stream = WhichTrack
-			pass
+			DeckBTrack = WhichTrack
+			WhichTrack.SetDeck(Deck.DeckB)
+
 func GetInactiveDeck():
 	match CurrentDeck:
 		Deck.DeckA:
@@ -66,19 +76,17 @@ func GetInactiveDeck():
 		Deck.DeckB:
 			return Deck.DeckA
 
-#func PlayDeck(WhichDeck : Deck,FromPosition : float = 0):
-	#match WhichDeck:
-		#Deck.DeckA:
-			#DeckAPlayer.play(FromPosition)
-		#Deck.DeckB:
-			#DeckBPlayer.play(FromPosition)
-
-var TempTrack1 : AudioStream = preload("uid://ul4lirqhf58o")
-var TempTrack2 : AudioStream = preload("uid://bexsf6lorsp50")
+func PlayDeck(WhichDeck : Deck,FromPosition : float = 0):
+	match WhichDeck:
+		Deck.DeckA:
+			DeckATrack.PlayTrack(FromPosition)
+		Deck.DeckB:
+			DeckBTrack.PlayTrack(FromPosition)
 
 func _ready() -> void:
 	DeckAVolume = 0
 	DeckBVolume = -48
+	CurrentDeck = Deck.DeckA
 
 
 

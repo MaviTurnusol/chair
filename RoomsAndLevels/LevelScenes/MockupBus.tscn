@@ -16,7 +16,7 @@
 [ext_resource type="Script" uid="uid://chylvsc88ajmv" path="res://Common/Helpers/CutsceneSwitcher.gd" id="14_iwej2"]
 [ext_resource type="Resource" uid="uid://c3efbeh1jkkdo" path="res://RoomsAndLevels/Transitions/CrashBlack1.tres" id="15_xi46a"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="16_0ldpy"]
-[ext_resource type="AudioStream" uid="uid://bexsf6lorsp50" path="res://Audio/Music/MusicFiles/They Fade Away.mp3" id="17_7n365"]
+[ext_resource type="Resource" uid="uid://butwegm7u7u0s" path="res://Audio/Music/They Fade Away.tres" id="17_ystsa"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="18_qcqds"]
 
 [sub_resource type="Gradient" id="Gradient_vr7ih"]
@@ -551,7 +551,7 @@ DoSetPositionAtNewScene = true
 
 [node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=538683801]
 script = ExtResource("16_0ldpy")
-Track = ExtResource("17_7n365")
+Track = ExtResource("17_ystsa")
 
 [node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=2019648763 node_paths=PackedStringArray("ObjectToCall")]
 script = ExtResource("18_qcqds")

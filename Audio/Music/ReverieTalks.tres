@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioTrack" format=3 uid="uid://bmo27a4b3spl6"]
+
+[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="1_2tane"]
+[ext_resource type="Script" uid="uid://u18nsylfik2c" path="res://AudioTrack.gd" id="1_6wt81"]
+
+[resource]
+script = ExtResource("1_6wt81")
+Layers = Array[AudioStream]([ExtResource("1_2tane")])
+metadata/_custom_type_script = "uid://u18nsylfik2c"

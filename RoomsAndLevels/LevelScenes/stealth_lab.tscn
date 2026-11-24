@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="4_gofof"]
 [ext_resource type="PackedScene" uid="uid://k8id7thruf5r" path="res://Entities/PlayerXochi/Hooking/hookable_position.tscn" id="5_2le0c"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="5_88nqa"]
-[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="6_y6ulc"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="7_uf8cm"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="8_fgnj6"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="9_l3ibf"]
@@ -85,7 +84,7 @@ size = Vector2(45.13, 142.505)
 script = ExtResource("4_gofof")
 metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
 
-[sub_resource type="Resource" id="Resource_d03df"]
+[sub_resource type="Resource" id="Resource_s3ler"]
 script = ExtResource("14_cbljo")
 ItemName = "example"
 ground_tex = ExtResource("13_6d0mp")
@@ -232,21 +231,12 @@ DoorIdentifier = "Lab-EnemyLab-1"
 transitionData = SubResource("Resource_yc0wm")
 DoSetPositionAtNewScene = true
 
-[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
-script = ExtResource("5_88nqa")
-Track = ExtResource("6_y6ulc")
-
-[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
-script = ExtResource("7_uf8cm")
-ObjectToCall = NodePath("..")
-FunctionName = "OnLoad"
-
 [node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("8_fgnj6")]
 position = Vector2(182, 248)
 
 [node name="MeleeWeaponItem" parent="." unique_id=1324268814 instance=ExtResource("11_vj0xn")]
 position = Vector2(243, 237)
-WhatItemAmI = SubResource("Resource_d03df")
+WhatItemAmI = SubResource("Resource_s3ler")
 
 [node name="SaveLoad" type="Node" parent="MeleeWeaponItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("15_u81ot")

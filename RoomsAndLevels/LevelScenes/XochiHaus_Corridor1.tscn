@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="5_pyvp0"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="6_3ne6q"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="7_flu8p"]
-[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="8_8r05j"]
+[ext_resource type="Resource" uid="uid://c7iprfkghpbk3" path="res://Audio/Music/DependentTensionAmbience.tres" id="9_glbpw"]
 [ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="9_mesf0"]
 [ext_resource type="Texture2D" uid="uid://s576r45bok74" path="res://Entities/PlayerXochi/Animations/idleNew-Sheet.png" id="10_0g1g2"]
 [ext_resource type="Script" uid="uid://ck2swh1t3dvvm" path="res://Systems/RoomSystem/DoorScreamer.gd" id="11_1pwdv"]
@@ -216,7 +216,8 @@ color = Color(0, 0, 0, 0.61960787)
 
 [node name="MusicPlayOnSceneLoad" type="Node" parent="DependencyPackage" unique_id=1228818782]
 script = ExtResource("7_flu8p")
-Track = ExtResource("8_8r05j")
+Track = ExtResource("9_glbpw")
+Layers = Array[int]([0, 1])
 
 [node name="SceneLoadCall" type="Node" parent="DependencyPackage/MusicPlayOnSceneLoad" unique_id=1273893092 node_paths=PackedStringArray("ObjectToCall")]
 script = ExtResource("9_mesf0")

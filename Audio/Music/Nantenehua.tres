@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioTrack" format=3 uid="uid://c6gktqciuyba3"]
+
+[ext_resource type="AudioStream" uid="uid://cm8gf8plhydac" path="res://Audio/Music/MusicFiles/Nantenehua.mp3" id="1_i3ppf"]
+[ext_resource type="Script" uid="uid://u18nsylfik2c" path="res://AudioTrack.gd" id="1_l7a3c"]
+
+[resource]
+script = ExtResource("1_l7a3c")
+Layers = Array[AudioStream]([ExtResource("1_i3ppf")])
+metadata/_custom_type_script = "uid://u18nsylfik2c"

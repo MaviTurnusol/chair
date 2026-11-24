@@ -1,12 +1,20 @@
 ~ start
 set UnlimitedRulebook.the_woke_left = "Flower Guyy"
+
+do Voiceover.Say("SAM")
 Flower Guyy: hiii im the mc
+do Voiceover.Say("SAM1")
 Flower Guyy: i wanna suffer
+do Voiceover.Say("SAM2")
 Flower Guyy: masochism and shit
+do Voiceover.Say("SAM3")
 Flower Guyy: jk masochism isnt probably about that
+do Voiceover.Say("SAM4")
 Flower Guyy: ok byeee
 set UnlimitedRulebook.the_asleep_right = "Hatsune Miku"
+do Voiceover.Say("SAM5")
 Hatsune Miku: Wait we need to have a conversation.
+do Voiceover.Say("SAM6")
 Hatsune Miku: To like, showcase the dialogue manager.
 Flower Guyy: You're right.
 Hatsune Miku: Ok i think this much is enough?

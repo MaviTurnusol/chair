@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="2_sqoxt"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="4_5jdj4"]
 [ext_resource type="Resource" uid="uid://kmlnh2rvyv15" path="res://RoomsAndLevels/Transitions/TransTeeth.tres" id="5_6qasg"]
-[ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="6_0dp0t"]
-[ext_resource type="AudioStream" uid="uid://n3ghdefqto8n" path="res://Audio/Music/MusicFiles/Reverie Talks.mp3" id="7_tp8et"]
-[ext_resource type="Script" uid="uid://dj35x1kyxrbgs" path="res://Common/Helpers/OnSceneLoadCall.gd" id="8_ellj6"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="9_44vg3"]
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="10_nigw2"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="11_2ej5p"]
@@ -15,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://4uvvr76misin" path="res://Icons/Icon_Angel.png" id="20_r67do"]
 [ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="23_fiwwv"]
 [ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="24_cvfa2"]
-[ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/MusicFiles/Nuance Fair.mp3" id="24_fq6s6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
 texture = ExtResource("2_sqoxt")
@@ -121,18 +117,10 @@ shape = SubResource("RectangleShape2D_6qasg")
 
 [node name="RealDoor" parent="." unique_id=696739252 instance=ExtResource("4_5jdj4")]
 position = Vector2(93, 260)
+TargetSceneName = "Elevator1"
 DoorIdentifier = "Debug Entrance"
 transitionData = ExtResource("5_6qasg")
 DoSetPositionAtNewScene = true
-
-[node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=569153809]
-script = ExtResource("6_0dp0t")
-Track = ExtResource("7_tp8et")
-
-[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad" unique_id=579583215 node_paths=PackedStringArray("ObjectToCall")]
-script = ExtResource("8_ellj6")
-ObjectToCall = NodePath("..")
-FunctionName = "OnLoad"
 
 [node name="Bonfire" parent="." unique_id=792746957 instance=ExtResource("9_44vg3")]
 position = Vector2(460, 237)
@@ -153,17 +141,6 @@ offset_top = -2500.0
 offset_right = 2500.0
 offset_bottom = 2500.0
 color = Color(0, 0, 0, 0.61960787)
-
-[node name="MusicPlayOnSceneLoad2" type="Node" parent="." unique_id=1048006974]
-script = ExtResource("6_0dp0t")
-Track = ExtResource("24_fq6s6")
-FadeTime = 1.0
-OnReady = true
-
-[node name="SceneLoadCall" type="Node" parent="MusicPlayOnSceneLoad2" unique_id=1182187072 node_paths=PackedStringArray("ObjectToCall")]
-script = ExtResource("8_ellj6")
-ObjectToCall = NodePath("..")
-FunctionName = "OnLoad"
 
 [node name="Marker2D" type="Marker2D" parent="." unique_id=1971173871]
 position = Vector2(285, 162)
@@ -204,8 +181,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 58.0
+offset_top = -28.0
+offset_right = 58.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
+columns = 3
 
 [node name="InteractionPrompter" parent="ElevatorButton" unique_id=1185201784 node_paths=PackedStringArray("InteractObject") instance=ExtResource("19_edlch")]
 z_index = 1

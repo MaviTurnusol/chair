@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioTrack" format=3 uid="uid://pxo76naobhk3"]
+
+[ext_resource type="AudioStream" uid="uid://ul4lirqhf58o" path="res://Audio/Music/MusicFiles/Imen Kheru.mp3" id="1_16raf"]
+[ext_resource type="Script" uid="uid://u18nsylfik2c" path="res://AudioTrack.gd" id="1_tvy2m"]
+
+[resource]
+script = ExtResource("1_tvy2m")
+Layers = Array[AudioStream]([ExtResource("1_16raf")])
+metadata/_custom_type_script = "uid://u18nsylfik2c"

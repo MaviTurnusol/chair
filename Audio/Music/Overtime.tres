@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioTrack" format=3 uid="uid://cv22nwmg42ri5"]
+
+[ext_resource type="AudioStream" uid="uid://blm37c7yyb6f7" path="res://Audio/Music/MusicFiles/Overtime.mp3" id="1_1xxkl"]
+[ext_resource type="Script" uid="uid://u18nsylfik2c" path="res://AudioTrack.gd" id="1_t3qak"]
+
+[resource]
+script = ExtResource("1_t3qak")
+Layers = Array[AudioStream]([ExtResource("1_1xxkl")])
+metadata/_custom_type_script = "uid://u18nsylfik2c"

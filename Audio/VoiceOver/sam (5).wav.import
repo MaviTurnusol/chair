@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cbgclgvoup5bb"
+path="res://.godot/imported/sam (5).wav-e84f3127a5ba9a9046385d021d5c7d97.sample"
+
+[deps]
+
+source_file="res://Audio/VoiceOver/sam (5).wav"
+dest_files=["res://.godot/imported/sam (5).wav-e84f3127a5ba9a9046385d021d5c7d97.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

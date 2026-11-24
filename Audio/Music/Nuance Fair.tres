@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AudioTrack" format=3 uid="uid://cfx1keg4majhl"]
+
+[ext_resource type="AudioStream" uid="uid://cu6u5sq6jfwyc" path="res://Audio/Music/MusicFiles/Nuance Fair.mp3" id="1_qag8g"]
+[ext_resource type="Script" uid="uid://u18nsylfik2c" path="res://AudioTrack.gd" id="2_pva2r"]
+
+[resource]
+script = ExtResource("2_pva2r")
+Layers = Array[AudioStream]([ExtResource("1_qag8g")])
+metadata/_custom_type_script = "uid://u18nsylfik2c"

@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://byfaldi7a3s5y" path="res://Environments/HeroArt/titlescreen_A.png" id="1_g3jpp"]
 [ext_resource type="Script" uid="uid://bix0atb2wrbvu" path="res://Environments/ui/MainMenu/MainMenu.gd" id="1_y0kec"]
 [ext_resource type="Resource" uid="uid://6sicjhutyp5p" path="res://RoomsAndLevels/Rooms/SaveFileSelect.tres" id="2_8ym1v"]
-[ext_resource type="AudioStream" uid="uid://cm8gf8plhydac" path="res://Audio/Music/MusicFiles/Nantenehua.mp3" id="2_k2qnf"]
 [ext_resource type="Script" uid="uid://bclscgrvglgbv" path="res://Systems/AudioSystem/MusicPlayOnSceneLoad.gd" id="2_y0kec"]
 [ext_resource type="Texture2D" uid="uid://7p8uhfyn5h85" path="res://Environments/ui/MainMenu/StartButton.png" id="3_askim"]
 [ext_resource type="Shader" uid="uid://de4ryjam452mb" path="res://Common/FX/Shaders/DarkNoise.gdshader" id="4_skfjx"]
+[ext_resource type="Resource" uid="uid://c6gktqciuyba3" path="res://Audio/Music/Nantenehua.tres" id="7_ipp7f"]
 [ext_resource type="Script" uid="uid://i4nblmy0glcm" path="res://Systems/Settings/Volume.gd" id="8_ipp7f"]
 [ext_resource type="Script" uid="uid://cl08wplqhcq6j" path="res://Systems/Settings/KeyRebindParent.gd" id="9_lugn5"]
 [ext_resource type="Script" uid="uid://d3shg0myviu48" path="res://Systems/Settings/KeybindPresetButton.gd" id="10_q4yx0"]
@@ -97,7 +97,7 @@ mouse_filter = 2
 
 [node name="MusicPlayOnSceneLoad" type="Node" parent="." unique_id=1609263059]
 script = ExtResource("2_y0kec")
-Track = ExtResource("2_k2qnf")
+Track = ExtResource("7_ipp7f")
 FadeTime = 0.0
 OnReady = true
 
