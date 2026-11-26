@@ -74,6 +74,7 @@ func _ready() -> void:
 	UnlimitedRulebook.BulletDiscard.connect(RemoveBulletFromInventory)
 	CurrentMeleeWeaponSlot.HandItemChanged.connect(SwitchWeapon)
 	CurrentRangedWeaponSlot.HandItemChanged.connect(SwitchWeapon)
+
 func CheckIfCanAttack():
 	if(PlayerStateMachine.currentState in MeleeableStates):
 		if(!MeleeWeaponNode):
@@ -148,6 +149,7 @@ func SwitchWeapon():
 		ShowRanged()
 
 @export var CurrentMeleeWeaponSlot : HandHeldItemSlot
+var UnequippedMeleeFallback : InventoryItem = preload("uid://cxmesj3pgdftw")
 @export var CurrentRangedWeaponSlot : HandHeldItemSlot
 func GetCurrentMeleeWeapon(index : int = 0):
 	if(CurrentMeleeWeaponSlot):
@@ -156,6 +158,8 @@ func GetCurrentMeleeWeapon(index : int = 0):
 		if(!CurrentMeleeWeapon):
 			if(GetAllMeleeWeapons().size()>0):
 				CurrentMeleeWeapon = GetAllMeleeWeapons()[index]
+	if(CurrentMeleeWeapon==null):
+		CurrentMeleeWeapon = UnequippedMeleeFallback
 	return CurrentMeleeWeapon
 func GetCurrentRangedWeapon(index : int = 0):
 	if(CurrentRangedWeaponSlot):

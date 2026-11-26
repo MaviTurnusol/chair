@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://tlokybej5rmk" path="res://Vining/VentRoom.gd" id="9_l3ibf"]
 [ext_resource type="Texture2D" uid="uid://bcbvi4m532821" path="res://Vining/Vent.png" id="10_mj0bg"]
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://Systems/Inventory/Scenes/PickupableItem.tscn" id="11_vj0xn"]
-[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/player_melee_test.tscn" id="12_0lcct"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/PunchWeapon.tscn" id="12_0lcct"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://Entities/Nana/nana1.png" id="13_6d0mp"]
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="14_cbljo"]
 [ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="15_u81ot"]

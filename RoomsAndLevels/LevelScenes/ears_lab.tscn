@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dow072x2k6c8m" path="res://Entities/FlayStar/FlayStar.tscn" id="10_7lv5r"]
 [ext_resource type="PackedScene" uid="uid://cc7136fdvbnfw" path="res://Common/Objects/Bonfire.tscn" id="11_qf2dk"]
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://Systems/Inventory/Scenes/PickupableItem.tscn" id="12_o3417"]
-[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/player_melee_test.tscn" id="13_08tes"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/PunchWeapon.tscn" id="13_08tes"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://Entities/Nana/nana1.png" id="14_l0am4"]
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="15_6jcm6"]
 [ext_resource type="Script" uid="uid://da5lprft6mb74" path="res://Systems/SavingLoading/SaveLoadProperties.gd" id="16_ds7fx"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InventoryItem" format=3 uid="uid://cxmesj3pgdftw"]
+
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/PunchWeapon.tscn" id="1_fir8j"]
+[ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="3_7rcbr"]
+
+[resource]
+script = ExtResource("3_7rcbr")
+ItemName = "Punch"
+ItemDescription = "Punch"
+ItemAttributes = Array[int]([1])
+AssociatedScene = ExtResource("1_fir8j")

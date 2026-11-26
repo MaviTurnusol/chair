@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c2y7ig1b6veyl" path="res://Entities/Spiderrr/spiderrr.tscn" id="10_rdp63"]
 [ext_resource type="Texture2D" uid="uid://b0mdta8wu7fed" path="res://Entities/Guy/stock-photo-full-length-portrait-of-young-man-standing-on-white-background-1338869291-569734055.jpg" id="11_bkbvh"]
 [ext_resource type="PackedScene" uid="uid://52s8lsucji0v" path="res://Systems/Inventory/Scenes/PickupableItem.tscn" id="16_bolhi"]
-[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/player_melee_test.tscn" id="17_21iup"]
+[ext_resource type="PackedScene" uid="uid://df4j7gu4thxps" path="res://Systems/Weapons/MeleeWeapons/PunchWeapon.tscn" id="17_21iup"]
 [ext_resource type="Texture2D" uid="uid://dfs61lrph6ljq" path="res://Entities/Nana/nana1.png" id="18_scnhh"]
 [ext_resource type="Script" uid="uid://oa7fh5t141yt" path="res://Systems/Inventory/Scripts/InventoryItem.gd" id="19_0ipvf"]
 [ext_resource type="Script" uid="uid://c88mfhntxcocj" path="res://Entities/Enemy Preps.gd" id="19_gmoma"]
