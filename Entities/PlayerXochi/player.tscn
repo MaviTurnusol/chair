@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://bn4btssyys82q" path="res://Environments/TestSprites/bigRedArrow.png" id="45_do4aa"]
 [ext_resource type="Script" uid="uid://csmdjwkm6wjr6" path="res://Entities/PlayerXochi/ItemInfo.gd" id="50_0ov8f"]
 [ext_resource type="Script" uid="uid://b48vxeeac8evm" path="res://Common/CameraCursor/TrackMouse.gd" id="53_yqumt"]
+[ext_resource type="Script" uid="uid://b1yost3pdgtal" path="res://Systems/Inventory/Scripts/HandheldItemSlot.gd" id="57_apkq6"]
 [ext_resource type="Script" uid="uid://dgnv0o7of087s" path="res://Common/FX/hitflash_player.gd" id="58_haqj0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3foey"]
@@ -1380,6 +1381,8 @@ height = 66.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpjlu"]
 size = Vector2(42, 69)
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_apkq6"]
+
 [sub_resource type="Animation" id="Animation_0ov8f"]
 length = 0.001
 tracks/0/type = "value"
@@ -1674,7 +1677,7 @@ texture = ExtResource("45_do4aa")
 expand_mode = 1
 flip_h = true
 
-[node name="PlayerWeaponsAndTools" type="Node" parent="." unique_id=781864843 node_paths=PackedStringArray("MeleeHoldParent", "RangedHoldParent", "PlayerInventoryComponent", "PlayerStateMachine", "MeleeableStates", "RangeeableStates")]
+[node name="PlayerWeaponsAndTools" type="Node" parent="." unique_id=781864843 node_paths=PackedStringArray("MeleeHoldParent", "RangedHoldParent", "PlayerInventoryComponent", "PlayerStateMachine", "MeleeableStates", "RangeeableStates", "CurrentMeleeWeaponSlot", "CurrentRangedWeaponSlot")]
 script = ExtResource("40_8ynux")
 MeleeHoldParent = NodePath("../Marker2D/MeleeWeaponParent")
 RangedHoldParent = NodePath("../IKArmPlayer/Skeleton2D/UpperArm/ForeArm/RangedWeaponParent")
@@ -1682,6 +1685,8 @@ PlayerInventoryComponent = NodePath("../PlayerInventory/PlayerInventoryComponent
 PlayerStateMachine = NodePath("../StateMachine")
 MeleeableStates = [NodePath("../StateMachine/Idle"), NodePath("../StateMachine/Walk"), NodePath("../StateMachine/Run"), NodePath("../StateMachine/Turn"), NodePath("../StateMachine/MeleeAttack")]
 RangeeableStates = [NodePath("../StateMachine/GunIdle"), NodePath("../StateMachine/GunWalk")]
+CurrentMeleeWeaponSlot = NodePath("../PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/HeldItemSlot")
+CurrentRangedWeaponSlot = NodePath("../PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/HeldItemSlot2")
 
 [node name="StaminaComp" type="Node" parent="." unique_id=2040095792]
 script = ExtResource("35_c6x0f")
@@ -1760,6 +1765,65 @@ offset_top = 100.0
 offset_right = 250.0
 offset_bottom = 650.0
 theme_override_font_sizes/normal_font_size = 30
+
+[node name="HeldItemSlot" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=1211721975 node_paths=PackedStringArray("AssocInvHud")]
+anchors_preset = 0
+offset_left = 900.0
+offset_right = 1156.0
+offset_bottom = 256.0
+script = ExtResource("57_apkq6")
+AssocInvHud = NodePath("../../..")
+WhatCanHold = 1
+
+[node name="ColorRect" type="ColorRect" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/HeldItemSlot" unique_id=298308860]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/HeldItemSlot" unique_id=1180530456]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("PlaceholderTexture2D_apkq6")
+
+[node name="HeldItemSlot2" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory" unique_id=418509353 node_paths=PackedStringArray("AssocInvHud")]
+anchors_preset = 0
+offset_left = 900.0
+offset_top = 272.0
+offset_right = 1156.0
+offset_bottom = 528.0
+script = ExtResource("57_apkq6")
+AssocInvHud = NodePath("../../..")
+WhatCanHold = 2
+
+[node name="ColorRect" type="ColorRect" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/HeldItemSlot2" unique_id=1538566008]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+
+[node name="TextureRect" type="TextureRect" parent="PlayerInventory/PlayerInventoryDisplayer/Control/Inventory/HeldItemSlot2" unique_id=737047122]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("PlaceholderTexture2D_apkq6")
 
 [node name="borders" type="Control" parent="PlayerInventory/PlayerInventoryDisplayer" unique_id=1743030423]
 layout_mode = 3

@@ -72,6 +72,8 @@ func _ready() -> void:
 	PlayerInventoryComponent.ItemAddedToInventory.connect(CheckIfCanAttack)
 	PlayerInventoryComponent.ItemAddedToInventory.connect(UpdateAmmo)
 	UnlimitedRulebook.BulletDiscard.connect(RemoveBulletFromInventory)
+	CurrentMeleeWeaponSlot.HandItemChanged.connect(SwitchWeapon)
+	CurrentRangedWeaponSlot.HandItemChanged.connect(SwitchWeapon)
 func CheckIfCanAttack():
 	if(PlayerStateMachine.currentState in MeleeableStates):
 		if(!MeleeWeaponNode):
@@ -121,36 +123,47 @@ func _input(event: InputEvent) -> void:
 			if(GetCurrentRangedWeapon() && RangedWeaponNode):
 				RangedWeaponNode.Use()
 	if(event.is_action_pressed("cyclenextweapon")):
-		if(CanMelee):
-			HideMelee()
-			CurrentMeleeWeapon = null
-			var maxsize = GetAllMeleeWeapons().size()
-			CurrentMeleeWeaponIndex += 1
-			if(CurrentMeleeWeaponIndex>maxsize-1):
-				CurrentMeleeWeaponIndex = 0
-			GetCurrentMeleeWeapon(CurrentMeleeWeaponIndex)
-			print(CurrentMeleeWeapon)
-			
-			ShowMelee()
-		if(CanRanged):
-			HideRanged()
-			CurrentRangedWeapon = null
-			var maxsize = GetAllRangedWeapons().size()
-			CurrentRangedWeaponIndex+=1
-			if(CurrentRangedWeaponIndex>maxsize-1):
-				CurrentRangedWeaponIndex = 0
-			GetCurrentRangedWeapon(CurrentRangedWeaponIndex)
-			ShowRanged()
+		SwitchWeapon()
 
+func SwitchWeapon():
+	if(CanMelee):
+		HideMelee()
+		CurrentMeleeWeapon = null
+		var maxsize = GetAllMeleeWeapons().size()
+		CurrentMeleeWeaponIndex += 1
+		if(CurrentMeleeWeaponIndex>maxsize-1):
+			CurrentMeleeWeaponIndex = 0
+		GetCurrentMeleeWeapon(CurrentMeleeWeaponIndex)
+		print(CurrentMeleeWeapon)
+		
+		ShowMelee()
+	if(CanRanged):
+		HideRanged()
+		CurrentRangedWeapon = null
+		var maxsize = GetAllRangedWeapons().size()
+		CurrentRangedWeaponIndex+=1
+		if(CurrentRangedWeaponIndex>maxsize-1):
+			CurrentRangedWeaponIndex = 0
+		GetCurrentRangedWeapon(CurrentRangedWeaponIndex)
+		ShowRanged()
+
+@export var CurrentMeleeWeaponSlot : HandHeldItemSlot
+@export var CurrentRangedWeaponSlot : HandHeldItemSlot
 func GetCurrentMeleeWeapon(index : int = 0):
-	if(!CurrentMeleeWeapon):
-		if(GetAllMeleeWeapons().size()>0):
-			CurrentMeleeWeapon = GetAllMeleeWeapons()[index]
+	if(CurrentMeleeWeaponSlot):
+		CurrentMeleeWeapon = CurrentMeleeWeaponSlot.iteminslotref
+	else:
+		if(!CurrentMeleeWeapon):
+			if(GetAllMeleeWeapons().size()>0):
+				CurrentMeleeWeapon = GetAllMeleeWeapons()[index]
 	return CurrentMeleeWeapon
 func GetCurrentRangedWeapon(index : int = 0):
-	if(!CurrentRangedWeapon):
-		if(GetAllRangedWeapons().size()>0):
-			CurrentRangedWeapon = GetAllRangedWeapons()[index]
+	if(CurrentRangedWeaponSlot):
+		CurrentRangedWeapon = CurrentRangedWeaponSlot.iteminslotref
+	else:
+		if(!CurrentRangedWeapon):
+			if(GetAllRangedWeapons().size()>0):
+				CurrentRangedWeapon = GetAllRangedWeapons()[index]
 	return CurrentRangedWeapon
 
 func _process(delta: float) -> void:

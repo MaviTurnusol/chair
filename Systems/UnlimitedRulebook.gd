@@ -45,6 +45,7 @@ enum ItemAttribute{
 	RangedWeapon,
 	Ammo,
 	Quest,
+	Tool,
 }
 
 enum MeleeAnimation{
