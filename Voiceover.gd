@@ -18,9 +18,7 @@ func Say(lineName : String):
 		return
 	
 	var lineAS = self.get(lineName)
-	print("AYE")
 	if(lineAS):
-		print("WOO")
 		PlayingLine = AudioStreamPlayer.new()
 		add_child(PlayingLine)
 		PlayingLine.stream = lineAS

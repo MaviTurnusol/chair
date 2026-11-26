@@ -11,4 +11,5 @@
 [resource]
 script = ExtResource("1_tx500")
 Layers = Array[AudioStream]([ExtResource("1_2j2mm"), ExtResource("2_dba1n"), ExtResource("3_54f1a"), ExtResource("4_aguct"), ExtResource("5_tvtch"), ExtResource("6_qos7j")])
+VolumeDB = 10.11
 metadata/_custom_type_script = "uid://u18nsylfik2c"

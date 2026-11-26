@@ -11,6 +11,7 @@ maskoutDestinationScale = Vector2(1.2, 1.2)
 DoPosterize = true
 EntryTime = 0.5
 SustainTime = 1.0
+ExitTime = 0.5
 ExitTweenTransition = 4
 AnimExitDelay = 1.0
 metadata/_custom_type_script = "uid://b4o6b7xr5ybel"
