@@ -28,6 +28,7 @@ var IsAttacking : bool = false
 var IsRecovering : bool = false
 var AttackQueued : bool = false
 var CanChain : bool = false
+var HasHitTarget : bool = false
 
 @export_category("Data")
 @export var TimeBetweenShots : float = 1
@@ -74,7 +75,7 @@ func _process(delta: float) -> void:
 				BodyPos.x *= -1
 			if(markerdir > 0):
 				BodyPos.x *= 1
-			if(!UnlimitedRulebook.player.CheckIfMovingNearWall()):
+			if(!UnlimitedRulebook.player.CheckIfMovingNearWall()&&!HasHitTarget):
 				Body.global_position = BaseBodyPosition + (BodyPos)
 			
 		CurrentAttack.Hit_Box.scale = Vector2.ONE * CurrentAttack.ScaleOverAttackTime.sample_baked(AttackSigmaDelta)
@@ -114,6 +115,7 @@ func CheckIfCanShoot():
 
 func Shoot():
 	#print(AttackIndex)
+	CurrentAttack.Hit_Box.harmed.connect(HitTarget)
 	TimeSinceShot = 0
 	AttackSigmaDelta = 0
 	BaseBodyPosition = Body.global_position
@@ -146,8 +148,10 @@ func RecoveryFinished():
 	IsRecovering = false
 	IsAttacking = false
 	AttackSigmaDelta = 0
+	HasHitTarget = false
 	
-
+	CurrentAttack.Hit_Box.disconnect("harmed",HitTarget)
+	
 	
 	if(AttackIndex+1<Attacks.size()):
 		if(AttackQueued):
@@ -170,6 +174,11 @@ func RecoveryFinished():
 func AttackChainTimeout(Whatattackchainindex : int):
 	if(Whatattackchainindex == AttackIndex):
 		CanChain = false
+
+func HitTarget(dmg):
+	print("HIT TARGETRR")
+	HasHitTarget = true
+	pass
 
 #AttackIndex += 1
 #if(AttackIndex>Attacks.size()-1):
