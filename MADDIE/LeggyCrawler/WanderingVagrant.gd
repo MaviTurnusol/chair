@@ -11,12 +11,20 @@ var States
 var LegPercent : float = 1
 
 #var PathFindingLayer : TileMapLayer
-@onready var enemyPreps : EnemyPreps = owner.get_node("EnemyPreps")
-
+#@onready var enemyPreps : EnemyPreps = owner.get_node("EnemyPreps")
+var CurrentScene : String
 func _ready() -> void:
 	UnlimitedRulebook.livestock.append(boss_core)
-	print(enemyPreps.spider_paths)
-	triped_legs.PathFindingLayer = enemyPreps.spider_paths
+	#print(enemyPreps.spider_paths)
+	#triped_legs = 
+	#triped_legs.PathFindingLayer = enemyPreps.spider_paths
+	CurrentScene = owner.get_parent().room.Name
+	var rt = get_tree().get_nodes_in_group("RoomTiles")
+	for i in rt:
+		if(i.owner.get_parent().room.Name == CurrentScene):
+			triped_legs.PathFindingLayer = i
+			print(i)
+			break
 
 func _process(delta: float) -> void:
 	if(UnlimitedRulebook.player):

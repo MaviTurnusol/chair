@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://cfww5mjnido6b"]
 
+[ext_resource type="Texture2D" uid="uid://ckbrm8g1dbotl" path="res://TilemapExporter/GreyboxTiles/GreyboxTiles.png" id="1_yf8yh"]
+[ext_resource type="Script" uid="uid://e6s2uxh3jkud" path="res://MADDIE/Pathfinding/RoomTilesAStar.gd" id="2_gfc1x"]
 [ext_resource type="PackedScene" uid="uid://cdw5aopwktgrm" path="res://Common/Objects/RealDoor.tscn" id="3_0b5d4"]
 [ext_resource type="PackedScene" uid="uid://bxoxxvjxh70fj" path="res://Entities/Flayer/Flayer.tscn" id="3_yf8yh"]
 [ext_resource type="Script" uid="uid://b4o6b7xr5ybel" path="res://Systems/RoomSystem/TransitionData.gd" id="4_iw2fn"]
@@ -26,6 +28,18 @@
 [ext_resource type="Script" uid="uid://ci6ebhyn8ngpe" path="res://Systems/Weapons/Scripts/HelperGizmo.gd" id="23_28c4c"]
 [ext_resource type="Script" uid="uid://cb3xd73dt72ra" path="res://Common/Objects/Hidable.gd" id="29_edfr6"]
 [ext_resource type="Script" uid="uid://cqfs2qx80kwvm" path="res://Common/Objects/HidePoint.gd" id="30_28c4c"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_edfr6"]
+texture = ExtResource("1_yf8yh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+
+[sub_resource type="TileSet" id="TileSet_28c4c"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
+sources/0 = SubResource("TileSetAtlasSource_edfr6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_21iup"]
 texture = ExtResource("11_bkbvh")
@@ -64,7 +78,7 @@ physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 16
 sources/0 = SubResource("TileSetAtlasSource_mrqcn")
 
-[sub_resource type="Resource" id="Resource_xqul6"]
+[sub_resource type="Resource" id="Resource_yf8yh"]
 script = ExtResource("19_0ipvf")
 ItemName = "example"
 ground_tex = ExtResource("18_scnhh")
@@ -89,7 +103,7 @@ _bundled = {
 "version": 3
 }
 
-[sub_resource type="Resource" id="Resource_1bhf7"]
+[sub_resource type="Resource" id="Resource_gfc1x"]
 script = ExtResource("19_0ipvf")
 ItemName = "Gun 2"
 ground_tex = ExtResource("19_scnhh")
@@ -99,32 +113,6 @@ inv_scalemulti = 9.0
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(0, 1)])
 ItemAttributes = Array[int]([2])
 AssociatedScene = SubResource("PackedScene_2ogsr")
-metadata/_custom_type_script = "uid://oa7fh5t141yt"
-
-[sub_resource type="Resource" id="Resource_yf8yh"]
-script = ExtResource("19_0ipvf")
-ItemName = "Ammo Small"
-ItemDescription = "{BulletCount} bullets left in magazine"
-ground_tex = ExtResource("20_21iup")
-inventory_tex = ExtResource("20_21iup")
-ground_scalemulti = 0.4
-ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
-ItemAttributes = Array[int]([3])
-AmmoType = 0
-AmmoCount = 23
-metadata/_custom_type_script = "uid://oa7fh5t141yt"
-
-[sub_resource type="Resource" id="Resource_gfc1x"]
-script = ExtResource("19_0ipvf")
-ItemName = "Ammo Small"
-ItemDescription = "{BulletCount} bullets left in magazine"
-ground_tex = ExtResource("20_21iup")
-inventory_tex = ExtResource("20_21iup")
-ground_scalemulti = 0.4
-ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
-ItemAttributes = Array[int]([3])
-AmmoType = 0
-AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="Resource" id="Resource_edfr6"]
@@ -162,11 +150,37 @@ inventory_tex = ExtResource("20_21iup")
 ground_scalemulti = 0.4
 ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
 ItemAttributes = Array[int]([3])
-AmmoType = 1
+AmmoType = 0
 AmmoCount = 23
 metadata/_custom_type_script = "uid://oa7fh5t141yt"
 
 [sub_resource type="Resource" id="Resource_gojle"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ItemDescription = "{BulletCount} bullets left in magazine"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 0
+AmmoCount = 23
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_5gwlk"]
+script = ExtResource("19_0ipvf")
+ItemName = "Ammo Small"
+ItemDescription = "{BulletCount} bullets left in magazine"
+ground_tex = ExtResource("20_21iup")
+inventory_tex = ExtResource("20_21iup")
+ground_scalemulti = 0.4
+ShapePoints = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+ItemAttributes = Array[int]([3])
+AmmoType = 1
+AmmoCount = 23
+metadata/_custom_type_script = "uid://oa7fh5t141yt"
+
+[sub_resource type="Resource" id="Resource_auo4j"]
 script = ExtResource("19_0ipvf")
 ItemName = "Gun1"
 ItemDescription = "Beautiful OP Gun Worm"
@@ -184,11 +198,17 @@ size = Vector2(15, 116.64)
 
 [node name="EnemyLab" type="Node2D" unique_id=622899540]
 
+[node name="RoomTiles" type="TileMapLayer" parent="." unique_id=770875444 groups=["RoomTiles"]]
+z_index = 5
+tile_map_data = PackedByteArray("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")
+tile_set = SubResource("TileSet_28c4c")
+navigation_enabled = false
+script = ExtResource("2_gfc1x")
+
 [node name="EnemyPreps" type="Node2D" parent="." unique_id=2035388690]
 script = ExtResource("19_gmoma")
 
 [node name="SpiderPaths" type="TileMapLayer" parent="EnemyPreps" unique_id=2078516604]
-visible = false
 tile_map_data = PackedByteArray("AAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAMAAQAAQAAAAAAAAANAAQAAQAAAAAAAAAOAAQAAQAAAAAAAAAPAAQAAQAAAAAAAAAQAAQAAQAAAAAAAAARAAQAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAAAAQAAAAAAAAABAAAAAQAAAAAAAAACAAAAAQAAAAAAAAADAAAAAQAAAAAAAAAEAAAAAQAAAAAAAAAFAAAAAQAAAAAAAAAGAAAAAQAAAAAAAAAHAAAAAQAAAAAAAAAIAAAAAQAAAAAAAAAJAAAAAQAAAAAAAAAKAAAAAQAAAAAAAAALAAAAAQAAAAAAAAAMAAAAAQAAAAAAAAANAAAAAQAAAAAAAAAOAAAAAQAAAAAAAAAPAAAAAQAAAAAAAAAQAAAAAQAAAAAAAAARAAAAAQAAAAAAAAASAAAAAQAAAAAAAAATAAAAAQAAAAAAAAAUAAAAAQAAAAAAAAAVAAAAAQAAAAAAAAAWAAAAAQAAAAAAAAAXAAAAAQAAAAAAAAAYAAAAAQAAAAAAAAAZAAAAAQAAAAAAAAAaAAAAAQAAAAAAAAAbAAAAAQAAAAAAAAAcAAAAAQAAAAAAAAAdAAAAAQAAAAAAAAAeAAAAAQAAAAAAAAAfAAAAAQAAAAAAAAAgAAAAAQAAAAAAAAASAAQAAQAAAAAAAAATAAQAAQAAAAAAAAAUAAQAAQAAAAAAAAAVAAQAAQAAAAAAAAAWAAQAAQAAAAAAAAAXAAQAAQAAAAAAAAAYAAQAAQAAAAAAAAAZAAQAAQAAAAAAAAAaAAQAAQAAAAAAAAAbAAQAAQAAAAAAAAAcAAQAAQAAAAAAAAAdAAQAAQAAAAAAAAAeAAQAAQAAAAAAAAAfAAQAAQAAAAAAAAAgAAQAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_scnhh")
 
@@ -253,7 +273,7 @@ color = Color(0, 0, 0, 0.61960787)
 
 [node name="PickupableItem" parent="." unique_id=1324268814 instance=ExtResource("16_bolhi")]
 position = Vector2(162, 228)
-WhatItemAmI = SubResource("Resource_xqul6")
+WhatItemAmI = SubResource("Resource_yf8yh")
 
 [node name="SaveLoad" type="Node" parent="PickupableItem" unique_id=1114133361 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -265,7 +285,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="Gun2" parent="." unique_id=788137768 instance=ExtResource("16_bolhi")]
 position = Vector2(644, 212)
-WhatItemAmI = SubResource("Resource_1bhf7")
+WhatItemAmI = SubResource("Resource_gfc1x")
 
 [node name="SaveLoad" type="Node" parent="Gun2" unique_id=1006746121 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -277,7 +297,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem" parent="." unique_id=625144479 instance=ExtResource("16_bolhi")]
 position = Vector2(270, 230)
-WhatItemAmI = SubResource("Resource_yf8yh")
+WhatItemAmI = SubResource("Resource_edfr6")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem" unique_id=994757030 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -289,7 +309,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem2" parent="." unique_id=1897291009 instance=ExtResource("16_bolhi")]
 position = Vector2(1061, 246)
-WhatItemAmI = SubResource("Resource_gfc1x")
+WhatItemAmI = SubResource("Resource_28c4c")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem2" unique_id=1213417140 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -301,7 +321,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem3" parent="." unique_id=1577489028 instance=ExtResource("16_bolhi")]
 position = Vector2(1182, 250)
-WhatItemAmI = SubResource("Resource_edfr6")
+WhatItemAmI = SubResource("Resource_2ogsr")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem3" unique_id=378527000 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -313,7 +333,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem4" parent="." unique_id=123239139 instance=ExtResource("16_bolhi")]
 position = Vector2(1310, 256)
-WhatItemAmI = SubResource("Resource_28c4c")
+WhatItemAmI = SubResource("Resource_gojle")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem4" unique_id=2038474076 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -325,7 +345,7 @@ metadata/_custom_type_script = "uid://da5lprft6mb74"
 
 [node name="AmmoItem5" parent="." unique_id=200625649 instance=ExtResource("16_bolhi")]
 position = Vector2(1405, 250)
-WhatItemAmI = SubResource("Resource_2ogsr")
+WhatItemAmI = SubResource("Resource_5gwlk")
 
 [node name="SaveLoad" type="Node" parent="AmmoItem5" unique_id=1158565589 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")
@@ -394,7 +414,7 @@ position = Vector2(792, 225)
 
 [node name="Gun1" parent="." unique_id=2058667254 instance=ExtResource("16_bolhi")]
 position = Vector2(494, 226)
-WhatItemAmI = SubResource("Resource_gojle")
+WhatItemAmI = SubResource("Resource_auo4j")
 
 [node name="SaveLoad" type="Node" parent="Gun1" unique_id=1703763022 node_paths=PackedStringArray("ObjToSave")]
 script = ExtResource("20_xqul6")

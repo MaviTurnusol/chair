@@ -129,7 +129,7 @@ class LegUnit:
 		LegMoveSpeed = LegMinMoveSpeed
 	func FindNewTargetPoint():
 		#DesiredTargetPoint = Vector2(randf_range(-LegDetachDistance,LegDetachDistance),randf_range(-LegDetachDistance,LegDetachDistance)).clamp(Vector2(-LegDetachDistance,LegDetachDistance),Vector2(LegDetachDistance,LegDetachDistance))
-		var TileSize : float = 64
+		var TileSize : float = PathSet.tile_set.tile_size.x #64
 		var TileDictionary : Dictionary[Vector2i,int]
 		for tile in PathSet.get_used_cells():
 			var tileweight : int = 0

@@ -176,7 +176,6 @@ func AttackChainTimeout(Whatattackchainindex : int):
 		CanChain = false
 
 func HitTarget(dmg):
-	print("HIT TARGETRR")
 	HasHitTarget = true
 	pass
 
